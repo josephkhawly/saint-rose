@@ -1,0 +1,449 @@
+.nav-container {
+  position: fixed;
+  width: 100%;
+  opacity: 0;
+  z-index: 20;
+
+  .nav {
+    transition: all 0.5s ease-out;
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $black;
+    margin: 0 84px;
+    height: 100px;
+    transition: all 0.5s ease-out;
+  }
+
+  .nav-logo {
+    text-transform: uppercase;
+    font-family: $ap-bold;
+    font-size: 30px;
+    letter-spacing: 2.5px;
+    color: $black;
+  }
+
+  @media all and (max-width: 1118px) {
+    .nav-logo {
+      font-size: 20px;
+    }
+  }
+
+  .book-now-button {
+    border: solid 2px $black;
+    padding: 10px 16px;
+  }
+
+  li {
+    text-transform: uppercase;
+    display: inline;
+    margin-left: 28px;
+    font-family: $ap-bold;
+    font-size: 15px;
+    letter-spacing: 1.25px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+    transition: all 0.5s ease-out;
+  }
+
+  a:hover {
+    color: $pink;
+  }
+
+  a.book-now-button:hover {
+    cursor: pointer;
+    color: $secondary-color;
+    background-color: $black;
+  }
+
+  .divider {
+    height: 2px;
+    background-color: $black;
+    margin: 0 84px;
+  }
+
+  .active-nav-link {
+    color: $pink;
+  }
+
+  .book-now-button.active-nav-link {
+    color: $secondary-color;
+    background-color: $black;
+  }
+
+  .disable-nav-link {
+    pointer-events: none;
+  }
+}
+
+.nav-container.scrolled .nav {
+  background-color: $black;
+}
+
+.nav-container.scrolled .nav-content {
+  color: $secondary-color;
+  transition: all 0.5s ease-out;
+}
+
+.nav-container.scrolled .divider {
+  opacity: 0;
+}
+
+.nav-container.scrolled .book-now-button {
+  border-color: $secondary-color;
+}
+
+.nav-container.scrolled a {
+  color: $secondary-color;
+}
+
+.nav-container.scrolled .book-now-button.active-nav-link {
+  color: $black;
+  background-color: $secondary-color;
+  border: solid 2px $secondary-color;
+}
+
+@media all and (max-width: $desktop-transitional) {
+  .nav-container {
+    .nav-content {
+      margin: 0 48px;
+    }
+
+    .divider {
+      margin: 0 48px;
+    }
+  }
+}
+
+@media all and (max-width: $mobile-max-bp) {
+  .nav-container {
+    z-index: 1000000000;
+    position: absolute;
+    width: 100%;
+    height: 64px;
+    transition: height 0.5s ease-out;
+    background-color: #000000;
+
+    .nav {
+      height: 64px;
+      transition: all 0.5s ease-out;
+    }
+
+    .nav-content {
+      display: block;
+      margin: 0;
+      height: 64px;
+      // transition: all 0.5s ease-out;
+      transition: height 0.3s ease-out;
+      // transition-delay: 2.5s;
+    }
+
+    .nav-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      padding: 0 24px;
+      // background-color: $secondary-color;
+      transition: all 0.5s ease-out;
+      transition: background-color 0.3s ease-out;
+    }
+
+    // .nav-logo {
+    //   background-image: url("/images/logo.svg");
+    //   width: 150px;
+    //   height: 22px;
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+
+    // }
+
+    .nav-logo {
+      transition: all 0.5s ease-out;
+      // padding-top: 6px;
+      color: $secondary-color;
+      font-size: 20px;
+
+      // &::after {
+      //   transition: all 0.5s ease-out;
+      //   content: "";
+      //   position: absolute;
+      //   mask: url("/images/logo.svg") no-repeat 50% 50%;
+      //   width: 120px;
+      //   height: 16px;
+      //   background-color: $pink;
+      //   mask-size: contain;
+      //   mask-position: left;
+      // }
+    }
+
+    .nav-items {
+      height: 0px;
+      // overflow: hidden;
+      overflow: scroll;
+      transition: height 0.3s ease-out;
+      // transition-delay: 2.5s;
+
+      align-items: flex-start;
+      margin: 80px 24px 0;
+
+      .links {
+        text-align: center;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 2.3;
+        transition-delay: 0s;
+        // border-top: 1px solid $background-color;
+
+        h3 {
+          color: $mud;
+          font-size: 27px;
+          font-family: $opt;
+          margin: 26px 0 15px;
+          line-height: 16px;
+        }
+
+        ul {
+          margin-bottom: 37px;
+        }
+
+        li {
+          display: block;
+          margin-bottom: 56px;
+          margin-left: 0px;
+        }
+
+        a {
+          display: block;
+          font-family: $ap-bold;
+          font-size: 21px;
+          letter-spacing: 1.25px;
+          text-transform: uppercase;
+          margin-top: 20px;
+          color: $secondary-color;
+        }
+
+        .book-now-button {
+          margin-top: 40px;
+          display: inline-block;
+          border: solid 2px $secondary-color;
+          padding: 10px 16px;
+        }
+
+        .book-now-button:hover {
+          cursor: pointer;
+          color: $secondary-color;
+          background-color: $pink;
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .hamburger {
+      display: inline-block;
+      overflow: visible;
+      margin: 0;
+      cursor: pointer;
+      transition-timing-function: linear;
+      transition-duration: 0.15s;
+      transition-property: opacity, filter;
+      text-transform: none;
+      color: inherit;
+      border: 0;
+      background-color: transparent;
+    }
+
+    .hamburger-box {
+      position: relative;
+      display: inline-block;
+      width: 30px;
+      height: 24px;
+    }
+
+    .hamburger-inner {
+      top: 50%;
+      display: block;
+      margin-top: -2px;
+    }
+
+    .hamburger-inner:after {
+      transition: bottom 0.1s ease-in 0.25s,
+        transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    .hamburger-inner:after {
+      bottom: -10px;
+    }
+    .hamburger-inner:after,
+    .hamburger-inner:before {
+      display: block;
+      content: "";
+    }
+    .hamburger-inner,
+    .hamburger-inner:after,
+    .hamburger-inner:before {
+      position: absolute;
+      width: 30px;
+      height: 1px;
+      transition-timing-function: ease;
+      transition-duration: 0.15s;
+      transition-property: transform;
+      border-radius: 4px;
+      background-color: $secondary-color;
+    }
+
+    .hamburger-inner {
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      transition-duration: 0.22s;
+    }
+
+    .hamburger--spin .hamburger-inner:before {
+      transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+    }
+
+    .hamburger-inner:before {
+      top: -10px;
+    }
+
+    .hamburger-inner:before {
+      transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+    }
+  }
+
+  .nav-container.open {
+    height: 100%;
+    .nav {
+      height: 100%;
+      transition: all 0.5s ease-out;
+    }
+
+    .nav-bar {
+      // background-color: $pink;
+    }
+
+    .nav-content {
+      height: 100%;
+      // overflow: scroll;
+    }
+
+    .nav-logo {
+      opacity: 0;
+    }
+
+    .nav-items {
+      height: 100%;
+      overflow: hidden;
+      transition: height 0.3s ease-out;
+      transition-delay: 0s;
+
+      display: flex;
+      align-items: center;
+      margin: -64px 0 0;
+      padding-top: 32px;
+
+      // background-color: $mint;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+
+      .links {
+        opacity: 1;
+        transition: opacity 0.3s;
+        transition-delay: 0.5s;
+      }
+    }
+
+    .hamburger-inner,
+    .hamburger-inner:after,
+    .hamburger-inner:before {
+      background-color: $secondary-color;
+    }
+
+    .hamburger-inner {
+      transition-delay: 0.12s;
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: rotate(225deg);
+    }
+
+    .hamburger-inner {
+      transition-duration: 0.22s;
+    }
+
+    .hamburger-inner:before {
+      transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+    }
+
+    .hamburger-inner:before {
+      top: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
+      opacity: 0;
+    }
+
+    .hamburger-inner:after {
+      transition: bottom 0.1s ease-in 0.25s,
+        transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    .hamburger-inner:after {
+      bottom: 0;
+      transition: bottom 0.1s ease-out,
+        transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+      transform: rotate(-90deg);
+    }
+
+    .icon {
+      transform: rotate(45deg);
+    }
+
+    // .nav-logo {
+    //   &::after {
+    //     background-color: $secondary-color;
+    //   }
+    // }
+  }
+}
+
+@media all and (max-width: $phone-max-bp) {
+  // .nav-container {
+  //   .nav-bar {
+  //     padding: 0 24px;
+  //   }
+  // }
+
+  // .nav-container.expanded .nav {
+  //   position: fixed;
+  // }
+
+  // .nav-container.expanded .back-panel {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 560px;
+  //   z-index: -10;
+  //   transition: all 0.5s ease-out;
+  // }
+
+  // .nav-container.expanded.scrolled .nav {
+  //   height: 100px;
+  //   transition: all 0.5s ease-out;
+  // }
+
+  // .nav-container.expanded.scrolled .back-panel {
+  //   height: 100px;
+  //   z-index: -10;
+  // }
+}

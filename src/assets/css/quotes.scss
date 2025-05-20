@@ -1,0 +1,145 @@
+.quotes-gallery {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+
+  .open-quote {
+    position: relative;
+    width: 56px;
+    margin-right: 56px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      mask: url("/images/open-quote.svg") no-repeat 50% 50%;
+      width: 56px;
+      height: 56px;
+      background-color: $secondary-color;
+    }
+  }
+
+  h2 {
+    font-family: $ap;
+    font-size: 45px;
+    line-height: 60px;
+    margin-bottom: 84px;
+  }
+
+  h5 {
+    font-family: $ap;
+    line-height: 21px;
+    font-size: 22px;
+  }
+
+  .content {
+    width: 75%;
+    color: $secondary-color;
+  }
+
+  .controls {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    margin-left: 56px;
+  }
+
+  .controls button {
+    height: 56px;
+    width: 56px;
+    background-color: transparent;
+  }
+
+  .controls button:nth-of-type(2) {
+    margin-top: 14px;
+  }
+
+  .arrow-right {
+    position: relative;
+    height: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background: url("/images/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 56px;
+      height: 56px;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .arrow-left {
+    position: relative;
+    height: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background: url("/images/arrow-left.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 56px;
+      height: 56px;
+      background-repeat: no-repeat;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  @media all and (max-width: $mobile-max-bp) {
+    display: block;
+
+    .content {
+      width: 100%;
+      padding: 80px 24px 0 0;
+    }
+
+    .controls {
+      bottom: -20px;
+      margin-left: 0;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+}
+
+// @media all and (max-width: $desktop-transitional) {
+//   .quotes-gallery {
+//     display: block;
+
+//     h2 {
+//       font-size: 28px;
+//       line-height: 37px;
+//       margin-bottom: 24px;
+//     }
+
+//     .open-quote {
+//       margin: 24px 0;
+//       height: 33px;
+//     }
+
+//     .controls {
+//       display: flex;
+//       flex-direction: row-reverse;
+//       justify-content: flex-end;
+//       width: auto;
+//       margin-left: 0;
+
+//       button {
+//         margin-top: 24px !important;
+//       }
+
+//       button:nth-of-type(1) {
+//         margin-left: 8px;
+//       }
+//     }
+//   }
+// }

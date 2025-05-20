@@ -1,0 +1,298 @@
+.nails {
+  height: 0px;
+  overflow: hidden;
+  background-color: $background-color;
+
+  .landing {
+    margin: 0 84px 84px;
+    padding: 200px 48px 0;
+
+    .sub-nav {
+      font-family: $ap-bold;
+      text-transform: uppercase;
+      font-size: 19px;
+      letter-spacing: 1.56px;
+
+      span {
+        color: $pink;
+      }
+    }
+
+    h3 {
+      margin-top: 92px;
+      font-family: $opt;
+      font-size: 46px;
+      line-height: 57px;
+    }
+  }
+
+  .section-hero-image {
+    height: calc((100vw * 0.56));
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+  }
+
+  .section-text {
+    display: flex;
+    width: 100%;
+    // margin: 124px;
+  }
+
+  .text-container {
+    width: 50%;
+  }
+
+  .section-text .left {
+    font-family: $ap;
+    font-size: 32px;
+    line-height: 51px;
+    padding: 124px 62px 124px 124px;
+  }
+
+  .section-text .right {
+    padding: 124px 124px 124px 0px;
+  }
+
+  .section-text .right p {
+    font-family: $ap;
+    font-size: 20px;
+    line-height: 33px;
+  }
+
+  .section.last {
+    margin-bottom: 240px;
+  }
+
+  .pricing {
+    margin-top: 24px;
+    margin-bottom: 200px;
+
+    .left {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
+    .right {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
+    h3 {
+      font-family: $ap-bold;
+      font-size: 60px;
+      margin: 16px 0 36px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-family: $ap;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .pricing-table {
+    font-family: $ap;
+    font-size: 22px;
+    line-height: 63px;
+
+    li {
+      height: auto;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $black;
+      border-bottom: 1px solid $mud;
+    }
+
+    // .head {
+    //   font-size: 20px;
+    //   text-transform: capitalize;
+
+    //   span {
+    //     text-align: left;
+    //   }
+    // }
+
+    // .tail {
+    //   display: flex;
+    // }
+    .pricing-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .title {
+      text-align: left;
+      line-height: 28px;
+      width: 80%;
+    }
+
+    .price {
+      text-align: right;
+      line-height: 28px;
+    }
+
+    // span {
+    //   display: block;
+    //   width: 100px;
+    // }
+  }
+
+  // scroll thing
+
+  .scroll-nav--link-container {
+    background-color: $mud;
+    font-size: 124px;
+    text-transform: uppercase;
+  }
+
+  .scroll-nav--link-container a {
+    text-decoration: none;
+    font-family: $ap-bold;
+    color: $white;
+    white-space: nowrap;
+    transition: all 0.3s ease-out;
+  }
+
+  .scroll-nav--link-container a:hover {
+    color: $pink;
+  }
+
+  .instagram-link {
+    // width: 100%;
+    // left: 100%;
+    right: 0;
+    /* position: absolute; */
+    position: relative;
+    padding: 68px 0 42px;
+  }
+
+  .instagram-container {
+    margin: 120px 84px;
+  }
+
+  // @media all and (max-width: $desktop-transitional) {
+  //   .section-text.pricing {
+  //     display: block;
+  //   }
+  // }
+
+  @media all and (max-width: $mobile-max-bp) {
+    .landing {
+      display: block;
+      height: auto;
+      padding: 100px 20px 30px 20px;
+      margin: 0;
+
+      .sub-nav {
+        font-size: 15px;
+        letter-spacing: 1.23px;
+      }
+
+      h3 {
+        margin-top: 30px;
+        font-size: 37px;
+        line-height: 38px;
+      }
+
+      a {
+        font-size: 17px;
+      }
+    }
+
+    .section {
+      margin-top: 100px;
+      .title-bar {
+        height: 90px;
+        top: -72px;
+      }
+    }
+
+    .text-container {
+      width: 100%;
+    }
+
+    .section-text {
+      display: block;
+
+      .left {
+        padding: 24px;
+        font-size: 25px;
+        line-height: 36px;
+      }
+
+      .right {
+        padding: 0 24px;
+
+        p {
+          font-size: 17px;
+          line-height: 28px;
+        }
+      }
+    }
+
+    .pricing {
+      margin-bottom: 70px;
+
+      h3 {
+        font-size: 26px;
+        padding: 12px;
+        background-color: $mud;
+        line-height: 30px;
+        margin: 0 0 24px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      .text-container .left {
+        padding-bottom: 0;
+      }
+    }
+
+    .scroll-nav--link-container {
+      font-size: 36px;
+    }
+
+    .pricing-table {
+      li {
+        padding: 15px 0;
+        font-size: 16px;
+        line-height: 20px;
+        height: auto;
+      }
+
+      .pricing-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .title {
+        width: 250px;
+        line-height: 20px;
+      }
+    }
+
+    .instagram-link {
+      // width: 100%;
+      // left: 100%;
+      right: 0;
+      /* position: absolute; */
+      position: relative;
+      padding: 34px 0 21px;
+    }
+
+    .instagram-container {
+      margin: 30px 24px 30px;
+    }
+  }
+}

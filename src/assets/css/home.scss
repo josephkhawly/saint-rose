@@ -1,0 +1,87 @@
+.home {
+  background-color: $background-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .entrance {
+    background-color: $secondary-color;
+    /* min-height: 100vh; */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .intro {
+    // background: url("/images/home-rose.svg");
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    background-color: $secondary-color;
+    position: fixed;
+    // top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    // opacity: 1;
+  }
+
+  .intro-2 {
+    background-color: $black;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .intro-rose {
+    background: url("/images/home-rose.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .nav-container .nav {
+    background-color: $black;
+  }
+
+  .nav-container .nav-content {
+    color: $secondary-color;
+    transition: all 0.5s ease-out;
+  }
+
+  .nav-container .divider {
+    opacity: 0;
+  }
+
+  .nav-container .book-now-button {
+    border-color: $secondary-color;
+  }
+
+  .nav-container a {
+    color: $secondary-color;
+  }
+
+  .nav-container a:hover {
+    color: $pink;
+  }
+
+  .nav-container a.book-now-button:hover {
+    color: $white;
+  }
+
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+  }
+}

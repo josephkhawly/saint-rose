@@ -1,0 +1,15 @@
+.footer-with-nav {
+  height: 0px;
+  overflow: hidden;
+  background-color: $background-color;
+
+  .content-container {
+    padding-top: 94px;
+  }
+
+  @media all and (max-width: $mobile-max-bp) {
+    .content-container {
+      padding-top: 58px;
+    }
+  }
+}

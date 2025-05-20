@@ -1,0 +1,202 @@
+.care-and-commitment {
+  height: 0px;
+  overflow: hidden;
+  background-color: $background-color;
+
+  .landing {
+    margin: 0 84px;
+    padding: 200px 48px 0;
+
+    .sub-nav {
+      font-family: $ap-bold;
+      text-transform: uppercase;
+      font-size: 19px;
+      letter-spacing: 1.56px;
+
+      span {
+        color: $pink;
+      }
+    }
+
+    h3 {
+      margin-top: 144px;
+      font-family: $opt;
+      font-size: 46px;
+      line-height: 57px;
+      max-width: 1000px;
+    }
+  }
+
+  .section-hero-image {
+    margin-top: 64px;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+  }
+
+  .section-text {
+    display: flex;
+    width: 100%;
+    // margin: 124px;
+  }
+
+  .text-container {
+    width: 50%;
+  }
+
+  .section-text .left {
+    font-family: $ap;
+    font-size: 32px;
+    line-height: 51px;
+    padding: 124px 62px 124px 124px;
+  }
+
+  .section-text .right {
+    padding: 124px 124px 124px 0px;
+  }
+
+  .section-text .right p {
+    font-family: $ap;
+    font-size: 20px;
+    line-height: 33px;
+  }
+
+  .video-review {
+    margin: 0 124px;
+
+    video {
+      height: 100%;
+      width: 100%;
+      // object-fit: cover;
+      object-fit: contain;
+    }
+  }
+
+  .instagram-reviews {
+    margin: 124px 124px;
+  }
+
+  .images {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .column {
+    width: 369px;
+    margin-right: 24px;
+  }
+
+  .column:last-of-type {
+    margin-right: 0;
+  }
+
+  .review-image {
+    margin-bottom: 24px;
+  }
+
+  .review-image-file {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .tag {
+    margin-top: 12px;
+    font-size: 20px;
+    font-family: $ap;
+  }
+
+  .quotes {
+    margin: 92px 0;
+  }
+
+  .quotes-wrapper {
+    width: 85%;
+    padding: 104px 0 104px 52px;
+    background-color: $pink;
+  }
+
+  @media all and (max-width: $mobile-max-bp) {
+    .landing {
+      display: block;
+      height: auto;
+      padding: 100px 20px 30px 20px;
+      margin: 0;
+
+      .sub-nav {
+        font-size: 15px;
+        letter-spacing: 1.23px;
+      }
+
+      h3 {
+        margin-top: 30px;
+        font-size: 37px;
+        line-height: 38px;
+      }
+
+      a {
+        font-size: 17px;
+      }
+    }
+
+    .section-hero-image {
+      margin-top: 0;
+      height: 300px;
+    }
+
+    .section {
+      margin-top: 100px;
+      .title-bar {
+        height: 90px;
+        top: -72px;
+      }
+    }
+
+    .text-container {
+      width: 100%;
+    }
+
+    .section-text {
+      display: block;
+
+      .left {
+        padding: 24px;
+        font-size: 25px;
+        line-height: 36px;
+      }
+
+      .right {
+        padding: 0 24px;
+
+        p {
+          font-size: 17px;
+          line-height: 28px;
+        }
+      }
+    }
+
+    .video-review {
+      margin: 24px 24px 0;
+    }
+
+    .instagram-reviews {
+      margin: 24px 24px 0;
+
+      .images {
+        display: block;
+      }
+
+      .column {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    .quotes-wrapper {
+      padding: 50px 0 50px 24px;
+    }
+  }
+}

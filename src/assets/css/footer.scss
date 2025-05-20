@@ -1,0 +1,163 @@
+.footer {
+  background-color: black;
+  border-top: 5px solid $secondary-color;
+  color: $secondary-color;
+
+  .footer-container {
+    padding: 84px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-logo img {
+    width: 124px;
+  }
+
+  .footer-nav {
+    margin-top: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    font-family: $ap-bold;
+    text-transform: uppercase;
+    gap: 24px;
+
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+    }
+  }
+
+  .footer-misc {
+    margin-top: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 16px;
+  }
+
+  .social {
+    display: flex;
+    // margin-bottom: 30px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .facebook-logo {
+    display: block;
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      mask: url("/images/facebook.svg") no-repeat 50% 50%;
+      width: 35px;
+      height: 35px;
+      mask-size: contain;
+      background-color: $secondary-color;
+    }
+  }
+
+  .instagram-logo {
+    display: block;
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      mask: url("/images/instagram.svg") no-repeat 50% 50%;
+      width: 35px;
+      height: 35px;
+      mask-size: contain;
+      background-color: $secondary-color;
+    }
+  }
+
+  .youtube-logo {
+    display: block;
+    position: relative;
+    width: 35px;
+    height: 35px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      mask: url("/images/youtube.svg") no-repeat 50% 50%;
+      width: 35px;
+      height: 35px;
+      mask-size: contain;
+      background-color: $secondary-color;
+    }
+  }
+
+  // @media all and (max-width: 1079px) and (min-width: $desktop-min-bp) {
+  //   .footer-container {
+  //     display: block;
+
+  //     .footer-top {
+  //       display: flex;
+  //       justify-content: space-between;
+  //       // margin-bottom: 24px;
+  //     }
+
+  //     .footer-extras {
+  //       margin-top: 48px;
+  //       position: relative;
+  //     }
+
+  //     .locations {
+  //       padding-top: 0px;
+  //     }
+
+  //     .location-notes {
+  //       margin-bottom: 48px;
+  //     }
+  //   }
+  // }
+
+  @media all and (max-width: $mobile-max-bp) {
+    .footer-logo img {
+      width: 82px;
+    }
+
+    .footer-nav {
+      flex-wrap: wrap;
+    }
+
+    .footer-nav-link {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-misc {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .social {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .copyright {
+      margin-top: 22px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .thirtythree {
+      margin-top: 14px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

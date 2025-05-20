@@ -1,0 +1,207 @@
+.policies {
+  .nav-container {
+    .active-nav-link {
+      color: $pink;
+    }
+
+    a:hover {
+      color: $pink;
+    }
+  }
+
+  .nav-container.scrolled a {
+    color: $secondary-color;
+  }
+
+  height: 0px;
+  overflow: hidden;
+  background-color: $background-color;
+
+  .sub-nav {
+    padding: 200px 0 0;
+    margin: 0 84px;
+    font-family: $ap-bold;
+    text-transform: uppercase;
+    font-size: 19px;
+    letter-spacing: 1.56px;
+  }
+
+  .text-content {
+    padding: 0 84px;
+    margin: 100px 0px 0;
+  }
+
+  h3 {
+    font-family: $opt;
+    font-size: 46px;
+    line-height: 57px;
+  }
+
+  .policies-body {
+    width: 80%;
+    margin-top: 110px;
+    margin-left: 110px;
+
+    h4 {
+      font-family: $ap;
+      font-size: 20px;
+      letter-spacing: 0.8px;
+      line-height: 40px;
+      color: $pink;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    ul {
+      margin-top: 50px;
+
+      li {
+        position: relative;
+      }
+
+      li:before {
+        content: "";
+        width: 40px;
+        border-bottom: 1px solid $pink;
+        position: absolute;
+        left: 0px;
+        top: 16px;
+      }
+
+      h6 {
+        font-family: $ap;
+        font-size: 20px;
+        line-height: 33px;
+        margin-bottom: 14px;
+        margin-left: 60px;
+      }
+
+      p {
+        margin-left: 60px;
+      }
+    }
+
+    p {
+      font-family: $ap;
+      font-size: 20px;
+      line-height: 33px;
+      margin-bottom: 38px;
+    }
+
+    .cta {
+      margin-top: 90px;
+    }
+
+    a {
+      font-family: $ap-bold;
+      line-height: 33px;
+      margin-bottom: 14px;
+      font-size: 20px;
+      color: black;
+    }
+  }
+
+  .footer {
+    margin-top: 340px;
+  }
+
+  @media all and (max-width: $mobile-max-bp) {
+    .sub-nav {
+      padding: 100px 20px 30px 24px;
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 1.23px;
+    }
+
+    .text-content {
+      padding: 0 24px;
+      margin: 0;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 37px;
+      line-height: 42px;
+      font-family: $opt;
+    }
+
+    h4 {
+      margin: 0px 0 24px;
+    }
+
+    .policies-body {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 30px;
+
+      ul {
+        margin-top: 0;
+      }
+    }
+
+    .footer {
+      margin-top: 140px;
+    }
+
+    //   a {
+    //     font-size: 17px;
+    //   }
+
+    //   .section-hero-image {
+    //     margin-top: 0;
+    //     height: 300px;
+    //   }
+
+    //   .section {
+    //     margin-top: 100px;
+    //     .title-bar {
+    //       height: 90px;
+    //       top: -72px;
+    //     }
+    //   }
+
+    //   .text-container {
+    //     width: 100%;
+    //   }
+
+    //   .section-text {
+    //     display: block;
+
+    //     .left {
+    //       padding: 24px;
+    //       font-size: 25px;
+    //       line-height: 36px;
+    //     }
+
+    //     .right {
+    //       padding: 0 24px;
+
+    //       p {
+    //         font-size: 17px;
+    //         line-height: 28px;
+    //       }
+    //     }
+    //   }
+
+    //   .video-review {
+    //     margin: 24px 24px 0;
+    //   }
+
+    //   .instagram-reviews {
+    //     margin: 24px 24px 0;
+
+    //     .images {
+    //       display: block;
+    //     }
+
+    //     .column {
+    //       width: 100%;
+    //       margin-right: 0;
+    //     }
+    //   }
+
+    //   .quotes-wrapper {
+    //     padding: 50px 0 50px 24px;
+    //   }
+  }
+}

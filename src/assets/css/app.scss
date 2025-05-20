@@ -1,0 +1,99 @@
+@import "variables";
+@import "reset";
+@import "nav";
+@import "home";
+// @import "home-covid";
+@import "contact";
+@import "services";
+@import "about";
+@import "blog";
+@import "blog-post";
+@import "covid";
+@import "who-we-are";
+@import "what-we-do";
+@import "meet-the-team";
+@import "hair-and-waxing";
+@import "nails";
+@import "care-and-commitment";
+@import "salon-experience";
+@import "policies";
+@import "book-now";
+@import "why-we-do-it";
+@import "footer-with-nav";
+@import "footer";
+@import "quotes";
+@import "gallery";
+
+@font-face {
+  font-family: "apercu-bold";
+  src: url("/fonts/apercu-bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "apercu-regular";
+  src: url("/fonts/apercu-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "optima";
+  src: url("/fonts/optima.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fade {
+  opacity: 0;
+}
+
+.content {
+  opacity: 1;
+  position: relative;
+  z-index: 10;
+}
+
+.index {
+  height: 0px;
+  overflow: hidden;
+  background-color: $background-color;
+}
+
+.exit {
+  background-color: $background-color;
+  /* min-height: 100vh; */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  opacity: 1;
+  z-index: 20;
+}
+
+.exit-2 {
+  background-color: $secondary-color;
+  /* min-height: 100vh; */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  opacity: 1;
+  z-index: 20;
+}
+
+.entrance {
+  background-color: $secondary-color;
+  /* min-height: 100vh; */
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  opacity: 1;
+}
