@@ -4,7 +4,7 @@
   "description": "saint_rose",
   "main": "index.js",
   "engines": {
-    "node": "~18.13.0"
+    "node": "~20.10.0"
   },
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.config.js --progress",
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
+    "@contentful/rich-text-types": "^17.0.0",
     "@sendgrid/mail": "^6.4.0",
     "axios": "^0.19.2",
     "babel-loader": "^9.1.2",

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { TimelineMax as Timeline, Power1 } from "gsap";
 import ScrollMagic from "scrollmagic";
-import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
+
 
 import Fade from "react-reveal/Fade";
 import axios from "axios";
