@@ -14,9 +14,6 @@ import {
   CSSTransition,
 } from "react-transition-group";
 
-// import { Tween, Timeline } from "react-gsap";
-// import { Controller, Scene } from "react-scrollmagic";
-
 import MediaQuery from "react-responsive";
 
 import Nav from "./Nav";
@@ -89,7 +86,6 @@ function enableParentSCroll() {
   );
 }
 
-// const ENDPOINT = "https://google.com";
 const API_BASE_URL = "https://cdn.contentful.com";
 const API_SPACE_ID = "2f8bh3xz5t4r";
 const API_TOKEN = "w_iD0iNnkKr2HotiAweKs5FNWBeFFRyGyC8WZ05sY04";

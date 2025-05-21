@@ -1,20 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { TimelineMax as Timeline, Expo } from "gsap";
 import ScrollMagic from "scrollmagic";
 
 
 import Fade from "react-reveal/Fade";
 
-// import { Tween, Timeline } from "react-gsap";
-// import { Controller, Scene } from "react-scrollmagic";
-
 import MediaQuery from "react-responsive";
 
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 import Footer from "./Footer";
 import classnames from "classnames";
 
@@ -193,14 +189,6 @@ class Services extends React.Component {
     } else {
       this.loadMobile();
     }
-
-    // setTimeout(() => {
-    //   if (window.innerWidth >= DESKTOPTRANSITIONBP) {
-    //     this.loadDesktop();
-    //   } else {
-    //     this.loadMobile();
-    //   }
-    // }, 0);
   }
 
   renderPricingRow(title, description, price) {

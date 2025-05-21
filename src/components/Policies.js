@@ -1,9 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TimelineMax as Timeline, Power1 } from "gsap";
+import { Link } from "react-router-dom";
+import { TimelineMax as Timeline } from "gsap";
 import ScrollMagic from "scrollmagic";
 
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Fade from "react-reveal/Fade";
 
 import MediaQuery from "react-responsive";
@@ -11,7 +10,7 @@ import MediaQuery from "react-responsive";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 import Footer from "./Footer";
 
 class Policies extends React.Component {

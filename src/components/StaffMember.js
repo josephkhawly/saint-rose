@@ -1,15 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TimelineMax as Timeline, Power1 } from "gsap";
-import ScrollMagic from "scrollmagic";
-
-
-import Fade from "react-reveal/Fade";
-import axios from "axios";
-
-// import { Tween, Timeline } from "react-gsap";
-// import { Controller, Scene } from "react-scrollmagic";
 
 function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
   const {

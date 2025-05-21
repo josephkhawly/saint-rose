@@ -1,25 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TimelineMax as Timeline, Power1 } from "gsap";
-import ScrollMagic from "scrollmagic";
 
 
 import Fade from "react-reveal/Fade";
-import axios from "axios";
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-// import { Tween, Timeline } from "react-gsap";
-// import { Controller, Scene } from "react-scrollmagic";
-
 import MediaQuery from "react-responsive";
 
-import Nav from "./Nav";
-import MobileNav from "./MobileNav";
-
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
-import Footer from "./Footer";
-import Axios from "axios";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 
 function Video(link, closeHandler) {
   return (

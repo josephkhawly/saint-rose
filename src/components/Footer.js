@@ -1,18 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 import Fade from "react-reveal/Fade";
 import MediaQuery from "react-responsive";
 
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 
 function Footer(props) {
-  // console.log("props:");
-  // console.log(props.delay);
 
   return (
-    // <Fade delay={props.delay === 0 ? props.delay : 2000} fraction={0.01}>
     <Fade fraction={0.01}>
       <div className="footer">
         <Fade>
