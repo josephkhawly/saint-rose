@@ -12,7 +12,6 @@ import Axios from "axios";
 import {
   TransitionGroup,
   CSSTransition,
-  Transition,
 } from "react-transition-group";
 
 // import { Tween, Timeline } from "react-gsap";
