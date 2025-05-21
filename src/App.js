@@ -38,7 +38,7 @@ import Careers from "./components/Careers";
 import WhyWeDoIt from "./components/WhyWeDoIt";
 import FooterWithNav from "./components/FooterWithNav";
 
-import "./assets/css/App.scss";
+import "./assets/css/app.scss";
 
 function Index() {
   return (
