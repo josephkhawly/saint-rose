@@ -1,27 +1,27 @@
-const path = require("path");
-const webpack = require("webpack");
-const postcssPresetEnv = require("postcss-preset-env");
+const path = require('path')
+const webpack = require('webpack')
+const postcssPresetEnv = require('postcss-preset-env')
 
 module.exports = {
-  entry: ["./src/index.js"],
-  mode: "development",
+  entry: ['./src/index.js'],
+  mode: 'development',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader",
-        options: { presets: ["@babel/env"] },
+        loader: 'babel-loader',
+        options: { presets: ['@babel/env'] },
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          "style-loader",
+          'style-loader',
           // { loader: "css-loader", options: { importLoaders: 1 } },
-          { loader: "css-loader", options: { url: false } },
+          { loader: 'css-loader', options: { url: false } },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               // ident: "postcss",
               postcssOptions: {
@@ -30,17 +30,17 @@ module.exports = {
               // plugins: () => [postcssPresetEnv(/* pluginOptions */)],
             },
           },
-          "sass-loader",
+          'sass-loader',
         ],
       },
       {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "fonts/",
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
             },
           },
         ],
@@ -49,10 +49,10 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "images/",
+              name: '[name].[ext]',
+              outputPath: 'images/',
             },
           },
         ],
@@ -60,13 +60,13 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".css", ".scss"],
+    extensions: ['*', '.js', '.jsx', '.css', '.scss'],
   },
   output: {
-    path: path.resolve(__dirname, "build/public"),
-    publicPath: "/",
-    filename: "bundle.js",
-    hashFunction: "sha512",
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/',
+    filename: 'bundle.js',
+    hashFunction: 'sha512',
   },
   devServer: {
     // static: path.join(__dirname, "public/"),
@@ -75,15 +75,15 @@ module.exports = {
     //   publicPath: "/",
     // },
     static: {
-      directory: path.join(__dirname, "public/"),
-      publicPath: "/",
+      directory: path.join(__dirname, 'public/'),
+      publicPath: '/',
     },
     port: 3000,
     // publicPath: "/",
-    hot: "only",
+    hot: 'only',
     // hotOnly: true,
     historyApiFallback: true,
     // disableHostCheck: true, //for ngrok
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
-};
+}
