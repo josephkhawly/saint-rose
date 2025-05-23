@@ -13,7 +13,6 @@
     "build-client": "cp -r public/fonts public/images .",
     "build": "webpack --mode production && npm run build-client",
     "dev": "webpack-dev-server --config webpack.config.js --progress",
-    "start": "node server.js",
     "vercel-build": "webpack --mode production"
   },
   "author": "",
