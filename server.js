@@ -55,10 +55,6 @@ async function sendMail(fields, resumeFile) {
           name: resumeFile.originalFilename,
         });
 
-        var client = new postmark.ServerClient(
-          "b8583bd2-0e3c-4633-aaa8-0cdfa2541fd4"
-        );
-
         const msg = {
           From: "info@hairbysaintrose.com",
           To: "info@hairbysaintrose.com",

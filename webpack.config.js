@@ -63,7 +63,7 @@ module.exports = {
     extensions: ["*", ".js", ".jsx", ".css", ".scss"],
   },
   output: {
-    path: path.resolve(__dirname, "build/public/"),
+    path: path.resolve(__dirname, "build/public"),
     publicPath: "/",
     filename: "bundle.js",
     hashFunction: "sha512",
