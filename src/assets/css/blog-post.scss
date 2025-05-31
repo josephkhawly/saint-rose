@@ -1,26 +1,28 @@
+@use "variables";
+
 .blog-post {
   .nav-container {
     .active-nav-link {
-      color: $pink;
+      color: variables.$pink;
     }
 
     a:hover {
-      color: $pink;
+      color: variables.$pink;
     }
   }
 
   .nav-container.scrolled a {
-    color: $secondary-color;
+    color: variables.$secondary-color;
   }
 
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .sub-nav {
     padding: 200px 0 0;
     margin: 0 84px;
-    font-family: $ap-bold;
+    font-family: variables.$ap-bold;
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
@@ -56,28 +58,28 @@
   .postTitle {
     margin-top: 80px;
     margin-bottom: 40px;
-    font-family: $opt;
+    font-family: variables.$opt;
     font-size: 50px;
     line-height: 125%;
   }
 
   .rich-text {
     h1 {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 50px;
       line-height: 125%;
       margin-bottom: 20px;
     }
 
     h2 {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 37px;
       line-height: 115%;
       margin-bottom: 20px;
     }
 
     p {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 20px;
       line-height: 140%;
       padding-bottom: 24px;
@@ -97,7 +99,7 @@
     // }
 
     b {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
     }
 
     i {
@@ -116,7 +118,7 @@
         top: 0.8rem;
         width: 24px;
         height: 1px;
-        background-color: $black;
+        background-color: variables.$black;
       }
     }
 
@@ -136,7 +138,7 @@
       // color: $dark-green;
       font-size: 14px;
       line-height: 26px;
-      font-family: $ap;
+      font-family: variables.$ap;
     }
   }
 
@@ -146,11 +148,11 @@
     margin-left: 110px;
 
     h4 {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 20px;
       letter-spacing: 0.8px;
       line-height: 40px;
-      color: $pink;
+      color: variables.$pink;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
@@ -165,14 +167,14 @@
       li:before {
         content: "";
         width: 40px;
-        border-bottom: 1px solid $pink;
+        border-bottom: 1px solid variables.$pink;
         position: absolute;
         left: 0px;
         top: 16px;
       }
 
       h6 {
-        font-family: $ap;
+        font-family: variables.$ap;
         font-size: 20px;
         line-height: 33px;
         margin-bottom: 14px;
@@ -185,7 +187,7 @@
     }
 
     p {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 20px;
       line-height: 33px;
       margin-bottom: 38px;
@@ -196,7 +198,7 @@
     }
 
     a {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       line-height: 33px;
       margin-bottom: 14px;
       font-size: 20px;
@@ -208,7 +210,7 @@
     margin-top: 340px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .sub-nav {
       padding: 100px 20px 30px 24px;
       margin: 0;

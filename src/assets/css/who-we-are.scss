@@ -1,3 +1,5 @@
+@use "variables";
+
 // .meet-the-team {
 //   height: 0px;
 //   overflow: hidden;
@@ -7,10 +9,10 @@
 .who-we-are {
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   h5 {
-    font-family: $ap-bold;
+    font-family: variables.$ap-bold;
     font-size: 19px;
     letter-spacing: 1.56px;
   }
@@ -49,13 +51,13 @@
     // margin-top: 194px;
   }
   .right h3 {
-    font-family: $opt;
+    font-family: variables.$opt;
     font-size: 46px;
     line-height: 57px;
   }
 
   .about-nav--link-container {
-    background-color: $black;
+    background-color: variables.$black;
 
     font-size: 124px;
     text-transform: uppercase;
@@ -63,14 +65,14 @@
 
   .about-nav--link-container a {
     text-decoration: none;
-    font-family: $ap-bold;
-    color: $background-color;
+    font-family: variables.$ap-bold;
+    color: variables.$background-color;
     white-space: nowrap;
     transition: all 0.3s ease-out;
   }
 
   .about-nav--link-container a:hover {
-    color: $pink;
+    color: variables.$pink;
   }
 
   .our-team-link {
@@ -94,7 +96,7 @@
     padding: 42px 0 68px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .landing {
       display: block;
       height: auto;
@@ -109,7 +111,7 @@
         padding: 100px 20px 30px 20px;
 
         h5 {
-          font-family: $ap-bold;
+          font-family: variables.$ap-bold;
           font-size: 15px;
           letter-spacing: 1.23px;
           margin-bottom: 40px;
@@ -118,7 +120,7 @@
         h3 {
           font-size: 37px;
           line-height: 42px;
-          font-family: $opt;
+          font-family: variables.$opt;
         }
       }
     }

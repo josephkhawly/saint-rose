@@ -1,26 +1,28 @@
+@use "variables";
+
 .blog {
   .nav-container {
     .active-nav-link {
-      color: $pink;
+      color: variables.$pink;
     }
 
     a:hover {
-      color: $pink;
+      color: variables.$pink;
     }
   }
 
   .nav-container.scrolled a {
-    color: $secondary-color;
+    color: variables.$secondary-color;
   }
 
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .sub-nav {
     padding: 200px 0 0;
     margin: 0 84px;
-    font-family: $ap-bold;
+    font-family: variables.$ap-bold;
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
@@ -45,13 +47,13 @@
 
     h5 {
       margin-top: 60px;
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       font-size: 15px;
     }
 
     h3 {
       margin-top: 24px;
-      font-family: $ap;
+      font-family: variables.$ap;
       max-width: 50%;
       font-size: 40px;
       line-height: 46px;
@@ -82,14 +84,14 @@
 
     h5 {
       margin-top: 24px;
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 16px;
       line-height: 22px;
     }
 
     h3 {
       margin-top: 4px;
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 22px;
       line-height: 28px;
     }
@@ -117,7 +119,7 @@
   }
 
   h3 {
-    font-family: $opt;
+    font-family: variables.$opt;
     font-size: 46px;
     line-height: 57px;
   }
@@ -126,7 +128,7 @@
     margin-top: 340px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .sub-nav {
       padding: 100px 20px 30px 24px;
       margin: 0;
