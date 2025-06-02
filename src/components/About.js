@@ -485,12 +485,6 @@ class About extends React.Component {
                 <div className="title-bar-text">Our story</div>
               </div>
               <Fade delay={700} bottom distance="50px">
-                {/* <div
-                  className="section-hero-image"
-                  style={{
-                    backgroundImage: `url("/images/our-story-header.jpg")`
-                  }}
-                /> */}
                 <div className="section-hero-video-container">
                   <video
                     id="section-hero-video"

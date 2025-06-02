@@ -357,12 +357,6 @@ class Services extends React.Component {
                     />
                   </video>
                 </div>
-                {/* <div
-                  className="section-hero-image"
-                  style={{
-                    backgroundImage: `url("/images/our-story-header.jpg")`
-                  }}
-                /> */}
               </Fade>
               <div className="section-text">
                 <div className="text-container">
