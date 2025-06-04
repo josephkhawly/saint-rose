@@ -100,31 +100,6 @@
     }
   }
 
-  // @media all and (max-width: 1079px) and (min-width: $desktop-min-bp) {
-  //   .footer-container {
-  //     display: block;
-
-  //     .footer-top {
-  //       display: flex;
-  //       justify-content: space-between;
-  //       // margin-bottom: 24px;
-  //     }
-
-  //     .footer-extras {
-  //       margin-top: 48px;
-  //       position: relative;
-  //     }
-
-  //     .locations {
-  //       padding-top: 0px;
-  //     }
-
-  //     .location-notes {
-  //       margin-bottom: 48px;
-  //     }
-  //   }
-  // }
-
   @media all and (max-width: variables.$mobile-max-bp) {
     .footer-logo img {
       width: 82px;
@@ -148,6 +123,7 @@
       display: flex;
       width: 100%;
       justify-content: center;
+      order: -1;
     }
 
     .copyright {
