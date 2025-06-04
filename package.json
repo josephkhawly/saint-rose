@@ -10,10 +10,9 @@
     "start-dev": "webpack-dev-server --config webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf public/js || true",
-    "build-client": "cp -r public/fonts public/images .",
-    "build": "webpack --mode production && npm run build-client",
+    "build": "NODE_ENV=production webpack --mode production",
     "dev": "webpack-dev-server --config webpack.config.js --progress",
-    "vercel-build": "webpack --mode production"
+    "vercel-build": "NODE_ENV=production webpack --mode production"
   },
   "author": "",
   "license": "ISC",

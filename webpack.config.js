@@ -4,7 +4,7 @@ const postcssPresetEnv = require('postcss-preset-env')
 
 module.exports = {
   entry: ['./src/index.js'],
-  mode: 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   module: {
     rules: [
       {
@@ -64,7 +64,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    publicPath: '/',
+    publicPath: '',
     filename: 'bundle.js',
     hashFunction: 'sha512',
   },
