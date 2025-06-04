@@ -1,34 +1,36 @@
+@use "variables";
+
 .hair-and-waxing {
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .landing {
     margin: 0 84px;
     padding: 200px 48px 0;
 
     .sub-nav {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       text-transform: uppercase;
       font-size: 19px;
       letter-spacing: 1.56px;
 
       span {
-        color: $pink;
+        color: variables.$pink;
       }
     }
 
     h3 {
       margin-top: 92px;
-      font-family: $opt;
+      font-family: variables.$opt;
       font-size: 46px;
       line-height: 57px;
     }
 
     a {
       font-size: 22px;
-      color: $pink;
-      font-family: $ap;
+      color: variables.$pink;
+      font-family: variables.$ap;
       display: block;
       margin-top: 24px;
     }
@@ -44,7 +46,7 @@
     align-items: center;
     text-transform: uppercase;
     position: absolute;
-    background-color: $primary-color;
+    background-color: variables.$primary-color;
     z-index: 5;
     top: -146px;
     left: 0;
@@ -69,9 +71,9 @@
 
   .title-bar-text {
     opacity: 0;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 80px;
-    color: $secondary-color;
+    color: variables.$secondary-color;
     margin-left: 124px;
     text-transform: uppercase;
   }
@@ -113,11 +115,11 @@
   }
 
   .text-container a {
-    color: $pink;
+    color: variables.$pink;
   }
 
   .section-text .left {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 32px;
     line-height: 51px;
     padding: 124px 62px 124px 124px;
@@ -128,7 +130,7 @@
   }
 
   .section-text .right p {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 20px;
     line-height: 33px;
   }
@@ -138,27 +140,27 @@
   }
 
   .pricing-table {
-    padding: 0 $extra-side-padding;
+    padding: 0 variables.$extra-side-padding;
     margin-bottom: 325px;
 
     .header-note {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       height: 24px;
       padding-top: 18px;
       padding-bottom: 0;
       padding-right: 266px;
       // padding: 18px 0 0 314px;
-      background-color: $mud;
-      color: $white;
+      background-color: variables.$mud;
+      color: variables.$white;
       text-align: right;
       justify-content: flex-end;
     }
 
     .header {
-      font-family: $ap;
+      font-family: variables.$ap;
       height: 52px;
-      background-color: $mud;
-      color: $white;
+      background-color: variables.$mud;
+      color: variables.$white;
 
       // .head {
       //   width: 100%;
@@ -177,18 +179,18 @@
     }
 
     li {
-      font-family: $ap;
+      font-family: variables.$ap;
       height: 64px;
       padding: 18px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: $black;
-      border-bottom: 1px solid $mud;
+      color: variables.$black;
+      border-bottom: 1px solid variables.$mud;
     }
 
     .head {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 20px;
       text-transform: capitalize;
 
@@ -199,7 +201,7 @@
     }
 
     .head-wide {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 20px;
       text-transform: capitalize;
 
@@ -211,7 +213,7 @@
 
     .tail {
       display: flex;
-      font-family: $ap;
+      font-family: variables.$ap;
 
       span {
         width: 65px;
@@ -220,7 +222,7 @@
 
     .tail-wide {
       display: flex;
-      font-family: $ap;
+      font-family: variables.$ap;
 
       span {
         width: 80px;
@@ -238,7 +240,7 @@
     margin-bottom: 0px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .landing {
       display: block;
       height: auto;
@@ -285,11 +287,11 @@
     }
 
     .title-bar-text {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 36px;
       letter-spacing: 0.29px;
       margin-left: 24px;
-      color: $secondary-color;
+      color: variables.$secondary-color;
     }
 
     .text-container {
@@ -327,13 +329,13 @@
         h5 {
           font-size: 17px;
           margin-bottom: 6px;
-          color: $black;
+          color: variables.$black;
         }
 
         h6 {
           font-size: 13px;
           letter-spacing: 0.5px;
-          color: $black;
+          color: variables.$black;
         }
       }
 
@@ -358,7 +360,7 @@
       .tail {
         font-size: 14px;
         span {
-          border-right: 1px solid $black;
+          border-right: 1px solid variables.$black;
           width: 40px;
         }
 
@@ -370,7 +372,7 @@
       .tail-wide {
         font-size: 14px;
         span {
-          border-right: 1px solid $black;
+          border-right: 1px solid variables.$black;
           width: 80px;
         }
 

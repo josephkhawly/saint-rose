@@ -1,3 +1,5 @@
+@use "variables";
+
 .book-now {
   // .nav-container {
   //   .active-nav-link {
@@ -15,18 +17,18 @@
 
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .sub-nav {
     padding: 200px 48px 0;
     margin: 0 84px;
-    font-family: $ap-bold;
+    font-family: variables.$ap-bold;
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
 
     span {
-      color: $pink;
+      color: variables.$pink;
     }
   }
 
@@ -37,31 +39,31 @@
   }
 
   h3 {
-    font-family: $opt;
+    font-family: variables.$opt;
     font-size: 46px;
     line-height: 57px;
     margin-bottom: 32px;
   }
 
   h6 {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 20px;
     line-height: 33px;
     margin-bottom: 34px;
   }
 
   .form {
-    border-top: 2px solid $light-gray;
+    border-top: 2px solid variables.$light-gray;
     margin: 0 132px;
     padding-top: 34px;
   }
 
   h4 {
-    font-family: $ap-bold;
+    font-family: variables.$ap-bold;
     font-size: 32px;
     letter-spacing: 0.8px;
     line-height: 40px;
-    color: $pink;
+    color: variables.$pink;
     margin-bottom: 40px;
     text-transform: uppercase;
   }
@@ -89,7 +91,7 @@
 
   .field-label {
     max-width: 730px;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 20px;
     line-height: 32px;
 
@@ -97,7 +99,7 @@
   }
 
   .form-section {
-    border-top: 1px solid $light-gray;
+    border-top: 1px solid variables.$light-gray;
     width: 100%;
     display: block;
     margin: 42px 0 24px;
@@ -108,8 +110,8 @@
     width: 397px;
     display: block;
     background: transparent;
-    border: 1px solid $black;
-    font-family: $ap;
+    border: 1px solid variables.$black;
+    font-family: variables.$ap;
     font-size: 22px;
     line-height: 27px;
     height: 48px;
@@ -121,8 +123,8 @@
     width: 397px;
     display: block;
     background: transparent;
-    border: 1px solid $black;
-    font-family: $ap;
+    border: 1px solid variables.$black;
+    font-family: variables.$ap;
     font-size: 22px;
     line-height: 27px;
     height: 48px;
@@ -130,9 +132,9 @@
   }
 
   input::placeholder {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 22px;
-    color: $black;
+    color: variables.$black;
   }
 
   textarea {
@@ -141,8 +143,8 @@
     height: 124px;
     display: block;
     background: transparent;
-    border: 1px solid $black;
-    font-family: $ap;
+    border: 1px solid variables.$black;
+    font-family: variables.$ap;
     font-size: 22px;
     line-height: 27px;
     padding: 10px 14px;
@@ -159,10 +161,10 @@
     margin-top: 12px;
     cursor: pointer;
     border: none;
-    color: $black;
-    background-color: $light-pink;
+    color: variables.$black;
+    background-color: variables.$light-pink;
     border-radius: 0px;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 15px;
     display: inline-block;
     height: 48px;
@@ -181,9 +183,9 @@
   .upload-status {
     display: inline-block;
     margin-left: 14px;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 15px;
-    color: $gray;
+    color: variables.$gray;
   }
 
   .checkbox-group {
@@ -215,7 +217,7 @@
     left: 0px;
     height: 19px;
     width: 19px;
-    border: 1px solid $black;
+    border: 1px solid variables.$black;
   }
 
   // the check
@@ -226,7 +228,7 @@
     top: 0;
     height: 17px;
     width: 17px;
-    background-color: $pink;
+    background-color: variables.$pink;
     opacity: 0;
     transition: opacity 0.2s;
   }
@@ -240,7 +242,7 @@
   .text {
     line-height: 24px;
     margin-left: 28px;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 17px;
   }
 
@@ -248,8 +250,8 @@
     width: 75%;
     margin-top: 92px;
     padding-top: 32px;
-    border-top: 1px solid $light-gray;
-    font-family: $ap;
+    border-top: 1px solid variables.$light-gray;
+    font-family: variables.$ap;
     font-size: 20px;
     line-height: 33px;
 
@@ -265,10 +267,10 @@
   .submit-button {
     cursor: pointer;
     border: none;
-    color: $white;
-    background-color: $pink;
+    color: variables.$white;
+    background-color: variables.$pink;
     border-radius: 0px;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 15px;
     display: inline-block;
     height: 48px;
@@ -286,7 +288,7 @@
     margin-top: 140px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .sub-nav {
       padding: 100px 20px 0;
       margin: 0;
@@ -298,7 +300,7 @@
       padding: 0 20px;
 
       h6 {
-        font-family: $ap-bold;
+        font-family: variables.$ap-bold;
         font-size: 15px;
         letter-spacing: 1.23px;
         margin-bottom: 30px;
@@ -308,7 +310,7 @@
         margin-top: 0;
         font-size: 37px;
         line-height: 42px;
-        font-family: $opt;
+        font-family: variables.$opt;
       }
     }
 

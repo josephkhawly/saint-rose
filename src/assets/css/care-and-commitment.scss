@@ -1,26 +1,28 @@
+@use "variables";
+
 .care-and-commitment {
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .landing {
     margin: 0 84px;
     padding: 200px 48px 0;
 
     .sub-nav {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       text-transform: uppercase;
       font-size: 19px;
       letter-spacing: 1.56px;
 
       span {
-        color: $pink;
+        color: variables.$pink;
       }
     }
 
     h3 {
       margin-top: 144px;
-      font-family: $opt;
+      font-family: variables.$opt;
       font-size: 46px;
       line-height: 57px;
       max-width: 1000px;
@@ -47,7 +49,7 @@
   }
 
   .section-text .left {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 32px;
     line-height: 51px;
     padding: 124px 62px 124px 124px;
@@ -58,7 +60,7 @@
   }
 
   .section-text .right p {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 20px;
     line-height: 33px;
   }
@@ -106,7 +108,7 @@
   .tag {
     margin-top: 12px;
     font-size: 20px;
-    font-family: $ap;
+    font-family: variables.$ap;
   }
 
   .quotes {
@@ -116,10 +118,10 @@
   .quotes-wrapper {
     width: 85%;
     padding: 104px 0 104px 52px;
-    background-color: $pink;
+    background-color: variables.$pink;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .landing {
       display: block;
       height: auto;

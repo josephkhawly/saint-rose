@@ -1,5 +1,7 @@
+@use "variables";
+
 .home {
-  background-color: $background-color;
+  background-color: variables.$background-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -7,7 +9,7 @@
   bottom: 0;
 
   .entrance {
-    background-color: $secondary-color;
+    background-color: variables.$secondary-color;
     /* min-height: 100vh; */
     position: fixed;
     width: 100%;
@@ -20,7 +22,7 @@
     // background: url("/images/home-rose.svg");
     // background-repeat: no-repeat;
     // background-position: center center;
-    background-color: $secondary-color;
+    background-color: variables.$secondary-color;
     position: fixed;
     // top: 0;
     bottom: 0;
@@ -30,7 +32,7 @@
   }
 
   .intro-2 {
-    background-color: $black;
+    background-color: variables.$black;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -50,11 +52,11 @@
   }
 
   .nav-container .nav {
-    background-color: $black;
+    background-color: variables.$black;
   }
 
   .nav-container .nav-content {
-    color: $secondary-color;
+    color: variables.$secondary-color;
     transition: all 0.5s ease-out;
   }
 
@@ -63,19 +65,19 @@
   }
 
   .nav-container .book-now-button {
-    border-color: $secondary-color;
+    border-color: variables.$secondary-color;
   }
 
   .nav-container a {
-    color: $secondary-color;
+    color: variables.$secondary-color;
   }
 
   .nav-container a:hover {
-    color: $pink;
+    color: variables.$pink;
   }
 
   .nav-container a.book-now-button:hover {
-    color: $white;
+    color: variables.$white;
   }
 
   video {

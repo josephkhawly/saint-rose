@@ -1,9 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TimelineMax as Timeline, Power1 } from "gsap";
+import { TimelineMax as Timeline } from "gsap";
 import ScrollMagic from "scrollmagic";
 
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Fade from "react-reveal/Fade";
 
 import MediaQuery from "react-responsive";
@@ -11,7 +9,7 @@ import MediaQuery from "react-responsive";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 import Footer from "./Footer";
 
 class Contact extends React.Component {
@@ -126,17 +124,6 @@ class Contact extends React.Component {
                   </div>
                 </div>
 
-                {/* <div className="section-hero-video-container">
-                  <video autoPlay loop muted playsInline>
-                    <source
-                      src={
-                        "https://videos.ctfassets.net/2f8bh3xz5t4r/3ltxO1rtvynBdWO47ALM0y/7d414ed1b9a7f7e6b4e1153668aa6fd4/salon-tour.mp4"
-                      }
-                      type="video/mp4"
-                    />
-                  </video>
-                </div> */}
-
                 <div className="gallery">
                   <div className="column">
                     <div className="gallery-title">Discover our space</div>
@@ -233,13 +220,6 @@ class Contact extends React.Component {
                         aspectRatio: "0.75",
                       }}
                     />
-                    {/* <div
-                      className="column-image"
-                      style={{
-                        backgroundImage: `url(https://images.ctfassets.net/2f8bh3xz5t4r/6Tm0WNgkNkwytLehANJWIT/a05292ac357b60ad5b139fb2f76517ca/c_3_3.jpg)`,
-                        aspectRatio: "1.0",
-                      }}
-                    /> */}
                     <div
                       className="column-image"
                       style={{
@@ -261,14 +241,6 @@ class Contact extends React.Component {
                         aspectRatio: "0.66",
                       }}
                     />
-                    {/* <div className="column-image">
-                      <video autoPlay muted playsInline loop>
-                        <source
-                          src="https://videos.ctfassets.net/2f8bh3xz5t4r/11CKAnUnsMam2ert6HIiRQ/8841a7a10bfa58d33e906042d12ad1c4/v-3.mp4"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div> */}
                   </div>
                 </div>
               </div>
@@ -284,122 +256,5 @@ class Contact extends React.Component {
     );
   }
 }
-
-// function WhoWeAre({ match }) {
-//   return (
-//     <div className="who-we-are">
-//       {/* <Route path={`${match.path}/:id`} component={AboutTwo} /> */}
-//       <Route path={`${match.path}/meet-the-team`} component={MeetTheTeam} />
-
-//       <Route
-//         exact
-//         path={match.path}
-//         render={() => (
-//           <div>
-//             <div className="spacer" style={{ height: "1500px" }} />
-//             <div className="content">
-//               <Controller>
-//                 <Scene
-//                   // duration={100}
-//                   offset={50}
-//                   reverse={false}
-//                   // triggerElement=".loader"
-//                 >
-//                   <Tween
-//                     duration={15}
-//                     staggerFrom={{ y: 50, visibility: "hidden", opacity: 0 }}
-//                     staggerTo={{ y: 0, visibility: "visible", opacity: 1 }}
-//                     stagger={1}
-//                     onStartAll={() => {
-//                       console.log("starting");
-//                     }}
-//                     onCompleteAll={() => {
-//                       console.log("complete");
-//                     }}
-//                   >
-//                     <div className="loader" />
-//                     <h3>Who we are</h3>
-
-//                     <h5 style={{ height: "2000px" }}>
-//                       We are dedicated to each other, our craft, and you.
-//                     </h5>
-//                     <div>
-//                       <h3>hello</h3>
-//                     </div>
-//                     <div>
-//                       <h5 style={{ height: "2000px" }}>
-//                         We are dedicated to each other, our craft, and you.
-//                       </h5>
-//                     </div>
-//                   </Tween>
-//                 </Scene>
-//               </Controller>
-
-//               <div id="trigger" />
-//               <div className="about-nav">
-//                 <div id="test">
-//                   <Controller>
-//                     <Scene duration={500} triggerElement="#test">
-//                       {progress => (
-//                         <Tween
-//                           to={{
-//                             left: "-50%"
-//                           }}
-//                           totalProgress={progress}
-//                           paused
-//                         >
-//                           <div className="our-team">
-//                             <Link to={`${match.url}/meet-the-team`}>
-//                               Meet the team
-//                             </Link>
-//                           </div>
-//                         </Tween>
-//                       )}
-//                     </Scene>
-//                   </Controller>
-//                 </div>
-//                 <div id="test2">
-//                   <Controller>
-//                     <Scene duration={500} triggerElement="#test2">
-//                       {progress => (
-//                         <Tween
-//                           to={{
-//                             left: "100%"
-//                           }}
-//                           totalProgress={progress}
-//                           paused
-//                         >
-//                           <div className="salon-experience">
-//                             <Link to={`${match.url}/the-salon-experience`}>
-//                               The salon experience
-//                             </Link>
-//                           </div>
-//                         </Tween>
-//                       )}
-//                     </Scene>
-//                   </Controller>
-//                 </div>
-//               </div>
-
-//               <h5 style={{ height: "2000px" }}>Footer.</h5>
-
-//               {/* <ul>
-//               <li>
-//                 <Link to={`${match.url}/meet-the-team`}>Meet the team</Link>
-//               </li>
-//               <li>
-//                 <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-//               </li>
-//             </ul> */}
-//             </div>
-
-//             <div className="entrance" />
-//             <div className="exit" />
-//           </div>
-//         )}
-//       />
-//     </div>
-//   );
-// }
 
 export default Contact;

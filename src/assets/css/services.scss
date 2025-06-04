@@ -1,34 +1,36 @@
+@use "variables";
+
 .services {
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .landing {
     margin: 0 84px;
     padding: 200px 0 0;
 
     .sub-nav {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       text-transform: uppercase;
       font-size: 19px;
       letter-spacing: 1.56px;
 
       span {
-        color: $pink;
+        color: variables.$pink;
       }
     }
 
     h3 {
       margin-top: 92px;
-      font-family: $opt;
+      font-family: variables.$opt;
       font-size: 46px;
       line-height: 57px;
     }
 
     a {
       font-size: 22px;
-      color: $pink;
-      font-family: $ap;
+      color: variables.$pink;
+      font-family: variables.$ap;
       display: block;
       margin-top: 24px;
     }
@@ -44,7 +46,7 @@
     align-items: center;
     text-transform: uppercase;
     position: absolute;
-    background-color: $primary-color;
+    background-color: variables.$primary-color;
     z-index: 5;
     top: -146px;
     left: 0;
@@ -69,9 +71,9 @@
 
   .title-bar-text {
     opacity: 0;
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 80px;
-    color: $secondary-color;
+    color: variables.$secondary-color;
     margin-left: 124px;
     text-transform: uppercase;
   }
@@ -113,11 +115,11 @@
   }
 
   .text-container a {
-    color: $pink;
+    color: variables.$pink;
   }
 
   .section-text .left {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 32px;
     line-height: 51px;
     padding: 124px 24px 124px 84px;
@@ -128,7 +130,7 @@
   }
 
   .section-text .right p {
-    font-family: $ap;
+    font-family: variables.$ap;
     font-size: 20px;
     line-height: 33px;
   }
@@ -166,15 +168,15 @@
     // }
 
     .header {
-      font-family: $ap;
+      font-family: variables.$ap;
       height: 78px;
       background-color: #000000;
-      color: $white;
+      color: variables.$white;
       padding: 24px;
       display: grid;
       grid-template-columns: 5fr 1fr;
       column-gap: 48px;
-      color: $secondary-color;
+      color: variables.$secondary-color;
 
       .head {
         font-size: 40px;
@@ -191,14 +193,14 @@
     }
 
     li {
-      font-family: $ap;
+      font-family: variables.$ap;
       // height: 64px;
       // padding: 18px 0 0;
       // display: grid;
       // justify-content: space-between;
       // align-items: flex-start;
-      color: $black;
-      border-bottom: 1px solid $mud;
+      color: variables.$black;
+      border-bottom: 1px solid variables.$mud;
     }
 
     li:last-child {
@@ -212,7 +214,7 @@
       column-gap: 48px;
 
       .head {
-        font-family: $ap;
+        font-family: variables.$ap;
         font-size: 22px;
 
         .title {
@@ -227,7 +229,7 @@
       }
 
       .tail {
-        font-family: $ap;
+        font-family: variables.$ap;
         font-size: 22px;
         width: 102px;
       }
@@ -242,7 +244,7 @@
     margin-bottom: 140px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .landing {
       display: block;
       height: auto;
@@ -289,11 +291,11 @@
     }
 
     .title-bar-text {
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 36px;
       letter-spacing: 0.29px;
       margin-left: 24px;
-      color: $mud;
+      color: variables.$mud;
     }
 
     .text-container {
@@ -363,13 +365,13 @@
         h5 {
           font-size: 17px;
           margin-bottom: 6px;
-          color: $black;
+          color: variables.$black;
         }
 
         h6 {
           font-size: 13px;
           letter-spacing: 0.5px;
-          color: $black;
+          color: variables.$black;
         }
       }
 
@@ -441,7 +443,7 @@
       &:after {
         content: "";
         display: block;
-        background-color: $secondary-color;
+        background-color: variables.$secondary-color;
         position: absolute;
         top: 50%;
         left: 0;

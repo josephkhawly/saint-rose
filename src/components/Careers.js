@@ -1,9 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TimelineMax as Timeline, Power1 } from "gsap";
+import { TimelineMax as Timeline } from "gsap";
 import ScrollMagic from "scrollmagic";
 
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Fade from "react-reveal/Fade";
 
 import MediaQuery from "react-responsive";
@@ -11,7 +9,7 @@ import MediaQuery from "react-responsive";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 
 import Footer from "./Footer";
 
@@ -49,37 +47,6 @@ class Careers extends React.Component {
       question4: "",
       question5: "",
       question6: "",
-
-      // hairLengthOptions: ["Short", "Mid-length", "Long"],
-      // hairThicknessOptions: ["Thin", "Average", "Thick"],
-      // hairTextureOptions: ["Straight", "Wavy", "Curly", "Coily"],
-      // servicesOptions: ["Color", "Cut", "Cut & color"],
-      // colorPermanentOptions: ["Yes", "No"],
-      // greysOptions: ["Yes", "No"],
-      // refreshOptions: ["Refresh", "Change"],
-      // previousTreatmentsOptions: [
-      //   "None",
-      //   "Brazillian Keratin Treatment",
-      //   "Henna",
-      //   "Stripped Color",
-      //   "Vegetable Dye",
-      // ],
-
-      // frontPhoto: "",
-      // backPhoto: "",
-      // inspirationPhoto: "",
-      // lastService: "",
-      // percentageGrey: "",
-      // currentColorDislikes: "",
-      // lastTreatment: "",
-      // hairLength: [],
-      // hairThickness: [],
-      // hairTexture: [],
-      // services: [],
-      // colorPermanent: [],
-      // greys: [],
-      // refresh: [],
-      // previousTreatments: [],
     };
   }
 
@@ -191,21 +158,6 @@ class Careers extends React.Component {
       question4,
       question5,
       question6,
-      // frontPhoto,
-      // backPhoto,
-      // inspirationPhoto,
-      // lastService,
-      // percentageGrey,
-      // currentColorDislikes,
-      // lastTreatment,
-      // hairLength,
-      // hairThickness,
-      // hairTexture,
-      // services,
-      // colorPermanent,
-      // greys,
-      // refresh,
-      // previousTreatments,
     } = this.state;
 
     const config = {
@@ -323,20 +275,6 @@ class Careers extends React.Component {
       question4,
       question5,
       question6,
-      // frontPhoto,
-      // backPhoto,
-      // inspirationPhoto,
-      // lastService,
-      // percentageGrey,
-      // currentColorDislikes,
-      // lastTreatment,
-      // hairLength,
-      // hairThickness,
-      // services,
-      // colorPermanent,
-      // greys,
-      // refresh,
-      // previousTreatments,
     } = this.state;
 
     return (
@@ -366,7 +304,6 @@ class Careers extends React.Component {
                 </h6>
               </div>
               <div className="form">
-                {/* <span className="form-section"></span> */}
                 <div className="checkbox-group">
                   <div className="field-label">
                     What position are you applying for?*
@@ -379,7 +316,6 @@ class Careers extends React.Component {
                   )}
                 </div>
 
-                {/* <h4>Contact Information</h4> */}
                 <div className="form-row">
                   <div className="form-field">
                     <label className="field-label">
@@ -593,175 +529,7 @@ class Careers extends React.Component {
                   </label>
                 </div>
 
-                {/* {(this.state.services.includes("Cut") ||
-                  this.state.services.includes("Cut & color")) && (
-                  <div>
-                    <span className="form-section"></span>
-                    <h4>Describe Your Hair</h4>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        What is your hair length?*
-                      </div>
-
-                      {this.renderCheckboxGroup(
-                        "hairLength",
-                        "hairLengthOptions",
-                        false
-                      )}
-                    </div>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        What is your hair density?*
-                      </div>
-
-                      {this.renderCheckboxGroup(
-                        "hairThickness",
-                        "hairThicknessOptions",
-                        false
-                      )}
-                    </div>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        What is your hair texture?*
-                      </div>
-
-                      {this.renderCheckboxGroup(
-                        "hairTexture",
-                        "hairTextureOptions",
-                        false
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {(this.state.services.includes("Color") ||
-                  this.state.services.includes("Cut & color")) && (
-                  <div>
-                    <span className="form-section"></span>
-                    <h4>Color Questionnaire</h4>
-
-                    <div className="form-field">
-                      <label className="field-label">
-                        When was your last color service?*
-                        <input
-                          type="text"
-                          value={lastService}
-                          onChange={(event) =>
-                            this.handleInput("lastService", event.target.value)
-                          }
-                        />
-                      </label>
-                    </div>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        Is the color permanent?*
-                      </div>
-
-                      {this.renderCheckboxGroup(
-                        "colorPermanent",
-                        "colorPermanentOptions",
-                        false
-                      )}
-                    </div>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        Do you have grey hairs to cover?
-                      </div>
-
-                      {this.renderCheckboxGroup("greys", "greysOptions", false)}
-                    </div>
-
-                    <div className="form-field">
-                      <label className="field-label">
-                        If yes, please note percentage of grey.*
-                        <input
-                          type="text"
-                          value={percentageGrey}
-                          onChange={(event) =>
-                            this.handleInput(
-                              "percentageGrey",
-                              event.target.value
-                            )
-                          }
-                        />
-                      </label>
-                    </div>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        Are we refreshing your current color, or are we making a
-                        change?
-                      </div>
-
-                      {this.renderCheckboxGroup(
-                        "refresh",
-                        "refreshOptions",
-                        false
-                      )}
-                    </div>
-
-                    <div className="form-field">
-                      <label className="field-label">
-                        What don’t you like about your current hair color?*
-                        <input
-                          type="text"
-                          value={currentColorDislikes}
-                          onChange={(event) =>
-                            this.handleInput(
-                              "currentColorDislikes",
-                              event.target.value
-                            )
-                          }
-                        />
-                      </label>
-                    </div>
-
-                    <div className="checkbox-group">
-                      <div className="field-label">
-                        Have you ever had a Brazillian keratin treatment,
-                        stripped your color, or used henna or vegetable dye?*
-                        Select all that apply:
-                      </div>
-
-                      {this.renderCheckboxGroup(
-                        "previousTreatments",
-                        "previousTreatmentsOptions",
-                        true
-                      )}
-                    </div>
-
-                    <div className="form-field">
-                      <label className="field-label">
-                        If yes to any of above, when was the service?
-                        <input
-                          type="text"
-                          value={lastTreatment}
-                          onChange={(event) =>
-                            this.handleInput(
-                              "lastTreatment",
-                              event.target.value
-                            )
-                          }
-                        />
-                      </label>
-                    </div>
-                  </div>
-                )} */}
-
                 <div className="form-footer">
-                  {/* <p>
-                    Please read our <Link to="/policies">policies</Link> before
-                    coming to Saint Rose. We take what we do very seriously and
-                    put these policies in place to respect your time and vice
-                    versa!
-                  </p>
-
-                  <h4>Lets do this!</h4> */}
                   <button
                     className="submit-button"
                     id="submit-button"

@@ -1,32 +1,34 @@
+@use "variables";
+
 .contact {
   .nav-container {
     .active-nav-link {
-      color: $pink;
+      color: variables.$pink;
     }
 
     a:hover {
-      color: $pink;
+      color: variables.$pink;
     }
   }
 
   .nav-container.scrolled a {
-    color: $secondary-color;
+    color: variables.$secondary-color;
   }
 
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 
   .sub-nav {
     padding: 200px 0 0;
     margin: 0 84px;
-    font-family: $ap-bold;
+    font-family: variables.$ap-bold;
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
 
     span {
-      color: $pink;
+      color: variables.$pink;
     }
   }
 
@@ -37,7 +39,7 @@
 
   h3 {
     width: 800px;
-    font-family: $opt;
+    font-family: variables.$opt;
     font-size: 22px;
     line-height: 32px;
     margin-bottom: 32px;
@@ -61,7 +63,7 @@
     }
 
     h4 {
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -69,21 +71,21 @@
 
     .address {
       margin-top: 24px;
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 22px;
       line-height: 32px;
     }
 
     .hours {
       margin-top: 24px;
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 22px;
       line-height: 32px;
     }
 
     p {
       margin-top: 12px;
-      font-family: $ap;
+      font-family: variables.$ap;
       font-size: 18px;
       line-height: 28px;
     }
@@ -117,7 +119,7 @@
 
     .gallery-title {
       margin: 40px 0 30px;
-      font-family: $ap-bold;
+      font-family: variables.$ap-bold;
       font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -142,7 +144,7 @@
     margin-top: 140px;
   }
 
-  @media all and (max-width: $mobile-max-bp) {
+  @media all and (max-width: variables.$mobile-max-bp) {
     .sub-nav {
       padding: 100px 24px 30px 24px;
       margin: 48px 0 0;

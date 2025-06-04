@@ -1,28 +1,20 @@
-@import "variables";
-@import "reset";
-@import "nav";
-@import "home";
-// @import "home-covid";
-@import "contact";
-@import "services";
-@import "about";
-@import "blog";
-@import "blog-post";
-@import "covid";
-@import "who-we-are";
-@import "what-we-do";
-@import "meet-the-team";
-@import "hair-and-waxing";
-@import "nails";
-@import "care-and-commitment";
-@import "salon-experience";
-@import "policies";
-@import "book-now";
-@import "why-we-do-it";
-@import "footer-with-nav";
-@import "footer";
-@import "quotes";
-@import "gallery";
+@use "variables";
+@use "reset";
+@use "nav";
+@use "home";
+@use "contact";
+@use "services";
+@use "about";
+@use "blog";
+@use "blog-post";
+@use "who-we-are";
+@use "meet-the-team";
+@use "hair-and-waxing";
+@use "care-and-commitment";
+@use "policies";
+@use "book-now";
+@use "footer";
+@use "quotes";
 
 @font-face {
   font-family: "apercu-bold";
@@ -66,11 +58,11 @@
 .index {
   height: 0px;
   overflow: hidden;
-  background-color: $background-color;
+  background-color: variables.$background-color;
 }
 
 .exit {
-  background-color: $background-color;
+  background-color: variables.$background-color;
   /* min-height: 100vh; */
   position: fixed;
   width: 100%;
@@ -80,7 +72,7 @@
 }
 
 .exit-2 {
-  background-color: $secondary-color;
+  background-color: variables.$secondary-color;
   /* min-height: 100vh; */
   position: fixed;
   width: 100%;
@@ -90,7 +82,7 @@
 }
 
 .entrance {
-  background-color: $secondary-color;
+  background-color: variables.$secondary-color;
   /* min-height: 100vh; */
   position: fixed;
   width: 100%;
