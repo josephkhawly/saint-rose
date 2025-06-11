@@ -1,111 +1,73 @@
-import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-} from "react-router-dom";
-import classNames from "classnames";
+import React, { useEffect, useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import classNames from 'classnames'
+import { links } from '../constants'
 
-class MobileNav extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-    this.handleOpenToggle = this.handleOpenToggle.bind(this);
-  }
+const MobileNav = ({ expanded }) => {
+  const [open, setOpen] = useState(false)
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'scroll'
+    }
+  },[])
 
-  componentWillUnmount() {
-    document.body.style.overflow = "scroll";
-  }
-
-  handleOpenToggle() {
-    if (this.state.open) {
-      document.body.style.overflow = "scroll";
+  const handleOpenToggle = () => {
+    if (open) {
+      document.body.style.overflow = 'scroll'
     } else {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden'
     }
 
-    this.setState((state) => {
-      return {
-        open: !state.open,
-      };
-    });
+    setOpen(!open)
   }
 
-  render() {
-    const { expanded } = this.props;
-    const { open } = this.state;
-
-    return (
-      <div
-        className={classNames("nav-container", {
-          expanded: expanded,
-          // open: true
-          open: open,
-        })}
-      >
-        {/* <div className={classNames("back-panel", backgroundColor)} /> */}
-        <div className={classNames("nav")}>
-          <div className="nav-content">
-            <div className="nav-bar">
-              <NavLink exact={true} to="/">
-                <div className="nav-logo">Saint Rose</div>
-              </NavLink>
-              <button onClick={() => this.handleOpenToggle()}>
-                <div className="hamburger">
-                  <div className="hamburger-box">
-                    <div className="hamburger-inner" />
-                  </div>
+  return (
+    <div
+      className={classNames('nav-container', {
+        expanded: expanded,
+        open: open,
+      })}
+    >
+      <div className={classNames('nav')}>
+        <div className='nav-content'>
+          <div className='nav-bar'>
+            <NavLink exact={true} to='/'>
+              <div className='nav-logo'>Saint Rose</div>
+            </NavLink>
+            <button onClick={() => handleOpenToggle()}>
+              <div className='hamburger'>
+                <div className='hamburger-box'>
+                  <div className='hamburger-inner' />
                 </div>
-              </button>
-            </div>
-            <div className="nav-items">
-              <ul className="links">
-                <li>
-                  <Link to="/contact">
-                    <div>Contact</div>
+              </div>
+            </button>
+          </div>
+          <div className='nav-items'>
+            <ul className='links'>
+              {links.map((link) => (
+                <li key={link.path}>
+                  <Link to={link.path}>
+                    <div>{link.label}</div>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/services">
-                    <div>Services</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/policies">
-                    <div>Policies</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/blog">
-                    <div>Blog</div>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about">
-                    <div>About us</div>
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    className="book-now-button"
-                    onClick={() => {
-                      window.blvd.openBookingWidget();
-                      this.handleOpenToggle();
-                    }}
-                  >
-                    <div>Book now</div>
-                  </a>
-                </li>
-              </ul>
-            </div>
+              ))}
+              <li>
+                <a
+                  className='book-now-button'
+                  onClick={() => {
+                    window.blvd.openBookingWidget()
+                    handleOpenToggle()
+                  }}
+                >
+                  <div>Book now</div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  )
 }
 
-export default MobileNav;
+export default MobileNav

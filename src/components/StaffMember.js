@@ -6,8 +6,6 @@ function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
     name,
     role,
     photoSmall,
-    photoLarge,
-    bio,
     video,
     instagram,
     location,

@@ -71,7 +71,7 @@ function MobileBio(name, role, photoLarge, bio, closeHandler) {
 }
 
 function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
-  const { name, role, photoSmall, photoLarge, bio, video } = staffMemberDetails;
+  const { name, role, photoLarge, bio, video } = staffMemberDetails;
   return (
     <div className="staff-member-spotlight">
       <MediaQuery minWidth={DESKTOPTRANSITIONBP}>

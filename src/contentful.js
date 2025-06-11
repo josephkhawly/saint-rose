@@ -1,6 +1,6 @@
-const API_BASE_URL = "https://cdn.contentful.com";
-const API_SPACE_ID = "2f8bh3xz5t4r";
-const API_TOKEN = "w_iD0iNnkKr2HotiAweKs5FNWBeFFRyGyC8WZ05sY04";
+export const API_BASE_URL = "https://cdn.contentful.com";
+export const API_SPACE_ID = "2f8bh3xz5t4r";
+export const API_TOKEN = "w_iD0iNnkKr2HotiAweKs5FNWBeFFRyGyC8WZ05sY04";
 
 export function getEntryApiEndpoint(entryId, options) {
   let optionsString = "";
@@ -32,7 +32,7 @@ function getEntryForEntryID(id, entries) {
   return match;
 }
 
-function maybeGetAssetURL(field, fields, assets) {
+export function maybeGetAssetURL(field, fields, assets) {
   if (fields[field]) {
     const assetID = fields[field].sys.id;
     return getURLForAssetID(assetID, assets);

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { links } from "../constants";
 
 function Nav({ active }) {
   const activeNavLink = "active-nav-link";
@@ -22,56 +23,18 @@ function Nav({ active }) {
           </div>
           <div>
             <ul>
-              <li>
-                <Link
-                  to="/contact"
-                  className={classNames({
-                    [activeNavLink]: active === "contact",
-                  })}
-                >
-                  contact
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className={classNames({
-                    [activeNavLink]: active === "services",
-                  })}
-                >
-                  services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/policies"
-                  className={classNames({
-                    [activeNavLink]: active === "policies",
-                  })}
-                >
-                  policies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/blog"
-                  className={classNames({
-                    [activeNavLink]: active === "blog",
-                  })}
-                >
-                  blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className={classNames({
-                    [activeNavLink]: active === "about",
-                  })}
-                >
-                  about us
-                </Link>
-              </li>
+              {links.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className={classNames({
+                      [activeNavLink]: active === link.active
+                    })}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <a
                   className="book-now-button"
