@@ -73,18 +73,6 @@ function About() {
 
   const controllerRef = useRef(new ScrollMagic.Controller())
 
-  const getMediaChangeTimeline = () => {
-    const timeline = new Timeline({ paused: true })
-    const nav = document.querySelector('.nav-container')
-
-    timeline.to(nav, 0.7, {
-      opacity: 1,
-      delay: 0.25,
-    })
-
-    return timeline
-  }
-
   const loadDesktop = () => {
     const ourStoryTitleBarTween = new Timeline()
       .to('.our-story--title-bar', 0.7, { width: '612px', ease: Expo.easeIn })
@@ -166,30 +154,6 @@ function About() {
       reverse: false,
     })
       .setTween(ourClientsTitleBarTween)
-      .addTo(controllerRef.current)
-  }
-
-  const playMediaChange = () => {
-    controllerRef.current.destroy(true)
-    controllerRef.current = new ScrollMagic.Controller()
-
-    if (window.innerWidth >= DESKTOPTRANSITIONBP) {
-      loadDesktop()
-    } else if (window.innerWidth >= MOBILEBP) {
-      loadDesktopTransition()
-    } else {
-      loadMobile()
-    }
-
-    let timeline = getMediaChangeTimeline()
-    window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
-
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
       .addTo(controllerRef.current)
   }
 

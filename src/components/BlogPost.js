@@ -1,16 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { TimelineMax as Timeline } from 'gsap'
 import ScrollMagic from 'scrollmagic'
 import Axios from 'axios'
 
 import Fade from 'react-reveal/Fade'
 
-import MediaQuery from 'react-responsive'
-
 import Nav from './Nav'
-
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 
 import { generateOptions } from '../richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -23,8 +18,6 @@ class BlogPost extends React.Component {
   constructor(props) {
     super(props)
     this.controller = new ScrollMagic.Controller()
-    this.getMediaChangeTimeline = this.getMediaChangeTimeline.bind(this)
-    this.playMediaChange = this.playMediaChange.bind(this)
 
     this.state = {
       blogPost: {},
@@ -68,32 +61,6 @@ class BlogPost extends React.Component {
         })
       })
       .catch((error) => console.log('error: ', error))
-  }
-
-  getMediaChangeTimeline() {
-    const timeline = new Timeline({ paused: true })
-    const nav = document.querySelector('.nav-container')
-
-    timeline.to(nav, 0.7, {
-      opacity: 1,
-      delay: 0.25,
-    })
-
-    return timeline
-  }
-
-  playMediaChange() {
-    let timeline
-    timeline = this.getMediaChangeTimeline()
-    window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
-
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(this.controller)
   }
 
   render_post() {
