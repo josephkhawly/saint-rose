@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { TimelineMax as Timeline, Power1 } from "gsap";
+import { Link } from "react-router-dom";
+import { TimelineMax as Timeline } from "gsap";
 import ScrollMagic from "scrollmagic";
 import Axios from "axios";
 
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Fade from "react-reveal/Fade";
 
 import MediaQuery from "react-responsive";
@@ -12,7 +11,7 @@ import MediaQuery from "react-responsive";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP } from "../constants";
+import { MOBILEBP, DESKTOPTRANSITIONBP } from "../constants";
 
 import { generateOptions } from "../richText";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -20,11 +19,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Footer from "./Footer";
 
 import {
-  getAllEntriesByContentTypeApiEndpoint,
   getEntryApiEndpoint,
   processEntryResponse,
-  processEntryListResponse,
-  processSingletonWrappedResponse,
 } from "../contentful";
 
 class BlogPost extends React.Component {

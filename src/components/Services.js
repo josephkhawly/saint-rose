@@ -12,6 +12,7 @@ import MobileNav from './MobileNav'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 import classnames from 'classnames'
+import { playMediaChange } from '../mediaChangeUtils'
 
 function Services() {
   const [haircutOpen, setHaircutOpen] = useState(false)
@@ -149,37 +150,6 @@ function Services() {
       .addTo(controllerRef.current)
   }
 
-  const getMediaChangeTimeline = () => {
-    const timeline = new Timeline({ paused: true })
-    const nav = document.querySelector('.nav-container')
-    timeline.to(nav, 0.7, {
-      opacity: 1,
-      delay: 0.25,
-    })
-    return timeline
-  }
-
-  const playMediaChange = () => {
-    if (controllerRef.current) {
-      controllerRef.current.destroy(true)
-    }
-    controllerRef.current = new ScrollMagic.Controller()
-    const timeline = getMediaChangeTimeline()
-    window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-    if (window.innerWidth >= MOBILEBP) {
-      loadDesktop()
-    } else {
-      loadMobile()
-    }
-  }
-
   const renderPricingRow = (title, description, price) => {
     return (
       <li className='pricing-row' key={title}>
@@ -299,7 +269,7 @@ function Services() {
       <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
         <Nav active={'services'} />
       </MediaQuery>
-      <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
+      <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
         <MobileNav expanded={false} />
       </MediaQuery>
       <div className='content-container'>
@@ -370,7 +340,7 @@ function Services() {
                     </div>
                   </MediaQuery>
 
-                  <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
+                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
                     <div
                       className={classnames('pricing-table', {
                         open: haircutOpen,
@@ -419,7 +389,7 @@ function Services() {
                     </div>
                   </MediaQuery>
 
-                  <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
+                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
                     <div
                       className={classnames('pricing-table', {
                         open: colorOpen,
@@ -468,7 +438,7 @@ function Services() {
                     </div>
                   </MediaQuery>
 
-                  <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
+                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
                     <div
                       className={classnames('pricing-table', {
                         open: treatmentsOpen,

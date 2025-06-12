@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { TimelineMax as Timeline } from 'gsap'
 import ScrollMagic from 'scrollmagic'
 
 import Fade from 'react-reveal/Fade'
@@ -11,6 +10,7 @@ import MobileNav from './MobileNav'
 
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
+import { playMediaChange } from '../mediaChangeUtils'
 
 function Contact() {
   const controllerRef = useRef(null)
@@ -31,34 +31,12 @@ function Contact() {
     }
   }, [])
 
-  const getMediaChangeTimeline = () => {
-    const timeline = new Timeline({ paused: true })
-    const nav = document.querySelector('.nav-container')
-    timeline.to(nav, 0.7, {
-      opacity: 1,
-      delay: 0.25,
-    })
-    return timeline
-  }
-
-  const playMediaChange = () => {
-    const timeline = getMediaChangeTimeline()
-    window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-  }
-
   return (
     <div className='contact'>
       <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
         <Nav active={'contact'} />
       </MediaQuery>
-      <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
+      <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
         <MobileNav expanded={false} />
       </MediaQuery>
       <div className='content-container'>
