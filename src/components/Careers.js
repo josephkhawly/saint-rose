@@ -200,7 +200,7 @@ function Careers() {
   } = state
 
   return (
-    <div className='book-now'>
+    <div className='careers'>
       <Nav active={'careers'} />
       <div className='content-container'>
         <div className='content'>
