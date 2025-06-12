@@ -1,15 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { TimelineMax as Timeline } from 'gsap'
 import ScrollMagic from 'scrollmagic'
 
 import Fade from 'react-reveal/Fade'
 
-import MediaQuery from 'react-responsive'
-
 import Nav from './Nav'
 
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 
 function Policies() {
@@ -25,41 +21,9 @@ function Policies() {
       .addTo(controllerRef.current)
   }, [])
 
-  const getMediaChangeTimeline = () => {
-    const timeline = new Timeline({ paused: true })
-    const nav = document.querySelector('.nav-container')
-
-    timeline.to(nav, 0.7, {
-      opacity: 1,
-      delay: 0.25,
-    })
-
-    return timeline
-  }
-
-  const playMediaChange = () => {
-    let timeline
-    timeline = getMediaChangeTimeline()
-    window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
-
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-  }
-
   return (
     <div className='policies'>
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <Nav active={'policies'} />
-      </MediaQuery>
-
-      <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
-        <Nav />
-      </MediaQuery>
+      <Nav active={'policies'} />
 
       <div className='content-container'>
         <div className='content'>
