@@ -3,17 +3,11 @@ import ScrollMagic from 'scrollmagic'
 
 import Fade from 'react-reveal/Fade'
 
-import MediaQuery from 'react-responsive'
-
 import Nav from './Nav'
-import MobileNav from './MobileNav'
-
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 
 import Footer from './Footer'
 
 import Axios from 'axios'
-import { playMediaChange } from '../mediaChangeUtils'
 
 function Careers() {
   const [state, setState] = useState({
@@ -207,12 +201,7 @@ function Careers() {
 
   return (
     <div className='book-now'>
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <Nav active={'careers'} />
-      </MediaQuery>
-      <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
-        <MobileNav expanded={false} />
-      </MediaQuery>
+      <Nav active={'careers'} />
       <div className='content-container'>
         <div className='content'>
           <Fade bottom delay={2000} distance='50px'>

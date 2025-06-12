@@ -3,14 +3,9 @@ import ScrollMagic from 'scrollmagic'
 
 import Fade from 'react-reveal/Fade'
 
-import MediaQuery from 'react-responsive'
-
 import Nav from './Nav'
-import MobileNav from './MobileNav'
 
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
-import { playMediaChange } from '../mediaChangeUtils'
 
 function Contact() {
   const controllerRef = useRef(null)
@@ -33,12 +28,7 @@ function Contact() {
 
   return (
     <div className='contact'>
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <Nav active={'contact'} />
-      </MediaQuery>
-      <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
-        <MobileNav expanded={false} />
-      </MediaQuery>
+      <Nav active={'contact'} />
       <div className='content-container'>
         <div className='content'>
           <Fade bottom delay={2000} distance='50px'>

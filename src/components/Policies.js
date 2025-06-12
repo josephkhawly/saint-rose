@@ -8,7 +8,6 @@ import Fade from 'react-reveal/Fade'
 import MediaQuery from 'react-responsive'
 
 import Nav from './Nav'
-import MobileNav from './MobileNav'
 
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
@@ -59,7 +58,7 @@ function Policies() {
       </MediaQuery>
 
       <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
-        <MobileNav expanded={false} />
+        <Nav />
       </MediaQuery>
 
       <div className='content-container'>

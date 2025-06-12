@@ -7,7 +7,6 @@ import Fade from 'react-reveal/Fade'
 import MediaQuery from 'react-responsive'
 
 import Nav from './Nav'
-import MobileNav from './MobileNav'
 
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
@@ -266,12 +265,7 @@ function Services() {
 
   return (
     <div className='services'>
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <Nav active={'services'} />
-      </MediaQuery>
-      <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
-        <MobileNav expanded={false} />
-      </MediaQuery>
+      <Nav active={'services'} />
       <div className='content-container'>
         {/* <div className="spacer" style={{ height: "800px" }} /> */}
         <div className='content'>

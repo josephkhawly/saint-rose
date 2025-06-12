@@ -3,12 +3,8 @@ import React, { useEffect } from 'react'
 import { TimelineMax as Timeline, Power1 } from 'gsap'
 
 import Fade from 'react-reveal/Fade'
-import MediaQuery from 'react-responsive'
 
 import Nav from './Nav'
-import MobileNav from './MobileNav'
-
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 
 const getDefaultTimeline = () => {
   const timeline = new Timeline({ paused: true })
@@ -83,13 +79,7 @@ const Home = () => {
       <div className='intro-2' />
       <div className='intro-rose' />
 
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <Nav active={'home'} />
-      </MediaQuery>
-
-      <MediaQuery maxWidth={MOBILEBP} onChange={playMediaChange}>
-        <MobileNav expanded={false} />
-      </MediaQuery>
+      <Nav active={'home'} />
 
       <div className='content'>
         <Fade bottom delay={4700} distance='50px'>

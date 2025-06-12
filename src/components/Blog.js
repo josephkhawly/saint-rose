@@ -8,14 +8,11 @@ import Fade from 'react-reveal/Fade'
 import MediaQuery from 'react-responsive'
 
 import Nav from './Nav'
-import MobileNav from './MobileNav'
 
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
-
-import { playMediaChange } from '../mediaChangeUtils'
 
 function Blog() {
   const [blogItems, setBlogItems] = useState([])
@@ -150,12 +147,7 @@ function Blog() {
 
   return (
     <div className='blog'>
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
         <Nav active={'blog'} />
-      </MediaQuery>
-      <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
-        <MobileNav expanded={false} />
-      </MediaQuery>
       <div className='content-container'>
         <div className='content'>
           <Fade bottom delay={2000} distance='50px'>
