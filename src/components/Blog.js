@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
-import Fade from 'react-reveal/Fade'
 import MediaQuery from 'react-responsive'
 import Nav from './Nav'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
+import SlideAndFade from './SlideAndFade'
 
 const formatIso = (isoString) => {
   const date = new Date(isoString)
@@ -32,7 +32,7 @@ function BlogPost({ blogItem }) {
 
 function Blog() {
   const [blogItems, setBlogItems] = useState([])
-  const [assets, setAssets] = useState([])
+  const [, setAssets] = useState([])
 
   useEffect(() => {
     const options = [
@@ -110,13 +110,13 @@ function Blog() {
       <Nav />
       <div className='content-container'>
         <div className='content'>
-          <Fade bottom delay={2000} distance='50px'>
+          <SlideAndFade delay={1000}>
             <div className='content-body'>
               {renderFeatured()}
               <MediaQuery minWidth={DESKTOPTRANSITIONBP}>{renderFeed()}</MediaQuery>
               <MediaQuery maxWidth={MOBILEBP}>{renderMobileFeed()}</MediaQuery>
             </div>
-          </Fade>
+          </SlideAndFade>
           <Footer />
         </div>
       </div>

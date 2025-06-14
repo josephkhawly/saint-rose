@@ -3,7 +3,7 @@ import { Expo } from 'gsap'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import Fade from 'react-reveal/Fade'
+import SlideAndFade from './SlideAndFade'
 import MediaQuery from 'react-responsive'
 import Nav from './Nav'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
@@ -184,23 +184,19 @@ function Services() {
     <div className='services'>
       <Nav />
       <div className='content-container'>
-        {/* <div className="spacer" style={{ height: "800px" }} /> */}
         <div className='content'>
           <div className='landing'>
-            <Fade bottom delay={2250} distance='50px'>
+            <SlideAndFade delay={2250}>
               <div className='sub-nav'>Services</div>
               <h3>
                 You want service that makes you feel your absolute best, and Saint Rose has a
                 full-spectrum of services that make the cut. It&apos;s a match made in heaven.
               </h3>
-              {/* <a href="" target="_blank">
-                Download full service sheet.
-              </a> */}
-            </Fade>
+            </SlideAndFade>
           </div>
           {/* --- New section --- */}
           <div className={classnames('haircut', 'section')}>
-            <Fade bottom distance='50px' delay={3000}>
+            <SlideAndFade delay={3000}>
               <div className='section-hero'>
                 <video id='hair-loop-vid' autoPlay loop muted playsInline>
                   <source
@@ -211,17 +207,17 @@ function Services() {
                   />
                 </video>
               </div>
-            </Fade>
+            </SlideAndFade>
             <div className='section-text'>
               <div className='text-container'>
-                <Fade bottom distance='50px'>
+                <SlideAndFade>
                   <div className='left'>
                     It&apos;s not just hair. It&apos;s your hair, and we care about every single
                     strand. Let&apos;s get creating, shall we?
                   </div>
-                </Fade>
+                </SlideAndFade>
               </div>
-              <Fade bottom delay={250} distance='50px'>
+              <SlideAndFade delay={250}>
                 <div className='text-container'>
                   <div className='right'>
                     <p>
@@ -231,10 +227,10 @@ function Services() {
                     </p>
                   </div>
                 </div>
-              </Fade>
+              </SlideAndFade>
             </div>
 
-            <Fade bottom delay={250} distance='50px'>
+            <SlideAndFade delay={250}>
               <div className='services-container'>
                 <div className='services-block'>
                   <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
@@ -383,10 +379,10 @@ function Services() {
                   </MediaQuery>
                 </div>
               </div>
-            </Fade>
+            </SlideAndFade>
           </div>
 
-          <Footer delay={0} />
+          <Footer />
         </div>
       </div>
       <div className='entrance' />

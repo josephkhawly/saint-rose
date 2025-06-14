@@ -10,7 +10,6 @@
 
   .entrance {
     background-color: variables.$secondary-color;
-    /* min-height: 100vh; */
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -19,16 +18,11 @@
   }
 
   .intro {
-    // background: url("/images/home-rose.svg");
-    // background-repeat: no-repeat;
-    // background-position: center center;
     background-color: variables.$secondary-color;
     position: fixed;
-    // top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    // opacity: 1;
   }
 
   .intro-2 {

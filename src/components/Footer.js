@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import Fade from "react-reveal/Fade";
+import { Fade } from 'react-awesome-reveal'
 
 function Footer() {
   return (
@@ -51,4 +51,4 @@ function Footer() {
   )
 }
 
-export default Footer;
+export default Footer

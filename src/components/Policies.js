@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Fade from 'react-reveal/Fade'
+import SlideAndFade from './SlideAndFade'
 import Nav from './Nav'
 import Footer from './Footer'
 
@@ -10,10 +10,10 @@ function Policies() {
       <Nav />
       <div className='content-container'>
         <div className='content'>
-          <Fade bottom delay={2000} distance='50px'>
+          <SlideAndFade delay={1000}>
             <div className='sub-nav'>Policies</div>
-          </Fade>
-          <Fade bottom delay={2000} distance='50px'>
+          </SlideAndFade>
+          <SlideAndFade delay={1000}>
             <div className='text-content'>
               <h3>
                 We have rules in place for your protection, and for ours. Check out our policies and
@@ -82,7 +82,7 @@ function Policies() {
                 </div>
               </div>
             </div>
-          </Fade>
+          </SlideAndFade>
           <Footer />
         </div>
       </div>

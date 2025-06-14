@@ -5,7 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../contentful'
 import Iframe from 'react-iframe'
-import Fade from 'react-reveal/Fade'
+import SlideAndFade from './SlideAndFade'
 import Axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import MediaQuery from 'react-responsive'
@@ -172,18 +172,18 @@ function About() {
           <div className='inner-content-container'>
             <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
               <div className='header'>
-                <Fade bottom delay={2250} distance='50px'>
+                <SlideAndFade delay={2250}>
                   <h5>Meet the team</h5>
-                </Fade>
-                <Fade bottom delay={2450} distance='50px'>
+                </SlideAndFade>
+                <SlideAndFade delay={2450}>
                   <h3>
                     Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone
                     you vibe with? Let us know when you book and we&apos;ll make the match.
                   </h3>
-                </Fade>
+                </SlideAndFade>
               </div>
 
-              <Fade bottom delay={2650} distance='50px'>
+              <SlideAndFade delay={2650}>
                 <div className='staff-container'>
                   {staffMembers.map((staffMemberData, index) => (
                     <StaffMember
@@ -193,11 +193,11 @@ function About() {
                     />
                   ))}
                 </div>
-              </Fade>
+              </SlideAndFade>
             </MediaQuery>
 
             <MediaQuery maxWidth={MOBILEBP}>
-              <Fade bottom delay={2250} distance='50px'>
+                <SlideAndFade delay={2250}>
                 <div>
                   <div className='header'>
                     <h5>Meet the team</h5>
@@ -216,7 +216,7 @@ function About() {
                     ))}
                   </div>
                 </div>
-              </Fade>
+              </SlideAndFade>
             </MediaQuery>
           </div>
 
@@ -224,7 +224,7 @@ function About() {
             <div className='our-story--title-bar'>
               <div className='title-bar-text'>Our story</div>
             </div>
-            <Fade delay={700} bottom distance='50px'>
+            <SlideAndFade delay={700}>
               <div className='section-hero-video-container'>
                 <video id='section-hero-video' autoPlay loop muted playsInline>
                   <source
@@ -235,17 +235,17 @@ function About() {
                   />
                 </video>
               </div>
-            </Fade>
+            </SlideAndFade>
             <div className='section-text'>
               <div className='text-container'>
-                <Fade bottom distance='50px'>
+                <SlideAndFade>
                   <div className='left'>
                     There&apos;s a reason we&apos;re good at what we do, and it&apos;s because of
                     where we came from.
                   </div>
-                </Fade>
+                </SlideAndFade>
               </div>
-              <Fade bottom delay={250} distance='50px'>
+              <SlideAndFade delay={250}>
                 <div className='text-container'>
                   <div className='right'>
                     <p>
@@ -273,7 +273,7 @@ function About() {
                     </p>
                   </div>
                 </div>
-              </Fade>
+              </SlideAndFade>
             </div>
           </div>
 
@@ -281,24 +281,24 @@ function About() {
             <div className='our-clients--title-bar'>
               <div className='title-bar-text'>Our clients</div>
             </div>
-            <Fade delay={700} bottom distance='50px'>
+            <SlideAndFade delay={700}>
               <div
                 className='section-hero-image'
                 style={{
                   backgroundImage: `url("https://images.ctfassets.net/2f8bh3xz5t4r/17EFNaEJN2pKw4jMIHAn3S/20152047334829e72ae6fa99ebcfadd6/our-clients.jpg")`,
                 }}
               />
-            </Fade>
+            </SlideAndFade>
             <div className='section-text'>
               <div className='text-container'>
-                <Fade bottom distance='50px'>
+                <SlideAndFade>
                   <div className='left'>
                     But what do our amazing clients actually say about us? Read our reviews below
                     and see why they keep coming back.
                   </div>
-                </Fade>
+                </SlideAndFade>
               </div>
-              <Fade bottom delay={250} distance='50px'>
+              <SlideAndFade delay={250}>
                 <div className='text-container'>
                   <div className='right'>
                     <p>
@@ -309,7 +309,7 @@ function About() {
                     </p>
                   </div>
                 </div>
-              </Fade>
+              </SlideAndFade>
             </div>
 
             <div className='video-review'>
@@ -343,9 +343,7 @@ function About() {
             </div>
           </div>
 
-          <Fade>
-            <Footer />
-          </Fade>
+          <Footer />
         </div>
       </div>
       <div className='entrance' />

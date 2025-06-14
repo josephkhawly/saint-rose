@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { gsap, Power1 } from 'gsap'
 
-import Fade from 'react-reveal/Fade'
+import { Fade } from 'react-awesome-reveal'
 
 import Nav from './Nav'
 
@@ -54,7 +54,7 @@ const Home = () => {
       <Nav />
 
       <div className='content'>
-        <Fade bottom delay={4700} distance='50px'>
+        <Fade delay={4700}>
           <video
             id='vid'
             // autoPlay="autoplay"

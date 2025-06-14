@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Fade from 'react-reveal/Fade'
+import SlideAndFade from './SlideAndFade'
 import Nav from './Nav'
 import Footer from './Footer'
 import Axios from 'axios'
@@ -182,10 +182,10 @@ function Careers() {
       <Nav />
       <div className='content-container'>
         <div className='content'>
-          <Fade bottom delay={2000} distance='50px'>
+          <SlideAndFade delay={1000}>
             <div className='sub-nav'>Careers</div>
-          </Fade>
-          <Fade bottom delay={2000} distance='50px'>
+          </SlideAndFade>
+          <SlideAndFade delay={1000}>
             <div className='intro'>
               <h3>
                 Thank you so much for your interest in Saint Rose. Please fill out the following
@@ -373,7 +373,7 @@ function Careers() {
                 )}
               </div>
             </div>
-          </Fade>
+          </SlideAndFade>
           <Footer />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Axios from 'axios'
-import Fade from 'react-reveal/Fade'
+import SlideAndFade from './SlideAndFade'
 import Nav from './Nav'
 import { generateOptions } from '../richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -32,7 +32,7 @@ function BlogPost(props) {
       <Nav />
       <div className='content-container'>
         <div className='content'>
-          <Fade bottom delay={2000} distance='50px'>
+          <SlideAndFade delay={2000}>
             <div className='content-header'>
               <div className='featured-image-container'>
                 <div
@@ -45,7 +45,7 @@ function BlogPost(props) {
               <div className='postTitle'>{blogPost.title}</div>
               <div className='rich-text'>{documentToReactComponents(blogPost.body, options)}</div>
             </div>
-          </Fade>
+          </SlideAndFade>
           <Footer />
         </div>
       </div>

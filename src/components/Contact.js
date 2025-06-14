@@ -1,5 +1,5 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
+import SlideAndFade from './SlideAndFade'
 import Nav from './Nav'
 import Footer from './Footer'
 
@@ -9,10 +9,8 @@ function Contact() {
       <Nav />
       <div className='content-container'>
         <div className='content'>
-          <Fade bottom delay={2000} distance='50px'>
+          <SlideAndFade delay={1000}>
             <div className='sub-nav'>Contact us</div>
-          </Fade>
-          <Fade bottom delay={2000} distance='50px'>
             <div className='text-content'>
               <h3>
                 Tucked away in the heart of one of Houston&rsquo;s most eclectic and dynamic
@@ -168,7 +166,7 @@ function Contact() {
                 </div>
               </div>
             </div>
-          </Fade>
+          </SlideAndFade>
           <Footer />
         </div>
       </div>
