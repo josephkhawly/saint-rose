@@ -1,31 +1,21 @@
 import React, { useEffect } from 'react'
 
-import { TimelineMax as Timeline, Power1 } from 'gsap'
+import { gsap, Power1 } from 'gsap'
 
 import Fade from 'react-reveal/Fade'
 
 import Nav from './Nav'
 
 const getDefaultTimeline = () => {
-  const timeline = new Timeline({ paused: true })
+  const timeline = gsap.timeline({ paused: true })
   const introRose = document.querySelector('.intro-rose')
   const intro2 = document.querySelector('.intro-2')
   const nav = document.querySelector('.nav-container')
 
   timeline
-    .to(introRose, 1, {
-      opacity: 1,
-      delay: 1,
-    })
-    .to(intro2, 0.7, {
-      right: '0',
-      delay: 0.25,
-      ease: Power1.easeInOut,
-    })
-    .to(nav, 0.7, {
-      opacity: 1,
-      delay: 0.25,
-    })
+    .to(introRose, { opacity: 1, delay: 1, duration: 1 })
+    .to(intro2, { right: '0', delay: 0.25, ease: Power1.easeInOut, duration: 0.7 })
+    .to(nav, { opacity: 1, delay: 0.25, duration: 0.7 })
     .call(playVideo)
 
   return timeline

@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { TransitionGroup, Transition } from 'react-transition-group'
 
-import { TimelineMax as Timeline, Power1 } from 'gsap'
+import { gsap, Power1 } from 'gsap'
 
 import Home from './components/Home'
 import Contact from './components/Contact'
@@ -19,46 +19,32 @@ import Careers from './components/Careers'
 import './assets/css/App.scss'
 
 const getHomeTimeline = (node) => {
-  const timeline = new Timeline({ paused: true })
+  const timeline = gsap.timeline({ paused: true })
   const entrance = node.querySelector('.entrance')
 
-  timeline.to(entrance, 1, {
-    opacity: 1,
-    delay: 1,
-    ease: Power1.easeInOut,
-  })
+  timeline.to(entrance, { opacity: 1, delay: 1, ease: Power1.easeInOut, duration: 1 })
 
   return timeline
 }
 
 const getDefaultTimeline = (node) => {
-  const timeline = new Timeline({ paused: true })
+  const timeline = gsap.timeline({ paused: true })
   const entrance = node.querySelector('.entrance')
 
   const nav = node.querySelector('.nav-container')
 
   timeline
-    .to(node, 0.0, {
-      height: '100%',
-      delay: 1,
-    })
-    .to(entrance, 1, {
+    .to(node, { height: '100%', delay: 1, duration: 0 })
+    .to(entrance, {
       top: '0',
       delay: 0,
       ease: Power1.easeInOut,
+      duration: 1,
       onStart: () => {
         window.scrollTo(0, 0)
       },
     })
-    .to(
-      nav,
-      1.0,
-      {
-        opacity: 1,
-        delay: 1,
-      },
-      '-=1',
-    )
+    .to(nav, { opacity: 1, delay: 1, duration: 1 }, '-=1')
 
   return timeline
 }
@@ -76,13 +62,10 @@ const play = (pathname, node, appears) => {
 }
 
 const exit = (pathname, node) => {
-  const timeline = new Timeline({ paused: true })
+  const timeline = gsap.timeline({ paused: true })
   const exit = node.querySelector('.exit')
 
-  timeline.to(exit, 1, {
-    top: '0',
-    ease: Power1.easeInOut,
-  })
+  timeline.to(exit, { top: '0', ease: Power1.easeInOut, duration: 1 })
 
   timeline.play()
 }

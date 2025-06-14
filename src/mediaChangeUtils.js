@@ -1,15 +1,11 @@
-import { TimelineMax as Timeline } from 'gsap'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 function getMediaChangeTimeline() {
-  const timeline = new Timeline({ paused: true })
+  const timeline = gsap.timeline({ paused: true })
   const nav = document.querySelector('.nav-container')
-  timeline.to(nav, 0.7, {
-    opacity: 1,
-    delay: 0.25,
-  })
+  timeline.to(nav, { opacity: 1, delay: 0.25, duration: 0.7 })
   return timeline
 }
 
