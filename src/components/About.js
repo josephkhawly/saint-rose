@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { TimelineMax as Timeline, Expo } from 'gsap'
-import ScrollMagic from 'scrollmagic'
+import React, { useState, useRef } from 'react'
+import { Expo } from 'gsap'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../contentful'
 import Iframe from 'react-iframe'
 import Fade from 'react-reveal/Fade'
@@ -56,6 +58,8 @@ function enableParentScroll() {
   document.body.className = document.body.className.replace('disable-scroll', '')
 }
 
+gsap.registerPlugin(ScrollTrigger, useGSAP)
+
 function About() {
   const [showSpotlight, setShowSpotlight] = useState(false)
   const [selectedStaffMember, setSelectedStaffMember] = useState({})
@@ -71,91 +75,77 @@ function About() {
     }),
   )
 
-  const controllerRef = useRef(new ScrollMagic.Controller())
+  const container = useRef(null)
 
-  const loadDesktop = () => {
-    const ourStoryTitleBarTween = new Timeline()
-      .to('.our-story--title-bar', 0.7, { width: '612px', ease: Expo.easeIn })
-      .to('.title-bar-text', 1, { opacity: 1 })
-
-    const ourClientsTitleBarTween = new Timeline()
-      .to('.our-clients--title-bar', 0.7, { width: '680px', ease: Expo.easeIn })
-      .to('.title-bar-text', 1, { opacity: 1 })
-
-    new ScrollMagic.Scene({
-      triggerElement: '.our-story',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(ourStoryTitleBarTween)
-      .addTo(controllerRef.current)
-
-    new ScrollMagic.Scene({
-      triggerElement: '.our-clients',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(ourClientsTitleBarTween)
-      .addTo(controllerRef.current)
+  // Helper for title bar animation
+  const animateTitleBar = (selector, width) => {
+    return gsap
+      .timeline()
+      .to(selector, { width, duration: 0.7, ease: Expo.easeIn })
+      .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
   }
 
-  const loadDesktopTransition = () => {
-    const ourStoryTitleBarTween = new Timeline()
-      .to('.our-story--title-bar', 0.7, { width: '612px', ease: Expo.easeIn })
-      .to('.title-bar-text', 1, { opacity: 1 })
+  useGSAP(
+    () => {
+      // Nav scroll effect
+      ScrollTrigger.create({
+        trigger: '.content',
+        start: 'top+=100 top',
+        end: 'bottom top',
+        toggleClass: { targets: '.nav-container', className: 'scrolled' },
+        scrub: false,
+      })
 
-    const ourClientsTitleBarTween = new Timeline()
-      .to('.our-clients--title-bar', 0.7, { width: '612px', ease: Expo.easeIn })
-      .to('.title-bar-text', 1, { opacity: 1 })
+      // Responsive logic for title bars
+      let storyWidth, clientsWidth
+      if (window.innerWidth >= DESKTOPBP) {
+        storyWidth = '612px'
+        clientsWidth = '680px'
+      } else if (window.innerWidth >= MOBILEBP) {
+        storyWidth = '612px'
+        clientsWidth = '612px'
+      } else {
+        storyWidth = '243px'
+        clientsWidth = '280px'
+      }
 
-    new ScrollMagic.Scene({
-      triggerElement: '.our-story',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(ourStoryTitleBarTween)
-      .addTo(controllerRef.current)
+      // Our Story
+      ScrollTrigger.create({
+        trigger: '.our-story',
+        start: window.innerWidth < MOBILEBP ? 'top+=50 bottom' : 'top+=100 bottom',
+        once: true,
+        onEnter: () => animateTitleBar('.our-story--title-bar', storyWidth).play(),
+      })
+      // Our Clients
+      ScrollTrigger.create({
+        trigger: '.our-clients',
+        start: window.innerWidth < MOBILEBP ? 'top+=50 bottom' : 'top+=100 bottom',
+        once: true,
+        onEnter: () => animateTitleBar('.our-clients--title-bar', clientsWidth).play(),
+      })
 
-    new ScrollMagic.Scene({
-      triggerElement: '.our-clients',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(ourClientsTitleBarTween)
-      .addTo(controllerRef.current)
-  }
+      return () => {
+        enableParentScroll()
+      }
+    },
+    { scope: container },
+  )
 
-  const loadMobile = () => {
-    const ourStoryTitleBarTween = new Timeline()
-      .to('.our-story--title-bar', 0.7, { width: '243px', ease: Expo.easeIn })
-      .to('.title-bar-text', 1, { opacity: 1 })
-
-    const ourClientsTitleBarTween = new Timeline()
-      .to('.our-clients--title-bar', 0.7, { width: '280px', ease: Expo.easeIn })
-      .to('.title-bar-text', 1, { opacity: 1 })
-
-    new ScrollMagic.Scene({
-      triggerElement: '.our-story',
-      triggerHook: 'onEnter',
-      offset: 50,
-      reverse: false,
-    })
-      .setTween(ourStoryTitleBarTween)
-      .addTo(controllerRef.current)
-
-    new ScrollMagic.Scene({
-      triggerElement: '.our-clients',
-      triggerHook: 'onEnter',
-      offset: 50,
-      reverse: false,
-    })
-      .setTween(ourClientsTitleBarTween)
-      .addTo(controllerRef.current)
-  }
+  // Fetch staff data
+  React.useEffect(() => {
+    const staffEndpoint = `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=staff&order=fields.order`
+    Axios.get(staffEndpoint)
+      .then((result) => {
+        const fetchedStaffMembers = processResponse(result.data)
+        setStaffMembers(fetchedStaffMembers)
+        fetchedStaffMembers.forEach((member) => {
+          preloadImage(member.photoSmall)
+          preloadImage(member.photoLarge)
+        })
+      })
+      .catch((error) => console.log('error: ', error))
+    return enableParentScroll
+  }, [])
 
   const handleStaffMemberSelect = (staffMemberData) => {
     if (!showSpotlight) {
@@ -171,44 +161,8 @@ function About() {
     setSelectedStaffMember({})
   }
 
-  useEffect(() => {
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 100,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-
-    if (window.innerWidth >= DESKTOPBP) {
-      loadDesktop()
-    } else if (window.innerWidth >= MOBILEBP) {
-      loadDesktopTransition()
-    } else {
-      loadMobile()
-    }
-
-    const staffEndpoint = `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=staff&order=fields.order`
-
-    Axios.get(staffEndpoint)
-      .then((result) => {
-        const fetchedStaffMembers = processResponse(result.data)
-        setStaffMembers(fetchedStaffMembers)
-
-        fetchedStaffMembers.forEach((member) => {
-          preloadImage(member.photoSmall)
-          preloadImage(member.photoLarge)
-        })
-      })
-      .catch((error) => console.log('error: ', error))
-
-    return () => {
-      enableParentScroll()
-    }
-  }, [])
-
   return (
-    <div className='about'>
+    <div className='about' ref={container}>
       <TransitionGroup component={null}>
         {showSpotlight && (
           <CSSTransition in={showSpotlight} timeout={500} classNames='display' unmountOnExit>
@@ -220,7 +174,7 @@ function About() {
         )}
       </TransitionGroup>
 
-      <Nav active={'about'} />
+      <Nav />
 
       <div className='content-container'>
         <div className='content'>

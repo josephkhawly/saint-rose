@@ -1,153 +1,79 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { TimelineMax as Timeline, Expo } from 'gsap'
-import ScrollMagic from 'scrollmagic'
-
+import React, { useState, useRef } from 'react'
+import { Expo } from 'gsap'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import Fade from 'react-reveal/Fade'
-
 import MediaQuery from 'react-responsive'
-
 import Nav from './Nav'
-
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 import classnames from 'classnames'
 import { playMediaChange } from '../mediaChangeUtils'
 
+gsap.registerPlugin(ScrollTrigger, useGSAP)
+
 function Services() {
   const [haircutOpen, setHaircutOpen] = useState(false)
   const [colorOpen, setColorOpen] = useState(false)
   const [treatmentsOpen, setTreatmentsOpen] = useState(false)
-  const controllerRef = useRef(null)
+  const container = useRef(null)
 
-  useEffect(() => {
-    controllerRef.current = new ScrollMagic.Controller()
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 100,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
+  // Helper for title bar animation
+  const animateTitleBar = (selector, width) => {
+    return gsap
+      .timeline()
+      .to(selector, { width, duration: 0.7, ease: Expo.easeIn })
+      .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
+  }
 
-    if (window.innerWidth >= MOBILEBP) {
-      loadDesktop()
-    } else {
-      loadMobile()
-    }
+  useGSAP(
+    () => {
+      // Nav scroll effect
+      ScrollTrigger.create({
+        trigger: '.content',
+        start: 'top+=100 top',
+        end: 'bottom top',
+        toggleClass: { targets: '.nav-container', className: 'scrolled' },
+        scrub: false,
+      })
 
-    return () => {
-      if (controllerRef.current) {
-        controllerRef.current.destroy(true)
+      // Responsive logic for title bars
+      let haircutWidth, colorWidth, treatmentsWidth
+      if (window.innerWidth >= MOBILEBP) {
+        haircutWidth = '812px'
+        colorWidth = '975px'
+        treatmentsWidth = '675px'
+      } else {
+        haircutWidth = '334px'
+        colorWidth = '244px'
+        treatmentsWidth = '275px'
       }
-    }
-    // eslint-disable-next-line
-  }, [])
 
-  const loadDesktop = () => {
-    const haircutTitleBarTween = new Timeline()
-      .to('.haircut--title-bar', 0.7, {
-        width: '812px',
-        ease: Expo.easeIn,
-        delay: 2.5,
+      // Haircut
+      ScrollTrigger.create({
+        trigger: '.haircut',
+        start: window.innerWidth < MOBILEBP ? 'top bottom' : 'top+=100 bottom',
+        once: true,
+        onEnter: () => animateTitleBar('.haircut--title-bar', haircutWidth).play(),
       })
-      .to('.haircut--title-bar-text', 1, { opacity: 1, delay: 0 })
-
-    const colorTitleBarTween = new Timeline()
-      .to('.color--title-bar', 0.7, {
-        width: '975px',
-        ease: Expo.easeIn,
-        delay: 0,
+      // Color
+      ScrollTrigger.create({
+        trigger: '.color',
+        start: 'top+=100 bottom',
+        once: true,
+        onEnter: () => animateTitleBar('.color--title-bar', colorWidth).play(),
       })
-      .to('.color--title-bar-text', 1, { opacity: 1, delay: 0 })
-
-    const treatmentsTitleBarTween = new Timeline()
-      .to('.treatments--title-bar', 0.7, {
-        width: '675px',
-        ease: Expo.easeIn,
-        delay: 0,
+      // Treatments
+      ScrollTrigger.create({
+        trigger: '.treatments',
+        start: 'top+=100 bottom',
+        once: true,
+        onEnter: () => animateTitleBar('.treatments--title-bar', treatmentsWidth).play(),
       })
-      .to('.treatments--title-bar-text', 1, { opacity: 1, delay: 0 })
-
-    new ScrollMagic.Scene({
-      triggerElement: '.haircut',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(haircutTitleBarTween)
-      .addTo(controllerRef.current)
-
-    new ScrollMagic.Scene({
-      triggerElement: '.color',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(colorTitleBarTween)
-      .addTo(controllerRef.current)
-
-    new ScrollMagic.Scene({
-      triggerElement: '.treatments',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(treatmentsTitleBarTween)
-      .addTo(controllerRef.current)
-  }
-
-  const loadMobile = () => {
-    const haircutTitleBarTween = new Timeline()
-      .to('.haircut--title-bar', 0.7, {
-        width: '334px',
-        ease: Expo.easeIn,
-        delay: 2.5,
-      })
-      .to('.haircut--title-bar-text', 1, { opacity: 1, delay: 0 })
-
-    const colorTitleBarTween = new Timeline()
-      .to('.color--title-bar', 0.7, {
-        width: '244px',
-        ease: Expo.easeIn,
-        delay: 0,
-      })
-      .to('.color--title-bar-text', 1, { opacity: 1, delay: 0 })
-
-    const treatmentsTitleBarTween = new Timeline()
-      .to('.treatments--title-bar', 0.7, {
-        width: '275px',
-        ease: Expo.easeIn,
-        delay: 0,
-      })
-      .to('.treatments--title-bar-text', 1, { opacity: 1, delay: 0 })
-
-    new ScrollMagic.Scene({
-      triggerElement: '.haircut',
-      triggerHook: 'onEnter',
-      offset: 0,
-      reverse: false,
-    })
-      .setTween(haircutTitleBarTween)
-      .addTo(controllerRef.current)
-
-    new ScrollMagic.Scene({
-      triggerElement: '.color',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(colorTitleBarTween)
-      .addTo(controllerRef.current)
-
-    new ScrollMagic.Scene({
-      triggerElement: '.treatments',
-      triggerHook: 'onEnter',
-      offset: 100,
-      reverse: false,
-    })
-      .setTween(treatmentsTitleBarTween)
-      .addTo(controllerRef.current)
-  }
+    },
+    { scope: container },
+  )
 
   const renderPricingRow = (title, description, price) => {
     return (
@@ -265,7 +191,7 @@ function Services() {
 
   return (
     <div className='services'>
-      <Nav active={'services'} />
+      <Nav />
       <div className='content-container'>
         {/* <div className="spacer" style={{ height: "800px" }} /> */}
         <div className='content'>
@@ -334,7 +260,7 @@ function Services() {
                     </div>
                   </MediaQuery>
 
-                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
+                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(container)}>
                     <div
                       className={classnames('pricing-table', {
                         open: haircutOpen,
@@ -383,7 +309,7 @@ function Services() {
                     </div>
                   </MediaQuery>
 
-                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
+                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(container)}>
                     <div
                       className={classnames('pricing-table', {
                         open: colorOpen,
@@ -432,7 +358,7 @@ function Services() {
                     </div>
                   </MediaQuery>
 
-                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(controllerRef)}>
+                  <MediaQuery maxWidth={MOBILEBP} onChange={() => playMediaChange(container)}>
                     <div
                       className={classnames('pricing-table', {
                         open: treatmentsOpen,

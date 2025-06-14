@@ -79,7 +79,7 @@ const Home = () => {
       <div className='intro-2' />
       <div className='intro-rose' />
 
-      <Nav active={'home'} />
+      <Nav />
 
       <div className='content'>
         <Fade bottom delay={4700} distance='50px'>

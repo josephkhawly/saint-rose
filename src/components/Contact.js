@@ -1,34 +1,32 @@
-import React, { useEffect, useRef } from 'react'
-import ScrollMagic from 'scrollmagic'
-
+import React, { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import Fade from 'react-reveal/Fade'
-
 import Nav from './Nav'
-
 import Footer from './Footer'
 
-function Contact() {
-  const controllerRef = useRef(null)
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-  useEffect(() => {
-    controllerRef.current = new ScrollMagic.Controller()
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-    return () => {
-      if (controllerRef.current) {
-        controllerRef.current.destroy(true)
-      }
-    }
-  }, [])
+function Contact() {
+  const container = useRef(null)
+
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: '.content',
+        start: 'top+=50 top',
+        end: 'bottom top',
+        toggleClass: { targets: '.nav-container', className: 'scrolled' },
+        scrub: false,
+      })
+    },
+    { scope: container },
+  )
 
   return (
-    <div className='contact'>
-      <Nav active={'contact'} />
+    <div className='contact' ref={container}>
+      <Nav />
       <div className='content-container'>
         <div className='content'>
           <Fade bottom delay={2000} distance='50px'>

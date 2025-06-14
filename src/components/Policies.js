@@ -1,30 +1,33 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import { Link } from 'react-router-dom'
-import ScrollMagic from 'scrollmagic'
-
 import Fade from 'react-reveal/Fade'
-
 import Nav from './Nav'
-
 import Footer from './Footer'
 
-function Policies() {
-  const controllerRef = useRef(new ScrollMagic.Controller())
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-  useEffect(() => {
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-  }, [])
+function Policies() {
+  const container = useRef(null)
+
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: '.content',
+        start: 'top+=50 top',
+        end: 'bottom top',
+        toggleClass: { targets: '.nav-container', className: 'scrolled' },
+        scrub: false,
+      })
+    },
+    { scope: container },
+  )
 
   return (
-    <div className='policies'>
-      <Nav active={'policies'} />
-
+    <div className='policies' ref={container}>
+      <Nav />
       <div className='content-container'>
         <div className='content'>
           <Fade bottom delay={2000} distance='50px'>
@@ -103,7 +106,6 @@ function Policies() {
           <Footer />
         </div>
       </div>
-
       <div className='entrance' />
       <div className='exit' />
       <div className='exit-2' />

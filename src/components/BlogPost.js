@@ -1,138 +1,77 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import ScrollMagic from 'scrollmagic'
+import React, { useRef, useEffect, useState } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import Axios from 'axios'
-
 import Fade from 'react-reveal/Fade'
-
 import Nav from './Nav'
-
 import { generateOptions } from '../richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-
 import Footer from './Footer'
-
 import { getEntryApiEndpoint, processEntryResponse } from '../contentful'
 
-class BlogPost extends React.Component {
-  constructor(props) {
-    super(props)
-    this.controller = new ScrollMagic.Controller()
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-    this.state = {
-      blogPost: {},
-      assets: [],
-    }
-  }
+function BlogPost(props) {
+  const container = useRef(null)
+  const [blogPost, setBlogPost] = useState({})
+  const [assets, setAssets] = useState([])
 
-  componentDidMount() {
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(this.controller)
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: '.content',
+        start: 'top+=50 top',
+        end: 'bottom top',
+        toggleClass: { targets: '.nav-container', className: 'scrolled' },
+        scrub: false,
+      })
+    },
+    { scope: container },
+  )
 
-    const options = [
-      { key: 'order', value: '-fields.date' },
-      { key: 'limit', value: '10' },
-    ]
-
-    const blogPostId = this.props.match.params.id
-    console.log('blogPostId: ', blogPostId)
-
+  useEffect(() => {
+    const blogPostId = props.match.params.id
     const blogPostEndpoint = getEntryApiEndpoint(blogPostId)
-
     Axios.get(blogPostEndpoint)
       .then((result) => {
-        // console.log("result: ", result);
         const expectedFields = ['title', 'date', 'headerImage', 'body']
-
         const fetchedBlogPost = processEntryResponse(result.data, expectedFields)
-
-        console.log('fetchedBlogPost: ', fetchedBlogPost)
-
-        this.setState((state) => {
-          return {
-            blogPost: fetchedBlogPost.entry,
-            assets: fetchedBlogPost.assets,
-          }
-        })
+        setBlogPost(fetchedBlogPost.entry)
+        setAssets(fetchedBlogPost.assets)
       })
       .catch((error) => console.log('error: ', error))
-  }
+  }, [props.match.params.id])
 
-  render_post() {
-    const { blogItems } = this.state
+  const options = generateOptions(assets)
 
-    const featuredPost = blogItems.find((blogItem) => blogItem.featured == true)
-
-    if (featuredPost) {
-      return (
-        <div className='featured-blog-item'>
-          <div className='news-item-wrapper'>
-            <div className='news-image-container'>
-              <div
-                className='image'
-                style={{
-                  backgroundImage: `url(${featuredPost.headerImage})`,
-                }}
-              ></div>
-            </div>
-            <h5>{featuredPost.date}</h5>
-            <h3>{featuredPost.title}</h3>
-            <div className='description-container'>
-              <p>{featuredPost.summary}</p>
-              <Link to={`/blog/${featuredPost.id}`}>
-                <div className='nav-arrow' />
-              </Link>
-            </div>
-          </div>
-        </div>
-      )
-    }
-  }
-
-  render() {
-    const options = generateOptions(this.state.assets)
-    const { blogPost } = this.state
-    return (
-      <div className='blog-post'>
-        <Nav active={'blog'} />
-
-        <div className='content-container'>
-          <div className='content'>
-            <Fade bottom delay={2000} distance='50px'>
-              <div className='content-header'>
-                <div className='featured-image-container'>
-                  <div
-                    className='image'
-                    style={{
-                      backgroundImage: `url(${blogPost.headerImage})`,
-                    }}
-                  />
-                </div>
+  return (
+    <div className='blog-post' ref={container}>
+      <Nav />
+      <div className='content-container'>
+        <div className='content'>
+          <Fade bottom delay={2000} distance='50px'>
+            <div className='content-header'>
+              <div className='featured-image-container'>
+                <div
+                  className='image'
+                  style={{ backgroundImage: `url(${blogPost.headerImage})` }}
+                />
               </div>
-              <div className='content-body'>
-                <div className='postTitle'>{blogPost.title}</div>
-                <div className='rich-text'>
-                  {console.log('hello')}
-                  {console.log(blogPost.body)}
-                  {documentToReactComponents(blogPost.body, options)}
-                </div>
-              </div>
-            </Fade>
-            <Footer />
-          </div>
+            </div>
+            <div className='content-body'>
+              <div className='postTitle'>{blogPost.title}</div>
+              <div className='rich-text'>{documentToReactComponents(blogPost.body, options)}</div>
+            </div>
+          </Fade>
+          <Footer />
         </div>
-
-        <div className='entrance' />
-        <div className='exit' />
-        <div className='exit-2' />
       </div>
-    )
-  }
+      <div className='entrance' />
+      <div className='exit' />
+      <div className='exit-2' />
+    </div>
+  )
 }
 
 export default BlogPost

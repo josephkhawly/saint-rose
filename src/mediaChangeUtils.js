@@ -1,5 +1,7 @@
 import { TimelineMax as Timeline } from 'gsap'
-import ScrollMagic from 'scrollmagic'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 function getMediaChangeTimeline() {
   const timeline = new Timeline({ paused: true })
@@ -11,14 +13,14 @@ function getMediaChangeTimeline() {
   return timeline
 }
 
-export function playMediaChange(controllerRef) {
+export function playMediaChange(containerRef) {
   const timeline = getMediaChangeTimeline()
   window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
-  new ScrollMagic.Scene({
-    triggerElement: '.content',
-    offset: 50,
-    triggerHook: 'onLeave',
+  ScrollTrigger.create({
+    trigger: '.content',
+    start: 'top+=50 top',
+    end: 'bottom top',
+    toggleClass: { targets: '.nav-container', className: 'scrolled' },
+    scrub: false,
   })
-    .setClassToggle('.nav-container', 'scrolled')
-    .addTo(controllerRef.current)
 }

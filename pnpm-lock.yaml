@@ -14,6 +14,9 @@ importers:
       '@contentful/rich-text-types':
         specifier: ^17.0.0
         version: 17.0.0
+      '@gsap/react':
+        specifier: ^2.1.2
+        version: 2.1.2(gsap@3.13.0)(react@16.14.0)
       '@sendgrid/mail':
         specifier: ^6.4.0
         version: 6.5.5
@@ -42,8 +45,8 @@ importers:
         specifier: ^2.0.1
         version: 2.1.5
       gsap:
-        specifier: ^2.1.3
-        version: 2.1.3
+        specifier: ^3.13.0
+        version: 3.13.0
       imports-loader:
         specifier: ^0.8.0
         version: 0.8.0
@@ -59,9 +62,6 @@ importers:
       react-dom:
         specifier: ^16.6.0
         version: 16.14.0(react@16.14.0)
-      react-gsap:
-        specifier: ^1.2.0
-        version: 1.2.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react-hot-loader:
         specifier: ^4.12.11
         version: 4.13.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -77,18 +77,12 @@ importers:
       react-router-dom:
         specifier: ^5.0.1
         version: 5.3.4(react@16.14.0)
-      react-scrollmagic:
-        specifier: ^2.1.1
-        version: 2.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react-slideshow-image:
         specifier: ^1.5.3
         version: 1.5.3(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react-transition-group:
         specifier: ^4.2.2
         version: 4.4.5(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      scrollmagic:
-        specifier: ^2.0.7
-        version: 2.0.8
       style-loader:
         specifier: ^3.3.1
         version: 3.3.4(webpack@5.99.9(webpack-cli@5.1.4))
@@ -722,6 +716,12 @@ packages:
 
   '@gar/promisify@1.1.3':
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
+
+  '@gsap/react@2.1.2':
+    resolution: {integrity: sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw==}
+    peerDependencies:
+      gsap: ^3.12.5
+      react: '>=17'
 
   '@jridgewell/gen-mapping@0.3.8':
     resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
@@ -2435,8 +2435,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  gsap@2.1.3:
-    resolution: {integrity: sha512-8RFASCqi2FOCBuv7X4o7M6bLdy+1hbR0azg+MG7zz+EVsI+OmJblYsTk0GEepQd2Jg/ItMPiVTibF7r3EVxjZQ==}
+  gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
 
   handle-thing@2.0.1:
     resolution: {integrity: sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==}
@@ -3644,13 +3644,6 @@ packages:
     peerDependencies:
       react: ^16.14.0
 
-  react-gsap@1.2.0:
-    resolution: {integrity: sha512-hopmcLuMFcUd8MHVA7gK5VHUeuXnqOJjTADPsEjIGVG1pCP05Uagt1TQri2pG67QOZkEWHwQGT6vwlzXPUbLZQ==}
-    engines: {node: '>=8', npm: '>=5'}
-    peerDependencies:
-      react: ^16.0.0
-      react-dom: ^16.0.0
-
   react-hot-loader@4.13.1:
     resolution: {integrity: sha512-ZlqCfVRqDJmMXTulUGic4lN7Ic1SXgHAFw7y/Jb7t25GBgTR0fYAJ8uY4mrpxjRyWGWmqw77qJQGnYbzCvBU7g==}
     engines: {node: '>= 6'}
@@ -3693,13 +3686,6 @@ packages:
     resolution: {integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==}
     peerDependencies:
       react: '>=15'
-
-  react-scrollmagic@2.3.0:
-    resolution: {integrity: sha512-yVw85uENSPow/ZJxZhPR84nZuyQZQNGfOAaL22+xNAhF5qMX2vbHv0Jeurydc9lS+6OocSY+09MHWQ0LESy9Mg==}
-    engines: {node: '>=8', npm: '>=5'}
-    peerDependencies:
-      react: ^16.0.0-0 || ^17.0.0-0
-      react-dom: ^16.0.0-0 || ^17.0.0-0
 
   react-slideshow-image@1.5.3:
     resolution: {integrity: sha512-Q0LqwRNlop5FoWA2yDHQVbUipBe+IZ8akwo/toow5CHhoV/Q9axi6SyxidZn9SqADOnVmP4loqDyOtP4Hzzw7w==}
@@ -3933,10 +3919,6 @@ packages:
   schema-utils@4.3.2:
     resolution: {integrity: sha512-Gn/JaSk/Mt9gYubxTtSn/QCV4em9mpAPiR1rqy/Ocu19u/G9J5WWdNoUT4SiV6mFC3y6cxyFcFwdzPM3FgxGAQ==}
     engines: {node: '>= 10.13.0'}
-
-  scrollmagic@2.0.8:
-    resolution: {integrity: sha512-UYXEGBPVLziovXl3FjHGkY9c4UXKUKopIdXwWR2JapWxCo0U345wYegi7rcsv5vHf/ktc1bSNWy4QRFiV+Yccw==}
-    engines: {node: '>=0.10.x'}
 
   scss-tokenizer@0.4.3:
     resolution: {integrity: sha512-raKLgf1LI5QMQnG+RxHz6oK0sL3x3I4FN2UDLqgLOGO8hodECNnNh5BXn7fAyBxrA8zVzdQizQ6XjNJQ+uBwMw==}
@@ -5342,6 +5324,11 @@ snapshots:
 
   '@gar/promisify@1.1.3':
     optional: true
+
+  '@gsap/react@2.1.2(gsap@3.13.0)(react@16.14.0)':
+    dependencies:
+      gsap: 3.13.0
+      react: 16.14.0
 
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
@@ -7622,7 +7609,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  gsap@2.1.3: {}
+  gsap@3.13.0: {}
 
   handle-thing@2.0.1: {}
 
@@ -8966,12 +8953,6 @@ snapshots:
       react: 16.14.0
       scheduler: 0.19.1
 
-  react-gsap@1.2.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
-    dependencies:
-      gsap: 2.1.3
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-
   react-hot-loader@4.13.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       fast-levenshtein: 2.0.6
@@ -9030,11 +9011,6 @@ snapshots:
       react-is: 16.13.1
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
-
-  react-scrollmagic@2.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
-    dependencies:
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
 
   react-slideshow-image@1.5.3(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
@@ -9316,8 +9292,6 @@ snapshots:
       ajv: 8.17.1
       ajv-formats: 2.1.1(ajv@8.17.1)
       ajv-keywords: 5.1.0(ajv@8.17.1)
-
-  scrollmagic@2.0.8: {}
 
   scss-tokenizer@0.4.3:
     dependencies:

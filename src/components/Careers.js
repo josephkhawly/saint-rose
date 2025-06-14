@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
-import ScrollMagic from 'scrollmagic'
-
+import React, { useState, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+gsap.registerPlugin(require('gsap/ScrollTrigger'), useGSAP)
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import Fade from 'react-reveal/Fade'
-
 import Nav from './Nav'
-
 import Footer from './Footer'
-
 import Axios from 'axios'
 
 function Careers() {
@@ -34,23 +33,20 @@ function Careers() {
     question5: '',
     question6: '',
   })
-  const controllerRef = useRef(null)
+  const container = useRef(null)
 
-  useEffect(() => {
-    controllerRef.current = new ScrollMagic.Controller()
-    new ScrollMagic.Scene({
-      triggerElement: '.content',
-      offset: 50,
-      triggerHook: 'onLeave',
-    })
-      .setClassToggle('.nav-container', 'scrolled')
-      .addTo(controllerRef.current)
-    return () => {
-      if (controllerRef.current) {
-        controllerRef.current.destroy(true)
-      }
-    }
-  }, [])
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: '.content',
+        start: 'top+=50 top',
+        end: 'bottom top',
+        toggleClass: { targets: '.nav-container', className: 'scrolled' },
+        scrub: false,
+      })
+    },
+    { scope: container },
+  )
 
   const handleInput = (field, value) => {
     setState((prev) => ({ ...prev, [field]: value }))
@@ -201,7 +197,7 @@ function Careers() {
 
   return (
     <div className='careers'>
-      <Nav active={'careers'} />
+      <Nav />
       <div className='content-container'>
         <div className='content'>
           <Fade bottom delay={2000} distance='50px'>
