@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@contentful/rich-text-react-renderer':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+        specifier: ^16.0.1
+        version: 16.0.1(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       '@contentful/rich-text-types':
         specifier: ^17.0.0
         version: 17.0.0
       '@gsap/react':
         specifier: ^2.1.2
-        version: 2.1.2(gsap@3.13.0)(react@16.14.0)
+        version: 2.1.2(gsap@3.13.0)(react@17.0.2)
       '@sendgrid/mail':
         specifier: ^6.4.0
         version: 6.5.5
@@ -57,32 +57,29 @@ importers:
         specifier: ^3.0.12
         version: 3.11.0
       react:
-        specifier: ^16.6.0
-        version: 16.14.0
+        specifier: ^17.0.0
+        version: 17.0.2
       react-dom:
-        specifier: ^16.6.0
-        version: 16.14.0(react@16.14.0)
+        specifier: ^17.0.0
+        version: 17.0.2(react@17.0.2)
       react-hot-loader:
         specifier: ^4.12.11
-        version: 4.13.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+        version: 4.13.1(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       react-iframe:
         specifier: ^1.8.0
-        version: 1.8.5(react@16.14.0)
+        version: 1.8.5(react@17.0.2)
       react-responsive:
         specifier: ^8.0.1
-        version: 8.2.0(react@16.14.0)
+        version: 8.2.0(react@17.0.2)
       react-reveal:
         specifier: ^1.2.2
-        version: 1.2.2(react@16.14.0)
+        version: 1.2.2(react@17.0.2)
       react-router-dom:
         specifier: ^5.0.1
-        version: 5.3.4(react@16.14.0)
-      react-slideshow-image:
-        specifier: ^1.5.3
-        version: 1.5.3(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+        version: 5.3.4(react@17.0.2)
       react-transition-group:
         specifier: ^4.2.2
-        version: 4.4.5(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+        version: 4.4.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
       style-loader:
         specifier: ^3.3.1
         version: 3.3.4(webpack@5.99.9(webpack-cli@5.1.4))
@@ -691,16 +688,12 @@ packages:
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
 
-  '@contentful/rich-text-react-renderer@13.4.0':
-    resolution: {integrity: sha512-hZL0DQ+Qj+a9CWsu7bmEp5eh6ERX5pcL+k8+LNlkR3j1jBNraANV2qL3tGXZoR5haSxeCMo+KTryMf/7BRZbrg==}
+  '@contentful/rich-text-react-renderer@16.0.1':
+    resolution: {integrity: sha512-7wZZBMgwbq5Udp2KebKCJoh9K+EPGlgRkudhXSp+OxtAIdBC6JUz3Oi9kXXKYKLeSg7iTBpkO1dd0/xFjHHKbg==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
-      react: ^16.8.6
-      react-dom: ^16.8.6
-
-  '@contentful/rich-text-types@13.4.0':
-    resolution: {integrity: sha512-YPdYqGmWiGAood7ri2BUXfPQKNthkQYV1rmQdaq4UAxWK5NLB5NXckaUYLbohqhHKtrq4tnfzVn+ePWID7Dzbg==}
-    engines: {node: '>=6.0.0'}
+      react: ^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@contentful/rich-text-types@17.0.0':
     resolution: {integrity: sha512-x50t6sILzFHBdFpAo0foJRnH8fHWyidheWhAv3uwt9aOnNqTh893gxyoc3Q0RVEZxXfHpTi+O9gmakHcdlRdTA==}
@@ -878,9 +871,6 @@ packages:
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
-
-  '@tweenjs/tween.js@18.6.4':
-    resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==}
 
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
@@ -3639,10 +3629,10 @@ packages:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
 
-  react-dom@16.14.0:
-    resolution: {integrity: sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==}
+  react-dom@17.0.2:
+    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
-      react: ^16.14.0
+      react: 17.0.2
 
   react-hot-loader@4.13.1:
     resolution: {integrity: sha512-ZlqCfVRqDJmMXTulUGic4lN7Ic1SXgHAFw7y/Jb7t25GBgTR0fYAJ8uY4mrpxjRyWGWmqw77qJQGnYbzCvBU7g==}
@@ -3687,20 +3677,14 @@ packages:
     peerDependencies:
       react: '>=15'
 
-  react-slideshow-image@1.5.3:
-    resolution: {integrity: sha512-Q0LqwRNlop5FoWA2yDHQVbUipBe+IZ8akwo/toow5CHhoV/Q9axi6SyxidZn9SqADOnVmP4loqDyOtP4Hzzw7w==}
-    peerDependencies:
-      react: ^16.2.0
-      react-dom: ^16.2.0
-
   react-transition-group@4.4.5:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
       react: '>=16.6.0'
       react-dom: '>=16.6.0'
 
-  react@16.14.0:
-    resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
+  react@17.0.2:
+    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
 
   read-pkg-up@7.0.1:
@@ -3909,8 +3893,8 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
-  scheduler@0.19.1:
-    resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
+  scheduler@0.20.2:
+    resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
 
   schema-utils@3.3.0:
     resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
@@ -5306,13 +5290,11 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@contentful/rich-text-react-renderer@13.4.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
+  '@contentful/rich-text-react-renderer@16.0.1(react-dom@17.0.2(react@17.0.2))(react@17.0.2)':
     dependencies:
-      '@contentful/rich-text-types': 13.4.0
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-
-  '@contentful/rich-text-types@13.4.0': {}
+      '@contentful/rich-text-types': 17.0.0
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
 
   '@contentful/rich-text-types@17.0.0':
     dependencies:
@@ -5325,10 +5307,10 @@ snapshots:
   '@gar/promisify@1.1.3':
     optional: true
 
-  '@gsap/react@2.1.2(gsap@3.13.0)(react@16.14.0)':
+  '@gsap/react@2.1.2(gsap@3.13.0)(react@17.0.2)':
     dependencies:
       gsap: 3.13.0
-      react: 16.14.0
+      react: 17.0.2
 
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
@@ -5471,8 +5453,6 @@ snapshots:
 
   '@tootallnate/once@2.0.0':
     optional: true
-
-  '@tweenjs/tween.js@18.6.4': {}
 
   '@types/body-parser@1.19.5':
     dependencies:
@@ -8945,61 +8925,60 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-dom@16.14.0(react@16.14.0):
+  react-dom@17.0.2(react@17.0.2):
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      prop-types: 15.8.1
-      react: 16.14.0
-      scheduler: 0.19.1
+      react: 17.0.2
+      scheduler: 0.20.2
 
-  react-hot-loader@4.13.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
+  react-hot-loader@4.13.1(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:
       fast-levenshtein: 2.0.6
       global: 4.4.0
       hoist-non-react-statics: 3.3.2
       loader-utils: 2.0.4
       prop-types: 15.8.1
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
       react-lifecycles-compat: 3.0.4
       shallowequal: 1.1.0
       source-map: 0.7.4
 
-  react-iframe@1.8.5(react@16.14.0):
+  react-iframe@1.8.5(react@17.0.2):
     dependencies:
       object-assign: 4.1.1
-      react: 16.14.0
+      react: 17.0.2
 
   react-is@16.13.1: {}
 
   react-lifecycles-compat@3.0.4: {}
 
-  react-responsive@8.2.0(react@16.14.0):
+  react-responsive@8.2.0(react@17.0.2):
     dependencies:
       hyphenate-style-name: 1.1.0
       matchmediaquery: 0.3.1
       prop-types: 15.8.1
-      react: 16.14.0
+      react: 17.0.2
       shallow-equal: 1.2.1
 
-  react-reveal@1.2.2(react@16.14.0):
+  react-reveal@1.2.2(react@17.0.2):
     dependencies:
       prop-types: 15.8.1
-      react: 16.14.0
+      react: 17.0.2
 
-  react-router-dom@5.3.4(react@16.14.0):
+  react-router-dom@5.3.4(react@17.0.2):
     dependencies:
       '@babel/runtime': 7.27.1
       history: 4.10.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 16.14.0
-      react-router: 5.3.4(react@16.14.0)
+      react: 17.0.2
+      react-router: 5.3.4(react@17.0.2)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  react-router@5.3.4(react@16.14.0):
+  react-router@5.3.4(react@17.0.2):
     dependencies:
       '@babel/runtime': 7.27.1
       history: 4.10.1
@@ -9007,32 +8986,24 @@ snapshots:
       loose-envify: 1.4.0
       path-to-regexp: 1.9.0
       prop-types: 15.8.1
-      react: 16.14.0
+      react: 17.0.2
       react-is: 16.13.1
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
-  react-slideshow-image@1.5.3(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
-    dependencies:
-      '@tweenjs/tween.js': 18.6.4
-      prop-types: 15.8.1
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-
-  react-transition-group@4.4.5(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
+  react-transition-group@4.4.5(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:
       '@babel/runtime': 7.27.1
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
 
-  react@16.14.0:
+  react@17.0.2:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      prop-types: 15.8.1
 
   read-pkg-up@7.0.1:
     dependencies:
@@ -9275,7 +9246,7 @@ snapshots:
     optionalDependencies:
       '@parcel/watcher': 2.5.1
 
-  scheduler@0.19.1:
+  scheduler@0.20.2:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
