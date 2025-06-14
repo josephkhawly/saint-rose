@@ -15,9 +15,19 @@ function Nav() {
         document.body.style.overflow = 'scroll'
       }
     }
+    const handleScroll = () => {
+      const nav = document.querySelector('.nav-container')
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled')
+      } else {
+        nav.classList.remove('scrolled')
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleScroll)
       document.body.style.overflow = 'scroll'
     }
   }, [])

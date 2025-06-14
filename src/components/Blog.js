@@ -1,7 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import Fade from 'react-reveal/Fade'
@@ -10,8 +7,6 @@ import Nav from './Nav'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
-
-gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const formatIso = (isoString) => {
   const date = new Date(isoString)
@@ -38,7 +33,6 @@ function BlogPost({ blogItem }) {
 function Blog() {
   const [blogItems, setBlogItems] = useState([])
   const [assets, setAssets] = useState([])
-  const container = useRef(null)
 
   useEffect(() => {
     const options = [
@@ -55,19 +49,6 @@ function Blog() {
       })
       .catch((error) => console.log('error: ', error))
   }, [])
-
-  useGSAP(
-    () => {
-      ScrollTrigger.create({
-        trigger: '.content',
-        start: 'top+=50 top',
-        end: 'bottom top',
-        toggleClass: { targets: '.nav-container', className: 'scrolled' },
-        scrub: false,
-      })
-    },
-    { scope: container },
-  )
 
   const renderFeatured = () => {
     const featuredPost = blogItems.find((blogItem) => blogItem.featured == true)
@@ -93,9 +74,7 @@ function Blog() {
   const renderPostsForColumn = (indexes, posts) => {
     return posts
       .filter((blogItem, index) => indexes.includes(index))
-      .map((blogItem, index) => {
-        return <BlogPost key={index} blogItem={blogItem} />
-      })
+      .map((blogItem) => <BlogPost key={blogItem.id} blogItem={blogItem} />)
   }
 
   const featuredPostIndex = blogItems.findIndex((blogItem) => blogItem.featured == true)
@@ -119,15 +98,15 @@ function Blog() {
   const renderMobileFeed = () => {
     return (
       <div className='blog-posts'>
-        {filteredBlogPosts.map((blogItem, index) => {
-          return <BlogPost key={index} blogItem={blogItem} />
-        })}
+        {filteredBlogPosts.map((blogItem) => (
+          <BlogPost key={blogItem.id} blogItem={blogItem} />
+        ))}
       </div>
     )
   }
 
   return (
-    <div className='blog' ref={container}>
+    <div className='blog'>
       <Nav />
       <div className='content-container'>
         <div className='content'>

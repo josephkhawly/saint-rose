@@ -1,32 +1,12 @@
-import React, { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 import Nav from './Nav'
 import Footer from './Footer'
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
-
 function Policies() {
-  const container = useRef(null)
-
-  useGSAP(
-    () => {
-      ScrollTrigger.create({
-        trigger: '.content',
-        start: 'top+=50 top',
-        end: 'bottom top',
-        toggleClass: { targets: '.nav-container', className: 'scrolled' },
-        scrub: false,
-      })
-    },
-    { scope: container },
-  )
-
   return (
-    <div className='policies' ref={container}>
+    <div className='policies'>
       <Nav />
       <div className='content-container'>
         <div className='content'>

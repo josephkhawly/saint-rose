@@ -29,15 +29,6 @@ function Services() {
 
   useGSAP(
     () => {
-      // Nav scroll effect
-      ScrollTrigger.create({
-        trigger: '.content',
-        start: 'top+=100 top',
-        end: 'bottom top',
-        toggleClass: { targets: '.nav-container', className: 'scrolled' },
-        scrub: false,
-      })
-
       // Responsive logic for title bars
       let haircutWidth, colorWidth, treatmentsWidth
       if (window.innerWidth >= MOBILEBP) {

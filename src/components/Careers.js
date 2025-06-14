@@ -1,8 +1,4 @@
-import React, { useState, useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-gsap.registerPlugin(require('gsap/ScrollTrigger'), useGSAP)
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import React, { useState } from 'react'
 import Fade from 'react-reveal/Fade'
 import Nav from './Nav'
 import Footer from './Footer'
@@ -33,20 +29,6 @@ function Careers() {
     question5: '',
     question6: '',
   })
-  const container = useRef(null)
-
-  useGSAP(
-    () => {
-      ScrollTrigger.create({
-        trigger: '.content',
-        start: 'top+=50 top',
-        end: 'bottom top',
-        toggleClass: { targets: '.nav-container', className: 'scrolled' },
-        scrub: false,
-      })
-    },
-    { scope: container },
-  )
 
   const handleInput = (field, value) => {
     setState((prev) => ({ ...prev, [field]: value }))

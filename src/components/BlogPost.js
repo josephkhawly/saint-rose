@@ -1,7 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
 import Axios from 'axios'
 import Fade from 'react-reveal/Fade'
 import Nav from './Nav'
@@ -10,25 +7,10 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Footer from './Footer'
 import { getEntryApiEndpoint, processEntryResponse } from '../contentful'
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
-
 function BlogPost(props) {
   const container = useRef(null)
   const [blogPost, setBlogPost] = useState({})
   const [assets, setAssets] = useState([])
-
-  useGSAP(
-    () => {
-      ScrollTrigger.create({
-        trigger: '.content',
-        start: 'top+=50 top',
-        end: 'bottom top',
-        toggleClass: { targets: '.nav-container', className: 'scrolled' },
-        scrub: false,
-      })
-    },
-    { scope: container },
-  )
 
   useEffect(() => {
     const blogPostId = props.match.params.id
