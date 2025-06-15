@@ -1,10 +1,5 @@
 @use "variables";
 
-// .meet-the-team {
-//   height: 0px;
-//   overflow: hidden;
-//   background-color: $background-color;
-// }
 
 .about {
   height: 0px;
@@ -126,7 +121,6 @@
         width: 25px;
         height: 24px;
         mask-size: contain;
-        // color: $white;
         background-color: variables.$light-gray-2;
       }
 
@@ -143,13 +137,6 @@
   }
 
   .staff-member-spotlight {
-    // z-index: 10;
-    // position: fixed;
-    // width: 100%;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
-
     position: fixed;
     z-index: 30;
     top: 0;
@@ -188,7 +175,6 @@
 
       video {
         width: 100%;
-        // height: auto;
         outline: none;
         height: calc((100vh * 0.9));
         object-fit: contain;
@@ -269,15 +255,6 @@
     }
   }
 
-  // .staff-member-spotlight.display-enter {
-  //   opacity: 0;
-  // }
-
-  // .staff-member-spotlight.display-enter-active {
-  //   opacity: 1;
-  //   transition: opacity 1000ms ease-in;
-  // }
-
   .staff-member-spotlight.display-exit {
     opacity: 1;
   }
@@ -287,136 +264,9 @@
     transition: opacity 500ms ease-in;
   }
 
-  .our-story {
-    margin-top: 300px;
-    position: relative;
-
-    .text-container {
-      width: 50%;
-    }
-
-    .our-story--title-bar {
-      display: flex;
-      align-items: center;
-      text-transform: uppercase;
-      position: absolute;
-      background-color: variables.$black;
-      z-index: 5;
-      top: -146px;
-      left: 0;
-      width: 0;
-      height: 180px;
-    }
-
-    .title-bar-text {
-      opacity: 0;
-      font-family: variables.$ap;
-      font-size: 80px;
-      color: variables.$secondary-color;
-      margin-left: 124px;
-    }
-
-    .section-hero-video-container {
-      height: calc((100vw * 0.56));
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      width: 100%;
-    }
-
-    #section-hero-video {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .section-text {
-      display: flex;
-      width: 100%;
-      // margin: 124px;
-    }
-
-    .section-text .left {
-      font-family: variables.$ap;
-      font-size: 45px;
-      line-height: 60px;
-      padding: 124px 62px 124px 124px;
-    }
-
-    .section-text .right {
-      padding: 124px 124px 124px 0px;
-    }
-
-    .section-text .right p {
-      font-family: variables.$ap;
-      font-size: 22px;
-      line-height: 36px;
-      margin-bottom: 36px;
-    }
-  }
-
   .our-clients {
     margin-top: 300px;
     position: relative;
-
-    .text-container {
-      width: 50%;
-    }
-
-    .our-clients--title-bar {
-      display: flex;
-      align-items: center;
-      text-transform: uppercase;
-      position: absolute;
-      background-color: variables.$black;
-      z-index: 5;
-      top: -146px;
-      left: 0;
-      width: 0;
-      height: 180px;
-    }
-
-    .title-bar-text {
-      opacity: 0;
-      font-family: variables.$ap;
-      font-size: 80px;
-      color: variables.$secondary-color;
-      margin-left: 124px;
-      white-space: nowrap;
-    }
-
-    .section-hero-image {
-      margin-top: 64px;
-      height: 600px;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      width: 100%;
-    }
-
-    .section-text {
-      display: flex;
-      width: 100%;
-      // margin: 124px;
-    }
-
-    .section-text .left {
-      font-family: variables.$ap;
-      font-size: 45px;
-      line-height: 60px;
-      padding: 124px 62px 124px 124px;
-    }
-
-    .section-text .right {
-      padding: 124px 124px 124px 0px;
-    }
-
-    .section-text .right p {
-      font-family: variables.$ap;
-      font-size: 22px;
-      line-height: 36px;
-      margin-bottom: 36px;
-    }
 
     .video-review {
       margin: 0 124px;
@@ -426,7 +276,6 @@
       video {
         height: 100%;
         width: 50%;
-        // object-fit: cover;
         object-fit: contain;
       }
     }
@@ -558,90 +407,8 @@
       }
     }
 
-    .our-story {
-      margin-top: 125px;
-
-      .our-story--title-bar {
-        height: 90px;
-        top: -72px;
-      }
-
-      .title-bar-text {
-        font-family: variables.$ap;
-        font-size: 36px;
-        letter-spacing: 0.29px;
-        margin-left: 24px;
-        color: variables.$secondary-color;
-      }
-
-      .section-text {
-        display: block;
-        padding: 0 24px;
-      }
-
-      .text-container {
-        width: 100%;
-
-        .left {
-          padding: 0;
-          font-size: 30px;
-          line-height: 40px;
-          margin-top: 30px;
-        }
-
-        .right {
-          padding: 0;
-          margin-top: 24px;
-
-          p {
-            font-size: 17px;
-            line-height: 28px;
-          }
-        }
-      }
-    }
-
     .our-clients {
       margin-top: 125px;
-
-      .our-clients--title-bar {
-        height: 90px;
-        top: -72px;
-      }
-
-      .title-bar-text {
-        font-family: variables.$ap;
-        font-size: 36px;
-        letter-spacing: 0.29px;
-        margin-left: 24px;
-        color: variables.$secondary-color;
-      }
-
-      .section-text {
-        display: block;
-        padding: 0 24px;
-      }
-
-      .text-container {
-        width: 100%;
-
-        .left {
-          padding: 0;
-          font-size: 30px;
-          line-height: 40px;
-          margin-top: 30px;
-        }
-
-        .right {
-          padding: 0;
-          margin-top: 24px;
-
-          p {
-            font-size: 17px;
-            line-height: 28px;
-          }
-        }
-      }
 
       .video-review {
         margin: 0 24px;

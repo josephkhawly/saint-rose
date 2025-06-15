@@ -1,8 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { Expo } from 'gsap'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
 import SlideAndFade from './SlideAndFade'
 import MediaQuery from 'react-responsive'
 import Nav from './Nav'
@@ -11,60 +7,12 @@ import Footer from './Footer'
 import classnames from 'classnames'
 import { playMediaChange } from '../mediaChangeUtils'
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 function Services() {
   const [haircutOpen, setHaircutOpen] = useState(false)
   const [colorOpen, setColorOpen] = useState(false)
   const [treatmentsOpen, setTreatmentsOpen] = useState(false)
   const container = useRef(null)
-
-  // Helper for title bar animation
-  const animateTitleBar = (selector, width) => {
-    return gsap
-      .timeline()
-      .to(selector, { width, duration: 0.7, ease: Expo.easeIn })
-      .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
-  }
-
-  useGSAP(
-    () => {
-      // Responsive logic for title bars
-      let haircutWidth, colorWidth, treatmentsWidth
-      if (window.innerWidth >= MOBILEBP) {
-        haircutWidth = '812px'
-        colorWidth = '975px'
-        treatmentsWidth = '675px'
-      } else {
-        haircutWidth = '334px'
-        colorWidth = '244px'
-        treatmentsWidth = '275px'
-      }
-
-      // Haircut
-      ScrollTrigger.create({
-        trigger: '.haircut',
-        start: window.innerWidth < MOBILEBP ? 'top bottom' : 'top+=100 bottom',
-        once: true,
-        onEnter: () => animateTitleBar('.haircut--title-bar', haircutWidth).play(),
-      })
-      // Color
-      ScrollTrigger.create({
-        trigger: '.color',
-        start: 'top+=100 bottom',
-        once: true,
-        onEnter: () => animateTitleBar('.color--title-bar', colorWidth).play(),
-      })
-      // Treatments
-      ScrollTrigger.create({
-        trigger: '.treatments',
-        start: 'top+=100 bottom',
-        once: true,
-        onEnter: () => animateTitleBar('.treatments--title-bar', treatmentsWidth).play(),
-      })
-    },
-    { scope: container },
-  )
 
   const renderPricingRow = (title, description, price) => {
     return (
@@ -217,8 +165,8 @@ function Services() {
                   </div>
                 </SlideAndFade>
               </div>
-              <SlideAndFade delay={250}>
-                <div className='text-container'>
+              <div className='text-container'>
+                <SlideAndFade delay={250}>
                   <div className='right'>
                     <p>
                       We offer complimentary refreshments because you deserve it. This includes your
@@ -226,8 +174,8 @@ function Services() {
                       cold, and white, red, and rosé wine.
                     </p>
                   </div>
-                </div>
-              </SlideAndFade>
+                </SlideAndFade>
+              </div>
             </div>
 
             <SlideAndFade delay={250}>

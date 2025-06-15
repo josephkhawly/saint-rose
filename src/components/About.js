@@ -1,8 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { Expo } from 'gsap'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
 import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../contentful'
 import Iframe from 'react-iframe'
 import SlideAndFade from './SlideAndFade'
@@ -10,11 +6,12 @@ import Axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import MediaQuery from 'react-responsive'
 import Nav from './Nav'
-import { MOBILEBP, DESKTOPTRANSITIONBP, DESKTOPBP, quotesData } from '../constants'
+import { MOBILEBP, DESKTOPTRANSITIONBP, quotesData } from '../constants'
 import StaffMember from './StaffMember'
 import StaffMemberSpotlight from './StaffMemberSpotlight'
 import Quotes from './Quotes'
 import Footer from './Footer'
+import HeroSection from './HeroSection'
 
 function preloadImage(imageURL) {
   const img = new Image()
@@ -58,8 +55,6 @@ function enableParentScroll() {
   document.body.className = document.body.className.replace('disable-scroll', '')
 }
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
-
 function About() {
   const [showSpotlight, setShowSpotlight] = useState(false)
   const [selectedStaffMember, setSelectedStaffMember] = useState({})
@@ -76,51 +71,6 @@ function About() {
   )
 
   const container = useRef(null)
-
-  // Helper for title bar animation
-  const animateTitleBar = (selector, width) => {
-    return gsap
-      .timeline()
-      .to(selector, { width, duration: 0.7, ease: Expo.easeIn })
-      .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
-  }
-
-  useGSAP(
-    () => {
-      // Responsive logic for title bars
-      let storyWidth, clientsWidth
-      if (window.innerWidth >= DESKTOPBP) {
-        storyWidth = '612px'
-        clientsWidth = '680px'
-      } else if (window.innerWidth >= MOBILEBP) {
-        storyWidth = '612px'
-        clientsWidth = '612px'
-      } else {
-        storyWidth = '243px'
-        clientsWidth = '280px'
-      }
-
-      // Our Story
-      ScrollTrigger.create({
-        trigger: '.our-story',
-        start: window.innerWidth < MOBILEBP ? 'top+=50 bottom' : 'top+=100 bottom',
-        once: true,
-        onEnter: () => animateTitleBar('.our-story--title-bar', storyWidth).play(),
-      })
-      // Our Clients
-      ScrollTrigger.create({
-        trigger: '.our-clients',
-        start: window.innerWidth < MOBILEBP ? 'top+=50 bottom' : 'top+=100 bottom',
-        once: true,
-        onEnter: () => animateTitleBar('.our-clients--title-bar', clientsWidth).play(),
-      })
-
-      return () => {
-        enableParentScroll()
-      }
-    },
-    { scope: container },
-  )
 
   // Fetch staff data
   React.useEffect(() => {
@@ -172,10 +122,10 @@ function About() {
           <div className='inner-content-container'>
             <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
               <div className='header'>
-                <SlideAndFade delay={2250}>
+                <SlideAndFade delay={1250}>
                   <h5>Meet the team</h5>
                 </SlideAndFade>
-                <SlideAndFade delay={2450}>
+                <SlideAndFade delay={1450}>
                   <h3>
                     Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone
                     you vibe with? Let us know when you book and we&apos;ll make the match.
@@ -183,7 +133,7 @@ function About() {
                 </SlideAndFade>
               </div>
 
-              <SlideAndFade delay={2650}>
+              <SlideAndFade delay={1650}>
                 <div className='staff-container'>
                   {staffMembers.map((staffMemberData, index) => (
                     <StaffMember
@@ -197,7 +147,7 @@ function About() {
             </MediaQuery>
 
             <MediaQuery maxWidth={MOBILEBP}>
-                <SlideAndFade delay={2250}>
+              <SlideAndFade delay={1250}>
                 <div>
                   <div className='header'>
                     <h5>Meet the team</h5>
@@ -220,97 +170,28 @@ function About() {
             </MediaQuery>
           </div>
 
-          <div className='our-story'>
-            <div className='our-story--title-bar'>
-              <div className='title-bar-text'>Our story</div>
-            </div>
-            <SlideAndFade delay={700}>
-              <div className='section-hero-video-container'>
-                <video id='section-hero-video' autoPlay loop muted playsInline>
-                  <source
-                    src={
-                      'https://videos.ctfassets.net/2f8bh3xz5t4r/3DuvQsjnxpIwzKaJZy1blR/030264480575e159921baa017a2b6a61/our-story.mp4'
-                    }
-                    type='video/mp4'
-                  />
-                </video>
-              </div>
-            </SlideAndFade>
-            <div className='section-text'>
-              <div className='text-container'>
-                <SlideAndFade>
-                  <div className='left'>
-                    There&apos;s a reason we&apos;re good at what we do, and it&apos;s because of
-                    where we came from.
-                  </div>
-                </SlideAndFade>
-              </div>
-              <SlideAndFade delay={250}>
-                <div className='text-container'>
-                  <div className='right'>
-                    <p>
-                      After several years of training with some of the world&apos;s top stylists and
-                      traveling all over the country doing shows and working in salon education,
-                      owner and founder Timothy Silmon dreamt up a place where the beauty-obsessed
-                      could not only work, but also create lasting connections through their craft.
-                      Saint Rose was born out of Timothy&apos;s dream for a &ldquo;non-salon&rdquo;
-                      - a space that is kind, warm, and inviting. Since then, it has grown into
-                      something even better: the most genuine and timeless beauty salon to ever hit
-                      Houston. And it makes you feel right at home.
-                    </p>
-                    <p>
-                      The vintage TV, hand-crafted workspaces, couture wallpaper, and quirky
-                      embellishments around the salon all work to create an atmosphere that balances
-                      nostalgia with the optimism of new ideas. &ldquo;I wanted to create spaces
-                      that have a timeless feeling&rdquo; Timothy says, &ldquo;a place where older
-                      generations reminisce and the younger generations use it as backdrop for the
-                      perfect photo&rdquo;.
-                    </p>
-
-                    <p>
-                      From a snip of hair to a sip of our delicious loose-leaf tea, we customize
-                      every experience our clients have. Because who wants ordinary?
-                    </p>
-                  </div>
-                </div>
-              </SlideAndFade>
-            </div>
-          </div>
+          <HeroSection
+            title='Our story'
+            video='https://videos.ctfassets.net/2f8bh3xz5t4r/3DuvQsjnxpIwzKaJZy1blR/030264480575e159921baa017a2b6a61/our-story.mp4'
+            leftText={
+              "There's a reason we're good at what we do, and it's because of where we came from."
+            }
+            rightParagraphs={[
+              "After several years of training with some of the world's top stylists and traveling all over the country doing shows and working in salon education, owner and founder Timothy Silmon dreamt up a place where the beauty-obsessed could not only work, but also create lasting connections through their craft. Saint Rose was born out of Timothy's dream for a “non-salon” - a space that is kind, warm, and inviting. Since then, it has grown into something even better: the most genuine and timeless beauty salon to ever hit Houston. And it makes you feel right at home.",
+              'The vintage TV, hand-crafted workspaces, couture wallpaper, and quirky embellishments around the salon all work to create an atmosphere that balances nostalgia with the optimism of new ideas. “I wanted to create spaces that have a timeless feeling” Timothy says, “a place where older generations reminisce and the younger generations use it as backdrop for the perfect photo”.',
+              'From a snip of hair to a sip of our delicious loose-leaf tea, we customize every experience our clients have. Because who wants ordinary?',
+            ]}
+          />
 
           <div className='our-clients'>
-            <div className='our-clients--title-bar'>
-              <div className='title-bar-text'>Our clients</div>
-            </div>
-            <SlideAndFade delay={700}>
-              <div
-                className='section-hero-image'
-                style={{
-                  backgroundImage: `url("https://images.ctfassets.net/2f8bh3xz5t4r/17EFNaEJN2pKw4jMIHAn3S/20152047334829e72ae6fa99ebcfadd6/our-clients.jpg")`,
-                }}
-              />
-            </SlideAndFade>
-            <div className='section-text'>
-              <div className='text-container'>
-                <SlideAndFade>
-                  <div className='left'>
-                    But what do our amazing clients actually say about us? Read our reviews below
-                    and see why they keep coming back.
-                  </div>
-                </SlideAndFade>
-              </div>
-              <SlideAndFade delay={250}>
-                <div className='text-container'>
-                  <div className='right'>
-                    <p>
-                      We take our level of quality and care seriously and show it through every
-                      moment of your time with us. Our guests come back for the genuine commitment
-                      we have to them and their needs and our consistency when we deliver. Book
-                      today and experience Saint Rose for yourself.
-                    </p>
-                  </div>
-                </div>
-              </SlideAndFade>
-            </div>
+            <HeroSection
+              title='Our clients'
+              image='https://images.ctfassets.net/2f8bh3xz5t4r/17EFNaEJN2pKw4jMIHAn3S/20152047334829e72ae6fa99ebcfadd6/our-clients.jpg'
+              leftText='But what do our amazing clients actually say about us? Read our reviews below and see why they keep coming back.'
+              rightParagraphs={[
+                'We take our level of quality and care seriously and show it through every moment of your time with us. Our guests come back for the genuine commitment we have to them and their needs and our consistency when we deliver. Book today and experience Saint Rose for yourself.',
+              ]}
+            />
 
             <div className='video-review'>
               <video id='who-we-are-vid' autoPlay loop muted controls playsInline>
