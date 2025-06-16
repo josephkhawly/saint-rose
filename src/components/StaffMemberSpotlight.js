@@ -74,19 +74,15 @@ function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
   return (
     <div className="staff-member-spotlight">
       <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <SlideAndFade distance="50px">
           {video
             ? Video(video, closeHandler)
             : Bio(name, role, photoLarge, bio, closeHandler)}
-        </SlideAndFade>
       </MediaQuery>
 
       <MediaQuery maxWidth={MOBILEBP}>
-        <SlideAndFade distance="50px">
           {video
             ? Video(video, closeHandler)
             : MobileBio(name, role, photoLarge, bio, closeHandler)}
-        </SlideAndFade>
       </MediaQuery>
     </div>
   );
