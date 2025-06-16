@@ -87,47 +87,6 @@
     opacity: 0;
   }
 
-  .section-hero {
-    height: calc((100vw * 0.56));
-    width: 100%;
-
-    video {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .section-text {
-    display: flex;
-    width: 100%;
-  }
-
-  .text-container {
-    width: 50%;
-  }
-
-  .text-container a {
-    color: variables.$pink;
-  }
-
-  .section-text .left {
-    font-family: variables.$ap;
-    font-size: 32px;
-    line-height: 51px;
-    padding: 124px 24px 124px 84px;
-  }
-
-  .section-text .right {
-    padding: 124px 84px 124px 24px;
-  }
-
-  .section-text .right p {
-    font-family: variables.$ap;
-    font-size: 20px;
-    line-height: 33px;
-  }
-
   .section.last {
     margin-bottom: 125px;
   }
@@ -140,7 +99,6 @@
   }
 
   .pricing-table {
-
     .header {
       font-family: variables.$ap;
       height: 78px;
@@ -237,37 +195,6 @@
       .title-bar {
         height: 90px;
         top: -72px;
-      }
-    }
-
-    .title-bar-text {
-      font-family: variables.$ap;
-      font-size: 36px;
-      letter-spacing: 0.29px;
-      margin-left: 24px;
-      color: variables.$mud;
-    }
-
-    .text-container {
-      width: 100%;
-    }
-
-    .section-text {
-      display: block;
-
-      .left {
-        padding: 24px;
-        font-size: 25px;
-        line-height: 36px;
-      }
-
-      .right {
-        padding: 0 24px;
-
-        p {
-          font-size: 17px;
-          line-height: 28px;
-        }
       }
     }
 

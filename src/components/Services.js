@@ -6,7 +6,7 @@ import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import Footer from './Footer'
 import classnames from 'classnames'
 import { playMediaChange } from '../mediaChangeUtils'
-
+import HeroSection from './HeroSection'
 
 function Services() {
   const [haircutOpen, setHaircutOpen] = useState(false)
@@ -144,39 +144,17 @@ function Services() {
           </div>
           {/* --- New section --- */}
           <div className={classnames('haircut', 'section')}>
-            <SlideAndFade delay={3000}>
-              <div className='section-hero'>
-                <video id='hair-loop-vid' autoPlay loop muted playsInline>
-                  <source
-                    src={
-                      'https://videos.ctfassets.net/2f8bh3xz5t4r/65IZapjKqmRfxmkQM2z88u/d5ecf70b7ef28bcbe86e7baa4ff91d3d/services.mp4'
-                    }
-                    type='video/mp4'
-                  />
-                </video>
-              </div>
-            </SlideAndFade>
-            <div className='section-text'>
-              <div className='text-container'>
-                <SlideAndFade>
-                  <div className='left'>
-                    It&apos;s not just hair. It&apos;s your hair, and we care about every single
-                    strand. Let&apos;s get creating, shall we?
-                  </div>
-                </SlideAndFade>
-              </div>
-              <div className='text-container'>
-                <SlideAndFade delay={250}>
-                  <div className='right'>
-                    <p>
-                      We offer complimentary refreshments because you deserve it. This includes your
-                      choice of French-press coffee, a variety of loose-leaf teas served hot or
-                      cold, and white, red, and rosé wine.
-                    </p>
-                  </div>
-                </SlideAndFade>
-              </div>
-            </div>
+
+            <HeroSection
+              video={
+                'https://videos.ctfassets.net/2f8bh3xz5t4r/65IZapjKqmRfxmkQM2z88u/d5ecf70b7ef28bcbe86e7baa4ff91d3d/services.mp4'
+              }
+              leftText="It's not just hair. It's your hair, and we care about every single strand. Let's get creating, shall we?"
+              rightParagraphs={[
+                'We offer complimentary refreshments because you deserve it. This includes your choice of French-press coffee, a variety of loose-leaf teas served hot or cold, and white, red, and rosé wine.',
+              ]}
+              heroDelay={3000}
+            />
 
             <SlideAndFade delay={250}>
               <div className='services-container'>

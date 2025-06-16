@@ -15,7 +15,7 @@ const animateTitleBar = (selector, width) => {
     .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
 }
 
-function HeroSection({ title, video, image, leftText, rightParagraphs = [] }) {
+function HeroSection({ title, video, image, leftText, rightParagraphs = [], heroDelay = 700 }) {
   useGSAP(
     () => {
       // Responsive logic for title bar
@@ -36,14 +36,16 @@ function HeroSection({ title, video, image, leftText, rightParagraphs = [] }) {
         onEnter: () => animateTitleBar('.hero--title-bar', storyWidth).play(),
       })
     },
-    { scope: document.querySelector('.about') },
+    { scope: document.querySelector('.content-container') },
   )
   return (
     <div className='hero'>
-      <div className='hero--title-bar'>
-        <div className='title-bar-text'>{title}</div>
-      </div>
-      <SlideAndFade delay={700}>
+      {title && (
+        <div className='hero--title-bar'>
+          <div className='title-bar-text'>{title}</div>
+        </div>
+      )}
+      <SlideAndFade delay={heroDelay}>
         {video && (
           <div className='video-container'>
             <video id='hero-video' autoPlay loop muted playsInline>
