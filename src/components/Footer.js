@@ -32,13 +32,25 @@ function Footer() {
             <div className='footer-misc'>
               <div className='copyright'>&copy; 2023 Hair by Saint Rose</div>
               <div className='social'>
-                <a href='https://www.facebook.com/hairbysaintrose/'>
+                <a
+                  href='https://www.facebook.com/hairbysaintrose/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <span className='facebook-logo'></span>
                 </a>
-                <a href='https://www.instagram.com/hairbysaintrose'>
+                <a
+                  href='https://www.instagram.com/hairbysaintrose'
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <span className='instagram-logo'></span>
                 </a>
-                <a href='https://www.youtube.com/channel/UC-m8XjZ7A9vwDpch45bJbtA'>
+                <a
+                  href='https://www.youtube.com/channel/UC-m8XjZ7A9vwDpch45bJbtA'
+                  target='_blank'
+                  rel='noreferrer'
+                >
                   <span className='youtube-logo'></span>
                 </a>
               </div>

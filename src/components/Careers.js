@@ -193,7 +193,7 @@ function Careers() {
               </h3>
               <h6>
                 If you have any specific questions or concerns please reach out to{' '}
-                <a href=''>manager@hairbysaintrose.com</a>
+                <a href='mailto:manager@hairbysaintrose.com'>manager@hairbysaintrose.com</a>
               </h6>
             </div>
             <div className='form'>

@@ -30,7 +30,7 @@ function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
         {instagram && (
           <div className="instagram">
             <span>
-              <a href={`https://www.instagram.com/${instagram}/`}>
+              <a href={`https://www.instagram.com/${instagram}/`} target='_blank' rel='noreferrer'>
                 @{instagram}
               </a>
             </span>

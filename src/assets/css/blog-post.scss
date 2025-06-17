@@ -71,19 +71,6 @@
       padding-bottom: 24px;
     }
 
-    // p:empty:before {
-    //   content: " ";
-    //   white-space: pre;
-    // }
-
-    // p:empty {
-    //   margin-bottom: 24px;
-    // }
-
-    // p:last-of-type {
-    //   margin-bottom: 0;
-    // }
-
     b {
       font-family: variables.$ap-bold;
     }
@@ -120,8 +107,6 @@
     blockquote {
       margin: 50px 0 50px 72px;
       padding-left: 40px;
-      // border-left: 4px solid $yellow;
-      // color: $dark-green;
       font-size: 14px;
       line-height: 26px;
       font-family: variables.$ap;
