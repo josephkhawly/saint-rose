@@ -45,35 +45,6 @@
     opacity: 0;
   }
 
-  .nav-container .nav {
-    background-color: variables.$black;
-  }
-
-  .nav-container .nav-content {
-    color: variables.$secondary-color;
-    transition: all 0.5s ease-out;
-  }
-
-  .nav-container .divider {
-    opacity: 0;
-  }
-
-  .nav-container .book-now-button {
-    border-color: variables.$secondary-color;
-  }
-
-  .nav-container a {
-    color: variables.$secondary-color;
-  }
-
-  .nav-container a:hover {
-    color: variables.$pink;
-  }
-
-  .nav-container a.book-now-button:hover {
-    color: variables.$white;
-  }
-
   video {
     height: 100%;
     width: 100%;

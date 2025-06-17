@@ -34,11 +34,6 @@
     }
   }
 
-  .book-now-button {
-    border: solid 2px variables.$black;
-    padding: 10px 16px;
-  }
-
   li {
     text-transform: uppercase;
     display: inline;
@@ -52,17 +47,25 @@
     text-decoration: none;
     color: variables.$black;
     transition: all 0.5s ease-out;
+    &:hover {
+      color: variables.$pink;
+    }
+
+    &.active-nav-link {
+      color: variables.$pink;
+    }
   }
 
-  a:hover {
-    color: variables.$pink;
+  .book-now-button {
+    border: solid 2px variables.$black;
+    padding: 10px 16px;
+    &:hover {
+      cursor: pointer;
+      color: variables.$secondary-color;
+      background-color: variables.$black;
+    }
   }
 
-  a.book-now-button:hover {
-    cursor: pointer;
-    color: variables.$secondary-color;
-    background-color: variables.$black;
-  }
 
   .divider {
     height: 2px;
@@ -70,45 +73,44 @@
     margin: 0 84px;
   }
 
-  .active-nav-link {
-    color: variables.$pink;
-  }
-
-  .book-now-button.active-nav-link {
-    color: variables.$secondary-color;
-    background-color: variables.$black;
-  }
-
   .disable-nav-link {
     pointer-events: none;
   }
-}
 
-.nav-container.scrolled .nav {
-  background-color: variables.$black;
-}
+  &.scrolled {
+    .nav {
+      background-color: variables.$black;
+    }
 
-.nav-container.scrolled .nav-content {
-  color: variables.$secondary-color;
-  transition: all 0.5s ease-out;
-}
+    .nav-content {
+      color: variables.$secondary-color;
+      transition: all 0.5s ease-out;
+    }
 
-.nav-container.scrolled .divider {
-  opacity: 0;
-}
+    .divider {
+      opacity: 0;
+    }
 
-.nav-container.scrolled .book-now-button {
-  border-color: variables.$secondary-color;
-}
+    a {
+      color: variables.$secondary-color;
 
-.nav-container.scrolled a {
-  color: variables.$secondary-color;
-}
+      &:hover {
+        color: variables.$pink;
+      }
 
-.nav-container.scrolled .book-now-button.active-nav-link {
-  color: variables.$black;
-  background-color: variables.$secondary-color;
-  border: solid 2px variables.$secondary-color;
+      &.active-nav-link {
+        color: variables.$pink;
+      }
+    }
+
+    .book-now-button {
+      border-color: variables.$secondary-color;
+      &:hover {
+        color: variables.$black;
+        background-color: variables.$secondary-color;
+      }
+    }
+  }
 }
 
 @media all and (max-width: variables.$desktop-transitional) {
@@ -260,7 +262,8 @@
     }
 
     .hamburger-inner:after {
-      transition: bottom 0.1s ease-in 0.25s,
+      transition:
+        bottom 0.1s ease-in 0.25s,
         transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
@@ -291,7 +294,9 @@
     }
 
     .hamburger--spin .hamburger-inner:before {
-      transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+      transition:
+        top 0.1s ease-in 0.25s,
+        opacity 0.1s ease-in;
     }
 
     .hamburger-inner:before {
@@ -299,7 +304,9 @@
     }
 
     .hamburger-inner:before {
-      transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+      transition:
+        top 0.1s ease-in 0.25s,
+        opacity 0.1s ease-in;
     }
   }
 
@@ -346,30 +353,21 @@
       transition-delay: 0.12s;
       transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
       transform: rotate(225deg);
-    }
-
-    .hamburger-inner {
       transition-duration: 0.22s;
     }
 
     .hamburger-inner:before {
-      transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
-    }
-
-    .hamburger-inner:before {
       top: 0;
-      transition: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
+      transition:
+        top 0.1s ease-out,
+        opacity 0.1s ease-out 0.12s;
       opacity: 0;
     }
 
     .hamburger-inner:after {
-      transition: bottom 0.1s ease-in 0.25s,
-        transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    }
-
-    .hamburger-inner:after {
       bottom: 0;
-      transition: bottom 0.1s ease-out,
+      transition:
+        bottom 0.1s ease-out,
         transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
       transform: rotate(-90deg);
     }

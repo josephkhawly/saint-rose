@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 import { links } from '../constants'
 
 function Nav() {
   const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 989)
+  const location = useLocation()
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,7 +18,7 @@ function Nav() {
     }
     const handleScroll = () => {
       const nav = document.querySelector('.nav-container')
-      if (window.scrollY > 50) {
+      if (location.pathname === '/' || window.scrollY > 50) {
         nav.classList.add('scrolled')
       } else {
         nav.classList.remove('scrolled')
@@ -25,12 +26,14 @@ function Nav() {
     }
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', handleResize)
+    // Call handleScroll initially in case the user is already scrolled
+    handleScroll()
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('scroll', handleScroll)
       document.body.style.overflow = 'scroll'
     }
-  }, [])
+  }, [location.pathname])
 
   const handleOpenToggle = () => {
     if (open) {

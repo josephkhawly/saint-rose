@@ -1,20 +1,6 @@
 @use "variables";
 
 .contact {
-  .nav-container {
-    .active-nav-link {
-      color: variables.$pink;
-    }
-
-    a:hover {
-      color: variables.$pink;
-    }
-  }
-
-  .nav-container.scrolled a {
-    color: variables.$secondary-color;
-  }
-
   height: 0px;
   overflow: hidden;
   background-color: variables.$background-color;
