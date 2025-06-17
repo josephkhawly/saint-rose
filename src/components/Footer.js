@@ -30,7 +30,7 @@ function Footer() {
             </div>
 
             <div className='footer-misc'>
-              <div className='copyright'>&copy; 2023 Hair by Saint Rose</div>
+              <div className='copyright'>&copy; {new Date().getFullYear()} Hair by Saint Rose</div>
               <div className='social'>
                 <a
                   href='https://www.facebook.com/hairbysaintrose/'
