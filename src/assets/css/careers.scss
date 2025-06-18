@@ -20,7 +20,7 @@
 
   .intro {
     padding: 0 48px;
-    margin: 84px 84px 60px;
+    margin: 40px 84px 60px;
     width: 70%;
   }
 
@@ -286,17 +286,13 @@
       padding: 0 20px;
 
       h6 {
-        font-family: variables.$ap-bold;
-        font-size: 15px;
-        letter-spacing: 1.23px;
         margin-bottom: 30px;
       }
 
       h3 {
-        margin-top: 0;
+        margin-top: 20px;
         font-size: 37px;
         line-height: 42px;
-        font-family: variables.$opt;
       }
     }
 
