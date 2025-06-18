@@ -43,8 +43,12 @@ function Contact() {
                 <div className='contact-body'>
                   <h4>Contact</h4>
                   <div className='address'>
-                    <h5>(346) 802-2183</h5>
-                    <h5>info@hairbysaintrose.com</h5>
+                    <h5>
+                      <a href='tel:3468022183'>(346) 802-2183</a>
+                    </h5>
+                    <h5>
+                      <a href='mailto:info@hairbysaintrose.com'>info@hairbysaintrose.com</a>
+                    </h5>
                   </div>
                 </div>
               </div>

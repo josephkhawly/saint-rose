@@ -35,6 +35,10 @@
     margin-bottom: 0;
   }
 
+  a {
+    color: variables.$black;
+  }
+
   .location-contact-container {
     display: flex;
     margin-top: 80px;
@@ -75,18 +79,6 @@
       font-size: 18px;
       line-height: 28px;
     }
-  }
-
-  .section-hero-video-container {
-    margin-top: 100px;
-
-    video {
-      width: 100%;
-    }
-  }
-
-  .policies-body {
-    width: 70%;
   }
 
   .gallery {
@@ -134,15 +126,11 @@
     .sub-nav {
       padding: 100px 24px 30px 24px;
       margin: 48px 0 0;
-      // font-size: 15px;
-      // letter-spacing: 1.23px;
     }
 
     h3 {
       width: 100%;
       margin-top: 10px;
-      font-size: 28px;
-      line-height: 33px;
     }
 
     .text-content {
@@ -161,10 +149,6 @@
         width: 100%;
         margin: 60px 0 0;
       }
-    }
-
-    .section-hero-video-container {
-      margin-top: 50px;
     }
 
     .gallery {
