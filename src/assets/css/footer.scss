@@ -44,60 +44,13 @@
 
   .social {
     display: flex;
-    // margin-bottom: 30px;
     align-items: center;
     gap: 20px;
   }
 
-  .facebook-logo {
-    display: block;
-    position: relative;
+  .social-logo {
     width: 35px;
     height: 35px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      mask: url("/images/facebook.svg") no-repeat 50% 50%;
-      width: 35px;
-      height: 35px;
-      mask-size: contain;
-      background-color: variables.$secondary-color;
-    }
-  }
-
-  .instagram-logo {
-    display: block;
-    position: relative;
-    width: 35px;
-    height: 35px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      mask: url("/images/instagram.svg") no-repeat 50% 50%;
-      width: 35px;
-      height: 35px;
-      mask-size: contain;
-      background-color: variables.$secondary-color;
-    }
-  }
-
-  .youtube-logo {
-    display: block;
-    position: relative;
-    width: 35px;
-    height: 35px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      mask: url("/images/youtube.svg") no-repeat 50% 50%;
-      width: 35px;
-      height: 35px;
-      mask-size: contain;
-      background-color: variables.$secondary-color;
-    }
   }
 
   @media all and (max-width: variables.$mobile-max-bp) {

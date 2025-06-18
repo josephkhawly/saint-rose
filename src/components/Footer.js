@@ -37,21 +37,21 @@ function Footer() {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <span className='facebook-logo'></span>
+                  <img src='/images/facebook.svg' alt='Facebook' className='social-logo' />
                 </a>
                 <a
                   href='https://www.instagram.com/hairbysaintrose'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <span className='instagram-logo'></span>
+                  <img src='/images/instagram.svg' alt='Instagram' className='social-logo' />
                 </a>
                 <a
                   href='https://www.youtube.com/channel/UC-m8XjZ7A9vwDpch45bJbtA'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <span className='youtube-logo'></span>
+                  <img src='/images/youtube.svg' alt='YouTube' className='social-logo' />
                 </a>
               </div>
               <div className='thirtythree'>website by thirtythree</div>
