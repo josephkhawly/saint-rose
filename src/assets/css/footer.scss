@@ -68,27 +68,20 @@
     }
 
     .footer-misc {
-      display: flex;
       flex-wrap: wrap;
     }
 
     .social {
-      display: flex;
-      width: 100%;
       justify-content: center;
       order: -1;
     }
 
     .copyright {
       margin-top: 22px;
-      width: 100%;
-      text-align: center;
     }
 
     .thirtythree {
       margin-top: 14px;
-      width: 100%;
-      text-align: center;
     }
   }
 }

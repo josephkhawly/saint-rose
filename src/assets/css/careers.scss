@@ -22,20 +22,20 @@
     padding: 0 48px;
     margin: 40px 84px 60px;
     width: 70%;
-  }
+    
+    h3 {
+      font-family: variables.$opt;
+      font-size: 46px;
+      line-height: 57px;
+      margin-bottom: 32px;
+    }
 
-  h3 {
-    font-family: variables.$opt;
-    font-size: 46px;
-    line-height: 57px;
-    margin-bottom: 32px;
-  }
-
-  h6 {
-    font-family: variables.$ap;
-    font-size: 20px;
-    line-height: 33px;
-    margin-bottom: 34px;
+    h6 {
+      font-family: variables.$ap;
+      font-size: 20px;
+      line-height: 33px;
+      margin-bottom: 34px;
+    }
   }
 
   .form {
@@ -91,19 +91,7 @@
     margin: 42px 0 24px;
   }
 
-  input[type="text"] {
-    margin-top: 12px;
-    width: 397px;
-    display: block;
-    background: transparent;
-    border: 1px solid variables.$black;
-    font-family: variables.$ap;
-    font-size: 22px;
-    line-height: 27px;
-    height: 48px;
-    padding: 0 14px;
-  }
-
+  input[type="text"],
   input[type="date"] {
     margin-top: 12px;
     width: 397px;
@@ -137,41 +125,29 @@
   }
 
   .upload-file-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
     margin-bottom: 30px;
   }
 
-  .upload-file-button {
-    margin-top: 12px;
-    cursor: pointer;
-    border: none;
-    color: variables.$black;
-    background-color: variables.$light-pink;
-    border-radius: 0px;
-    font-family: variables.$ap;
-    font-size: 15px;
-    display: inline-block;
-    height: 48px;
-    width: 124px;
-  }
-
-  .upload-file-wrapper input[type="file"] {
-    // font-size: 24px;
-    height: 48px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-  }
-
-  .upload-status {
-    display: inline-block;
-    margin-left: 14px;
+  input[type="file"] {
     font-family: variables.$ap;
     font-size: 15px;
     color: variables.$gray;
+    text-transform: capitalize;
+
+    &::file-selector-button {
+      margin-top: 12px;
+      margin-right: 14px;
+      cursor: pointer;
+      border: none;
+      color: variables.$black;
+      background-color: variables.$light-pink;
+      border-radius: 0px;
+      font-family: variables.$ap;
+      font-size: 15px;
+      display: inline-block;
+      height: 48px;
+      width: 124px;
+    }
   }
 
   .checkbox-group {
@@ -308,7 +284,8 @@
       margin: 0 0 35px;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="date"] {
       width: 100%;
     }
 

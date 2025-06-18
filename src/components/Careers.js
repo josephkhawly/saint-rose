@@ -287,15 +287,11 @@ function Careers() {
                 <div className='upload-file-container'>
                   <div className='field-label'>Resume*</div>
                   <div className='upload-file-wrapper'>
-                    <button className='upload-file-button'>Choose File</button>
                     <input
                       type='file'
                       name='resumeFile'
                       onChange={(event) => handleInput('resumeFile', event.target.files[0])}
                     />
-                    <div className='upload-status'>
-                      {resumeFile ? resumeFile.name : 'No File Chosen'}
-                    </div>
                   </div>
                 </div>
               </div>
