@@ -1,181 +1,138 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useForm } from 'react-hook-form'
 import SlideAndFade from './SlideAndFade'
 import Nav from './Nav'
 import Footer from './Footer'
 import Axios from 'axios'
 
+const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
+const licenseOptions = ['Yes', 'No']
+
+const TextInput = ({ type = 'text', label, name, register, required, errors, ...rest }) => (
+  <div className='form-field'>
+    <label className='field-label'>
+      {label}
+      <input type={type} {...register(name, required)} aria-invalid={!!errors[name]} {...rest} />
+      {errors[name] && (
+        <span className='submit-error' role='alert'>
+          {errors[name].message}
+        </span>
+      )}
+    </label>
+  </div>
+)
+
+const TextAreaInput = ({ label, name, register, rules, errors, ...rest }) => (
+  <div className='form-field'>
+    <label className='field-label'>
+      {label}
+      <textarea {...register(name, rules)} aria-invalid={!!errors[name]} {...rest} />
+      {errors[name] && (
+        <span className='submit-error' role='alert'>
+          {errors[name].message}
+        </span>
+      )}
+    </label>
+  </div>
+)
+
+const FileInput = ({ label, name, register, rules, errors }) => (
+  <div className='upload-file-container'>
+    <div className='field-label'>{label}</div>
+    <div className='upload-file-wrapper'>
+      <input type='file' name={name} {...register(name, rules)} />
+    </div>
+    {errors[name] && (
+      <span className='submit-error' role='alert'>
+        {errors[name].message}
+      </span>
+    )}
+  </div>
+)
+
+const RadioGroup = ({ label, name, options, register, rules, errors }) => (
+  <div className='checkbox-group'>
+    <div className='field-label'>{label}</div>
+    <div className='options-group'>
+      {options.map((option) => (
+        <label className='option-checkbox' key={option}>
+          <input type='radio' name={name} value={option} {...register(name, rules)} />
+          <span className='checkbox'></span>
+          <span className='text'>{option}</span>
+        </label>
+      ))}
+    </div>
+    {errors[name] && (
+      <span className='submit-error' role='alert'>
+        {errors[name].message}
+      </span>
+    )}
+  </div>
+)
+
 function Careers() {
-  const [state, setState] = useState({
-    submitting: false,
-    submitError: false,
-    submitSuccess: false,
-    errorMessage: '',
-    positionOptions: ['Salon Coordinator', 'Stylist', 'Apprentice'],
-    licenseOptions: ['Yes', 'No'],
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    resumeFile: '',
-    startDate: '',
-    instagramHandle: '',
-    license: [],
-    position: [],
-    question1: '',
-    question2: '',
-    question3: '',
-    question4: '',
-    question5: '',
-    question6: '',
-  })
-
-  const handleInput = (field, value) => {
-    setState((prev) => ({ ...prev, [field]: value }))
-  }
-
-  const updateCheckboxGroup = (parent, target, multipleAllowed) => {
-    setState((prev) => {
-      if (multipleAllowed) {
-        const targetIndex = prev[parent].indexOf(target)
-        let staging = {}
-        if (targetIndex > -1) {
-          staging = {
-            [parent]: [
-              ...prev[parent].slice(0, targetIndex),
-              ...prev[parent].slice(targetIndex + 1),
-            ],
-          }
-        } else {
-          staging = {
-            [parent]: [...prev[parent], ...[target]],
-          }
-        }
-        return { ...prev, ...staging }
-      } else {
-        const targetIndex = prev[parent].indexOf(target)
-        if (targetIndex > -1) {
-          return { ...prev, [parent]: [] }
-        } else {
-          return { ...prev, [parent]: [target] }
-        }
-      }
-    })
-  }
-
-  const handleSubmit = () => {
-    document.getElementById('submit-button').disabled = true
-    setState((prev) => ({ ...prev, submitting: true }))
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      address,
-      startDate,
-      instagramHandle,
-      license,
-      position,
-      resumeFile,
-      question1,
-      question2,
-      question3,
-      question4,
-      question5,
-      question6,
-    } = state
-    const config = {
-      headers: { 'content-type': 'multipart/form-data' },
-    }
-    const data = new FormData()
-    data.append('firstName', firstName)
-    data.append('lastName', lastName)
-    data.append('email', email)
-    data.append('phone', phone)
-    data.append('address', address)
-    data.append('resumeFile', resumeFile)
-    data.append('startDate', startDate)
-    data.append('instagramHandle', instagramHandle)
-    data.append('position', position.join(', '))
-    data.append('license', license.join(', '))
-    data.append('question1', question1)
-    data.append('question2', question2)
-    data.append('question3', question3)
-    data.append('question4', question4)
-    data.append('question5', question5)
-    data.append('question6', question6)
-    Axios.post('/careers', data, config)
-      .then((response) => {
-        if (response.data.status === 'success') {
-          setState((prev) => ({ ...prev, submitting: false, submitSuccess: true }))
-        } else {
-          setState((prev) => ({
-            ...prev,
-            submitting: false,
-            submitError: true,
-            errorMessage: response.data.message
-              ? response.data.message
-              : 'We had trouble submitting your request. Please give us a call.',
-          }))
-          document.getElementById('submit-button').disabled = false
-        }
-      })
-      .catch((error) => {
-        setState((prev) => ({
-          ...prev,
-          submitting: false,
-          submitError: true,
-          errorMessage: 'We had trouble submitting your request. Please give us a call.',
-        }))
-        document.getElementById('submit-button').disabled = false
-      })
-  }
-
-  const renderCheckboxGroup = (parent, options, multipleAllowed) => {
-    return (
-      <div className='options-group'>
-        {state[options].map((option) => {
-          return (
-            <label className='option-checkbox' key={`${parent}${option}`}>
-              <input
-                type='checkbox'
-                name={option}
-                checked={state[parent].includes(option)}
-                onChange={(event) =>
-                  updateCheckboxGroup(parent, event.target.name, multipleAllowed)
-                }
-              />
-              <span className='checkbox'></span>
-              <span className='text'>{option}</span>
-            </label>
-          )
-        })}
-      </div>
-    )
-  }
-
   const {
-    submitting,
-    submitError,
-    submitSuccess,
-    errorMessage,
-    firstName,
-    lastName,
-    email,
-    phone,
-    address,
-    resumeFile,
-    startDate,
-    instagramHandle,
-    license,
-    position,
-    question1,
-    question2,
-    question3,
-    question4,
-    question5,
-    question6,
-  } = state
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      resumeFile: null,
+      startDate: '',
+      instagramHandle: '',
+      license: '',
+      position: '',
+      question1: '',
+      question2: '',
+      question3: '',
+      question4: '',
+      question5: '',
+      question6: '',
+    },
+    mode: 'onTouched',
+  })
+  const [submitError, setSubmitError] = React.useState('')
+
+  const onSubmit = async (data) => {
+    setSubmitError('')
+    const formData = new FormData()
+    formData.append('firstName', data.firstName)
+    formData.append('lastName', data.lastName)
+    formData.append('email', data.email)
+    formData.append('phone', data.phone)
+    formData.append('address', data.address)
+    formData.append('resumeFile', data.resumeFile)
+    formData.append('startDate', data.startDate)
+    formData.append('instagramHandle', data.instagramHandle)
+    formData.append('position', data.position)
+    formData.append('license', data.license)
+    formData.append('question1', data.question1)
+    formData.append('question2', data.question2)
+    formData.append('question3', data.question3)
+    formData.append('question4', data.question4)
+    formData.append('question5', data.question5)
+    formData.append('question6', data.question6)
+    try {
+      const response = await Axios.post('/careers', formData, {
+        headers: { 'content-type': 'multipart/form-data' },
+      })
+      if (response.data.status === 'success') {
+        reset()
+      } else {
+        setSubmitError(
+          response.data.message || 'We had trouble submitting your request. Please give us a call.',
+        )
+      }
+    } catch (error) {
+      setSubmitError('We had trouble submitting your request. Please give us a call.')
+    }
+  }
 
   return (
     <div className='careers'>
@@ -196,179 +153,163 @@ function Careers() {
                 <a href='mailto:manager@hairbysaintrose.com'>manager@hairbysaintrose.com</a>
               </h6>
             </div>
-            <div className='form'>
-              <div className='checkbox-group'>
-                <div className='field-label'>What position are you applying for?*</div>
-                {renderCheckboxGroup('position', 'positionOptions', false)}
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
+              <RadioGroup
+                label='What position are you applying for?*'
+                name='position'
+                options={positionOptions}
+                register={register}
+                rules={{ required: 'Please select a position.' }}
+                errors={errors}
+              />
+              <div className='form-row'>
+                <TextInput
+                  label='First Name*'
+                  name='firstName'
+                  register={register}
+                  required={{ required: 'First name is required.' }}
+                  errors={errors}
+                />
+                <TextInput
+                  label='Last Name*'
+                  name='lastName'
+                  register={register}
+                  required={{ required: 'Last name is required.' }}
+                  errors={errors}
+                />
               </div>
               <div className='form-row'>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    First Name*
-                    <input
-                      type='text'
-                      value={firstName}
-                      onChange={(event) => handleInput('firstName', event.target.value)}
-                    />
-                  </label>
-                </div>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    Last Name*
-                    <input
-                      type='text'
-                      value={lastName}
-                      onChange={(event) => handleInput('lastName', event.target.value)}
-                    />
-                  </label>
-                </div>
+                <TextInput
+                  label='Email*'
+                  name='email'
+                  type='email'
+                  register={register}
+                  required={{
+                    required: 'Email is required.',
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: 'Invalid email address.',
+                    },
+                  }}
+                  errors={errors}
+                />
+                <TextInput
+                  label='Phone*'
+                  name='phone'
+                  type='tel'
+                  register={register}
+                  required={{
+                    required: 'Phone is required.',
+                    pattern: {
+                      value:
+                        /^\+?1?\s?(\([2-9][0-9]{2}\)|[2-9][0-9]{2})[\s.-]?[0-9]{3}[\s.-]?[0-9]{4}$/,
+                      message: 'Please enter a valid US phone number.',
+                    },
+                  }}
+                  errors={errors}
+                />
               </div>
               <div className='form-row'>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    Email*
-                    <input
-                      type='text'
-                      value={email}
-                      onChange={(event) => handleInput('email', event.target.value)}
-                    />
-                  </label>
-                </div>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    Phone*
-                    <input
-                      type='text'
-                      value={phone}
-                      onChange={(event) => handleInput('phone', event.target.value)}
-                    />
-                  </label>
-                </div>
+                <TextInput
+                  label='Address*'
+                  name='address'
+                  register={register}
+                  required={{ required: 'Address is required.' }}
+                  errors={errors}
+                />
+                <TextInput
+                  label='When can you start?*'
+                  name='startDate'
+                  type='date'
+                  register={register}
+                  required={{ required: 'Start date is required.' }}
+                  errors={errors}
+                />
               </div>
               <div className='form-row'>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    Address*
-                    <input
-                      type='text'
-                      value={address}
-                      onChange={(event) => handleInput('address', event.target.value)}
-                    />
-                  </label>
-                </div>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    When can you start?*
-                    <input
-                      type='date'
-                      value={startDate}
-                      onChange={(event) => handleInput('startDate', event.target.value)}
-                    />
-                  </label>
-                </div>
+                <TextInput
+                  label='Business Instagram handle'
+                  name='instagramHandle'
+                  register={register}
+                  errors={errors}
+                />
+                <RadioGroup
+                  label='Do you have a valid Texas Cosmetology License?*'
+                  name='license'
+                  options={licenseOptions}
+                  register={register}
+                  rules={{ required: 'Please select an option.' }}
+                  errors={errors}
+                />
               </div>
               <div className='form-row'>
-                <div className='form-field'>
-                  <label className='field-label'>
-                    Business Instagram handle
-                    <input
-                      type='text'
-                      value={instagramHandle}
-                      onChange={(event) => handleInput('instagramHandle', event.target.value)}
-                    />
-                  </label>
-                </div>
-                <div className='checkbox-group'>
-                  <div className='field-label'>Do you have a valid Texas Cosmetology License?*</div>
-                  {renderCheckboxGroup('license', 'licenseOptions', false)}
-                </div>
-              </div>
-              <div className='form-row'>
-                <div className='upload-file-container'>
-                  <div className='field-label'>Resume*</div>
-                  <div className='upload-file-wrapper'>
-                    <input
-                      type='file'
-                      name='resumeFile'
-                      onChange={(event) => handleInput('resumeFile', event.target.files[0])}
-                    />
-                  </div>
-                </div>
+                <FileInput
+                  label='Resume*'
+                  name='resumeFile'
+                  register={register}
+                  rules={{ required: 'Resume is required.' }}
+                  errors={errors}
+                />
               </div>
               <span className='form-section'></span>
-              <div className='form-field'>
-                <label className='field-label'>
-                  What do you know about Saint Rose?
-                  <textarea
-                    value={question1}
-                    onChange={(event) => handleInput('question1', event.target.value)}
-                    maxLength='800'
-                  />
-                </label>
-              </div>
-              <div className='form-field'>
-                <label className='field-label'>
-                  What are you looking for in a salon?
-                  <textarea
-                    value={question2}
-                    onChange={(event) => handleInput('question2', event.target.value)}
-                    maxLength='800'
-                  />
-                </label>
-              </div>
-              <div className='form-field'>
-                <label className='field-label'>
-                  Give us an example of exceptional customer service.
-                  <textarea
-                    value={question3}
-                    onChange={(event) => handleInput('question3', event.target.value)}
-                    maxLength='800'
-                  />
-                </label>
-              </div>
-              <div className='form-field'>
-                <label className='field-label'>
-                  How do you want to improve yourself in the next year?
-                  <textarea
-                    value={question4}
-                    onChange={(event) => handleInput('question4', event.target.value)}
-                    maxLength='800'
-                  />
-                </label>
-              </div>
-              <div className='form-field'>
-                <label className='field-label'>
-                  Who has impacted you the most in your career and how?
-                  <textarea
-                    value={question5}
-                    onChange={(event) => handleInput('question5', event.target.value)}
-                    maxLength='800'
-                  />
-                </label>
-              </div>
-              <div className='form-field'>
-                <label className='field-label'>
-                  Is there anything else you would like us to know?
-                  <textarea
-                    value={question6}
-                    onChange={(event) => handleInput('question6', event.target.value)}
-                    maxLength='800'
-                  />
-                </label>
-              </div>
+              <TextAreaInput
+                label='What do you know about Saint Rose?'
+                name='question1'
+                register={register}
+                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                errors={errors}
+              />
+              <TextAreaInput
+                label='What are you looking for in a salon?'
+                name='question2'
+                register={register}
+                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                errors={errors}
+              />
+              <TextAreaInput
+                label='Give us an example of exceptional customer service.'
+                name='question3'
+                register={register}
+                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                errors={errors}
+              />
+              <TextAreaInput
+                label='How do you want to improve yourself in the next year?'
+                name='question4'
+                register={register}
+                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                errors={errors}
+              />
+              <TextAreaInput
+                label='Who has impacted you the most in your career and how?'
+                name='question5'
+                register={register}
+                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                errors={errors}
+              />
+              <TextAreaInput
+                label='Is there anything else you would like us to know?'
+                name='question6'
+                register={register}
+                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                errors={errors}
+              />
               <div className='form-footer'>
-                <button className='submit-button' id='submit-button' onClick={handleSubmit}>
-                  {submitSuccess ? 'Sent!' : submitting ? 'Sending...' : 'Submit'}
+                <button
+                  className='submit-button'
+                  id='submit-button'
+                  type='submit'
+                  disabled={isSubmitting}
+                >
+                  {isSubmitSuccessful ? 'Sent!' : isSubmitting ? 'Sending...' : 'Submit'}
                 </button>
                 {submitError && (
-                  <span className='submit-error'>
-                    {errorMessage
-                      ? errorMessage
-                      : 'We had trouble submitting your request. Please give us a call.'}
+                  <span className='submit-error' role='alert'>
+                    {submitError}
                   </span>
                 )}
               </div>
-            </div>
+            </form>
           </SlideAndFade>
           <Footer />
         </div>

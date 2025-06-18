@@ -62,6 +62,9 @@ importers:
       react-dom:
         specifier: ^17.0.0
         version: 17.0.2(react@17.0.2)
+      react-hook-form:
+        specifier: ^7.58.1
+        version: 7.58.1(react@17.0.2)
       react-hot-loader:
         specifier: ^4.12.11
         version: 4.13.1(react-dom@17.0.2(react@17.0.2))(react@17.0.2)
@@ -3554,6 +3557,12 @@ packages:
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
     peerDependencies:
       react: 17.0.2
+
+  react-hook-form@7.58.1:
+    resolution: {integrity: sha512-Lml/KZYEEFfPhUVgE0RdCVpnC4yhW+PndRhbiTtdvSlQTL8IfVR+iQkBjLIvmmc6+GGoVeM11z37ktKFPAb0FA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
 
   react-hot-loader@4.13.1:
     resolution: {integrity: sha512-ZlqCfVRqDJmMXTulUGic4lN7Ic1SXgHAFw7y/Jb7t25GBgTR0fYAJ8uY4mrpxjRyWGWmqw77qJQGnYbzCvBU7g==}
@@ -8788,6 +8797,10 @@ snapshots:
       object-assign: 4.1.1
       react: 17.0.2
       scheduler: 0.20.2
+
+  react-hook-form@7.58.1(react@17.0.2):
+    dependencies:
+      react: 17.0.2
 
   react-hot-loader@4.13.1(react-dom@17.0.2(react@17.0.2))(react@17.0.2):
     dependencies:

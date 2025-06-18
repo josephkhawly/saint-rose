@@ -22,7 +22,7 @@
     padding: 0 48px;
     margin: 40px 84px 60px;
     width: 70%;
-    
+
     h3 {
       font-family: variables.$opt;
       font-size: 46px;
@@ -91,8 +91,7 @@
     margin: 42px 0 24px;
   }
 
-  input[type="text"],
-  input[type="date"] {
+  input:not([type="radio"]):not([type="file"]) {
     margin-top: 12px;
     width: 397px;
     display: block;
@@ -244,6 +243,7 @@
     display: block;
     font-size: 16px;
     margin-top: 12px;
+    color: red;
   }
 
   .footer {
@@ -284,8 +284,7 @@
       margin: 0 0 35px;
     }
 
-    input[type="text"],
-    input[type="date"] {
+    input:not([type="radio"]):not([type="file"]) {
       width: 100%;
     }
 
