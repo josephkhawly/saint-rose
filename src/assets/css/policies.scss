@@ -16,7 +16,7 @@
 
   .text-content {
     padding: 0 84px;
-    margin: 100px 0px 0;
+    margin: 30px 0px 0;
   }
 
   h3 {
@@ -95,7 +95,7 @@
 
   @media all and (max-width: variables.$mobile-max-bp) {
     .sub-nav {
-      padding: 100px 20px 30px 24px;
+      padding: 100px 24px 20px;
       margin: 0;
       font-size: 15px;
       letter-spacing: 1.23px;

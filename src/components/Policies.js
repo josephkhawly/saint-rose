@@ -12,8 +12,6 @@ function Policies() {
         <div className='content'>
           <SlideAndFade delay={1000}>
             <div className='sub-nav'>Policies</div>
-          </SlideAndFade>
-          <SlideAndFade delay={1000}>
             <div className='text-content'>
               <h3>
                 We have rules in place for your protection, and for ours. Check out our policies and
