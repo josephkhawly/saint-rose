@@ -5,9 +5,9 @@ import { Fade } from 'react-awesome-reveal'
 
 function Footer() {
   return (
-    <Fade fraction={0.01}>
+    <Fade fraction={0.01} triggerOnce>
       <div className='footer'>
-        <Fade>
+        <Fade triggerOnce>
           <div className='footer-container'>
             <div className='footer-logo'>
               <img src='/images/footer-rose.svg' />
