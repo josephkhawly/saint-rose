@@ -22,24 +22,26 @@ const Quotes = ({ quotes }) => {
   }
 
   return (
-    <div className='quotes-gallery'>
-      <div className='open-quote' />
-      <div className='content'>
-        {quotes.length > 0 && (
-          <div>
-            <h2>{`${quotes[current].quoteText}`}&rdquo;</h2>
-            <h5>{quotes[current].attribution}</h5>
-          </div>
-        )}
-      </div>
+    <div className='quotes'>
+      <div className='quotes-gallery'>
+        <div className='open-quote' />
+        <div className='content'>
+          {quotes.length > 0 && (
+            <div>
+              <h2>{`${quotes[current].quoteText}`}&rdquo;</h2>
+              <h5>{quotes[current].attribution}</h5>
+            </div>
+          )}
+        </div>
 
-      <div className='controls'>
-        <button onClick={handleNext}>
-          <div className='arrow-right'></div>
-        </button>
-        <button onClick={handlePrevious}>
-          <div className='arrow-left'></div>
-        </button>
+        <div className='controls'>
+          <button onClick={handleNext} aria-label='Next Quote'>
+            <img src='/images/arrow-right.svg' alt='Next Quote' />
+          </button>
+          <button onClick={handlePrevious} aria-label='Previous Quote'>
+            <img src='/images/arrow-left.svg' alt='Previous Quote' />
+          </button>
+        </div>
       </div>
     </div>
   )

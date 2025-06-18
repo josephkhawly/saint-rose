@@ -4,9 +4,8 @@ import Iframe from 'react-iframe'
 import SlideAndFade from './SlideAndFade'
 import Axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import MediaQuery from 'react-responsive'
 import Nav from './Nav'
-import { MOBILEBP, DESKTOPTRANSITIONBP, quotesData } from '../constants'
+import { quotesData } from '../constants'
 import StaffMember from './StaffMember'
 import StaffMemberSpotlight from './StaffMemberSpotlight'
 import Quotes from './Quotes'
@@ -120,54 +119,29 @@ function About() {
       <div className='content-container'>
         <div className='content'>
           <div className='inner-content-container'>
-            <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-              <div className='header'>
-                <SlideAndFade delay={1250}>
-                  <h5>Meet the team</h5>
-                </SlideAndFade>
-                <SlideAndFade delay={1450}>
-                  <h3>
-                    Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone
-                    you vibe with? Let us know when you book and we&apos;ll make the match.
-                  </h3>
-                </SlideAndFade>
-              </div>
-
-              <SlideAndFade delay={1650}>
-                <div className='staff-container'>
-                  {staffMembers.map((staffMemberData, index) => (
-                    <StaffMember
-                      key={index}
-                      staffMemberData={staffMemberData}
-                      staffMemberSelectHandler={handleStaffMemberSelect}
-                    />
-                  ))}
-                </div>
-              </SlideAndFade>
-            </MediaQuery>
-
-            <MediaQuery maxWidth={MOBILEBP}>
+            <div className='header'>
               <SlideAndFade delay={1250}>
-                <div>
-                  <div className='header'>
-                    <h5>Meet the team</h5>
-                    <h3>
-                      Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone
-                      you vibe with? Let us know when you book and we&apos;ll make the match.
-                    </h3>
-                  </div>
-                  <div className='staff-container'>
-                    {staffMembers.map((staffMemberData, index) => (
-                      <StaffMember
-                        key={index}
-                        staffMemberData={staffMemberData}
-                        staffMemberSelectHandler={handleStaffMemberSelect}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <h5>Meet the team</h5>
               </SlideAndFade>
-            </MediaQuery>
+              <SlideAndFade delay={1450}>
+                <h3>
+                  Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone you
+                  vibe with? Let us know when you book and we&apos;ll make the match.
+                </h3>
+              </SlideAndFade>
+            </div>
+
+            <SlideAndFade delay={1650}>
+              <div className='staff-container'>
+                {staffMembers.map((staffMemberData, index) => (
+                  <StaffMember
+                    key={index}
+                    staffMemberData={staffMemberData}
+                    staffMemberSelectHandler={handleStaffMemberSelect}
+                  />
+                ))}
+              </div>
+            </SlideAndFade>
           </div>
 
           <HeroSection
@@ -217,11 +191,7 @@ function About() {
               />
             </div>
 
-            <div className='quotes'>
-              <div className='quotes-wrapper'>
-                <Quotes quotes={quotesData} />
-              </div>
-            </div>
+            <Quotes quotes={quotesData} />
           </div>
 
           <Footer />

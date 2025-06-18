@@ -1,5 +1,20 @@
 @use "variables";
 
+.quotes {
+  margin: 92px 0 300px;
+  width: 85%;
+  padding: 104px 0 104px 52px;
+  background-color: variables.$pink;
+}
+
+@media all and (max-width: variables.$mobile-max-bp) {
+  .quotes {
+    margin: 40px 0 80px 0;
+    width: 100%;
+    padding: 40px;
+  }
+}
+
 .quotes-gallery {
   width: 100%;
   height: 100%;
@@ -51,45 +66,8 @@
     height: 56px;
     width: 56px;
     background-color: transparent;
-  }
-
-  .controls button:nth-of-type(2) {
-    margin-top: 14px;
-  }
-
-  .arrow-right {
-    position: relative;
-    height: 100%;
-
-    &::after {
-      content: "";
-      position: absolute;
-      background: url("/images/arrow-right.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 56px;
-      height: 56px;
-      top: 0;
-      left: 0;
-    }
-  }
-
-  .arrow-left {
-    position: relative;
-    height: 100%;
-
-    &::after {
-      content: "";
-      position: absolute;
-      background: url("/images/arrow-left.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      width: 56px;
-      height: 56px;
-      background-repeat: no-repeat;
-      top: 0;
-      left: 0;
+    &:nth-of-type(2) {
+      margin-top: 14px;
     }
   }
 
@@ -112,36 +90,3 @@
     }
   }
 }
-
-// @media all and (max-width: $desktop-transitional) {
-//   .quotes-gallery {
-//     display: block;
-
-//     h2 {
-//       font-size: 28px;
-//       line-height: 37px;
-//       margin-bottom: 24px;
-//     }
-
-//     .open-quote {
-//       margin: 24px 0;
-//       height: 33px;
-//     }
-
-//     .controls {
-//       display: flex;
-//       flex-direction: row-reverse;
-//       justify-content: flex-end;
-//       width: auto;
-//       margin-left: 0;
-
-//       button {
-//         margin-top: 24px !important;
-//       }
-
-//       button:nth-of-type(1) {
-//         margin-left: 8px;
-//       }
-//     }
-//   }
-// }
