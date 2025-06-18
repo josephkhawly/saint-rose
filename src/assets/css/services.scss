@@ -41,52 +41,6 @@
     position: relative;
   }
 
-  .section .title-bar {
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    position: absolute;
-    background-color: variables.$primary-color;
-    z-index: 5;
-    top: -146px;
-    left: 0;
-    width: 0;
-    height: 180px;
-  }
-
-  .haircut--title-bar {
-    width: 0;
-  }
-
-  .color--title-bar {
-    width: 0;
-  }
-
-  .treatments--title-bar {
-    width: 0;
-  }
-
-  .title-bar-text {
-    opacity: 0;
-    font-family: variables.$ap;
-    font-size: 80px;
-    color: variables.$secondary-color;
-    margin-left: 124px;
-    text-transform: uppercase;
-  }
-
-  .haircut--title-bar-text {
-    opacity: 0;
-  }
-
-  .color--title-bar-text {
-    opacity: 0;
-  }
-
-  .treatments--title-bar-text {
-    opacity: 0;
-  }
-
   .section.last {
     margin-bottom: 125px;
   }
@@ -192,10 +146,6 @@
 
     .section {
       margin-top: 100px;
-      .title-bar {
-        height: 90px;
-        top: -72px;
-      }
     }
 
     .services-container {
@@ -264,31 +214,6 @@
     }
 
     .section {
-      .color--title-bar {
-        height: 111px;
-        top: -85px;
-      }
-
-      .treatments--title-bar {
-        height: 111px;
-        top: -85px;
-      }
-    }
-
-    .about-nav--link-container {
-      font-size: 36px;
-    }
-
-    .care-and-commitment-link {
-      right: 0;
-      position: relative;
-      padding: 34px 0 21px;
-    }
-
-    .policies-link {
-      right: 600px;
-      position: relative;
-      padding: 21px 0 34px;
     }
 
     .plusminus {
