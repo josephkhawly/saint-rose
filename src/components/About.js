@@ -4,12 +4,10 @@ import Iframe from 'react-iframe'
 import SlideAndFade from './SlideAndFade'
 import Axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import Nav from './Nav'
 import { quotesData } from '../constants'
 import StaffMember from './StaffMember'
 import StaffMemberSpotlight from './StaffMemberSpotlight'
 import Quotes from './Quotes'
-import Footer from './Footer'
 import HeroSection from './HeroSection'
 
 function preloadImage(imageURL) {
@@ -114,8 +112,6 @@ function About() {
         )}
       </TransitionGroup>
 
-      <Nav />
-
       <div className='content-container'>
         <div className='content'>
           <div className='inner-content-container'>
@@ -193,13 +189,8 @@ function About() {
 
             <Quotes quotes={quotesData} />
           </div>
-
-          <Footer />
         </div>
       </div>
-      <div className='entrance' />
-      <div className='exit' />
-      <div className='exit-2' />
     </div>
   )
 }

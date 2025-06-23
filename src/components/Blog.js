@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import MediaQuery from 'react-responsive'
-import Nav from './Nav'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
-import Footer from './Footer'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
 import SlideAndFade from './SlideAndFade'
 
@@ -107,22 +105,15 @@ function Blog() {
 
   return (
     <div className='blog'>
-      <Nav />
-      <div className='content-container'>
-        <div className='content'>
-          <SlideAndFade delay={1000}>
-            <div className='content-body'>
-              {renderFeatured()}
-              <MediaQuery minWidth={DESKTOPTRANSITIONBP}>{renderFeed()}</MediaQuery>
-              <MediaQuery maxWidth={MOBILEBP}>{renderMobileFeed()}</MediaQuery>
-            </div>
-          </SlideAndFade>
-          <Footer />
-        </div>
+      <div className='content'>
+        <SlideAndFade delay={1000}>
+          <div className='content-body'>
+            {renderFeatured()}
+            <MediaQuery minWidth={DESKTOPTRANSITIONBP}>{renderFeed()}</MediaQuery>
+            <MediaQuery maxWidth={MOBILEBP}>{renderMobileFeed()}</MediaQuery>
+          </div>
+        </SlideAndFade>
       </div>
-      <div className='entrance' />
-      <div className='exit' />
-      <div className='exit-2' />
     </div>
   )
 }

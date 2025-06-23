@@ -4,6 +4,7 @@
   background-color: black;
   border-top: 5px solid variables.$secondary-color;
   color: variables.$secondary-color;
+  margin-top: 340px;
 
   .footer-container {
     padding: 84px;
@@ -54,6 +55,8 @@
   }
 
   @media all and (max-width: variables.$mobile-max-bp) {
+    margin-top: 140px;
+
     .footer-logo img {
       width: 82px;
     }

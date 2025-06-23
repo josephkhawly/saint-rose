@@ -1,9 +1,6 @@
 @use "variables";
 
 .services {
-  height: 0px;
-  overflow: hidden;
-  background-color: variables.$background-color;
 
   .landing {
     margin: 0 84px;

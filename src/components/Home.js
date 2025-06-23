@@ -4,8 +4,6 @@ import { gsap, Power1 } from 'gsap'
 
 import { Fade } from 'react-awesome-reveal'
 
-import Nav from './Nav'
-
 const getDefaultTimeline = () => {
   const timeline = gsap.timeline({ paused: true })
   const introRose = document.querySelector('.intro-rose')
@@ -45,13 +43,9 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <div className='entrance' />
-
       <div className='intro' />
       <div className='intro-2' />
       <div className='intro-rose' />
-
-      <Nav />
 
       <div className='content'>
         <Fade delay={4700}>
@@ -70,8 +64,6 @@ const Home = () => {
           </video>
         </Fade>
       </div>
-      <div className='exit' />
-      <div className='exit-2' />
     </div>
   )
 }

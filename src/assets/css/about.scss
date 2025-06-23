@@ -1,10 +1,6 @@
 @use "variables";
 
 .about {
-  height: 0px;
-  overflow: hidden;
-  background-color: variables.$background-color;
-
   @keyframes slide-and-fade {
     from {
       opacity: 0;

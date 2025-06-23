@@ -9,10 +9,12 @@ import Home from './components/Home'
 import Contact from './components/Contact'
 import Services from './components/Services'
 import About from './components/About'
+import Nav from './components/Nav'
 
 import Policies from './components/Policies'
 import Blog from './components/Blog'
 import BlogPost from './components/BlogPost'
+import Footer from './components/Footer'
 
 import Careers from './components/Careers'
 
@@ -85,16 +87,23 @@ const App = () => (
                 onExit={(node) => exit(pathname, node)}
                 timeout={{ enter: 2000, exit: 1000 }}
               >
-                <Switch location={location}>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/contact' component={Contact} />
-                  <Route exact path='/services' component={Services} />
-                  <Route exact path='/about' component={About} />
-                  <Route exact path='/policies' component={Policies} />
-                  <Route exact path='/blog' component={Blog} />
-                  <Route path='/blog/:id' component={BlogPost} />
-                  <Route path='/careers' component={Careers} />
-                </Switch>
+                <div className='main-container'>
+                  <Nav />
+                  <Switch location={location}>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/contact' component={Contact} />
+                    <Route exact path='/services' component={Services} />
+                    <Route exact path='/about' component={About} />
+                    <Route exact path='/policies' component={Policies} />
+                    <Route exact path='/blog' component={Blog} />
+                    <Route path='/blog/:id' component={BlogPost} />
+                    <Route path='/careers' component={Careers} />
+                  </Switch>
+                  <div className='entrance' />
+                  <div className='exit' />
+                  <div className='exit-2' />
+                  <Footer />
+                </div>
               </Transition>
             </TransitionGroup>
           )

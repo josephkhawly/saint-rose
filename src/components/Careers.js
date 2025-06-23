@@ -1,8 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import SlideAndFade from './SlideAndFade'
-import Nav from './Nav'
-import Footer from './Footer'
 import Axios from 'axios'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
@@ -136,187 +134,179 @@ function Careers() {
 
   return (
     <div className='careers'>
-      <Nav />
-      <div className='content-container'>
-        <div className='content'>
-          <SlideAndFade delay={1000}>
-            <div className='sub-nav'>Careers</div>
-          </SlideAndFade>
-          <SlideAndFade delay={1000}>
-            <div className='intro'>
-              <h3>
-                Thank you so much for your interest in Saint Rose. Please fill out the following
-                form.
-              </h3>
-              <h6>
-                If you have any specific questions or concerns please reach out to{' '}
-                <a href='mailto:manager@hairbysaintrose.com'>manager@hairbysaintrose.com</a>
-              </h6>
+      <div className='content'>
+        <SlideAndFade delay={1000}>
+          <div className='sub-nav'>Careers</div>
+        </SlideAndFade>
+        <SlideAndFade delay={1000}>
+          <div className='intro'>
+            <h3>
+              Thank you so much for your interest in Saint Rose. Please fill out the following form.
+            </h3>
+            <h6>
+              If you have any specific questions or concerns please reach out to{' '}
+              <a href='mailto:manager@hairbysaintrose.com'>manager@hairbysaintrose.com</a>
+            </h6>
+          </div>
+          <form className='form' onSubmit={handleSubmit(onSubmit)}>
+            <RadioGroup
+              label='What position are you applying for?*'
+              name='position'
+              options={positionOptions}
+              register={register}
+              rules={{ required: 'Please select a position.' }}
+              errors={errors}
+            />
+            <div className='form-row'>
+              <TextInput
+                label='First Name*'
+                name='firstName'
+                register={register}
+                required={{ required: 'First name is required.' }}
+                errors={errors}
+              />
+              <TextInput
+                label='Last Name*'
+                name='lastName'
+                register={register}
+                required={{ required: 'Last name is required.' }}
+                errors={errors}
+              />
             </div>
-            <form className='form' onSubmit={handleSubmit(onSubmit)}>
+            <div className='form-row'>
+              <TextInput
+                label='Email*'
+                name='email'
+                type='email'
+                register={register}
+                required={{
+                  required: 'Email is required.',
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: 'Invalid email address.',
+                  },
+                }}
+                errors={errors}
+              />
+              <TextInput
+                label='Phone*'
+                name='phone'
+                type='tel'
+                register={register}
+                required={{
+                  required: 'Phone is required.',
+                  pattern: {
+                    value:
+                      /^\+?1?\s?(\([2-9][0-9]{2}\)|[2-9][0-9]{2})[\s.-]?[0-9]{3}[\s.-]?[0-9]{4}$/,
+                    message: 'Please enter a valid US phone number.',
+                  },
+                }}
+                errors={errors}
+              />
+            </div>
+            <div className='form-row'>
+              <TextInput
+                label='Address*'
+                name='address'
+                register={register}
+                required={{ required: 'Address is required.' }}
+                errors={errors}
+              />
+              <TextInput
+                label='When can you start?*'
+                name='startDate'
+                type='date'
+                register={register}
+                required={{ required: 'Start date is required.' }}
+                errors={errors}
+              />
+            </div>
+            <div className='form-row'>
+              <TextInput
+                label='Business Instagram handle'
+                name='instagramHandle'
+                register={register}
+                errors={errors}
+              />
               <RadioGroup
-                label='What position are you applying for?*'
-                name='position'
-                options={positionOptions}
+                label='Do you have a valid Texas Cosmetology License?*'
+                name='license'
+                options={licenseOptions}
                 register={register}
-                rules={{ required: 'Please select a position.' }}
+                rules={{ required: 'Please select an option.' }}
                 errors={errors}
               />
-              <div className='form-row'>
-                <TextInput
-                  label='First Name*'
-                  name='firstName'
-                  register={register}
-                  required={{ required: 'First name is required.' }}
-                  errors={errors}
-                />
-                <TextInput
-                  label='Last Name*'
-                  name='lastName'
-                  register={register}
-                  required={{ required: 'Last name is required.' }}
-                  errors={errors}
-                />
-              </div>
-              <div className='form-row'>
-                <TextInput
-                  label='Email*'
-                  name='email'
-                  type='email'
-                  register={register}
-                  required={{
-                    required: 'Email is required.',
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: 'Invalid email address.',
-                    },
-                  }}
-                  errors={errors}
-                />
-                <TextInput
-                  label='Phone*'
-                  name='phone'
-                  type='tel'
-                  register={register}
-                  required={{
-                    required: 'Phone is required.',
-                    pattern: {
-                      value:
-                        /^\+?1?\s?(\([2-9][0-9]{2}\)|[2-9][0-9]{2})[\s.-]?[0-9]{3}[\s.-]?[0-9]{4}$/,
-                      message: 'Please enter a valid US phone number.',
-                    },
-                  }}
-                  errors={errors}
-                />
-              </div>
-              <div className='form-row'>
-                <TextInput
-                  label='Address*'
-                  name='address'
-                  register={register}
-                  required={{ required: 'Address is required.' }}
-                  errors={errors}
-                />
-                <TextInput
-                  label='When can you start?*'
-                  name='startDate'
-                  type='date'
-                  register={register}
-                  required={{ required: 'Start date is required.' }}
-                  errors={errors}
-                />
-              </div>
-              <div className='form-row'>
-                <TextInput
-                  label='Business Instagram handle'
-                  name='instagramHandle'
-                  register={register}
-                  errors={errors}
-                />
-                <RadioGroup
-                  label='Do you have a valid Texas Cosmetology License?*'
-                  name='license'
-                  options={licenseOptions}
-                  register={register}
-                  rules={{ required: 'Please select an option.' }}
-                  errors={errors}
-                />
-              </div>
-              <div className='form-row'>
-                <FileInput
-                  label='Resume*'
-                  name='resumeFile'
-                  register={register}
-                  rules={{ required: 'Resume is required.' }}
-                  errors={errors}
-                />
-              </div>
-              <span className='form-section'></span>
-              <TextAreaInput
-                label='What do you know about Saint Rose?'
-                name='question1'
+            </div>
+            <div className='form-row'>
+              <FileInput
+                label='Resume*'
+                name='resumeFile'
                 register={register}
-                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+                rules={{ required: 'Resume is required.' }}
                 errors={errors}
               />
-              <TextAreaInput
-                label='What are you looking for in a salon?'
-                name='question2'
-                register={register}
-                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
-                errors={errors}
-              />
-              <TextAreaInput
-                label='Give us an example of exceptional customer service.'
-                name='question3'
-                register={register}
-                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
-                errors={errors}
-              />
-              <TextAreaInput
-                label='How do you want to improve yourself in the next year?'
-                name='question4'
-                register={register}
-                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
-                errors={errors}
-              />
-              <TextAreaInput
-                label='Who has impacted you the most in your career and how?'
-                name='question5'
-                register={register}
-                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
-                errors={errors}
-              />
-              <TextAreaInput
-                label='Is there anything else you would like us to know?'
-                name='question6'
-                register={register}
-                rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
-                errors={errors}
-              />
-              <div className='form-footer'>
-                <button
-                  className='submit-button'
-                  id='submit-button'
-                  type='submit'
-                  disabled={isSubmitting}
-                >
-                  {isSubmitSuccessful ? 'Sent!' : isSubmitting ? 'Sending...' : 'Submit'}
-                </button>
-                {submitError && (
-                  <span className='submit-error' role='alert'>
-                    {submitError}
-                  </span>
-                )}
-              </div>
-            </form>
-          </SlideAndFade>
-          <Footer />
-        </div>
+            </div>
+            <span className='form-section'></span>
+            <TextAreaInput
+              label='What do you know about Saint Rose?'
+              name='question1'
+              register={register}
+              rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+              errors={errors}
+            />
+            <TextAreaInput
+              label='What are you looking for in a salon?'
+              name='question2'
+              register={register}
+              rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+              errors={errors}
+            />
+            <TextAreaInput
+              label='Give us an example of exceptional customer service.'
+              name='question3'
+              register={register}
+              rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+              errors={errors}
+            />
+            <TextAreaInput
+              label='How do you want to improve yourself in the next year?'
+              name='question4'
+              register={register}
+              rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+              errors={errors}
+            />
+            <TextAreaInput
+              label='Who has impacted you the most in your career and how?'
+              name='question5'
+              register={register}
+              rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+              errors={errors}
+            />
+            <TextAreaInput
+              label='Is there anything else you would like us to know?'
+              name='question6'
+              register={register}
+              rules={{ maxLength: { value: 800, message: 'Max 800 characters.' } }}
+              errors={errors}
+            />
+            <div className='form-footer'>
+              <button
+                className='submit-button'
+                id='submit-button'
+                type='submit'
+                disabled={isSubmitting}
+              >
+                {isSubmitSuccessful ? 'Sent!' : isSubmitting ? 'Sending...' : 'Submit'}
+              </button>
+              {submitError && (
+                <span className='submit-error' role='alert'>
+                  {submitError}
+                </span>
+              )}
+            </div>
+          </form>
+        </SlideAndFade>
       </div>
-      <div className='entrance' />
-      <div className='exit' />
-      <div className='exit-2' />
     </div>
   )
 }

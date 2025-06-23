@@ -1,10 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Axios from 'axios'
 import SlideAndFade from './SlideAndFade'
-import Nav from './Nav'
 import { generateOptions } from '../richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import Footer from './Footer'
 import { getEntryApiEndpoint, processEntryResponse } from '../contentful'
 
 function BlogPost(props) {
@@ -29,29 +27,19 @@ function BlogPost(props) {
 
   return (
     <div className='blog-post' ref={container}>
-      <Nav />
-      <div className='content-container'>
-        <div className='content'>
-          <SlideAndFade delay={2000}>
-            <div className='content-header'>
-              <div className='featured-image-container'>
-                <div
-                  className='image'
-                  style={{ backgroundImage: `url(${blogPost.headerImage})` }}
-                />
-              </div>
+      <div className='content'>
+        <SlideAndFade delay={2000}>
+          <div className='content-header'>
+            <div className='featured-image-container'>
+              <div className='image' style={{ backgroundImage: `url(${blogPost.headerImage})` }} />
             </div>
-            <div className='content-body'>
-              <div className='postTitle'>{blogPost.title}</div>
-              <div className='rich-text'>{documentToReactComponents(blogPost.body, options)}</div>
-            </div>
-          </SlideAndFade>
-          <Footer />
-        </div>
+          </div>
+          <div className='content-body'>
+            <div className='post-title'>{blogPost.title}</div>
+            <div className='rich-text'>{documentToReactComponents(blogPost.body, options)}</div>
+          </div>
+        </SlideAndFade>
       </div>
-      <div className='entrance' />
-      <div className='exit' />
-      <div className='exit-2' />
     </div>
   )
 }
