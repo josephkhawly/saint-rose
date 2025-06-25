@@ -1,32 +1,32 @@
 import React from 'react'
-import classNames from 'classnames'
 
 function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
-  const { name, role, photoSmall, video, instagram, location } = staffMemberData
-  const nameDecoration = video ? 'name-with-video' : 'name-with-bio'
+  const { name, role, photoSmall, video, instagram } = staffMemberData
   return (
     <div className='staff-member'>
-      <div className='photo-container'>
-        <div
-          className='photo'
-          style={{ backgroundImage: `url(https:${photoSmall})` }}
-          onClick={() => staffMemberSelectHandler(staffMemberData)}
-        />
-        <div className='information' onClick={() => staffMemberSelectHandler(staffMemberData)}>
-          <div className={classNames({ [nameDecoration]: true })}>{name}</div>
-          <div className='role'>{role}</div>
-          <div className='location'>{location}</div>
-        </div>
-        {instagram && (
-          <div className='instagram'>
-            <span>
-              <a href={`https://www.instagram.com/${instagram}/`} target='_blank' rel='noreferrer'>
-                @{instagram}
-              </a>
-            </span>
+      <div className='photo-container' onClick={() => staffMemberSelectHandler(staffMemberData)}>
+        <img src={photoSmall} alt={name} className='photo' />
+        <div className='name-container'>
+          <div className='name'>{name}</div>
+          <div className='name-decoration'>
+            {video ? (
+              <img src='/images/play-bio.svg' alt='play' />
+            ) : (
+              <img src='/images/plus-bio.svg' alt='plus' />
+            )}
           </div>
-        )}
+        </div>
+        <div className='role'>{role}</div>
       </div>
+      {instagram && (
+        <div className='instagram'>
+          <span>
+            <a href={`https://www.instagram.com/${instagram}/`} target='_blank' rel='noreferrer'>
+              @{instagram}
+            </a>
+          </span>
+        </div>
+      )}
     </div>
   )
 }
