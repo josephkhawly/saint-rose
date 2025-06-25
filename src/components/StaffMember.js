@@ -1,34 +1,24 @@
-import React from "react";
-import classNames from "classnames";
+import React from 'react'
+import classNames from 'classnames'
 
 function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
-  const {
-    name,
-    role,
-    photoSmall,
-    video,
-    instagram,
-    location,
-  } = staffMemberData;
-  const nameDecoration = video ? "name-with-video" : "name-with-bio";
+  const { name, role, photoSmall, video, instagram, location } = staffMemberData
+  const nameDecoration = video ? 'name-with-video' : 'name-with-bio'
   return (
-    <div className="staff-member">
-      <div className="photo-container">
+    <div className='staff-member'>
+      <div className='photo-container'>
         <div
-          className="photo"
+          className='photo'
           style={{ backgroundImage: `url(https:${photoSmall})` }}
           onClick={() => staffMemberSelectHandler(staffMemberData)}
         />
-        <div
-          className="information"
-          onClick={() => staffMemberSelectHandler(staffMemberData)}
-        >
+        <div className='information' onClick={() => staffMemberSelectHandler(staffMemberData)}>
           <div className={classNames({ [nameDecoration]: true })}>{name}</div>
-          <div className="role">{role}</div>
-          <div className="location">{location}</div>
+          <div className='role'>{role}</div>
+          <div className='location'>{location}</div>
         </div>
         {instagram && (
-          <div className="instagram">
+          <div className='instagram'>
             <span>
               <a href={`https://www.instagram.com/${instagram}/`} target='_blank' rel='noreferrer'>
                 @{instagram}
@@ -38,7 +28,7 @@ function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default StaffMember;
+export default StaffMember

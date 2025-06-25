@@ -112,19 +112,19 @@ export const colorData = [
     price: '36',
   },
   {
-    title: 'Face Frame Lightning',
+    title: 'Face Frame Lightening',
     description:
       'A traditional foil or open-air technique, including the part line and area around the face. Blow dry not included.',
     price: '68',
   },
   {
-    title: 'Partial Lightning',
+    title: 'Partial Lightening',
     description:
       'A traditional foil or open-air technique, including the crown area of the head. Blow dry not included.',
     price: '151',
   },
   {
-    title: 'Full Lightning',
+    title: 'Full Lightening',
     description:
       'A traditional foil or open-air technique, including the full head. Blow dry not included.',
     price: '206',
