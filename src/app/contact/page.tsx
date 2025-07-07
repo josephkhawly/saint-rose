@@ -1,7 +1,6 @@
-import React from 'react'
-import SlideAndFade from './SlideAndFade'
+import SlideAndFade from '../../components/SlideAndFade'
 
-function Contact() {
+export default function Contact() {
   return (
     <div className='contact'>
       <div className='content'>
@@ -171,5 +170,3 @@ function Contact() {
     </div>
   )
 }
-
-export default Contact
