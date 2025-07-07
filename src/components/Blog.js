@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
-import MediaQuery from 'react-responsive'
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
 import SlideAndFade from './SlideAndFade'
 
@@ -68,13 +66,6 @@ function Blog() {
       )
     }
   }
-
-  const renderPostsForColumn = (indexes, posts) => {
-    return posts
-      .filter((blogItem, index) => indexes.includes(index))
-      .map((blogItem) => <BlogPost key={blogItem.id} blogItem={blogItem} />)
-  }
-
   const featuredPostIndex = blogItems.findIndex((blogItem) => blogItem.featured == true)
   let filteredBlogPosts = []
   if (featuredPostIndex > -1) {
@@ -83,34 +74,17 @@ function Blog() {
     filteredBlogPosts = blogItems
   }
 
-  const renderFeed = () => {
-    return (
-      <div className='blog-posts'>
-        <div className='c1'>{renderPostsForColumn([0, 3, 6], filteredBlogPosts)}</div>
-        <div className='c2'>{renderPostsForColumn([1, 4, 7], filteredBlogPosts)}</div>
-        <div className='c3'>{renderPostsForColumn([2, 5, 8], filteredBlogPosts)}</div>
-      </div>
-    )
-  }
-
-  const renderMobileFeed = () => {
-    return (
-      <div className='blog-posts'>
-        {filteredBlogPosts.map((blogItem) => (
-          <BlogPost key={blogItem.id} blogItem={blogItem} />
-        ))}
-      </div>
-    )
-  }
-
   return (
     <div className='blog'>
       <div className='content'>
         <SlideAndFade delay={1000}>
           <div className='content-body'>
             {renderFeatured()}
-            <MediaQuery minWidth={DESKTOPTRANSITIONBP}>{renderFeed()}</MediaQuery>
-            <MediaQuery maxWidth={MOBILEBP}>{renderMobileFeed()}</MediaQuery>
+            <div className='blog-posts'>
+              {filteredBlogPosts.map((blogItem) => (
+                <BlogPost key={blogItem.id} blogItem={blogItem} />
+              ))}
+            </div>
           </div>
         </SlideAndFade>
       </div>
