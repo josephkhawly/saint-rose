@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
+import Link from 'next/link'
+import Image from 'next/image'
 import { Fade } from 'react-awesome-reveal'
 
 function Footer() {
@@ -10,18 +10,16 @@ function Footer() {
         <Fade triggerOnce>
           <div className='footer-container'>
             <div className='footer-logo'>
-              <img src='/images/footer-rose.svg' />
+              <Image src='/images/footer-rose.svg' alt='Footer Rose' />
             </div>
 
             <div className='footer-nav'>
               <div className='footer-nav-link'>
-                <Link to='/careers'>careers</Link>
+                <Link href='/careers'>careers</Link>
               </div>
               <div className='footer-nav-link'>
                 <Link
-                  to={{
-                    pathname: 'https://hairbysaintrose.direct.salonservicegroup.com',
-                  }}
+                  href='https://hairbysaintrose.direct.salonservicegroup.com'
                   target='_blank'
                 >
                   shop
@@ -32,27 +30,27 @@ function Footer() {
             <div className='footer-misc'>
               <div className='copyright'>&copy; {new Date().getFullYear()} Hair by Saint Rose</div>
               <div className='social'>
-                <a
+                <Link
                   href='https://www.facebook.com/hairbysaintrose/'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <img src='/images/facebook.svg' alt='Facebook' className='social-logo' />
-                </a>
-                <a
+                  <Image src='/images/facebook.svg' alt='Facebook' className='social-logo' />
+                </Link>
+                <Link
                   href='https://www.instagram.com/hairbysaintrose'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <img src='/images/instagram.svg' alt='Instagram' className='social-logo' />
-                </a>
-                <a
+                  <Image src='/images/instagram.svg' alt='Instagram' className='social-logo' />
+                </Link>
+                <Link
                   href='https://www.youtube.com/channel/UC-m8XjZ7A9vwDpch45bJbtA'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <img src='/images/youtube.svg' alt='YouTube' className='social-logo' />
-                </a>
+                  <Image src='/images/youtube.svg' alt='YouTube' className='social-logo' />
+                </Link>
               </div>
               <div className='thirtythree'>website by thirtythree</div>
             </div>

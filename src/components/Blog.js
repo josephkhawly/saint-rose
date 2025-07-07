@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import Axios from 'axios'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
 import SlideAndFade from './SlideAndFade'
@@ -59,7 +59,7 @@ function Blog() {
           </div>
           <h5>FEATURED POST: {formatIso(featuredPost.date)}</h5>
           <h3>{featuredPost.title}</h3>
-          <Link to={`/blog/${featuredPost.id}`}>
+          <Link href={`/blog/${featuredPost.id}`}>
             <div className='nav-arrow' />
           </Link>
         </div>

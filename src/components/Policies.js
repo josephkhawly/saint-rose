@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import SlideAndFade from './SlideAndFade'
+import Link from 'next/link'
 
 function Policies() {
   return (
@@ -67,7 +67,7 @@ function Policies() {
                 </li>
               </ul>
               <div className='cta'>
-                <Link to='/appointments'>Make an appointment</Link>
+                <Link href='/appointments'>Make an appointment</Link>
 
                 <p>
                   No more putting it off, honey - just book it already. We can&apos;t wait to see

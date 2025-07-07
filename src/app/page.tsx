@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect } from 'react'
 
 import { gsap, Power1 } from 'gsap'
@@ -21,10 +23,10 @@ const getDefaultTimeline = () => {
 
 const playVideo = () => {
   const video = document.getElementById('vid')
-  video.play()
+  video?.play()
 }
 
-const Home = () => {
+export default function Home() {
   useEffect(() => {
     const initAnimation = () => {
       const timeline = getDefaultTimeline()
@@ -64,5 +66,3 @@ const Home = () => {
     </div>
   )
 }
-
-export default Home

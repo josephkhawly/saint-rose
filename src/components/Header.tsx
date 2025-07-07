@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+'use client'
+import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import { links } from '../constants'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-function Nav() {
+function Header() {
   const [open, setOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 989)
-  const location = useLocation()
+  const [isMobile, setIsMobile] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,7 +20,7 @@ function Nav() {
     }
     const handleScroll = () => {
       const nav = document.querySelector('.nav-container')
-      if (location.pathname === '/' || window.scrollY > 50) {
+      if (pathname === '/' || window.scrollY > 50) {
         nav.classList.add('scrolled')
       } else {
         nav.classList.remove('scrolled')
@@ -33,7 +35,7 @@ function Nav() {
       window.removeEventListener('scroll', handleScroll)
       document.body.style.overflow = 'scroll'
     }
-  }, [location.pathname])
+  }, [pathname])
 
   const handleOpenToggle = () => {
     if (open) {
@@ -54,9 +56,9 @@ function Nav() {
         <div className='nav-content'>
           {isMobile ? (
             <div className='nav-bar'>
-              <NavLink exact to='/'>
+              <Link href='/'>
                 <div className='nav-logo'>Saint Rose</div>
-              </NavLink>
+              </Link>
               <button onClick={handleOpenToggle} aria-label='Toggle navigation'>
                 <div className='hamburger'>
                   <div className='hamburger-box'>
@@ -67,7 +69,7 @@ function Nav() {
             </div>
           ) : (
             <div className='nav-logo'>
-              <Link to='/'>Saint Rose</Link>
+              <Link href='/'>Saint Rose</Link>
             </div>
           )}
           {isMobile ? (
@@ -75,12 +77,12 @@ function Nav() {
               <ul className='links'>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <Link to={link.path} onClick={handleOpenToggle}>
+                    <Link href={link.path} onClick={handleOpenToggle}>
                       <div>{link.label}</div>
                     </Link>
                   </li>
                 ))}
-                <li>
+                {/* <li>
                   <a
                     className='book-now-button'
                     onClick={() => {
@@ -90,7 +92,7 @@ function Nav() {
                   >
                     <div>Book now</div>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           ) : (
@@ -98,16 +100,16 @@ function Nav() {
               <ul>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <NavLink to={link.path} activeClassName='active-nav-link' exact>
+                    <Link href={link.path}>
                       {link.label}
-                    </NavLink>
+                    </Link>
                   </li>
                 ))}
-                <li>
+                {/* <li>
                   <a className='book-now-button' onClick={() => window.blvd.openBookingWidget()}>
                     book now
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           )}
@@ -118,4 +120,4 @@ function Nav() {
   )
 }
 
-export default Nav
+export default Header
