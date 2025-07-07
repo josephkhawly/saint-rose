@@ -10,7 +10,7 @@ function Footer() {
         <Fade triggerOnce>
           <div className='footer-container'>
             <div className='footer-logo'>
-              <Image src='/images/footer-rose.svg' alt='Footer Rose' />
+              <Image src='/images/footer-rose.svg' alt='Footer Rose' width={124} height={142} />
             </div>
 
             <div className='footer-nav'>
@@ -35,21 +35,39 @@ function Footer() {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <Image src='/images/facebook.svg' alt='Facebook' className='social-logo' />
+                  <Image
+                    src='/images/facebook.svg'
+                    alt='Facebook'
+                    className='social-logo'
+                    width={35}
+                    height={35}
+                  />
                 </Link>
                 <Link
                   href='https://www.instagram.com/hairbysaintrose'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <Image src='/images/instagram.svg' alt='Instagram' className='social-logo' />
+                  <Image
+                    src='/images/instagram.svg'
+                    alt='Instagram'
+                    className='social-logo'
+                    width={35}
+                    height={35}
+                  />
                 </Link>
                 <Link
                   href='https://www.youtube.com/channel/UC-m8XjZ7A9vwDpch45bJbtA'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <Image src='/images/youtube.svg' alt='YouTube' className='social-logo' />
+                  <Image
+                    src='/images/youtube.svg'
+                    alt='YouTube'
+                    className='social-logo'
+                    width={35}
+                    height={35}
+                  />
                 </Link>
               </div>
               <div className='thirtythree'>website by thirtythree</div>

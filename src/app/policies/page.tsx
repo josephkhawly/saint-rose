@@ -1,8 +1,8 @@
 import React from 'react'
-import SlideAndFade from './SlideAndFade'
+import SlideAndFade from '../../components/SlideAndFade'
 import Link from 'next/link'
 
-function Policies() {
+export default function Policies() {
   return (
     <div className='policies'>
       <div className='content'>
@@ -81,5 +81,3 @@ function Policies() {
     </div>
   )
 }
-
-export default Policies

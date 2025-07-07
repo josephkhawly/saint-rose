@@ -35,7 +35,7 @@ function Header() {
       window.removeEventListener('scroll', handleScroll)
       document.body.style.overflow = 'scroll'
     }
-  }, [pathname])
+  }, [pathname, isMobile])
 
   const handleOpenToggle = () => {
     if (open) {
