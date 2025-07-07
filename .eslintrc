@@ -1,16 +1,4 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"],
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "rules": {
-    "react/prop-types": "off",
-    "no-unused-vars": "warn",
-    "react/react-in-jsx-scope": "off"
-  }
+  "extends": "next/core-web-vitals"
 }
 
