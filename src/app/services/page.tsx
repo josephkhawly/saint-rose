@@ -1,11 +1,10 @@
-import React from 'react'
-import SlideAndFade from './SlideAndFade'
+import SlideAndFade from '../../components/SlideAndFade'
 import classnames from 'classnames'
-import HeroSection from './HeroSection'
-import PricingTable from './PricingTable'
-import { hairData, colorData, treatmentsData } from '../constants'
+import HeroSection from '../../components/HeroSection'
+import PricingTable from '../../components/PricingTable'
+import { hairData, colorData, treatmentsData } from '../../constants'
 
-function Services() {
+export default function Services() {
   return (
     <div className='services'>
       <div className='content'>
@@ -42,5 +41,3 @@ function Services() {
     </div>
   )
 }
-
-export default Services

@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
+'use client'
+
+import { useState } from 'react'
 import MediaQuery from 'react-responsive'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '../constants'
 import classnames from 'classnames'
 
-const PricingTable = ({ title, data }) => {
+interface PricingTableProps {
+  title: string;
+  data: { title: string; description?: string; price: string }[];
+}
+
+const PricingTable = ({ title, data }: PricingTableProps) => {
   const [open, setOpen] = useState(false)
 
   return (
