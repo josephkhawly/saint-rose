@@ -19,18 +19,6 @@ const getDefaultTimeline = () => {
   return timeline
 }
 
-const play = () => {
-  let timeline
-
-  timeline = getDefaultTimeline()
-  window.loadPromise
-    .then(() => requestAnimationFrame(() => timeline.play()))
-    .then(() => {
-      const video = document.getElementById('vid')
-      video.pause()
-    })
-}
-
 const playVideo = () => {
   const video = document.getElementById('vid')
   video.play()
@@ -38,7 +26,16 @@ const playVideo = () => {
 
 const Home = () => {
   useEffect(() => {
-    play()
+    const initAnimation = () => {
+      const timeline = getDefaultTimeline()
+      requestAnimationFrame(() => timeline.play())
+    }
+
+    if (document.readyState === 'complete') {
+      initAnimation()
+    } else {
+      window.addEventListener('load', initAnimation, { once: true })
+    }
   }, [])
 
   return (

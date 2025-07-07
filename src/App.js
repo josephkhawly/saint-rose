@@ -60,7 +60,16 @@ const play = (pathname, node, appears) => {
   } else {
     timeline = getDefaultTimeline(node, delay)
   }
-  window.loadPromise.then(() => requestAnimationFrame(() => timeline.play()))
+
+  const initAnimation = () => {
+    requestAnimationFrame(() => timeline.play())
+  }
+
+  if (document.readyState === 'complete') {
+    initAnimation()
+  } else {
+    window.addEventListener('load', initAnimation, { once: true })
+  }
 }
 
 const exit = (pathname, node) => {
