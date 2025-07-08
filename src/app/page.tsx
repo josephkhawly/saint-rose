@@ -1,52 +1,31 @@
 'use client'
 
-import React, { useEffect } from 'react'
-
-import { gsap, Power1 } from 'gsap'
+import { useEffect, useRef } from 'react'
 
 import { Fade } from 'react-awesome-reveal'
+import { useAnimate } from 'motion/react'
 // import { Metadata } from 'next'
 
 // export const metadata: Metadata = {
 //   title: 'Saint Rose',
 // }
 
-const getDefaultTimeline = () => {
-  const timeline = gsap.timeline({ paused: true })
-  const introRose = document.querySelector('.intro-rose')
-  const intro2 = document.querySelector('.intro-2')
-  const nav = document.querySelector('.nav-container')
-
-  timeline
-    .to(introRose, { opacity: 1, delay: 1, duration: 1 })
-    .to(intro2, { right: '0', delay: 0.25, ease: Power1.easeInOut, duration: 0.7 })
-    .to(nav, { opacity: 1, delay: 0.25, duration: 0.7 })
-    .call(playVideo)
-
-  return timeline
-}
-
-const playVideo = () => {
-  const video = document.getElementById('vid')
-  video?.play()
-}
-
 export default function Home() {
-  useEffect(() => {
-    const initAnimation = () => {
-      const timeline = getDefaultTimeline()
-      requestAnimationFrame(() => timeline.play())
-    }
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [scope, animate] = useAnimate()
 
-    if (document.readyState === 'complete') {
-      initAnimation()
-    } else {
-      window.addEventListener('load', initAnimation, { once: true })
+  useEffect(() => {
+    const initAnimation = async () => {
+      await animate('.intro-rose', { opacity: 1 }, { duration: 1, delay: 1 })
+      await animate('.intro-2', { right: '0' }, { duration: 0.7, delay: 0.25, ease: 'easeInOut' })
+      // await animate('.nav-container', { opacity: 1 }, { duration: 0.7, delay: 0.25 })
+      videoRef.current?.play()
     }
+    initAnimation()
   }, [])
 
   return (
-    <div className='home'>
+    <div className='home' ref={scope}>
       <div className='intro' />
       <div className='intro-2' />
       <div className='intro-rose' />
@@ -55,7 +34,7 @@ export default function Home() {
         <Fade delay={4700}>
           <video
             id='vid'
-            // autoPlay="autoplay"
+            ref={videoRef}
             loop
             muted
             playsInline

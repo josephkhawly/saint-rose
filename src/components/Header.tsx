@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { links } from '../constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import TransitionLink from './TransitionLink'
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -105,12 +106,7 @@ function Header() {
               <ul>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <Link
-                      href={link.path}
-                      className={classNames({ active: pathname === link.path })}
-                    >
-                      {link.label}
-                    </Link>
+                    <TransitionLink href={link.path} label={link.label} />
                   </li>
                 ))}
                 <li>

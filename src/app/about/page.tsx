@@ -2,7 +2,6 @@
 import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../../contentful'
 import Iframe from 'react-iframe'
 import SlideAndFade from '../../components/SlideAndFade'
-// import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { quotesData } from '../../constants'
 import StaffMember from '../../components/StaffMember'
 // import StaffMemberSpotlight from '../../components/StaffMemberSpotlight'
