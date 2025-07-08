@@ -1,18 +1,21 @@
-import React from 'react'
+import Image from 'next/image'
 
 function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
   const { name, role, photoSmall, video, instagram } = staffMemberData
   return (
     <div className='staff-member'>
-      <div className='photo-container' onClick={() => staffMemberSelectHandler(staffMemberData)}>
-        <img src={photoSmall} alt={name} className='photo' />
+      <div
+        className='photo-container'
+        // onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
+      >
+        <Image src={`https:${photoSmall}`} alt={name} className='photo' width={276} height={276} />
         <div className='name-container'>
           <div className='name'>{name}</div>
           <div className='name-decoration'>
             {video ? (
-              <img src='/images/play-bio.svg' alt='play' />
+              <Image src='/images/play-bio.svg' alt='play' width={20} height={20} />
             ) : (
-              <img src='/images/plus-bio.svg' alt='plus' />
+              <Image src='/images/plus-bio.svg' alt='plus' width={20} height={20} />
             )}
           </div>
         </div>

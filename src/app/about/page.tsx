@@ -1,19 +1,13 @@
-import React, { useState, useRef } from 'react'
-import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../contentful'
+// import { useState } from 'react'
+import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../../contentful'
 import Iframe from 'react-iframe'
-import SlideAndFade from './SlideAndFade'
-import Axios from 'axios'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import { quotesData } from '../constants'
-import StaffMember from './StaffMember'
-import StaffMemberSpotlight from './StaffMemberSpotlight'
-import Quotes from './Quotes'
-import HeroSection from './HeroSection'
-
-function preloadImage(imageURL) {
-  const img = new Image()
-  img.src = imageURL
-}
+import SlideAndFade from '../../components/SlideAndFade'
+// import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { quotesData } from '../../constants'
+import StaffMember from '../../components/StaffMember'
+// import StaffMemberSpotlight from '../../components/StaffMemberSpotlight'
+import Quotes from '../../components/Quotes'
+import HeroSection from '../../components/HeroSection'
 
 function processResponse(responseData) {
   const assets = responseData.includes.Asset.map((asset) => {
@@ -23,16 +17,17 @@ function processResponse(responseData) {
   const staffMembers = responseData.items.map((member) => {
     const fields = member.fields
 
-    const staging = {}
-    staging.order = fields.order
-    staging.name = fields.name
-    staging.role = fields.role
-    staging.photoSmall = maybeGetAssetURL('smallPhoto', fields, assets)
-    staging.photoLarge = maybeGetAssetURL('largePhoto', fields, assets)
-    staging.bio = fields.bio
-    staging.video = maybeGetAssetURL('video', fields, assets)
-    staging.instagram = fields.instagram
-    staging.location = fields.location
+    const staging = {
+      order: fields.order,
+      name: fields.name,
+      role: fields.role,
+      photoSmall: maybeGetAssetURL('smallPhoto', fields, assets),
+      photoLarge: maybeGetAssetURL('largePhoto', fields, assets),
+      bio: fields.bio,
+      video: maybeGetAssetURL('video', fields, assets),
+      instagram: fields.instagram,
+      location: fields.location,
+    }
 
     return staging
   })
@@ -52,56 +47,33 @@ function enableParentScroll() {
   document.body.className = document.body.className.replace('disable-scroll', '')
 }
 
-function About() {
-  const [showSpotlight, setShowSpotlight] = useState(false)
-  const [selectedStaffMember, setSelectedStaffMember] = useState({})
-  const [staffMembers, setStaffMembers] = useState(
-    Array(6).fill({
-      name: '',
-      role: '',
-      photoSmall: '',
-      photoLarge: '',
-      bio: '',
-      video: '',
-      location: '',
-    }),
-  )
+export default async function About() {
+  // const [showSpotlight, setShowSpotlight] = useState(false)
+  // const [selectedStaffMember, setSelectedStaffMember] = useState({})
 
-  const container = useRef(null)
-
+  const staffEndpoint = `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=staff&order=fields.order`
   // Fetch staff data
-  React.useEffect(() => {
-    const staffEndpoint = `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=staff&order=fields.order`
-    Axios.get(staffEndpoint)
-      .then((result) => {
-        const fetchedStaffMembers = processResponse(result.data)
-        setStaffMembers(fetchedStaffMembers)
-        fetchedStaffMembers.forEach((member) => {
-          preloadImage(member.photoSmall)
-          preloadImage(member.photoLarge)
-        })
-      })
-      .catch((error) => console.log('error: ', error))
-    return enableParentScroll
-  }, [])
+  const staffData = await fetch(staffEndpoint)
+  const staffDataJson = await staffData.json()
+  const staffMembers = processResponse(staffDataJson)
 
-  const handleStaffMemberSelect = (staffMemberData) => {
-    if (!showSpotlight) {
-      disableParentScroll()
-      setShowSpotlight(true)
-      setSelectedStaffMember(staffMemberData)
-    }
-  }
+  // const handleStaffMemberSelect = (staffMemberData) => {
+  //   if (!showSpotlight) {
+  //     disableParentScroll()
+  //     setShowSpotlight(true)
+  //     setSelectedStaffMember(staffMemberData)
+  //   }
+  // }
 
-  const handleClearStaffMemberSelect = () => {
-    enableParentScroll()
-    setShowSpotlight(false)
-    setSelectedStaffMember({})
-  }
+  // const handleClearStaffMemberSelect = () => {
+  //   enableParentScroll()
+  //   setShowSpotlight(false)
+  //   setSelectedStaffMember({})
+  // }
 
   return (
-    <div className='about' ref={container}>
-      <TransitionGroup component={null}>
+    <div className='about'>
+      {/* <TransitionGroup component={null}>
         {showSpotlight && (
           <CSSTransition in={showSpotlight} timeout={500} classNames='display' unmountOnExit>
             <StaffMemberSpotlight
@@ -110,7 +82,7 @@ function About() {
             />
           </CSSTransition>
         )}
-      </TransitionGroup>
+      </TransitionGroup> */}
 
       <div className='content-container'>
         <div className='content'>
@@ -133,7 +105,7 @@ function About() {
                   <StaffMember
                     key={index}
                     staffMemberData={staffMemberData}
-                    staffMemberSelectHandler={handleStaffMemberSelect}
+                    // staffMemberSelectHandler={handleStaffMemberSelect}
                   />
                 ))}
               </div>
@@ -182,8 +154,8 @@ function About() {
                 scrolling='no'
                 display='initial'
                 position='relative'
-                allowtransparency='true'
-                style='width:100%;border:0;overflow:hidden;'
+                // allowtransparency='true'
+                // style='width:100%;border:0;overflow:hidden;'
               />
             </div>
 
@@ -194,5 +166,3 @@ function About() {
     </div>
   )
 }
-
-export default About

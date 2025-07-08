@@ -10,12 +10,12 @@ import { MOBILEBP, DESKTOPBP } from '../constants'
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 interface HeroSectionProps {
-  title?: string;
-  video?: string;
-  image?: string;
-  leftText: string;
-  rightParagraphs?: string[];
-  heroDelay: number;
+  title?: string
+  video?: string
+  image?: string
+  leftText: string
+  rightParagraphs?: string[]
+  heroDelay?: number
 }
 
 const animateTitleBar = (selector, width) => {
@@ -25,7 +25,14 @@ const animateTitleBar = (selector, width) => {
     .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
 }
 
-function HeroSection({ title, video, image, leftText, rightParagraphs = [], heroDelay = 700 }: HeroSectionProps) {
+function HeroSection({
+  title,
+  video,
+  image,
+  leftText,
+  rightParagraphs = [],
+  heroDelay = 700,
+}: HeroSectionProps) {
   useGSAP(
     () => {
       // Responsive logic for title bar

@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+'use client'
 
-const Quotes = ({ quotes }) => {
+import { useState } from 'react'
+import Image from 'next/image'
+
+const Quotes = ({ quotes }: { quotes: any[] }) => {
   const [current, setCurrent] = useState(0)
 
   const handleNext = () => {
@@ -36,10 +39,10 @@ const Quotes = ({ quotes }) => {
 
         <div className='controls'>
           <button onClick={handleNext} aria-label='Next Quote'>
-            <img src='/images/arrow-right.svg' alt='Next Quote' />
+            <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} />
           </button>
           <button onClick={handlePrevious} aria-label='Previous Quote'>
-            <img src='/images/arrow-left.svg' alt='Previous Quote' />
+            <Image src='/images/arrow-left.svg' alt='Previous Quote' width={56} height={56} />
           </button>
         </div>
       </div>
