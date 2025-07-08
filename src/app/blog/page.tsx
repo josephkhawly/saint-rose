@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../../contentful'
 import SlideAndFade from '../../components/SlideAndFade'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blog | Saint Rose',
+}
 
 const formatIso = (isoString: string) => {
   const date = new Date(isoString)

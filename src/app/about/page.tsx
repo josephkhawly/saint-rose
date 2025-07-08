@@ -8,6 +8,11 @@ import StaffMember from '../../components/StaffMember'
 // import StaffMemberSpotlight from '../../components/StaffMemberSpotlight'
 import Quotes from '../../components/Quotes'
 import HeroSection from '../../components/HeroSection'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Us | Saint Rose',
+}
 
 function processResponse(responseData) {
   const assets = responseData.includes.Asset.map((asset) => {

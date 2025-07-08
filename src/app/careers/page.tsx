@@ -1,8 +1,13 @@
+import { Metadata } from 'next'
 import SlideAndFade from '../../components/SlideAndFade'
 import { submitCareerApplication } from '../actions'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
+
+export const metadata: Metadata = {
+  title: 'Careers | Saint Rose',
+}
 
 export default function Careers() {
   return (

@@ -4,6 +4,10 @@ import HeroSection from '../../components/HeroSection'
 import PricingTable from '../../components/PricingTable'
 import { hairData, colorData, treatmentsData } from '../../constants'
 
+export const metadata: Metadata = {
+  title: 'Services | Saint Rose',
+}
+
 export default function Services() {
   return (
     <div className='services'>

@@ -2,6 +2,19 @@ import SlideAndFade from '../../../components/SlideAndFade'
 import { generateOptions } from '../../../components/richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getEntryApiEndpoint, processEntryResponse } from '../../../contentful'
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug: blogPostId } = await params
+  const blogPostEndpoint = getEntryApiEndpoint(blogPostId)
+  const res = await fetch(blogPostEndpoint, { next: { revalidate: 60 } })
+  const data = await res.json()
+  const expectedFields = ['title']
+  const { entry: blogPost } = processEntryResponse(data, expectedFields)
+  return {
+    title: `${blogPost.title} | Blog | Saint Rose`,
+  }
+}
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug: blogPostId } = await params

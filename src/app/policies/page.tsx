@@ -1,6 +1,11 @@
 import React from 'react'
 import SlideAndFade from '../../components/SlideAndFade'
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Policies | Saint Rose',
+}
 
 export default function Policies() {
   return (

@@ -5,6 +5,11 @@ import React, { useEffect } from 'react'
 import { gsap, Power1 } from 'gsap'
 
 import { Fade } from 'react-awesome-reveal'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Saint Rose',
+}
 
 const getDefaultTimeline = () => {
   const timeline = gsap.timeline({ paused: true })

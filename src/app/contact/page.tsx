@@ -1,4 +1,9 @@
+import { Metadata } from 'next'
 import SlideAndFade from '../../components/SlideAndFade'
+
+export const metadata: Metadata = {
+  title: 'Contact Us | Saint Rose',
+}
 
 export default function Contact() {
   return (
