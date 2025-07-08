@@ -82,7 +82,7 @@ function Header() {
                     </Link>
                   </li>
                 ))}
-                {/* <li>
+                <li>
                   <a
                     className='book-now-button'
                     onClick={() => {
@@ -92,7 +92,7 @@ function Header() {
                   >
                     <div>Book now</div>
                   </a>
-                </li> */}
+                </li>
               </ul>
             </div>
           ) : (
@@ -105,11 +105,11 @@ function Header() {
                     </Link>
                   </li>
                 ))}
-                {/* <li>
+                <li>
                   <a className='book-now-button' onClick={() => window.blvd.openBookingWidget()}>
                     book now
                   </a>
-                </li> */}
+                </li>
               </ul>
             </div>
           )}
