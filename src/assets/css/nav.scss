@@ -2,8 +2,9 @@
 
 .nav-container {
   position: fixed;
+  top: 0;
   width: 100%;
-  opacity: 0;
+  // opacity: 0;
   z-index: 20;
 
   .nav {
@@ -51,7 +52,7 @@
       color: variables.$pink;
     }
 
-    &.active-nav-link {
+    &.active {
       color: variables.$pink;
     }
   }
@@ -98,7 +99,7 @@
         color: variables.$pink;
       }
 
-      &.active-nav-link {
+      &.active {
         color: variables.$pink;
       }
     }

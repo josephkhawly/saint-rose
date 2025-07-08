@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { links } from '../constants'
 import Link from 'next/link'
@@ -9,6 +9,7 @@ function Header() {
   const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const pathname = usePathname()
+  const nav = useRef(null)
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,11 +20,10 @@ function Header() {
       }
     }
     const handleScroll = () => {
-      const nav = document.querySelector('.nav-container')
       if (pathname === '/' || window.scrollY > 50) {
-        nav.classList.add('scrolled')
+        nav.current.classList.add('scrolled')
       } else {
-        nav.classList.remove('scrolled')
+        nav.current.classList.remove('scrolled')
       }
     }
     window.addEventListener('scroll', handleScroll)
@@ -47,7 +47,8 @@ function Header() {
   }
 
   return (
-    <div
+    <header
+      ref={nav}
       className={classNames('nav-container', {
         open: isMobile && open,
       })}
@@ -77,7 +78,11 @@ function Header() {
               <ul className='links'>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <Link href={link.path} onClick={handleOpenToggle}>
+                    <Link
+                      href={link.path}
+                      onClick={handleOpenToggle}
+                      className={classNames({ active: pathname === link.path })}
+                    >
                       <div>{link.label}</div>
                     </Link>
                   </li>
@@ -100,7 +105,10 @@ function Header() {
               <ul>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <Link href={link.path}>
+                    <Link
+                      href={link.path}
+                      className={classNames({ active: pathname === link.path })}
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -116,7 +124,7 @@ function Header() {
         </div>
         <div className='divider' />
       </div>
-    </div>
+    </header>
   )
 }
 
