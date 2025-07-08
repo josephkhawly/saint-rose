@@ -1,32 +1,24 @@
 'use client'
-import { keyframes } from '@emotion/react'
+
+import { motion } from 'motion/react'
 import { ReactNode } from 'react'
-import { Reveal } from 'react-awesome-reveal'
 
 interface SlideAndFadeProps {
-  children: ReactNode;
-  delay?: number;
-  distance?: string;
-}
-
-const fadeIn = (distance: string) => {
-  return keyframes`
-    from {
-      opacity: 0;
-      transform: translateY(${distance});
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `
+  children: ReactNode
+  delay?: number
+  distance?: string
 }
 
 const SlideAndFade = ({ children, delay = 0, distance = '50px' }: SlideAndFadeProps) => {
   return (
-    <Reveal keyframes={fadeIn(distance)} delay={delay} triggerOnce>
+    <motion.div
+      initial={{ opacity: 0, y: distance }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: delay / 1000 }}
+      viewport={{ once: true }}
+    >
       {children}
-    </Reveal>
+    </motion.div>
   )
 }
 

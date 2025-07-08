@@ -1,13 +1,9 @@
 'use client'
 
 import SlideAndFade from './SlideAndFade'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Expo } from 'gsap'
+import { motion } from 'motion/react'
 import { MOBILEBP, DESKTOPBP } from '../constants'
-
-gsap.registerPlugin(ScrollTrigger, useGSAP)
+import { useState, useEffect } from 'react'
 
 interface HeroSectionProps {
   title?: string
@@ -18,13 +14,6 @@ interface HeroSectionProps {
   heroDelay?: number
 }
 
-const animateTitleBar = (selector, width) => {
-  return gsap
-    .timeline()
-    .to(selector, { width, duration: 0.7, ease: Expo.easeIn })
-    .to(`${selector} .title-bar-text`, { opacity: 1, duration: 1 })
-}
-
 function HeroSection({
   title,
   video,
@@ -33,34 +22,37 @@ function HeroSection({
   rightParagraphs = [],
   heroDelay = 700,
 }: HeroSectionProps) {
-  useGSAP(
-    () => {
-      // Responsive logic for title bar
-      let storyWidth
-      if (window.innerWidth >= DESKTOPBP) {
-        storyWidth = '612px'
-      } else if (window.innerWidth >= MOBILEBP) {
-        storyWidth = '612px'
-      } else {
-        storyWidth = '243px'
-      }
+  const [storyWidth, setStoryWidth] = useState('243px')
+  useEffect(() => {
+    if (window.innerWidth >= DESKTOPBP) {
+      setStoryWidth('612px')
+    } else if (window.innerWidth >= MOBILEBP) {
+      setStoryWidth('612px')
+    } else {
+      setStoryWidth('243px')
+    }
+  }, [])
 
-      // Our Story
-      ScrollTrigger.create({
-        trigger: '.hero',
-        start: window.innerWidth < MOBILEBP ? 'top+=50 bottom' : 'top+=100 bottom',
-        once: true,
-        onEnter: () => animateTitleBar('.hero--title-bar', storyWidth).play(),
-      })
-    },
-    { scope: document.querySelector('.content-container') },
-  )
   return (
     <div className='hero'>
       {title && (
-        <div className='hero--title-bar'>
-          <div className='title-bar-text'>{title}</div>
-        </div>
+        <motion.div
+          className='hero--title-bar'
+          initial={{ width: 0 }}
+          whileInView={{ width: storyWidth }}
+          transition={{ duration: 0.7, ease: 'easeIn' }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            className='title-bar-text'
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            {title}
+          </motion.div>
+        </motion.div>
       )}
       <SlideAndFade delay={heroDelay}>
         {video && (
