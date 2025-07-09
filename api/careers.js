@@ -1,10 +1,10 @@
 // Vercel serverless function for handling career applications
 import fs from 'fs'
 import formidable from 'formidable'
-import postmark from 'postmark'
+import { ServerClient } from 'postmark'
 
 // Initialize Postmark client
-const mailClient = new postmark.ServerClient(process.env.POSTMARK_API_KEY)
+const mailClient = new ServerClient(process.env.POSTMARK_API_KEY)
 
 // Function to read file data
 function readFile(file) {
@@ -55,8 +55,8 @@ async function sendMail(fields, resumeFile) {
     })
 
     const msg = {
-      From: 'info@hairbysaintrose.com',
-      To: 'info@hairbysaintrose.com',
+      From: 'joseph.khawly@gmail.com',
+      To: 'joseph.khawly@gmail.com',
       Subject: 'Submission from careers page',
       MessageStream: 'outbound',
       HtmlBody: `
