@@ -52,10 +52,10 @@ export async function submitCareerApplication(formData: FormData) {
   if (!result.success) {
     // Collect all error messages
     const messages = result.error.issues.map((issue) => issue.message)
-    return { status: 'error', message: messages.join(' ') }
+    // return { status: 'error', message: messages.join(' ') }
   }
 
   // TODO: Implement file/email logic here
   revalidatePath('/careers')
-  return { status: 'success', message: 'Application submitted successfully.' }
+  // return { status: 'success', message: 'Application submitted successfully.' }
 }
