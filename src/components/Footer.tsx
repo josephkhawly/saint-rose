@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Fade } from 'react-awesome-reveal'
+import TransitionLink from './TransitionLink'
 
 function Footer() {
   return (
@@ -15,13 +16,10 @@ function Footer() {
 
             <div className='footer-nav'>
               <div className='footer-nav-link'>
-                <Link href='/careers'>careers</Link>
+                <TransitionLink href='/careers' label='careers' />
               </div>
               <div className='footer-nav-link'>
-                <Link
-                  href='https://hairbysaintrose.direct.salonservicegroup.com'
-                  target='_blank'
-                >
+                <Link href='https://hairbysaintrose.direct.salonservicegroup.com' target='_blank'>
                   shop
                 </Link>
               </div>

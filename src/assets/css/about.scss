@@ -1,17 +1,6 @@
 @use "variables";
 
 .about {
-  @keyframes slide-and-fade {
-    from {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .inner-content-container {
     margin: 0 124px;
     padding-top: 200px;
@@ -142,7 +131,6 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      animation: slide-and-fade 1s ease-out;
 
       .inner-container {
         position: relative;
@@ -168,7 +156,6 @@
     .bio-container {
       overflow: scroll;
       height: 100%;
-      animation: slide-and-fade 1s ease-out;
 
       .photo-container {
         position: fixed;

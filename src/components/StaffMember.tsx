@@ -1,12 +1,17 @@
-import Image from 'next/image'
+'use client'
 
-function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import StaffMemberSpotlight from './StaffMemberSpotlight'
+import { AnimatePresence } from 'motion/react'
+
+function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
   const { name, role, photoSmall, video, instagram } = staffMemberData
   return (
     <div className='staff-member'>
       <div
         className='photo-container'
-        // onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
+        onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
       >
         <Image src={`https:${photoSmall}`} alt={name} className='photo' width={276} height={276} />
         <div className='name-container'>
@@ -34,4 +39,47 @@ function StaffMember({ staffMemberData, staffMemberSelectHandler }) {
   )
 }
 
-export default StaffMember
+export function StaffMemberGrid({ staffMembers }) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedStaffMember, setSelectedStaffMember] = useState({})
+
+  const handleStaffMemberSelect = (staffMemberData) => {
+    if (!isModalOpen) {
+      setIsModalOpen(true)
+      setSelectedStaffMember(staffMemberData)
+    }
+  }
+
+  const handleClearStaffMemberSelect = () => {
+    setIsModalOpen(false)
+    setSelectedStaffMember({})
+  }
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('disable-scroll')
+    } else {
+      document.body.classList.remove('disable-scroll')
+    }
+  }, [isModalOpen])
+
+  return (
+    <div className='staff-container'>
+      <AnimatePresence>
+        {isModalOpen && (
+          <StaffMemberSpotlight
+            staffMemberDetails={selectedStaffMember}
+            closeHandler={handleClearStaffMemberSelect}
+          />
+        )}
+      </AnimatePresence>
+      {staffMembers.map((staffMemberData, index) => (
+        <StaffCard
+          key={index}
+          staffMemberData={staffMemberData}
+          staffMemberSelectHandler={handleStaffMemberSelect}
+        />
+      ))}
+    </div>
+  )
+}

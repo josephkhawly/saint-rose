@@ -35,16 +35,12 @@
 }
 
 .disable-scroll {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: variables.$secondary-color;
-}
-
-.fade {
-  opacity: 0;
 }
 
 .content {

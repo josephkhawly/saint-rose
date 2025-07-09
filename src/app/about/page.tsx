@@ -1,10 +1,8 @@
-// import { useState } from 'react'
 import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../../contentful'
 import Iframe from 'react-iframe'
 import SlideAndFade from '../../components/SlideAndFade'
 import { quotesData } from '../../constants'
-import StaffMember from '../../components/StaffMember'
-// import StaffMemberSpotlight from '../../components/StaffMemberSpotlight'
+import { StaffMemberGrid } from '../../components/StaffMember'
 import Quotes from '../../components/Quotes'
 import HeroSection from '../../components/HeroSection'
 import { Metadata } from 'next'
@@ -39,55 +37,15 @@ function processResponse(responseData) {
   return staffMembers
 }
 
-function disableParentScroll() {
-  const root = document.documentElement
-  root.className += ' disable-scroll'
-  document.body.classList.add('disable-scroll')
-}
-
-function enableParentScroll() {
-  const root = document.documentElement
-  root.className = root.className.replace('disable-scroll', '')
-  document.body.className = document.body.className.replace('disable-scroll', '')
-}
-
 export default async function About() {
-  // const [showSpotlight, setShowSpotlight] = useState(false)
-  // const [selectedStaffMember, setSelectedStaffMember] = useState({})
-
   const staffEndpoint = `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=staff&order=fields.order`
   // Fetch staff data
   const staffData = await fetch(staffEndpoint)
   const staffDataJson = await staffData.json()
   const staffMembers = processResponse(staffDataJson)
 
-  // const handleStaffMemberSelect = (staffMemberData) => {
-  //   if (!showSpotlight) {
-  //     disableParentScroll()
-  //     setShowSpotlight(true)
-  //     setSelectedStaffMember(staffMemberData)
-  //   }
-  // }
-
-  // const handleClearStaffMemberSelect = () => {
-  //   enableParentScroll()
-  //   setShowSpotlight(false)
-  //   setSelectedStaffMember({})
-  // }
-
   return (
     <div className='about'>
-      {/* <TransitionGroup component={null}>
-        {showSpotlight && (
-          <CSSTransition in={showSpotlight} timeout={500} classNames='display' unmountOnExit>
-            <StaffMemberSpotlight
-              staffMemberDetails={selectedStaffMember}
-              closeHandler={handleClearStaffMemberSelect}
-            />
-          </CSSTransition>
-        )}
-      </TransitionGroup> */}
-
       <div className='content-container'>
         <div className='content'>
           <div className='inner-content-container'>
@@ -104,15 +62,7 @@ export default async function About() {
             </div>
 
             <SlideAndFade delay={1650}>
-              <div className='staff-container'>
-                {staffMembers.map((staffMemberData, index) => (
-                  <StaffMember
-                    key={index}
-                    staffMemberData={staffMemberData}
-                    // staffMemberSelectHandler={handleStaffMemberSelect}
-                  />
-                ))}
-              </div>
+              <StaffMemberGrid staffMembers={staffMembers} />
             </SlideAndFade>
           </div>
 
@@ -149,10 +99,9 @@ export default async function About() {
                 />
               </video>
             </div>
-
             <div className='instagram-reviews'>
               <Iframe
-                src='https://cdn.lightwidget.com/widgets/d9467bad991b50808baea81bd806ab73.html'
+                url='https://cdn.lightwidget.com/widgets/d9467bad991b50808baea81bd806ab73.html'
                 width='100%'
                 height='auto'
                 scrolling='no'
