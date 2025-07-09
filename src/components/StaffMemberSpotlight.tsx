@@ -1,9 +1,7 @@
-'use client'
-
 import SlideAndFade from './SlideAndFade'
 import Image from 'next/image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { motion } from 'motion/react'
+import * as motion from 'motion/react-client'
 
 function Video({ link, closeHandler }) {
   return (
