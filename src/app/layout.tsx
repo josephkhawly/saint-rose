@@ -20,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <GoogleAnalytics gaId='G-XD3JQQYHHV' />
       {/* Booking Widget */}
       <Script
+        id='boulevard-script'
         dangerouslySetInnerHTML={{
           __html: `
             (function (a) {
