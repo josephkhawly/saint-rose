@@ -71,7 +71,7 @@ function Header() {
             </div>
           ) : (
             <div className='nav-logo'>
-              <Link href='/'>Saint Rose</Link>
+              <TransitionLink href='/' label='Saint Rose' />
             </div>
           )}
           {isMobile ? (

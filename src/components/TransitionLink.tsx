@@ -17,6 +17,7 @@ const animatePageOut = (href: string, router: any) => {
 
     tl.set([entrance], {
       yPercent: 100,
+      opacity: 1,
     }).to([entrance], {
       yPercent: 0,
       ease: Power1.easeInOut,
@@ -31,6 +32,7 @@ const animatePageOut = (href: string, router: any) => {
 const TransitionLink = ({ href, label }: Props) => {
   const router = useRouter()
   const pathname = usePathname()
+  const isHome = pathname === '/'
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -40,7 +42,11 @@ const TransitionLink = ({ href, label }: Props) => {
   }
 
   return (
-    <Link className={classNames({ active: pathname === href })} onClick={handleClick} href={href}>
+    <Link
+      className={classNames({ active: pathname === href && !isHome })}
+      onClick={handleClick}
+      href={href}
+    >
       {label}
     </Link>
   )
