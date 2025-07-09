@@ -16,10 +16,6 @@
     "routes": [
         { "handle": "filesystem" },
         {
-            "src": "/careers",
-            "dest": "/api/careers.js"
-        },
-        {
             "src": "/(.*)",
             "dest": "/index.html"
         }
