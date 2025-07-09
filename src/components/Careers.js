@@ -184,7 +184,7 @@ class Careers extends React.Component {
     data.append("question6", question6);
 
     // Axios.post("http://localhost:8080/careers", data, config)
-    Axios.post("/api/careers", data, config)
+    Axios.post(`https://saint-rose.vercel.app/api/careers`, data, config)
       .then((response) => {
         if (response.data.status === "success") {
           this.setState((state) => {
