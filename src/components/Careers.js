@@ -184,7 +184,7 @@ class Careers extends React.Component {
     data.append("question6", question6);
 
     // Axios.post("http://localhost:8080/careers", data, config)
-    Axios.post(`https://saint-rose.vercel.app/api/careers-post`, data, config)
+    Axios.post(`https://saint-rose.vercel.app/api/careers-post.js`, data, config)
       .then((response) => {
         if (response.data.status === "success") {
           this.setState((state) => {
@@ -211,8 +211,9 @@ class Careers extends React.Component {
           return {
             submitting: false,
             submitError: true,
-            errorMessage:
-              "We had trouble submitting your request. Please give us a call.",
+            errorMessage: error.response.data.message
+              ? error.response.data.message
+              : "We had trouble submitting your request. Please give us a call.",
           };
         });
         document.getElementById("submit-button").disabled = false;
@@ -323,6 +324,7 @@ class Careers extends React.Component {
                       <input
                         type="text"
                         value={firstName}
+                        required
                         onChange={(event) =>
                           this.handleInput("firstName", event.target.value)
                         }
@@ -335,6 +337,7 @@ class Careers extends React.Component {
                       <input
                         type="text"
                         value={lastName}
+                        required
                         onChange={(event) =>
                           this.handleInput("lastName", event.target.value)
                         }
@@ -350,6 +353,7 @@ class Careers extends React.Component {
                       <input
                         type="text"
                         value={email}
+                        required
                         onChange={(event) =>
                           this.handleInput("email", event.target.value)
                         }
@@ -363,6 +367,7 @@ class Careers extends React.Component {
                       <input
                         type="text"
                         value={phone}
+                        required
                         onChange={(event) =>
                           this.handleInput("phone", event.target.value)
                         }
@@ -378,6 +383,7 @@ class Careers extends React.Component {
                       <input
                         type="text"
                         value={address}
+                        required
                         onChange={(event) =>
                           this.handleInput("address", event.target.value)
                         }
@@ -391,6 +397,7 @@ class Careers extends React.Component {
                       <input
                         type="date"
                         value={startDate}
+                        required
                         onChange={(event) =>
                           this.handleInput("startDate", event.target.value)
                         }
@@ -442,6 +449,7 @@ class Careers extends React.Component {
                         onChange={(event) =>
                           this.handleInput("resumeFile", event.target.files[0])
                         }
+                        required
                       />
                       <div className="upload-status">
                         {resumeFile ? resumeFile.name : "No File Chosen"}
