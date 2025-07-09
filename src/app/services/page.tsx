@@ -14,7 +14,7 @@ export default function Services() {
     <div className='services'>
       <div className='content'>
         <div className='landing'>
-          <SlideAndFade delay={2250}>
+          <SlideAndFade delay={1250}>
             <div className='sub-nav'>Services</div>
             <h3>
               You want service that makes you feel your absolute best, and Saint Rose has a
@@ -31,7 +31,7 @@ export default function Services() {
             rightParagraphs={[
               'We offer complimentary refreshments because you deserve it. This includes your choice of French-press coffee, a variety of loose-leaf teas served hot or cold, and white, red, and rosé wine.',
             ]}
-            heroDelay={3000}
+            heroDelay={2000}
           />
 
           <SlideAndFade delay={250}>
