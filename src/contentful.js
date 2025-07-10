@@ -1,7 +1,3 @@
-export const API_BASE_URL = "https://cdn.contentful.com";
-export const API_SPACE_ID = "2f8bh3xz5t4r";
-export const API_TOKEN = "w_iD0iNnkKr2HotiAweKs5FNWBeFFRyGyC8WZ05sY04";
-
 export function getEntryApiEndpoint(entryId, options) {
   let optionsString = "";
   if (options && options.length > 0) {
@@ -9,7 +5,7 @@ export function getEntryApiEndpoint(entryId, options) {
       (option) => (optionsString += `&${option.key}=${option.value}`)
     );
   }
-  return `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries/?sys.id=${entryId}${optionsString}&access_token=${API_TOKEN}`;
+  return `${process.env.API_BASE_URL}/spaces/${process.env.API_SPACE_ID}/entries/?sys.id=${entryId}${optionsString}&access_token=${process.env.API_TOKEN}`;
 }
 
 export function getAllEntriesByContentTypeApiEndpoint(contentType, options) {
@@ -19,7 +15,7 @@ export function getAllEntriesByContentTypeApiEndpoint(contentType, options) {
       return (optionsString += `&${option.key}=${option.value}`);
     });
   }
-  return `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?content_type=${contentType}${optionsString}&access_token=${API_TOKEN}`;
+  return `${process.env.API_BASE_URL}/spaces/${process.env.API_SPACE_ID}/entries?content_type=${contentType}${optionsString}&access_token=${process.env.API_TOKEN}`;
 }
 
 function getURLForAssetID(id, assets) {

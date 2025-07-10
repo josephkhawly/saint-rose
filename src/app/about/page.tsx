@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_SPACE_ID, API_TOKEN, maybeGetAssetURL } from '../../contentful'
+import { maybeGetAssetURL } from '../../contentful'
 import Iframe from 'react-iframe'
 import SlideAndFade from '../../components/SlideAndFade'
 import { quotesData } from '../../constants'
@@ -38,7 +38,7 @@ function processResponse(responseData) {
 }
 
 export default async function About() {
-  const staffEndpoint = `${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=staff&order=fields.order`
+  const staffEndpoint = `${process.env.API_BASE_URL}/spaces/${process.env.API_SPACE_ID}/entries?access_token=${process.env.API_TOKEN}&content_type=staff&order=fields.order`
   // Fetch staff data
   const staffData = await fetch(staffEndpoint)
   const staffDataJson = await staffData.json()
