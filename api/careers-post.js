@@ -39,7 +39,7 @@ function readFile(file) {
 async function sendMail(fields, resumeFile) {
   try {
     for (let field of requiredFields) {
-      if (!fields[field]) {
+      if (!fields[field] && field !== 'resumeFile') {
         throw new Error(`Missing required field: ${field}`)
       }
     }
