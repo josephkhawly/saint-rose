@@ -135,9 +135,53 @@ class Careers extends React.Component {
   handleSubmit() {
     document.getElementById("submit-button").disabled = true;
 
+    // Manual validation for required fields
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "email",
+      "phone",
+      "address",
+      "startDate",
+      "resumeFile",
+      "license",
+      "position",
+    ];
+    for (let field of requiredFields) {
+      if (!this.state[field] || (field === "resumeFile" && !this.state.resumeFile.name)) {
+        this.setState({
+          submitError: true,
+          errorMessage: `Please fill out all required fields.`,
+          submitting: false,
+        });
+        document.getElementById("submit-button").disabled = false;
+        return;
+      }
+    }
+    if (this.state.position.length === 0) {
+      this.setState({
+        submitError: true,
+        errorMessage: `Please select a position.`,
+        submitting: false,
+      });
+      document.getElementById("submit-button").disabled = false;
+      return;
+    }
+    if (this.state.license.length === 0) {
+      this.setState({
+        submitError: true,
+        errorMessage: `Please select an option.`,
+        submitting: false,
+      });
+      document.getElementById("submit-button").disabled = false;
+      return;
+    }
+
     this.setState((state) => {
       return {
         submitting: true,
+        submitError: false,
+        errorMessage: "",
       };
     });
 
@@ -149,8 +193,6 @@ class Careers extends React.Component {
       address,
       startDate,
       instagramHandle,
-      license,
-      position,
       resumeFile,
       question1,
       question2,
@@ -159,6 +201,10 @@ class Careers extends React.Component {
       question5,
       question6,
     } = this.state;
+
+    // Only send the first value for position and license
+    const position = this.state.position[0] || "";
+    const license = this.state.license[0] || "";
 
     const config = {
       headers: { "content-type": "multipart/form-data" },
@@ -174,8 +220,8 @@ class Careers extends React.Component {
     data.append("resumeFile", resumeFile);
     data.append("startDate", startDate);
     data.append("instagramHandle", instagramHandle);
-    data.append("position", position.join(", "));
-    data.append("license", license.join(", "));
+    data.append("position", position);
+    data.append("license", license);
     data.append("question1", question1);
     data.append("question2", question2);
     data.append("question3", question3);
@@ -183,7 +229,6 @@ class Careers extends React.Component {
     data.append("question5", question5);
     data.append("question6", question6);
 
-    // Axios.post("http://localhost:8080/careers", data, config)
     Axios.post(`https://saint-rose.vercel.app/api/careers-post.js`, data, config)
       .then((response) => {
         if (response.data.status === "success") {
@@ -211,7 +256,7 @@ class Careers extends React.Component {
           return {
             submitting: false,
             submitError: true,
-            errorMessage: error.response.data.message
+            errorMessage: error.response && error.response.data && error.response.data.message
               ? error.response.data.message
               : "We had trouble submitting your request. Please give us a call.",
           };

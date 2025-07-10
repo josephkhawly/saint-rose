@@ -6,6 +6,19 @@ import { ServerClient } from 'postmark'
 // Initialize Postmark client
 const mailClient = new ServerClient(process.env.POSTMARK_API_KEY)
 
+// Validate required fields
+const requiredFields = [
+  'firstName',
+  'lastName',
+  'email',
+  'phone',
+  'address',
+  'startDate',
+  'resumeFile',
+  'license',
+  'position',
+]
+
 // Function to read file data
 function readFile(file) {
   if (file) {
@@ -25,6 +38,19 @@ function readFile(file) {
 // Function to send email
 async function sendMail(fields, resumeFile) {
   try {
+    for (let field of requiredFields) {
+      if (!fields[field]) {
+        throw new Error(`Missing required field: ${field}`)
+      }
+    }
+    if (
+      !resumeFile ||
+      !resumeFile.filepath ||
+      !resumeFile.mimetype ||
+      !resumeFile.originalFilename
+    ) {
+      throw new Error('Missing or invalid resume file.')
+    }
     // Since readFile already returns a promise, we can await it directly
     const resumeData = await readFile(resumeFile)
 
@@ -46,9 +72,9 @@ async function sendMail(fields, resumeFile) {
       question6,
     } = fields
 
-    const attachements = []
+    const attachments = []
 
-    attachements.push({
+    attachments.push({
       content: resumeData.toString('base64'),
       contentType: resumeFile.mimetype,
       name: resumeFile.originalFilename,
@@ -91,7 +117,7 @@ async function sendMail(fields, resumeFile) {
       <strong>Is there anything else you would like us to know?:</strong> ${question6}
       <br />
       `,
-      attachments: attachements,
+      attachments: attachments,
     }
 
     await mailClient.sendEmail(msg)
@@ -148,10 +174,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ status: 'error', message: 'Please include resume.' })
     }
 
+    for (let field of requiredFields) {
+      if (!fields[field]) {
+        return res
+          .status(400)
+          .json({ status: 'error', message: `Missing required field: ${field}` })
+      }
+    }
     await sendMail(fields, files.resumeFile)
     return res.status(200).json({ status: 'success' })
   } catch (error) {
     console.error('Error processing career application:', error)
-    return res.status(500).json({ status: 'error', message: 'Unable to process request.' })
+    return res
+      .status(500)
+      .json({ status: 'error', message: error.message || 'Unable to process request.' })
   }
 }
