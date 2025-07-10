@@ -81,8 +81,8 @@ async function sendMail(fields, resumeFile) {
     })
 
     const msg = {
-      From: 'joseph.khawly@gmail.com',
-      To: 'joseph.khawly@gmail.com',
+      From: 'info@hairbysaintrose.com',
+      To: 'info@hairbysaintrose.com',
       Subject: 'Submission from careers page',
       MessageStream: 'outbound',
       HtmlBody: `
