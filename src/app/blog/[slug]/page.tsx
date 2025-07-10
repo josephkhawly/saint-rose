@@ -33,7 +33,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   return (
     <div className='blog-post'>
       <div className='content'>
-        <SlideAndFade delay={2000}>
+        <SlideAndFade delay={2}>
           <div className='content-header'>
             <div className='featured-image-container'>
               <div className='image' style={{ backgroundImage: `url(${blogPost.headerImage})` }} />

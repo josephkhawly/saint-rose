@@ -12,7 +12,7 @@ const SlideAndFade = ({ children, delay = 0, distance = '50px' }: SlideAndFadePr
     <motion.div
       initial={{ opacity: 0, y: distance }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: delay / 1000 }}
+      transition={{ duration: 0.7, delay: delay }}
       viewport={{ once: true }}
     >
       {children}

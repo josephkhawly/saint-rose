@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <div className='contact'>
       <div className='content'>
-        <SlideAndFade delay={1000}>
+        <SlideAndFade delay={1}>
           <div className='sub-nav'>Contact us</div>
           <div className='text-content'>
             <h3>

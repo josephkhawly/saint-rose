@@ -14,11 +14,11 @@ const formatIso = (isoString: string) => {
 }
 
 interface BlogItem {
-  id: string;
-  title: string;
-  date: string;
-  headerImage: string;
-  featured?: boolean;
+  id: string
+  title: string
+  date: string
+  headerImage: string
+  featured?: boolean
 }
 
 function BlogPost({ blogItem }: { blogItem: BlogItem }) {
@@ -59,7 +59,7 @@ export default async function Blog() {
   return (
     <div className='blog'>
       <div className='content'>
-        <SlideAndFade delay={1000}>
+        <SlideAndFade delay={1}>
           <div className='content-body'>
             {featuredPost && (
               <div className='featured-blog-post'>

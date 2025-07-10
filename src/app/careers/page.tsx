@@ -10,10 +10,10 @@ export default function Careers() {
   return (
     <div className='careers'>
       <div className='content'>
-        <SlideAndFade delay={1000}>
+        <SlideAndFade delay={1}>
           <div className='sub-nav'>Careers</div>
         </SlideAndFade>
-        <SlideAndFade delay={1000}>
+        <SlideAndFade delay={1}>
           <div className='intro'>
             <h3>
               Thank you so much for your interest in Saint Rose. Please fill out the following form.

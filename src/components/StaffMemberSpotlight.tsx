@@ -26,7 +26,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
       </div>
       <div className='inner-container'>
         <div className='text-container'>
-          <SlideAndFade delay={350} distance='150px'>
+          <SlideAndFade delay={0.35} distance='150px'>
             <div className='text'>
               <button className='close' onClick={() => closeHandler()}>
                 <Image src='/images/close.svg' alt='close' width={43} height={43} />

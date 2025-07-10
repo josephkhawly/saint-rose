@@ -20,7 +20,7 @@ function HeroSection({
   image,
   leftText,
   rightParagraphs = [],
-  heroDelay = 700,
+  heroDelay = 0.7,
 }: HeroSectionProps) {
   const [storyWidth, setStoryWidth] = useState('243px')
   useEffect(() => {
@@ -78,7 +78,7 @@ function HeroSection({
           </SlideAndFade>
         </div>
         <div className='text-container'>
-          <SlideAndFade delay={250}>
+          <SlideAndFade delay={0.25}>
             <div className='right'>
               {rightParagraphs.map((p, i) => (
                 <p key={i}>{p}</p>

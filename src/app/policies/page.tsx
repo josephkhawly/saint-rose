@@ -11,7 +11,7 @@ export default function Policies() {
   return (
     <div className='policies'>
       <div className='content'>
-        <SlideAndFade delay={1000}>
+        <SlideAndFade delay={1}>
           <div className='sub-nav'>Policies</div>
           <div className='text-content'>
             <h3>
