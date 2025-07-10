@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import * as z from 'zod/v4'
 
-export async function submitCareerApplication(formData: FormData) {
+export async function submitCareerApplication(prevState: any, formData: FormData) {
   // Define Zod schema for the form
   const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),
@@ -13,8 +13,12 @@ export async function submitCareerApplication(formData: FormData) {
     address: z.string().min(1, 'Address is required'),
     startDate: z.string().min(1, 'Start date is required'),
     instagramHandle: z.string().optional(),
-    license: z.enum(['Yes', 'No']),
-    position: z.enum(['Salon Coordinator', 'Stylist', 'Apprentice']),
+    license: z.enum(['Yes', 'No'], {
+      error: 'Please select an option',
+    }),
+    position: z.enum(['Salon Coordinator', 'Stylist', 'Apprentice'], {
+      error: 'Please select an option',
+    }),
     question1: z.string().max(800, 'Response must be 800 characters or less').optional(),
     question2: z.string().max(800, 'Response must be 800 characters or less').optional(),
     question3: z.string().max(800, 'Response must be 800 characters or less').optional(),
@@ -22,10 +26,18 @@ export async function submitCareerApplication(formData: FormData) {
     question5: z.string().max(800, 'Response must be 800 characters or less').optional(),
     question6: z.string().max(800, 'Response must be 800 characters or less').optional(),
     resumeFile: z
-      .instanceof(File, { message: 'Resume file is required' })
-      .refine((file) => file && file.size > 0, {
-        message: 'Resume file is required',
-      }),
+      .file()
+      .max(1024 * 1024 * 20, 'File must be less than 20MB')
+      .mime(
+        [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ],
+        {
+          error: 'File must be a PDF or Word document',
+        },
+      ),
   })
 
   // Extract fields from FormData
@@ -50,12 +62,21 @@ export async function submitCareerApplication(formData: FormData) {
 
   const result = await schema.safeParseAsync(data)
   if (!result.success) {
-    // Collect all error messages
-    const messages = result.error.issues.map((issue) => issue.message)
-    // return { status: 'error', message: messages.join(' ') }
+    // Map errors to fields
+    const fieldErrors: Record<string, string> = {}
+    for (const issue of result.error.issues) {
+      if (issue.path && issue.path.length > 0) {
+        const field = issue.path[0] as string
+        // Only show the first error per field
+        if (!fieldErrors[field]) {
+          fieldErrors[field] = issue.message
+        }
+      }
+    }
+    return { fieldErrors }
   }
 
   // TODO: Implement file/email logic here
   revalidatePath('/careers')
-  // return { status: 'success', message: 'Application submitted successfully.' }
+  return { successMessage: 'Application submitted successfully.' }
 }
