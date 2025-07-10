@@ -175,7 +175,7 @@ export default async function handler(req, res) {
     }
 
     for (let field of requiredFields) {
-      if (!fields[field]) {
+      if (!fields[field] && field !== 'resumeFile') {
         return res
           .status(400)
           .json({ status: 'error', message: `Missing required field: ${field}` })
