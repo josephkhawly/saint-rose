@@ -71,7 +71,7 @@ function Header() {
             </div>
           ) : (
             <div className='nav-logo'>
-              <TransitionLink href='/' label='Saint Rose' />
+              <TransitionLink href='/'>Saint Rose</TransitionLink>
             </div>
           )}
           {isMobile ? (
@@ -106,7 +106,7 @@ function Header() {
               <ul>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <TransitionLink href={link.path} label={link.label} />
+                    <TransitionLink href={link.path}>{link.label}</TransitionLink>
                   </li>
                 ))}
                 <li>

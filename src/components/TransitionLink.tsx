@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 interface Props {
   href: string
-  label: string
+  children: React.ReactNode
 }
 
 const animatePageOut = (href: string, router: any) => {
@@ -29,7 +29,7 @@ const animatePageOut = (href: string, router: any) => {
   }
 }
 
-const TransitionLink = ({ href, label }: Props) => {
+const TransitionLink = ({ href, children }: Props) => {
   const router = useRouter()
   const pathname = usePathname()
   const isHome = pathname === '/'
@@ -47,7 +47,7 @@ const TransitionLink = ({ href, label }: Props) => {
       onClick={handleClick}
       href={href}
     >
-      {label}
+      {children}
     </Link>
   )
 }

@@ -16,7 +16,7 @@ function Footer() {
 
             <div className='footer-nav'>
               <div className='footer-nav-link'>
-                <TransitionLink href='/careers' label='careers' />
+                <TransitionLink href='/careers'>careers</TransitionLink>
               </div>
               <div className='footer-nav-link'>
                 <Link href='https://hairbysaintrose.direct.salonservicegroup.com' target='_blank'>

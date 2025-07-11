@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../../contentful'
 import SlideAndFade from '../../components/SlideAndFade'
 import { Metadata } from 'next'
+import TransitionLink from '../../components/TransitionLink'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
@@ -29,9 +30,9 @@ function BlogPost({ blogItem }: { blogItem: BlogItem }) {
       </div>
       <h5>{formatIso(blogItem.date)}</h5>
       <h3>{blogItem.title}</h3>
-      <Link href={`/blog/${blogItem.id}`}>
+      <TransitionLink href={`/blog/${blogItem.id}`}>
         <div className='nav-arrow' />
-      </Link>
+      </TransitionLink>
     </div>
   )
 }
@@ -71,9 +72,9 @@ export default async function Blog() {
                 </div>
                 <h5>FEATURED POST: {formatIso(featuredPost.date)}</h5>
                 <h3>{featuredPost.title}</h3>
-                <Link href={`/blog/${featuredPost.id}`}>
+                <TransitionLink href={`/blog/${featuredPost.id}`}>
                   <div className='nav-arrow' />
-                </Link>
+                </TransitionLink>
               </div>
             )}
             <div className='blog-posts'>
