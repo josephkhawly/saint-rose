@@ -24,7 +24,6 @@
     "@gsap/react": "^2.1.2",
     "@next/third-parties": "^15.3.5",
     "classnames": "^2.5.1",
-    "express": "^4.17.1",
     "formidable": "^2.0.1",
     "gsap": "^3.13.0",
     "motion": "^12.23.0",
