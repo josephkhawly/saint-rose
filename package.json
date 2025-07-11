@@ -9,7 +9,7 @@
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf public/js || true",
+    "clean": "rm -rf build || true",
     "build": "NODE_ENV=production webpack --mode production",
     "dev": "webpack-dev-server --config webpack.config.js --progress",
     "vercel-build": "NODE_ENV=production webpack --mode production"
@@ -26,6 +26,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^13.0.0",
     "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",

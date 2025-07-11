@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const postcssPresetEnv = require('postcss-preset-env')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: ['./src/index.js'],
@@ -79,5 +80,10 @@ module.exports = {
     historyApiFallback: true,
     // disableHostCheck: true, //for ngrok
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'public', to: '' }],
+    }),
+  ],
 }
