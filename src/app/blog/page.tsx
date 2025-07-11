@@ -1,25 +1,11 @@
-import Link from 'next/link'
-import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../../contentful'
 import SlideAndFade from '../../components/SlideAndFade'
 import { Metadata } from 'next'
 import TransitionLink from '../../components/TransitionLink'
+import { BlogItem } from '../../lib/types'
+import { formatIso, getBlogItems } from '../../lib/helpers'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
-}
-
-const formatIso = (isoString: string) => {
-  const date = new Date(isoString)
-  const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' }
-  return date.toLocaleString('en-US', options)
-}
-
-interface BlogItem {
-  id: string
-  title: string
-  date: string
-  headerImage: string
-  featured?: boolean
 }
 
 function BlogPost({ blogItem }: { blogItem: BlogItem }) {
@@ -37,20 +23,13 @@ function BlogPost({ blogItem }: { blogItem: BlogItem }) {
   )
 }
 
+
 export default async function Blog() {
-  const options = [
-    { key: 'order', value: '-fields.date' },
-    { key: 'limit', value: '10' },
-  ]
-  const newsItemsEndpoint = getAllEntriesByContentTypeApiEndpoint('blogPost', options)
-  const res = await fetch(newsItemsEndpoint, { next: { revalidate: 60 } })
-  if (!res.ok) {
+  const blogItems = await getBlogItems(['title', 'date', 'headerImage', 'featured'])
+
+  if (!blogItems) {
     return <div>Failed to load blog posts.</div>
   }
-  const data = await res.json()
-  const expectedFields = ['title', 'date', 'headerImage', 'featured']
-  const fetchedBlogItems = processEntryListResponse(data, expectedFields)
-  const blogItems: BlogItem[] = fetchedBlogItems.entries
 
   const featuredPost = blogItems.find((blogItem) => blogItem.featured == true)
   const featuredPostIndex = blogItems.findIndex((blogItem) => blogItem.featured == true)

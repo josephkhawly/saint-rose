@@ -2,7 +2,7 @@ import SlideAndFade from '../../../components/SlideAndFade'
 import { generateOptions } from '../../../components/richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getEntryApiEndpoint, processEntryResponse } from '../../../contentful'
-import { Metadata } from 'next'
+import { getBlogItems } from '../../../lib/helpers'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug: blogPostId } = await params
@@ -16,6 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+export async function generateStaticParams() {
+  const blogItems = await getBlogItems(['title'])
+  return blogItems.map((blogItem) => ({
+    slug: blogItem.id,
+  }))
+}
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug: blogPostId } = await params
   const blogPostEndpoint = getEntryApiEndpoint(blogPostId)
@@ -25,7 +32,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     return <div>Failed to load blog post.</div>
   }
   const data = await res.json()
-  const expectedFields = ['title', 'date', 'headerImage', 'body']
+  const expectedFields = ['title', 'headerImage', 'body']
   const { entry: blogPost, assets } = processEntryResponse(data, expectedFields)
 
   const options = generateOptions(assets)
