@@ -63,23 +63,17 @@ module.exports = {
     extensions: ['*', '.js', '.jsx', '.css', '.scss'],
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'build'),
     publicPath: '',
     filename: 'bundle.js',
     hashFunction: 'sha512',
   },
   devServer: {
-    // static: path.join(__dirname, "public/"),
-    // static: {
-    //   directory: path.join(__dirname, "public"),
-    //   publicPath: "/",
-    // },
     static: {
-      directory: path.join(__dirname, 'public/'),
+      directory: path.join(__dirname, 'build/'),
       publicPath: '/',
     },
     port: 3000,
-    // publicPath: "/",
     hot: 'only',
     // hotOnly: true,
     historyApiFallback: true,
