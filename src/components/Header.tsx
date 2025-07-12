@@ -5,6 +5,7 @@ import { links } from '@/constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import TransitionLink from './TransitionLink'
+import { motion } from 'motion/react'
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -48,7 +49,11 @@ function Header() {
   }
 
   return (
-    <header
+    <motion.header
+      key={pathname}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, delay: pathname === '/' ? 2.3 : 1 }}
       ref={nav}
       className={classNames('nav-container', {
         open: isMobile && open,
@@ -120,7 +125,7 @@ function Header() {
         </div>
         <div className='divider' />
       </div>
-    </header>
+    </motion.header>
   )
 }
 
