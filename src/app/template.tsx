@@ -41,7 +41,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
   const pathname = usePathname()
   useEffect(() => {
     animatePageIn(pathname === '/')
-  }, [])
+  }, [pathname])
   return (
     <div className='main-container'>
       {children}

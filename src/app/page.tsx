@@ -22,7 +22,7 @@ export default function Home() {
       videoRef.current?.play()
     }
     initAnimation()
-  }, [])
+  }, [animate])
 
   return (
     <div className='home' ref={scope}>
