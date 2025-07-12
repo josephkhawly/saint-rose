@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
-import SlideAndFade from '../../components/SlideAndFade'
-import ApplyForm from '../../components/ApplyForm'
+import SlideAndFade from '@/components/SlideAndFade'
+import ApplyForm from '@/components/ApplyForm'
 
 export const metadata: Metadata = {
   title: 'Careers | Saint Rose',

@@ -1,8 +1,8 @@
-import SlideAndFade from '../../components/SlideAndFade'
+import SlideAndFade from '@/components/SlideAndFade'
 import classnames from 'classnames'
-import HeroSection from '../../components/HeroSection'
-import PricingTable from '../../components/PricingTable'
-import { hairData, colorData, treatmentsData } from '../../constants'
+import HeroSection from '@/components/HeroSection'
+import PricingTable from '@/components/PricingTable'
+import { hairData, colorData, treatmentsData } from '@/constants'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

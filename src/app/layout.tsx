@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import '../assets/css/app.scss'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -13,9 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         {/* Instagram Widget */}
-        <Script
-          src='https://cdn.lightwidget.com/widgets/lightwidget.js'
-        />
+        <Script src='https://cdn.lightwidget.com/widgets/lightwidget.js' />
       </body>
       <GoogleAnalytics gaId='G-XD3JQQYHHV' />
       {/* Booking Widget */}

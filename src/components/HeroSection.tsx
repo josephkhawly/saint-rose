@@ -2,7 +2,7 @@
 
 import SlideAndFade from './SlideAndFade'
 import { motion } from 'motion/react'
-import { MOBILEBP, DESKTOPBP } from '../constants'
+import { MOBILEBP, DESKTOPBP } from '@/constants'
 import { useState, useEffect } from 'react'
 
 interface HeroSectionProps {

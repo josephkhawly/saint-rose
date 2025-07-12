@@ -1,8 +1,8 @@
-import SlideAndFade from '../../../components/SlideAndFade'
-import { generateOptions } from '../../../components/richText'
+import SlideAndFade from '@/components/SlideAndFade'
+import { generateOptions } from '@/components/richText'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { getEntryApiEndpoint, processEntryResponse } from '../../../contentful'
-import { getBlogItems } from '../../../lib/helpers'
+import { getEntryApiEndpoint, processEntryResponse } from '@/contentful'
+import { getBlogItems } from '@/lib/helpers'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug: blogPostId } = await params

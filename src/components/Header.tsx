@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import { links } from '../constants'
+import { links } from '@/constants'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import TransitionLink from './TransitionLink'

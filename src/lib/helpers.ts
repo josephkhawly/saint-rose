@@ -1,4 +1,4 @@
-import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '../contentful'
+import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '@/contentful'
 import { BlogItem } from './types'
 
 export function formatIso(isoString: string) {

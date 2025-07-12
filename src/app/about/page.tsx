@@ -1,10 +1,10 @@
-import { maybeGetAssetURL } from '../../contentful'
+import { maybeGetAssetURL } from '@/contentful'
 import Iframe from 'react-iframe'
-import SlideAndFade from '../../components/SlideAndFade'
-import { quotesData } from '../../constants'
-import { StaffMemberGrid } from '../../components/StaffMember'
-import Quotes from '../../components/Quotes'
-import HeroSection from '../../components/HeroSection'
+import SlideAndFade from '@/components/SlideAndFade'
+import { quotesData } from '@/constants'
+import { StaffMemberGrid } from '@/components/StaffMember'
+import Quotes from '@/components/Quotes'
+import HeroSection from '@/components/HeroSection'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

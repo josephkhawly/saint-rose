@@ -1,5 +1,5 @@
 import React from 'react'
-import SlideAndFade from '../../components/SlideAndFade'
+import SlideAndFade from '@/components/SlideAndFade'
 import Link from 'next/link'
 import { Metadata } from 'next'
 

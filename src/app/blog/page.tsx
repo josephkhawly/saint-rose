@@ -1,8 +1,8 @@
-import SlideAndFade from '../../components/SlideAndFade'
+import SlideAndFade from '@/components/SlideAndFade'
 import { Metadata } from 'next'
-import TransitionLink from '../../components/TransitionLink'
-import { BlogItem } from '../../lib/types'
-import { formatIso, getBlogItems } from '../../lib/helpers'
+import TransitionLink from '@/components/TransitionLink'
+import { BlogItem } from '@/lib/types'
+import { formatIso, getBlogItems } from '@/lib/helpers'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
@@ -22,7 +22,6 @@ function BlogPost({ blogItem }: { blogItem: BlogItem }) {
     </div>
   )
 }
-
 
 export default async function Blog() {
   const blogItems = await getBlogItems(['title', 'date', 'headerImage', 'featured'])
