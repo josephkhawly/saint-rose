@@ -30,8 +30,6 @@ export default async function Blog() {
     return <div>Failed to load blog posts.</div>
   }
 
-  console.log(blogItems)
-
   const featuredPost = blogItems.find((blogItem) => blogItem.featured == true)
   const featuredPostIndex = blogItems.findIndex((blogItem) => blogItem.featured == true)
   const filteredBlogPosts =

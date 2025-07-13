@@ -7,6 +7,7 @@ import Link from 'next/link'
 interface Props {
   href: string
   children: React.ReactNode
+  callback?: () => void
 }
 
 const animatePageOut = (href: string, router: any) => {
@@ -29,7 +30,7 @@ const animatePageOut = (href: string, router: any) => {
   }
 }
 
-const TransitionLink = ({ href, children }: Props) => {
+const TransitionLink = ({ href, children, callback }: Props) => {
   const router = useRouter()
   const pathname = usePathname()
   const isHome = pathname === '/'
@@ -37,6 +38,7 @@ const TransitionLink = ({ href, children }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     if (pathname !== href) {
+      callback?.()
       animatePageOut(href, router)
     }
   }

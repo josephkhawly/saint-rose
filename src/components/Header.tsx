@@ -30,7 +30,7 @@ function Header() {
     }
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('resize', handleResize)
-    // Call handleScroll initially in case the user is already scrolled
+    handleResize()
     handleScroll()
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -53,7 +53,7 @@ function Header() {
       key={pathname}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, delay: pathname === '/' ? 2.3 : 1 }}
+      transition={{ duration: 0.75, delay: pathname === '/' ? 2.3 : 1, ease: 'easeInOut' }}
       ref={nav}
       className={classNames('nav-container', {
         open: isMobile && open,
@@ -63,9 +63,9 @@ function Header() {
         <div className='nav-content'>
           {isMobile ? (
             <div className='nav-bar'>
-              <Link href='/'>
+              <TransitionLink href='/'>
                 <div className='nav-logo'>Saint Rose</div>
-              </Link>
+              </TransitionLink>
               <button onClick={handleOpenToggle} aria-label='Toggle navigation'>
                 <div className='hamburger'>
                   <div className='hamburger-box'>
@@ -84,13 +84,9 @@ function Header() {
               <ul className='links'>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <Link
-                      href={link.path}
-                      onClick={handleOpenToggle}
-                      className={classNames({ active: pathname === link.path })}
-                    >
-                      <div>{link.label}</div>
-                    </Link>
+                    <TransitionLink href={link.path} callback={handleOpenToggle}>
+                      {link.label}
+                    </TransitionLink>
                   </li>
                 ))}
                 <li>
