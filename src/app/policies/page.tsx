@@ -1,6 +1,4 @@
-import React from 'react'
 import SlideAndFade from '@/components/SlideAndFade'
-import Link from 'next/link'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -71,14 +69,6 @@ export default function Policies() {
                   <p>Please arrive with clean, detangled, dry hair.</p>
                 </li>
               </ul>
-              <div className='cta'>
-                <Link href='/appointments'>Make an appointment</Link>
-
-                <p>
-                  No more putting it off, honey - just book it already. We can&apos;t wait to see
-                  you!
-                </p>
-              </div>
             </div>
           </div>
         </SlideAndFade>
