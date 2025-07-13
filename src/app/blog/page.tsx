@@ -24,14 +24,18 @@ function BlogPost({ blogItem }: { blogItem: BlogItem }) {
 }
 
 export default async function Blog() {
-  const posts = await getBlogItems(['title', 'date', 'headerImage', 'featured'])
+  const blogItems = await getBlogItems(['title', 'date', 'headerImage', 'featured'])
 
-  if (!posts) {
+  if (!blogItems) {
     return <div>Failed to load blog posts.</div>
   }
 
-  const featuredPost = posts.find((blogItem) => blogItem.featured == true)
-  const filteredBlogPosts = posts.filter((blogItem) => blogItem.featured == false)
+  console.log(blogItems)
+
+  const featuredPost = blogItems.find((blogItem) => blogItem.featured == true)
+  const featuredPostIndex = blogItems.findIndex((blogItem) => blogItem.featured == true)
+  const filteredBlogPosts =
+    featuredPostIndex > -1 ? blogItems.toSpliced(featuredPostIndex, 1) : blogItems
 
   return (
     <div className='blog'>
@@ -44,7 +48,7 @@ export default async function Blog() {
                   <div
                     className='image'
                     style={{ backgroundImage: `url(${featuredPost.headerImage})` }}
-                  />
+                  ></div>
                 </div>
                 <h5>FEATURED POST: {formatIso(featuredPost.date)}</h5>
                 <h3>{featuredPost.title}</h3>
