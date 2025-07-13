@@ -18,7 +18,6 @@ export default function Home() {
     const initAnimation = async () => {
       await animate('.intro-rose', { opacity: 1 }, { duration: 1 })
       await animate('.intro-2', { right: '0' }, { duration: 0.7, delay: 0.25, ease: 'easeInOut' })
-      // await animate('.nav-container', { opacity: 1 }, { duration: 0.7, delay: 0.25 })
       videoRef.current?.play()
     }
     initAnimation()

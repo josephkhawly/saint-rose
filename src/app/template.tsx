@@ -4,13 +4,6 @@ import { useEffect } from 'react'
 import { gsap, Power1 } from 'gsap'
 import { usePathname } from 'next/navigation'
 
-// const getHomeTimeline = () => {
-//   const timeline = gsap.timeline({ paused: true })
-//   const entrance = document.querySelector('.entrance')
-//   timeline.to(entrance, { opacity: 1, delay: 1, ease: Power1.easeInOut, duration: 1 })
-//   return timeline
-// }
-
 const animatePageIn = (isHome: boolean) => {
   const entrance = document.querySelector('.entrance')
 
