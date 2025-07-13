@@ -5,12 +5,12 @@ import MediaQuery from 'react-responsive'
 import { MOBILEBP, DESKTOPTRANSITIONBP } from '@/constants'
 import classnames from 'classnames'
 
-interface PricingTableProps {
+interface ServiceListProps {
   title: string
   data: { title: string; description?: string; price: string }[]
 }
 
-const PricingTable = ({ title, data }: PricingTableProps) => {
+const ServiceList = ({ title, data }: ServiceListProps) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -77,4 +77,4 @@ const PricingTable = ({ title, data }: PricingTableProps) => {
   )
 }
 
-export default PricingTable
+export default ServiceList

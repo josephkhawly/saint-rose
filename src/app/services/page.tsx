@@ -1,7 +1,7 @@
 import SlideAndFade from '@/components/SlideAndFade'
 import classnames from 'classnames'
 import HeroSection from '@/components/HeroSection'
-import PricingTable from '@/components/PricingTable'
+import ServiceList from '@/components/ServiceList'
 import { hairData, colorData, treatmentsData } from '@/constants'
 import { Metadata } from 'next'
 
@@ -36,9 +36,9 @@ export default function Services() {
 
           <SlideAndFade delay={0.25}>
             <div className='services-container'>
-              <PricingTable title='Haircut &amp; Style' data={hairData} />
-              <PricingTable title='Color Services' data={colorData} />
-              <PricingTable title='Treatments' data={treatmentsData} />
+              <ServiceList title='Haircut &amp; Style' data={hairData} />
+              <ServiceList title='Color Services' data={colorData} />
+              <ServiceList title='Treatments' data={treatmentsData} />
             </div>
           </SlideAndFade>
         </div>
