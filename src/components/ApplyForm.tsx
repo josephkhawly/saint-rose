@@ -1,7 +1,7 @@
 'use client'
 
 import { useActionState } from 'react'
-import { submitCareerApplication } from '../app/actions'
+import { submitCareerApplication } from '../app/(frontend)/actions'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
