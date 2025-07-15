@@ -5,8 +5,8 @@ import ServiceList from '@/components/ServiceList'
 import { Metadata } from 'next'
 import { getServices } from '@/lib/helpers'
 
-// Revalidate every 60 seconds
-export const revalidate = 60
+// Revalidate every hour
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Services | Saint Rose',
