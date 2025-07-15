@@ -2,14 +2,17 @@ import SlideAndFade from '@/components/SlideAndFade'
 import classnames from 'classnames'
 import HeroSection from '@/components/HeroSection'
 import ServiceList from '@/components/ServiceList'
-import { hairData, colorData, treatmentsData } from '@/constants'
+// import { hairData, colorData, treatmentsData } from '@/constants'
 import { Metadata } from 'next'
+import { getServices } from '@/lib/helpers'
 
 export const metadata: Metadata = {
   title: 'Services | Saint Rose',
 }
 
-export default function Services() {
+export default async function Services() {
+  const services = await getServices()
+
   return (
     <div className='services'>
       <div className='content'>
@@ -36,9 +39,9 @@ export default function Services() {
 
           <SlideAndFade delay={0.25}>
             <div className='services-container'>
-              <ServiceList title='Haircut &amp; Style' data={hairData} />
-              <ServiceList title='Color Services' data={colorData} />
-              <ServiceList title='Treatments' data={treatmentsData} />
+              {services.map((service) => (
+                <ServiceList key={service.id} title={service.title} data={service.services} />
+              ))}
             </div>
           </SlideAndFade>
         </div>

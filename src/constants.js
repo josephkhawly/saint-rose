@@ -53,48 +53,48 @@ export const hairData = [
     title: 'Haircut',
     description:
       'Starting with a shampoo and condition. Followed by a cut and style of your choice.',
-    price: '97',
+    price: 97,
   },
   {
     title: 'Curly Cut',
     description:
       'After following our curly cut prep instructions, your stylist will cut your hair in its natural state, followed by a shampoo and condition. Afterward, your stylist will walk you through the styling and diffusing process.',
-    price: '137',
+    price: 137,
   },
   {
     title: 'Barber Cut',
     description:
       'A short cut primarily using clippers and taking less than 45 mins. Includes shampoo and style.',
-    price: '55',
+    price: 55,
   },
   {
     title: 'Transformation Cut',
     description:
       'A significant change with extra time allotted for instruction on styling your new do.',
-    price: '121',
+    price: 121,
   },
   {
     title: 'Kids Cut',
     description: 'Guests 10 and under. Includes shampoo and blow dry.',
-    price: '55',
+    price: 55,
   },
   {
     title: 'Special Occasion',
     description:
       'For any look requiring some or all hair to be pinned, teased, or quaffed. Does not include a wash or blow dry.',
-    price: '143',
+    price: 143,
   },
   {
     title: 'Blow Dry',
     description:
       'Customized shampoo and conditioner for your hair needs to be followed by a style of your choice.',
-    price: '50',
+    price: 50,
   },
   {
     title: 'Wash & Go',
     description:
       'A shampoo that is meant to cleanse, hydrate, and define curls to their optimal levels. Beginning with a thorough clarifying of the hair and scalp, then an application of a product customized for your hair, followed by a diffuse to set your style.',
-    price: '77',
+    price: 77,
   },
 ]
 
@@ -103,43 +103,43 @@ export const colorData = [
     title: 'Single Process',
     description:
       'A single color applied to cover gray, maintain hair color, or darken your hair color. Does not include blow dry.',
-    price: '107',
+    price: 107,
   },
   {
     title: 'Gloss',
     description:
       'Demi-permanent color used to tint the hair or refresh a previous color service. Does not include blow dry.',
-    price: '36',
+    price: 36,
   },
   {
     title: 'Face Frame Lightening',
     description:
       'A traditional foil or open-air technique, including the part line and area around the face. Blow dry not included.',
-    price: '68',
+    price: 68,
   },
   {
     title: 'Partial Lightening',
     description:
       'A traditional foil or open-air technique, including the crown area of the head. Blow dry not included.',
-    price: '151',
+    price: 151,
   },
   {
     title: 'Full Lightening',
     description:
       'A traditional foil or open-air technique, including the full head. Blow dry not included.',
-    price: '206',
+    price: 206,
   },
 ]
 
 export const treatmentsData = [
-  { title: 'Kevin Murphy Treatment', price: '39' },
-  { title: 'Kevin Murphy Scalp Scrub', price: '45' },
-  { title: 'Kérastase Fusio Dose', price: '49' },
-  { title: 'Kérastase Scalp Scrub', price: '35' },
-  { title: 'Innersense Scalp Scrub', price: '27' },
-  { title: 'Leaf & Flower CBD Treatment', price: '69' },
-  { title: 'B3 Steam Treatment', price: '59' },
-  { title: 'K18 Treatment', price: '28' },
-  { title: 'Magic Sleek', price: '360' },
-  { title: 'Keratin/Brazilian', price: '340' },
+  { title: 'Kevin Murphy Treatment', price: 39 },
+  { title: 'Kevin Murphy Scalp Scrub', price: 45 },
+  { title: 'Kérastase Fusio Dose', price: 49 },
+  { title: 'Kérastase Scalp Scrub', price: 35 },
+  { title: 'Innersense Scalp Scrub', price: 27 },
+  { title: 'Leaf & Flower CBD Treatment', price: 69 },
+  { title: 'B3 Steam Treatment', price: 59 },
+  { title: 'K18 Treatment', price: 28 },
+  { title: 'Magic Sleek', price: 360 },
+  { title: 'Keratin/Brazilian', price: 340 },
 ]

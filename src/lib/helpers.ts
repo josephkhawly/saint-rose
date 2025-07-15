@@ -1,5 +1,7 @@
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '@/contentful'
 import { BlogItem } from './types'
+import config from '@payload-config'
+import { getPayload } from 'payload'
 
 export function formatIso(isoString: string) {
   const date = new Date(isoString)
@@ -17,4 +19,13 @@ export async function getBlogItems(expectedFields: string[]): Promise<BlogItem[]
   const fetchedBlogItems = processEntryListResponse(res, expectedFields)
   const blogItems: BlogItem[] = fetchedBlogItems.entries
   return blogItems
+}
+
+export async function getServices() {
+  const payload = await getPayload({ config })
+  const services = await payload.find({
+    collection: 'service-menu',
+    sort: 'createdAt',
+  })
+  return services.docs
 }

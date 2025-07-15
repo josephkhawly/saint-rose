@@ -7,7 +7,7 @@ import classnames from 'classnames'
 
 interface ServiceListProps {
   title: string
-  data: { title: string; description?: string; price: string }[]
+  data: { title: string; description?: string; price: number }[]
 }
 
 const ServiceList = ({ title, data }: ServiceListProps) => {
