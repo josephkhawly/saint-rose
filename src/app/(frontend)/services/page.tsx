@@ -2,9 +2,11 @@ import SlideAndFade from '@/components/SlideAndFade'
 import classnames from 'classnames'
 import HeroSection from '@/components/HeroSection'
 import ServiceList from '@/components/ServiceList'
-// import { hairData, colorData, treatmentsData } from '@/constants'
 import { Metadata } from 'next'
 import { getServices } from '@/lib/helpers'
+
+// Revalidate every 60 seconds
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Services | Saint Rose',
