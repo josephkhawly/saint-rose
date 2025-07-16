@@ -2,6 +2,11 @@ import type { CollectionConfig } from 'payload'
 
 export const ServiceMenu: CollectionConfig = {
   slug: 'service-menu',
+  admin: {
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'services'],
+  },
+  orderable: true,
   fields: [
     {
       name: 'title',

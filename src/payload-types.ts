@@ -165,6 +165,7 @@ export interface Media {
  */
 export interface ServiceMenu {
   id: number;
+  _order?: string | null;
   title: string;
   services: {
     title: string;
@@ -282,6 +283,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "service-menu_select".
  */
 export interface ServiceMenuSelect<T extends boolean = true> {
+  _order?: T;
   title?: T;
   services?:
     | T

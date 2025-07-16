@@ -25,7 +25,6 @@ export async function getServices() {
   const payload = await getPayload({ config })
   const services = await payload.find({
     collection: 'service-menu',
-    sort: 'createdAt',
   })
   return services.docs
 }
