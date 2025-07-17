@@ -22,7 +22,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
   return (
     <div className='bio-container'>
       <div className='photo-container'>
-        <div className='photo' style={{ backgroundImage: `url(${photoLarge})` }} />
+        <div className='photo' style={{ backgroundImage: `url(${photoLarge.url})` }} />
       </div>
       <div className='inner-container'>
         <div className='text-container'>
@@ -33,7 +33,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
               </button>
               <h3>{name}</h3>
               <h5>{role}</h5>
-              {documentToReactComponents(bio)}
+              <div className='bio'>{bio}</div>
             </div>
           </SlideAndFade>
         </div>
@@ -54,7 +54,7 @@ function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
       transition={{ duration: 1, ease: 'easeOut' }}
     >
       {video ? (
-        <Video link={video} closeHandler={closeHandler} />
+        <Video link={video.url} closeHandler={closeHandler} />
       ) : (
         <Bio
           name={name}

@@ -28,3 +28,11 @@ export async function getServices() {
   })
   return services.docs
 }
+
+export async function getStaff() {
+  const payload = await getPayload({ config })
+  const staff = await payload.find({
+    collection: 'staff-member',
+  })
+  return staff.docs
+}

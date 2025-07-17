@@ -13,7 +13,7 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
         className='photo-container'
         onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
       >
-        <Image src={`https:${photoSmall}`} alt={name} className='photo' width={276} height={276} />
+        <Image src={photoSmall.url} alt={name} className='photo' width={276} height={276} />
         <div className='name-container'>
           <div className='name'>{name}</div>
           <div className='name-decoration'>

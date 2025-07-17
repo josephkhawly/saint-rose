@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     'service-menu': ServiceMenu;
+    'staff-member': StaffMember;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'service-menu': ServiceMenuSelect<false> | ServiceMenuSelect<true>;
+    'staff-member': StaffMemberSelect<false> | StaffMemberSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -178,6 +180,30 @@ export interface ServiceMenu {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff-member".
+ */
+export interface StaffMember {
+  id: number;
+  _order?: string | null;
+  name: string;
+  role: string;
+  /**
+   * Instagram handle without the @
+   */
+  instagram?: string | null;
+  /**
+   * Photo to be displayed on the grid.
+   */
+  photoSmall: number | Media;
+  photoLarge?: (number | null) | Media;
+  displayType: 'bio' | 'video';
+  bio?: string | null;
+  video?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -194,6 +220,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'service-menu';
         value: number | ServiceMenu;
+      } | null)
+    | ({
+        relationTo: 'staff-member';
+        value: number | StaffMember;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -293,6 +323,23 @@ export interface ServiceMenuSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff-member_select".
+ */
+export interface StaffMemberSelect<T extends boolean = true> {
+  _order?: T;
+  name?: T;
+  role?: T;
+  instagram?: T;
+  photoSmall?: T;
+  photoLarge?: T;
+  displayType?: T;
+  bio?: T;
+  video?: T;
   updatedAt?: T;
   createdAt?: T;
 }

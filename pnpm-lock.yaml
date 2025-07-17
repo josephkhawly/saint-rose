@@ -53,6 +53,9 @@ importers:
       next:
         specifier: ^15.3.5
         version: 15.3.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.0)
+      node-fetch:
+        specifier: '2'
+        version: 2.7.0
       payload:
         specifier: ^3.47.0
         version: 3.47.0(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.8.3)(utf-8-validate@6.0.5)

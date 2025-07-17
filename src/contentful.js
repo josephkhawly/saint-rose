@@ -98,3 +98,29 @@ export function processEntryListResponse(responseData, expectedFields) {
     assets,
   };
 }
+
+export function processStaffResponse(responseData) {
+  const assets = responseData.includes.Asset.map((asset) => {
+    return { id: asset.sys.id, url: asset.fields.file.url }
+  })
+
+  const staffMembers = responseData.items.map((member) => {
+    const fields = member.fields
+
+    const staging = {
+      order: fields.order,
+      name: fields.name,
+      role: fields.role,
+      photoSmall: maybeGetAssetURL('smallPhoto', fields, assets),
+      photoLarge: maybeGetAssetURL('largePhoto', fields, assets),
+      bio: fields.bio,
+      video: maybeGetAssetURL('video', fields, assets),
+      instagram: fields.instagram,
+      location: fields.location,
+    }
+
+    return staging
+  })
+
+  return staffMembers
+}

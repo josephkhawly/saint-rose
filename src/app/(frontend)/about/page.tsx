@@ -1,4 +1,3 @@
-import { maybeGetAssetURL } from '@/contentful'
 import Iframe from 'react-iframe'
 import SlideAndFade from '@/components/SlideAndFade'
 import { quotesData } from '@/constants'
@@ -6,43 +5,14 @@ import { StaffMemberGrid } from '@/components/StaffMember'
 import Quotes from '@/components/Quotes'
 import HeroSection from '@/components/HeroSection'
 import { Metadata } from 'next'
+import { getStaff } from '@/lib/helpers'
 
 export const metadata: Metadata = {
   title: 'About Us | Saint Rose',
 }
 
-function processResponse(responseData) {
-  const assets = responseData.includes.Asset.map((asset) => {
-    return { id: asset.sys.id, url: asset.fields.file.url }
-  })
-
-  const staffMembers = responseData.items.map((member) => {
-    const fields = member.fields
-
-    const staging = {
-      order: fields.order,
-      name: fields.name,
-      role: fields.role,
-      photoSmall: maybeGetAssetURL('smallPhoto', fields, assets),
-      photoLarge: maybeGetAssetURL('largePhoto', fields, assets),
-      bio: fields.bio,
-      video: maybeGetAssetURL('video', fields, assets),
-      instagram: fields.instagram,
-      location: fields.location,
-    }
-
-    return staging
-  })
-
-  return staffMembers
-}
-
 export default async function About() {
-  const staffEndpoint = `${process.env.API_BASE_URL}/spaces/${process.env.API_SPACE_ID}/entries?access_token=${process.env.API_TOKEN}&content_type=staff&order=fields.order`
-  // Fetch staff data
-  const staffData = await fetch(staffEndpoint)
-  const staffDataJson = await staffData.json()
-  const staffMembers = processResponse(staffDataJson)
+  const staffMembers = await getStaff()
 
   return (
     <div className='about'>
