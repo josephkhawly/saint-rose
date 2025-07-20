@@ -3,11 +3,12 @@ export const DESKTOPTRANSITIONBP = 990
 export const DESKTOPBP = 1080
 
 export const links = [
-  { path: '/contact', label: 'contact', active: 'contact' },
-  { path: '/services', label: 'services', active: 'services' },
-  { path: '/policies', label: 'policies', active: 'policies' },
-  { path: '/blog', label: 'blog', active: 'blog' },
-  { path: '/about', label: 'about us', active: 'about' },
+  { path: '/contact', label: 'contact' },
+  { path: '/services', label: 'services' },
+  { path: '/policies', label: 'policies' },
+  { path: '/blog', label: 'blog' },
+  { path: '/about', label: 'about us' },
+  { path: '/team', label: 'team' },
 ]
 
 export const quotesData = [

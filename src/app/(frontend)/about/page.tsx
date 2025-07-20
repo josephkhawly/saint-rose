@@ -1,40 +1,18 @@
 import Iframe from 'react-iframe'
-import SlideAndFade from '@/components/SlideAndFade'
 import { quotesData } from '@/constants'
-import { StaffMemberGrid } from '@/components/StaffMember'
 import Quotes from '@/components/Quotes'
 import HeroSection from '@/components/HeroSection'
 import { Metadata } from 'next'
-import { getStaff } from '@/lib/helpers'
 
 export const metadata: Metadata = {
   title: 'About Us | Saint Rose',
 }
 
 export default async function About() {
-  const staffMembers = await getStaff()
-
   return (
     <div className='about'>
       <div className='content-container'>
         <div className='content'>
-          <div className='inner-content-container'>
-            <div className='header'>
-              <SlideAndFade delay={1.25}>
-                <h5>Meet the team</h5>
-              </SlideAndFade>
-              <SlideAndFade delay={1.45}>
-                <h3>
-                  Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone you
-                  vibe with? Let us know when you book and we&apos;ll make the match.
-                </h3>
-              </SlideAndFade>
-            </div>
-
-            <SlideAndFade delay={1.65}>
-              <StaffMemberGrid staffMembers={staffMembers} />
-            </SlideAndFade>
-          </div>
 
           <HeroSection
             title='Our story'
