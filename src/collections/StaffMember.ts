@@ -1,3 +1,4 @@
+import { revalidateStaff } from '@/hooks/revalidateStaff'
 import type { CollectionConfig } from 'payload'
 
 export const StaffMember: CollectionConfig = {
@@ -75,4 +76,7 @@ export const StaffMember: CollectionConfig = {
       relationTo: 'media',
     },
   ],
+  hooks: {
+    afterChange: [revalidateStaff],
+  },
 }

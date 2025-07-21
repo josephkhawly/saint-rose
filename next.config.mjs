@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    useCache: true,
+  },
 }
 
 export default withPayload(nextConfig)

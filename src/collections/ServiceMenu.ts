@@ -1,3 +1,4 @@
+import { revalidateServices } from '@/hooks/revalidateServices'
 import type { CollectionConfig } from 'payload'
 
 export const ServiceMenu: CollectionConfig = {
@@ -47,4 +48,7 @@ export const ServiceMenu: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [revalidateServices],
+  },
 }

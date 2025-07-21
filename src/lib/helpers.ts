@@ -2,6 +2,7 @@ import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from 
 import { BlogItem } from './types'
 import config from '@payload-config'
 import { getPayload } from 'payload'
+import { unstable_cacheTag as cacheTag } from 'next/cache'
 
 export function formatIso(isoString: string) {
   const date = new Date(isoString)
@@ -22,6 +23,8 @@ export async function getBlogItems(expectedFields: string[]): Promise<BlogItem[]
 }
 
 export async function getServices() {
+  'use cache'
+  cacheTag('services')
   const payload = await getPayload({ config })
   const services = await payload.find({
     collection: 'service-menu',
@@ -30,6 +33,8 @@ export async function getServices() {
 }
 
 export async function getStaff() {
+  'use cache'
+  cacheTag('staff')
   const payload = await getPayload({ config })
   const staff = await payload.find({
     collection: 'staff-member',
