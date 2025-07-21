@@ -31,20 +31,28 @@ export const StaffMember: CollectionConfig = {
       ],
     },
     {
-      name: 'photoSmall',
-      label: 'Photo (Small)',
-      type: 'upload',
-      relationTo: 'media',
-      required: true,
-      admin: {
-        description: 'Photo to be displayed on the grid.',
-      },
-    },
-    {
-      name: 'photoLarge',
-      label: 'Photo (Large)',
-      type: 'upload',
-      relationTo: 'media',
+      type: 'row',
+      fields: [
+        {
+          name: 'photoSmall',
+          label: 'Photo (Small)',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          admin: {
+            description: 'This photo will be displayed on the grid.',
+          },
+        },
+        {
+          name: 'photoLarge',
+          label: 'Photo (Large)',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description: 'This photo will be the banner in the popup if bio is selected below.',
+          },
+        },
+      ],
     },
     {
       name: 'displayType',
@@ -53,6 +61,9 @@ export const StaffMember: CollectionConfig = {
       options: ['bio', 'video'],
       defaultValue: 'bio',
       required: true,
+      admin: {
+        description: 'Select which content should be displayed in the popup.',
+      },
     },
     {
       name: 'bio',
