@@ -92,8 +92,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    hours: Hour;
+  };
+  globalsSelect: {
+    hours: HoursSelect<false> | HoursSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -202,10 +206,16 @@ export interface StaffMember {
    */
   instagram?: string | null;
   /**
-   * Photo to be displayed on the grid.
+   * This photo will be displayed on the grid.
    */
   photoSmall: number | Media;
+  /**
+   * This photo will be the banner in the popup if bio is selected below.
+   */
   photoLarge?: (number | null) | Media;
+  /**
+   * Select which content should be displayed in the popup.
+   */
   displayType: 'bio' | 'video';
   bio?: string | null;
   video?: (number | null) | Media;
@@ -568,6 +578,29 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hours".
+ */
+export interface Hour {
+  id: number;
+  /**
+   * Enter the business hours for the salon. This will be displayed on the visit page and the footer.
+   */
+  hours: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hours_select".
+ */
+export interface HoursSelect<T extends boolean = true> {
+  hours?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

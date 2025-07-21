@@ -1,7 +1,7 @@
 import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '@/contentful'
 import { BlogItem } from './types'
 import config from '@payload-config'
-import { getPayload } from 'payload'
+import { Config, getPayload } from 'payload'
 import { unstable_cacheTag as cacheTag } from 'next/cache'
 
 export function formatIso(isoString: string) {
@@ -40,4 +40,19 @@ export async function getStaff() {
     collection: 'staff-member',
   })
   return staff.docs
+}
+
+// type Global = keyof Config['globals']
+
+export async function getGlobal(slug, depth = 1) {
+  'use cache'
+  cacheTag(`global_${slug}`)
+  const payload = await getPayload({ config: config })
+
+  const global = await payload.findGlobal({
+    slug,
+    depth,
+  })
+
+  return global
 }

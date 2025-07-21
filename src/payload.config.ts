@@ -1,6 +1,5 @@
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -12,6 +11,7 @@ import { Media } from './collections/Media'
 import { ServiceMenu } from './collections/ServiceMenu'
 import { StaffMember } from './collections/StaffMember'
 import { BlogPosts } from './collections/BlogPosts'
+import { Hours } from './globals/Hours'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,6 +31,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, ServiceMenu, StaffMember, BlogPosts],
+  globals: [Hours],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -43,7 +44,6 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    payloadCloudPlugin(),
     uploadthingStorage({
       collections: {
         media: true,
