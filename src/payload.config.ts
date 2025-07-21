@@ -17,10 +17,17 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  graphQL: {
+    disable: true,
+  },
   admin: {
     user: Users.slug,
+    avatar: 'default',
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+    meta: {
+      titleSuffix: ' - Saint Rose Admin',
     },
   },
   collections: [Users, Media, ServiceMenu, StaffMember, BlogPosts],
