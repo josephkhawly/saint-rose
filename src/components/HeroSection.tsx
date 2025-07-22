@@ -1,9 +1,5 @@
-'use client'
-
 import SlideAndFade from './SlideAndFade'
-import { motion } from 'motion/react'
-import { MOBILEBP, DESKTOPBP } from '@/constants'
-import { useState, useEffect } from 'react'
+import * as motion from 'motion/react-client'
 
 interface HeroSectionProps {
   title?: string
@@ -22,24 +18,13 @@ function HeroSection({
   rightParagraphs = [],
   heroDelay = 0.7,
 }: HeroSectionProps) {
-  const [storyWidth, setStoryWidth] = useState('243px')
-  useEffect(() => {
-    if (window.innerWidth >= DESKTOPBP) {
-      setStoryWidth('612px')
-    } else if (window.innerWidth >= MOBILEBP) {
-      setStoryWidth('612px')
-    } else {
-      setStoryWidth('243px')
-    }
-  }, [])
-
   return (
     <div className='hero'>
       {title && (
         <motion.div
           className='hero--title-bar'
           initial={{ width: 0 }}
-          whileInView={{ width: storyWidth }}
+          whileInView={{ width: 'auto' }}
           transition={{ duration: 0.7, ease: 'easeIn' }}
           viewport={{ once: true }}
         >
