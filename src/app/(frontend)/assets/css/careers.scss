@@ -1,16 +1,14 @@
-@use "variables";
-
 .careers {
   .sub-nav {
     padding: 200px 48px 0;
     margin: 0 84px;
-    font-family: variables.$ap-bold;
+    font-family: var(--ap-bold);
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
 
     span {
-      color: variables.$pink;
+      color: var(--pink);
     }
   }
 
@@ -20,14 +18,14 @@
     width: 70%;
 
     h3 {
-      font-family: variables.$opt;
+      font-family: var(--opt);
       font-size: 46px;
       line-height: 57px;
       margin-bottom: 32px;
     }
 
     h6 {
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 20px;
       line-height: 33px;
       margin-bottom: 34px;
@@ -35,17 +33,17 @@
   }
 
   .form {
-    border-top: 2px solid variables.$light-gray;
+    border-top: 2px solid var(--light-gray);
     margin: 0 132px;
     padding-top: 34px;
   }
 
   h4 {
-    font-family: variables.$ap-bold;
+    font-family: var(--ap-bold);
     font-size: 32px;
     letter-spacing: 0.8px;
     line-height: 40px;
-    color: variables.$pink;
+    color: var(--pink);
     margin-bottom: 40px;
     text-transform: uppercase;
   }
@@ -73,7 +71,7 @@
 
   .field-label {
     max-width: 730px;
-    font-family: variables.$ap;
+    font-family: var(--ap);
     font-size: 20px;
     line-height: 32px;
 
@@ -81,7 +79,7 @@
   }
 
   .form-section {
-    border-top: 1px solid variables.$light-gray;
+    border-top: 1px solid var(--light-gray);
     width: 100%;
     display: block;
     margin: 42px 0 24px;
@@ -92,8 +90,8 @@
     width: 397px;
     display: block;
     background: transparent;
-    border: 1px solid variables.$black;
-    font-family: variables.$ap;
+    border: 1px solid var(--black);
+    font-family: var(--ap);
     font-size: 22px;
     line-height: 27px;
     height: 48px;
@@ -101,9 +99,9 @@
   }
 
   input::placeholder {
-    font-family: variables.$ap;
+    font-family: var(--ap);
     font-size: 22px;
-    color: variables.$black;
+    color: var(--black);
   }
 
   textarea {
@@ -112,8 +110,8 @@
     height: 124px;
     display: block;
     background: transparent;
-    border: 1px solid variables.$black;
-    font-family: variables.$ap;
+    border: 1px solid var(--black);
+    font-family: var(--ap);
     font-size: 22px;
     line-height: 27px;
     padding: 10px 14px;
@@ -124,9 +122,9 @@
   }
 
   input[type="file"] {
-    font-family: variables.$ap;
+    font-family: var(--ap);
     font-size: 15px;
-    color: variables.$gray;
+    color: var(--gray);
     text-transform: capitalize;
 
     &::file-selector-button {
@@ -134,10 +132,10 @@
       margin-right: 14px;
       cursor: pointer;
       border: none;
-      color: variables.$black;
-      background-color: variables.$light-pink;
+      color: var(--black);
+      background-color: var(--light-pink);
       border-radius: 0px;
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 15px;
       display: inline-block;
       height: 48px;
@@ -174,7 +172,7 @@
     left: 0px;
     height: 19px;
     width: 19px;
-    border: 1px solid variables.$black;
+    border: 1px solid var(--black);
   }
 
   // the check
@@ -185,7 +183,7 @@
     top: 0;
     height: 17px;
     width: 17px;
-    background-color: variables.$pink;
+    background-color: var(--pink);
     opacity: 0;
     transition: opacity 0.2s;
   }
@@ -199,7 +197,7 @@
   .text {
     line-height: 24px;
     margin-left: 28px;
-    font-family: variables.$ap;
+    font-family: var(--ap);
     font-size: 17px;
   }
 
@@ -207,8 +205,8 @@
     width: 75%;
     margin-top: 92px;
     padding-top: 32px;
-    border-top: 1px solid variables.$light-gray;
-    font-family: variables.$ap;
+    border-top: 1px solid var(--light-gray);
+    font-family: var(--ap);
     font-size: 20px;
     line-height: 33px;
 
@@ -224,10 +222,10 @@
   .submit-button {
     cursor: pointer;
     border: none;
-    color: variables.$white;
-    background-color: variables.$pink;
+    color: var(--white);
+    background-color: var(--pink);
     border-radius: 0px;
-    font-family: variables.$ap;
+    font-family: var(--ap);
     font-size: 15px;
     display: inline-block;
     height: 48px;
@@ -242,7 +240,7 @@
     color: red;
   }
 
-  @media all and (max-width: variables.$mobile-max-bp) {
+  @media all and (max-width: 989px) {
     .sub-nav {
       padding: 100px 20px 0;
       margin: 0;

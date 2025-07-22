@@ -1,10 +1,8 @@
-@use "variables";
-
 .policies {
   .sub-nav {
     padding: 200px 0 0;
     margin: 0 84px;
-    font-family: variables.$ap-bold;
+    font-family: var(--ap-bold);
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
@@ -16,7 +14,7 @@
   }
 
   h3 {
-    font-family: variables.$opt;
+    font-family: var(--opt);
     font-size: 46px;
     line-height: 57px;
   }
@@ -27,11 +25,11 @@
     margin-left: 110px;
 
     h4 {
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 20px;
       letter-spacing: 0.8px;
       line-height: 40px;
-      color: variables.$pink;
+      color: var(--pink);
       text-transform: uppercase;
       margin-bottom: 18px;
     }
@@ -46,14 +44,14 @@
       li:before {
         content: "";
         width: 40px;
-        border-bottom: 1px solid variables.$pink;
+        border-bottom: 1px solid var(--pink);
         position: absolute;
         left: 0px;
         top: 16px;
       }
 
       h6 {
-        font-family: variables.$ap;
+        font-family: var(--ap);
         font-size: 20px;
         line-height: 33px;
         margin-bottom: 14px;
@@ -66,7 +64,7 @@
     }
 
     p {
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 20px;
       line-height: 33px;
       margin-bottom: 38px;
@@ -77,7 +75,7 @@
     }
 
     a {
-      font-family: variables.$ap-bold;
+      font-family: var(--ap-bold);
       line-height: 33px;
       margin-bottom: 14px;
       font-size: 20px;
@@ -85,7 +83,7 @@
     }
   }
 
-  @media all and (max-width: variables.$mobile-max-bp) {
+  @media all and (max-width: 989px) {
     .sub-nav {
       padding: 100px 24px 20px;
       margin: 0;
@@ -102,7 +100,7 @@
       margin-top: 0;
       font-size: 37px;
       line-height: 42px;
-      font-family: variables.$opt;
+      font-family: var(--opt);
     }
 
     h4 {

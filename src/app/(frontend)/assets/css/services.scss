@@ -1,33 +1,30 @@
-@use "variables";
-
 .services {
-
   .landing {
     margin: 0 84px;
     padding: 200px 0 0;
 
     .sub-nav {
-      font-family: variables.$ap-bold;
+      font-family: var(--ap-bold);
       text-transform: uppercase;
       font-size: 19px;
       letter-spacing: 1.56px;
 
       span {
-        color: variables.$pink;
+        color: var(--pink);
       }
     }
 
     h3 {
       margin-top: 30px;
-      font-family: variables.$opt;
+      font-family: var(--opt);
       font-size: 46px;
       line-height: 57px;
     }
 
     a {
       font-size: 22px;
-      color: variables.$pink;
-      font-family: variables.$ap;
+      color: var(--pink);
+      font-family: var(--ap);
       display: block;
       margin-top: 24px;
     }
@@ -51,15 +48,15 @@
 
   .pricing-table {
     .header {
-      font-family: variables.$ap;
+      font-family: var(--ap);
       height: 78px;
       background-color: #000000;
-      color: variables.$white;
+      color: var(--white);
       padding: 24px;
       display: grid;
       grid-template-columns: 5fr 1fr;
       column-gap: 48px;
-      color: variables.$secondary-color;
+      color: var(--secondary-color);
 
       .head {
         font-size: 40px;
@@ -76,9 +73,9 @@
     }
 
     li {
-      font-family: variables.$ap;
-      color: variables.$black;
-      border-bottom: 1px solid variables.$mud;
+      font-family: var(--ap);
+      color: var(--black);
+      border-bottom: 1px solid var(--mud);
     }
 
     li:last-child {
@@ -92,7 +89,7 @@
       column-gap: 48px;
 
       .head {
-        font-family: variables.$ap;
+        font-family: var(--ap);
         font-size: 22px;
 
         .title {
@@ -107,7 +104,7 @@
       }
 
       .tail {
-        font-family: variables.$ap;
+        font-family: var(--ap);
         font-size: 22px;
         width: 102px;
       }
@@ -118,7 +115,7 @@
     margin-bottom: 140px;
   }
 
-  @media all and (max-width: variables.$mobile-max-bp) {
+  @media all and (max-width: 989px) {
     .landing {
       display: block;
       height: auto;
@@ -189,13 +186,13 @@
         h5 {
           font-size: 17px;
           margin-bottom: 6px;
-          color: variables.$black;
+          color: var(--black);
         }
 
         h6 {
           font-size: 13px;
           letter-spacing: 0.5px;
-          color: variables.$black;
+          color: var(--black);
         }
       }
 
@@ -233,7 +230,7 @@
       &:after {
         content: "";
         display: block;
-        background-color: variables.$secondary-color;
+        background-color: var(--secondary-color);
         position: absolute;
         top: 50%;
         left: 0;

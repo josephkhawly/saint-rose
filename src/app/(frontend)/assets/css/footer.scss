@@ -1,8 +1,6 @@
-@use "variables";
-
 .footer {
   background-color: black;
-  color: variables.$secondary-color;
+  color: var(--secondary-color);
   // TODO: remove this once it's applied to all blocks in the CMS
   // margin-top: 340px;
 
@@ -23,13 +21,13 @@
     display: flex;
     justify-content: center;
     font-size: 15px;
-    font-family: variables.$ap-bold;
+    font-family: var(--ap-bold);
     text-transform: uppercase;
     gap: 24px;
 
     a {
       text-decoration: none;
-      color: variables.$secondary-color;
+      color: var(--secondary-color);
     }
   }
 
@@ -54,7 +52,7 @@
     height: 35px;
   }
 
-  @media all and (max-width: variables.$mobile-max-bp) {
+  @media all and (max-width: 989px) {
     margin-top: 140px;
 
     .footer-logo img {

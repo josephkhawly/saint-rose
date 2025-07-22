@@ -1,16 +1,14 @@
-@use "variables";
-
 .contact {
   .sub-nav {
     padding: 200px 0 0;
     margin: 0 84px;
-    font-family: variables.$ap-bold;
+    font-family: var(--ap-bold);
     text-transform: uppercase;
     font-size: 19px;
     letter-spacing: 1.56px;
 
     span {
-      color: variables.$pink;
+      color: var(--pink);
     }
   }
 
@@ -21,7 +19,7 @@
 
   h3 {
     width: 800px;
-    font-family: variables.$opt;
+    font-family: var(--opt);
     font-size: 22px;
     line-height: 32px;
     margin-bottom: 32px;
@@ -32,7 +30,7 @@
   }
 
   a {
-    color: variables.$black;
+    color: var(--black);
   }
 
   .location-contact-container {
@@ -49,7 +47,7 @@
     }
 
     h4 {
-      font-family: variables.$ap-bold;
+      font-family: var(--ap-bold);
       font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -57,21 +55,21 @@
 
     .address {
       margin-top: 24px;
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 22px;
       line-height: 32px;
     }
 
     .hours {
       margin-top: 24px;
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 22px;
       line-height: 32px;
     }
 
     p {
       margin-top: 12px;
-      font-family: variables.$ap;
+      font-family: var(--ap);
       font-size: 18px;
       line-height: 28px;
     }
@@ -93,7 +91,7 @@
 
     .gallery-title {
       margin: 40px 0 30px;
-      font-family: variables.$ap-bold;
+      font-family: var(--ap-bold);
       font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -114,7 +112,7 @@
     }
   }
 
-  @media all and (max-width: variables.$mobile-max-bp) {
+  @media all and (max-width: 989px) {
     .sub-nav {
       padding: 100px 24px 30px 24px;
       margin: 48px 0 0;

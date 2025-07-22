@@ -1,13 +1,11 @@
-@use "variables";
-
 .quotes {
   margin: 92px 0 300px;
   width: 85%;
   padding: 104px 0 104px 52px;
-  background-color: variables.$pink;
+  background-color: var(--pink);
 }
 
-@media all and (max-width: variables.$mobile-max-bp) {
+@media all and (max-width: 989px) {
   .quotes {
     margin: 40px 0 80px 0;
     width: 100%;
@@ -33,26 +31,26 @@
       mask: url("/images/open-quote.svg") no-repeat 50% 50%;
       width: 56px;
       height: 56px;
-      background-color: variables.$secondary-color;
+      background-color: var(--secondary-color);
     }
   }
 
   h2 {
-    font-family: variables.$ap;
+    font-family: var(--ap);
     font-size: 45px;
     line-height: 60px;
     margin-bottom: 84px;
   }
 
   h5 {
-    font-family: variables.$ap;
+    font-family: var(--ap);
     line-height: 21px;
     font-size: 22px;
   }
 
   .content {
     width: 75%;
-    color: variables.$secondary-color;
+    color: var(--secondary-color);
   }
 
   .controls {
@@ -71,7 +69,7 @@
     }
   }
 
-  @media all and (max-width: variables.$mobile-max-bp) {
+  @media all and (max-width: 989px) {
     display: block;
 
     .content {
