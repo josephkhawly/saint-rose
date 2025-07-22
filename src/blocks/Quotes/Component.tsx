@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import styles from './quotes.module.scss'
 
 const Quotes = ({ quotes }: { quotes: any[] }) => {
   const [current, setCurrent] = useState(0)
@@ -25,10 +26,10 @@ const Quotes = ({ quotes }: { quotes: any[] }) => {
   }
 
   return (
-    <div className='quotes'>
-      <div className='quotes-gallery'>
-        <div className='open-quote' />
-        <div className='content'>
+    <div className={styles['quotes']}>
+      <div className={styles['quotes-gallery']}>
+        <Image src='/images/open-quote.svg' alt='Open Quote' width={50} height={50} />
+        <div className={styles['content']}>
           {quotes.length > 0 && (
             <div>
               <h2>{`${quotes[current].quoteText}`}&rdquo;</h2>
@@ -37,7 +38,7 @@ const Quotes = ({ quotes }: { quotes: any[] }) => {
           )}
         </div>
 
-        <div className='controls'>
+        <div className={styles['controls']}>
           <button onClick={handleNext} aria-label='Next Quote'>
             <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} />
           </button>

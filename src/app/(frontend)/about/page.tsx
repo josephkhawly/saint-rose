@@ -1,6 +1,6 @@
 import Iframe from 'react-iframe'
 import { quotesData } from '@/constants'
-import Quotes from '@/components/Quotes'
+import Quotes from '@/blocks/Quotes/Component'
 import HeroSection from '@/components/HeroSection'
 import { Metadata } from 'next'
 
@@ -13,7 +13,6 @@ export default async function About() {
     <div className='about'>
       <div className='content-container'>
         <div className='content'>
-
           <HeroSection
             title='Our story'
             video='https://videos.ctfassets.net/2f8bh3xz5t4r/3DuvQsjnxpIwzKaJZy1blR/030264480575e159921baa017a2b6a61/our-story.mp4'
@@ -37,6 +36,8 @@ export default async function About() {
               ]}
             />
 
+            <Quotes quotes={quotesData} />
+
             <div className='video-review'>
               <video id='who-we-are-vid' autoPlay loop muted controls playsInline>
                 <source
@@ -59,8 +60,6 @@ export default async function About() {
                 // style='width:100%;border:0;overflow:hidden;'
               />
             </div>
-
-            <Quotes quotes={quotesData} />
           </div>
         </div>
       </div>

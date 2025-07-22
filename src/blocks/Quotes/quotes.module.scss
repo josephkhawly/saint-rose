@@ -19,21 +19,7 @@
   position: relative;
   display: flex;
   justify-content: flex-start;
-
-  .open-quote {
-    position: relative;
-    width: 56px;
-    margin-right: 56px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      mask: url("/images/open-quote.svg") no-repeat 50% 50%;
-      width: 56px;
-      height: 56px;
-      background-color: var(--secondary-color);
-    }
-  }
+  gap: 56px;
 
   h2 {
     font-family: var(--ap);
@@ -74,7 +60,7 @@
 
     .content {
       width: 100%;
-      padding: 80px 24px 0 0;
+      padding: 50px 24px 0 0;
     }
 
     .controls {
