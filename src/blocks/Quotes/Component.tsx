@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import styles from './quotes.module.scss'
 
-const Quotes = ({ quotes }: { quotes: any[] }) => {
+const Quotes = ({ quotes }) => {
   const [current, setCurrent] = useState(0)
 
   const handleNext = () => {

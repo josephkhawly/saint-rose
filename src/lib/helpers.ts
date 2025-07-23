@@ -3,6 +3,7 @@ import { BlogItem } from './types'
 import config from '@payload-config'
 import { Config, getPayload } from 'payload'
 import { unstable_cacheTag as cacheTag } from 'next/cache'
+import { cache } from 'react'
 
 export function formatIso(isoString: string) {
   const date = new Date(isoString)
@@ -56,3 +57,20 @@ export async function getGlobal(slug, depth = 1) {
 
   return global
 }
+
+export const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+  const payload = await getPayload({ config })
+
+  const result = await payload.find({
+    collection: 'pages',
+    limit: 1,
+    pagination: false,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+
+  return result.docs?.[0] || null
+})

@@ -12,6 +12,7 @@ import { ServiceMenu } from './collections/ServiceMenu'
 import { StaffMember } from './collections/StaffMember'
 import { BlogPosts } from './collections/BlogPosts'
 import { Hours } from './globals/Hours'
+import { Pages } from './collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,7 +31,7 @@ export default buildConfig({
       titleSuffix: ' - Saint Rose Admin',
     },
   },
-  collections: [Users, Media, ServiceMenu, StaffMember, BlogPosts],
+  collections: [Users, Media, ServiceMenu, StaffMember, BlogPosts, Pages],
   globals: [Hours],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
