@@ -1,0 +1,26 @@
+.page-title {
+  font-family: var(--ap-bold);
+  text-transform: uppercase;
+  font-size: 19px;
+  letter-spacing: 1.56px;
+}
+
+.page-intro {
+  margin-top: 30px;
+  font-family: var(--opt);
+  font-size: 46px;
+  line-height: 57px;
+}
+
+@media all and (max-width: 989px) {
+  .page-title {
+    font-size: 15px;
+    letter-spacing: 1.23px;
+  }
+
+  .page-intro {
+    margin-top: 20px;
+    font-size: 37px;
+    line-height: 38px;
+  }
+}

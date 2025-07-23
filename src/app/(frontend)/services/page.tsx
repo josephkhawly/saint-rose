@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection'
 import ServiceList from '@/components/ServiceList'
 import { Metadata } from 'next'
 import { getServices } from '@/lib/helpers'
+import { IntroText } from '@/components/IntroText'
 
 export const metadata: Metadata = {
   title: 'Services | Saint Rose',
@@ -16,13 +17,10 @@ export default async function Services() {
     <div className='services'>
       <div className='content'>
         <div className='landing'>
-          <SlideAndFade delay={1.25}>
-            <div className='sub-nav'>Services</div>
-            <h3>
-              You want service that makes you feel your absolute best, and Saint Rose has a
-              full-spectrum of services that make the cut. It&apos;s a match made in heaven.
-            </h3>
-          </SlideAndFade>
+          <IntroText
+            title='Services'
+            introText="You want service that makes you feel your absolute best, and Saint Rose has a full-spectrum of services that make the cut. It's a match made in heaven."
+          />
         </div>
         <div className={classnames('haircut', 'section')}>
           <HeroSection

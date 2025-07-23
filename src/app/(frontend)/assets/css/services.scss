@@ -2,32 +2,6 @@
   .landing {
     margin: 0 84px;
     padding: 200px 0 0;
-
-    .sub-nav {
-      font-family: var(--ap-bold);
-      text-transform: uppercase;
-      font-size: 19px;
-      letter-spacing: 1.56px;
-
-      span {
-        color: var(--pink);
-      }
-    }
-
-    h3 {
-      margin-top: 30px;
-      font-family: var(--opt);
-      font-size: 46px;
-      line-height: 57px;
-    }
-
-    a {
-      font-size: 22px;
-      color: var(--pink);
-      font-family: var(--ap);
-      display: block;
-      margin-top: 24px;
-    }
   }
 
   .section {
@@ -121,21 +95,6 @@
       height: auto;
       padding: 100px 20px 30px 20px;
       margin: 0;
-
-      .sub-nav {
-        font-size: 15px;
-        letter-spacing: 1.23px;
-      }
-
-      h3 {
-        margin-top: 20px;
-        font-size: 37px;
-        line-height: 38px;
-      }
-
-      a {
-        font-size: 17px;
-      }
     }
 
     .section {

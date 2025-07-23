@@ -1,3 +1,4 @@
+import { IntroText } from '@/components/IntroText'
 import SlideAndFade from '@/components/SlideAndFade'
 import { Metadata } from 'next'
 
@@ -10,12 +11,11 @@ export default function Policies() {
     <div className='policies'>
       <div className='content'>
         <SlideAndFade delay={1}>
-          <div className='sub-nav'>Policies</div>
+          <IntroText
+            title='Policies'
+            introText='We have rules in place for your protection, and for ours. Check out our policies and let us know if you have any questions.'
+          />
           <div className='text-content'>
-            <h3>
-              We have rules in place for your protection, and for ours. Check out our policies and
-              let us know if you have any questions.
-            </h3>
             <div className='policies-body'>
               <h4>Cancellations</h4>
               <p>
