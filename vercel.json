@@ -1,6 +1,6 @@
 {
     "framework": "nextjs",
-    "buildCommand": "pnpm ci",
+    "buildCommand": "pnpm build",
     "outputDirectory": ".next",
     "installCommand": "pnpm install"
 }
