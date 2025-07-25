@@ -1,24 +1,20 @@
 import SlideAndFade from '../../components/SlideAndFade'
 import * as motion from 'motion/react-client'
 import styles from './banner.module.scss'
+import { BannerWithTextBlock } from '@/payload-types'
 
-interface BannerWithTextProps {
-  title?: string
-  video?: string
-  image?: string
-  leftText?: string
-  rightText?: string
+type BannerWithTextProps = BannerWithTextBlock & {
   heroDelay?: number
 }
 
 export function BannerWithText({
   title,
-  video,
-  image,
+  banner,
   leftText,
   rightText,
   heroDelay = 0.7,
 }: BannerWithTextProps) {
+  const hasBanner = banner && typeof banner !== 'number'
   return (
     <div className={styles.hero}>
       {title && (
@@ -41,18 +37,18 @@ export function BannerWithText({
         </motion.div>
       )}
       <SlideAndFade delay={heroDelay}>
-        {video && (
+        {hasBanner && banner.mimeType?.includes('video') && (
           <div className={styles['video-container']}>
             <video className={styles['hero-video']} autoPlay loop muted playsInline>
-              <source src={video} type='video/mp4' />
+              <source src={banner.url} type={banner.mimeType} />
             </video>
           </div>
         )}
-        {image && (
+        {hasBanner && banner.mimeType?.includes('image') && (
           <div
             className={styles['hero-image']}
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${banner.url})`,
             }}
           />
         )}

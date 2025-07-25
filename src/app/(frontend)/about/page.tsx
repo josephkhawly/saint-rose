@@ -14,7 +14,8 @@ export default async function About() {
     <div className='about'>
       <div className='content-container'>
         <div className='content'>
-          <BannerWithText
+          <RenderBlocks blocks={page?.layout || []} />
+          {/* <BannerWithText
             title='Our story'
             video='https://videos.ctfassets.net/2f8bh3xz5t4r/3DuvQsjnxpIwzKaJZy1blR/030264480575e159921baa017a2b6a61/our-story.mp4'
             leftText={
@@ -25,15 +26,15 @@ export default async function About() {
               'The vintage TV, hand-crafted workspaces, couture wallpaper, and quirky embellishments around the salon all work to create an atmosphere that balances nostalgia with the optimism of new ideas. “I wanted to create spaces that have a timeless feeling” Timothy says, “a place where older generations reminisce and the younger generations use it as backdrop for the perfect photo”.',
               'From a snip of hair to a sip of our delicious loose-leaf tea, we customize every experience our clients have. Because who wants ordinary?',
             ].join('\n\n')}
-          />
+          /> */}
 
           <div className='our-clients'>
-            <BannerWithText
+            {/* <BannerWithText
               title='Our clients'
               image='https://images.ctfassets.net/2f8bh3xz5t4r/17EFNaEJN2pKw4jMIHAn3S/20152047334829e72ae6fa99ebcfadd6/our-clients.jpg'
               leftText='But what do our amazing clients actually say about us? Read our reviews below and see why they keep coming back.'
               rightText='We take our level of quality and care seriously and show it through every moment of your time with us. Our guests come back for the genuine commitment we have to them and their needs and our consistency when we deliver. Book today and experience Saint Rose for yourself.'
-            />
+            /> */}
 
             <div className='video-review'>
               <video id='who-we-are-vid' autoPlay loop muted controls playsInline>
@@ -57,7 +58,6 @@ export default async function About() {
                 // style='width:100%;border:0;overflow:hidden;'
               />
             </div>
-            <RenderBlocks blocks={page?.layout || []} />
           </div>
         </div>
       </div>

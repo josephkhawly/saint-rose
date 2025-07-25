@@ -272,22 +272,7 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
-  layout: (
-    | RichTextBlock
-    | QuotesBlock
-    | {
-        title?: string | null;
-        /**
-         * Image or video to be used as the banner.
-         */
-        banner: number | Media;
-        leftText?: string | null;
-        rightText?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'bannerWithText';
-      }
-  )[];
+  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock)[];
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -332,6 +317,22 @@ export interface QuotesBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'quotes';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerWithTextBlock".
+ */
+export interface BannerWithTextBlock {
+  title?: string | null;
+  /**
+   * Image or video to be used as the banner.
+   */
+  banner: number | Media;
+  leftText?: string | null;
+  rightText?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'bannerWithText';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -606,16 +607,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         richText?: T | RichTextBlockSelect<T>;
         quotes?: T | QuotesBlockSelect<T>;
-        bannerWithText?:
-          | T
-          | {
-              title?: T;
-              banner?: T;
-              leftText?: T;
-              rightText?: T;
-              id?: T;
-              blockName?: T;
-            };
+        bannerWithText?: T | BannerWithTextBlockSelect<T>;
       };
   publishedAt?: T;
   slug?: T;
@@ -645,6 +637,18 @@ export interface QuotesBlockSelect<T extends boolean = true> {
         attribution?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerWithTextBlock_select".
+ */
+export interface BannerWithTextBlockSelect<T extends boolean = true> {
+  title?: T;
+  banner?: T;
+  leftText?: T;
+  rightText?: T;
   id?: T;
   blockName?: T;
 }

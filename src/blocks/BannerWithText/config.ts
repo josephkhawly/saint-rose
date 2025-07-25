@@ -2,6 +2,7 @@ import { Block } from 'payload'
 
 export const BannerWithText: Block = {
   slug: 'bannerWithText',
+  interfaceName: 'BannerWithTextBlock',
   fields: [
     {
       name: 'title',
