@@ -4,22 +4,6 @@
     padding-top: 200px;
   }
 
-  .header {
-    h5 {
-      text-transform: uppercase;
-      font-family: var(--ap-bold);
-      font-size: 19px;
-      letter-spacing: 1.56px;
-      margin-bottom: 30px;
-    }
-    h3 {
-      font-size: 46px;
-      line-height: 57px;
-      width: 85%;
-      font-family: var(--opt);
-    }
-  }
-
   .staff-container {
     margin-top: 86px;
     display: grid;
@@ -233,22 +217,6 @@
     .inner-content-container {
       padding: 100px 20px 0;
       margin: 0;
-    }
-
-    .header {
-      h5 {
-        font-family: var(--ap-bold);
-        font-size: 15px;
-        letter-spacing: 1.23px;
-        margin-bottom: 20px;
-      }
-
-      h3 {
-        margin-top: 0;
-        font-size: 37px;
-        line-height: 42px;
-        font-family: var(--opt);
-      }
     }
 
     .staff-member-spotlight {
