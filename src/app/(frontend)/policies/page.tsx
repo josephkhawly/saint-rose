@@ -1,21 +1,22 @@
+import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { IntroText } from '@/components/IntroText'
 import SlideAndFade from '@/components/SlideAndFade'
+import { queryPageBySlug } from '@/lib/helpers'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Policies | Saint Rose',
 }
 
-export default function Policies() {
+export default async function Policies() {
+  const page = await queryPageBySlug({ slug: 'policies' })
   return (
     <div className='policies'>
       <div className='content'>
-        <SlideAndFade delay={1}>
-          <IntroText
-            title='Policies'
-            introText='We have rules in place for your protection, and for ours. Check out our policies and let us know if you have any questions.'
-          />
-          <div className='text-content'>
+        {page?.introText && <IntroText title={page.title} introText={page.introText} />}
+        <SlideAndFade delay={1.5}>
+          <RenderBlocks blocks={page?.layout || []} />
+          {/* <div className='text-content'>
             <div className='policies-body'>
               <h4>Cancellations</h4>
               <p>
@@ -70,7 +71,7 @@ export default function Policies() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </SlideAndFade>
       </div>
     </div>

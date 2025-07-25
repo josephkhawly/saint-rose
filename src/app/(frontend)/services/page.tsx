@@ -1,6 +1,6 @@
 import SlideAndFade from '@/components/SlideAndFade'
 import classnames from 'classnames'
-import { BannerWithText } from '@/blocks/BannerWithText/Component'
+// import { BannerWithText } from '@/blocks/BannerWithText/Component'
 import ServiceList from '@/components/ServiceList'
 import { Metadata } from 'next'
 import { getServices } from '@/lib/helpers'
