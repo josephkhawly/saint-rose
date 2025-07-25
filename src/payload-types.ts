@@ -269,7 +269,22 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
-  layout: (RichTextBlock | QuotesBlock)[];
+  layout: (
+    | RichTextBlock
+    | QuotesBlock
+    | {
+        title?: string | null;
+        /**
+         * Image or video to be used as the banner.
+         */
+        banner: number | Media;
+        leftText?: string | null;
+        rightText?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'bannerWithText';
+      }
+  )[];
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -588,6 +603,16 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         richText?: T | RichTextBlockSelect<T>;
         quotes?: T | QuotesBlockSelect<T>;
+        bannerWithText?:
+          | T
+          | {
+              title?: T;
+              banner?: T;
+              leftText?: T;
+              rightText?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   publishedAt?: T;
   slug?: T;

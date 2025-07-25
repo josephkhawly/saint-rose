@@ -35,7 +35,7 @@
         width: 100%;
     }
 
-    #hero-video {
+    .hero-video {
         height: 100%;
         width: 100%;
         object-fit: cover;
@@ -62,12 +62,12 @@
 
         .right {
             padding: 124px 124px 124px 0px;
-            p {
-                font-family: var(--ap);
-                font-size: 22px;
-                line-height: 36px;
-                margin-bottom: 36px;
-            }
+            white-space: pre-wrap;
+
+            font-family: var(--ap);
+            font-size: 22px;
+            line-height: 36px;
+            margin-bottom: 36px;
         }
     }
 }
@@ -107,11 +107,8 @@
             .right {
                 padding: 0;
                 margin-top: 24px;
-
-                p {
-                    font-size: 17px;
-                    line-height: 28px;
-                }
+                font-size: 17px;
+                line-height: 28px;
             }
         }
     }

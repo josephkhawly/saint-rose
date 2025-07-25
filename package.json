@@ -11,7 +11,8 @@
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "seed": "tsx --env-file=.env src/seed.ts"
+    "seed": "tsx --env-file=.env src/seed.ts",
+    "ci": "payload migrate && pnpm build"
   },
   "author": "",
   "license": "ISC",

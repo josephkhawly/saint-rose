@@ -1,10 +1,12 @@
 import type { Page } from '@/payload-types'
 import Quotes from '@/blocks/Quotes/Component'
 import { RichTextComponent } from './RichText/Component'
+import { BannerWithText } from './BannerWithText/Component'
 
 const blockComponents = {
   quotes: Quotes,
   richText: RichTextComponent,
+  bannerWithText: BannerWithText,
 }
 
 export const RenderBlocks: React.FC<{
@@ -24,6 +26,7 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
+              // @ts-expect-error
               return <Block key={index} {...block} disableInnerContainer />
             }
           }

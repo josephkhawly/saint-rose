@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { slugField } from '@/fields/slug'
 import { Quotes } from '@/blocks/Quotes/config'
 import { RichText } from '@/blocks/RichText/config'
+import { BannerWithText } from '@/blocks/BannerWithText/config'
 import { revalidateDelete, revalidatePage } from '@/hooks/revalidatePage'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 
@@ -45,7 +46,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [RichText, Quotes],
+      blocks: [RichText, Quotes, BannerWithText],
       required: true,
       admin: {
         initCollapsed: true,

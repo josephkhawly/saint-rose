@@ -1,6 +1,6 @@
 import SlideAndFade from '@/components/SlideAndFade'
 import classnames from 'classnames'
-import HeroSection from '@/components/HeroSection'
+import { BannerWithText } from '@/blocks/BannerWithText/Component'
 import ServiceList from '@/components/ServiceList'
 import { Metadata } from 'next'
 import { getServices } from '@/lib/helpers'
@@ -23,14 +23,12 @@ export default async function Services() {
           />
         </div>
         <div className={classnames('haircut', 'section')}>
-          <HeroSection
+          <BannerWithText
             video={
               'https://videos.ctfassets.net/2f8bh3xz5t4r/65IZapjKqmRfxmkQM2z88u/d5ecf70b7ef28bcbe86e7baa4ff91d3d/services.mp4'
             }
             leftText="It's not just hair. It's your hair, and we care about every single strand. Let's get creating, shall we?"
-            rightParagraphs={[
-              'We offer complimentary refreshments because you deserve it. This includes your choice of French-press coffee, a variety of loose-leaf teas served hot or cold, and white, red, and rosé wine.',
-            ]}
+            rightText='We offer complimentary refreshments because you deserve it. This includes your choice of French-press coffee, a variety of loose-leaf teas served hot or cold, and white, red, and rosé wine.'
             heroDelay={2}
           />
 

@@ -1,35 +1,36 @@
-import SlideAndFade from './SlideAndFade'
+import SlideAndFade from '../../components/SlideAndFade'
 import * as motion from 'motion/react-client'
+import styles from './banner.module.scss'
 
-interface HeroSectionProps {
+interface BannerWithTextProps {
   title?: string
   video?: string
   image?: string
-  leftText: string
-  rightParagraphs?: string[]
+  leftText?: string
+  rightText?: string
   heroDelay?: number
 }
 
-function HeroSection({
+export function BannerWithText({
   title,
   video,
   image,
   leftText,
-  rightParagraphs = [],
+  rightText,
   heroDelay = 0.7,
-}: HeroSectionProps) {
+}: BannerWithTextProps) {
   return (
-    <div className='hero'>
+    <div className={styles.hero}>
       {title && (
         <motion.div
-          className='hero--title-bar'
+          className={styles['hero--title-bar']}
           initial={{ width: 0 }}
           whileInView={{ width: 'auto' }}
           transition={{ duration: 0.7, ease: 'easeIn' }}
           viewport={{ once: true }}
         >
           <motion.div
-            className='title-bar-text'
+            className={styles['title-bar-text']}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -41,39 +42,33 @@ function HeroSection({
       )}
       <SlideAndFade delay={heroDelay}>
         {video && (
-          <div className='video-container'>
-            <video id='hero-video' autoPlay loop muted playsInline>
+          <div className={styles['video-container']}>
+            <video className={styles['hero-video']} autoPlay loop muted playsInline>
               <source src={video} type='video/mp4' />
             </video>
           </div>
         )}
         {image && (
           <div
-            className='hero-image'
+            className={styles['hero-image']}
             style={{
               backgroundImage: `url(${image})`,
             }}
           />
         )}
       </SlideAndFade>
-      <div className='hero-text'>
-        <div className='text-container'>
+      <div className={styles['hero-text']}>
+        <div className={styles['text-container']}>
           <SlideAndFade>
-            <div className='left'>{leftText}</div>
+            <div className={styles['left']}>{leftText}</div>
           </SlideAndFade>
         </div>
-        <div className='text-container'>
+        <div className={styles['text-container']}>
           <SlideAndFade delay={0.25}>
-            <div className='right'>
-              {rightParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
+            <div className={styles['right']}>{rightText}</div>
           </SlideAndFade>
         </div>
       </div>
     </div>
   )
 }
-
-export default HeroSection
