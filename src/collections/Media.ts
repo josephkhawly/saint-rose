@@ -9,7 +9,9 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
-      required: true,
+      admin: {
+        description: 'Description of the media for accessibility purposes.',
+      },
     },
   ],
   upload: true,

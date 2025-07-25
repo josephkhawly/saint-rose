@@ -163,7 +163,10 @@ export interface User {
  */
 export interface Media {
   id: number;
-  alt: string;
+  /**
+   * Description of the media for accessibility purposes.
+   */
+  alt?: string | null;
   _key?: string | null;
   updatedAt: string;
   createdAt: string;
