@@ -2,11 +2,13 @@ import type { Page } from '@/payload-types'
 import Quotes from '@/blocks/Quotes/Component'
 import { RichTextComponent } from './RichText/Component'
 import { BannerWithText } from './BannerWithText/Component'
+import { Video } from './Video/Component'
 
 const blockComponents = {
   quotes: Quotes,
   richText: RichTextComponent,
   bannerWithText: BannerWithText,
+  video: Video,
 }
 
 export const RenderBlocks: React.FC<{

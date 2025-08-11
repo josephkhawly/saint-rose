@@ -3,6 +3,7 @@ import { slugField } from '@/fields/slug'
 import { Quotes } from '@/blocks/Quotes/config'
 import { RichText } from '@/blocks/RichText/config'
 import { BannerWithText } from '@/blocks/BannerWithText/config'
+import { Video } from '@/blocks/Video/config'
 import { revalidateDelete, revalidatePage } from '@/hooks/revalidatePage'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 
@@ -46,7 +47,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [RichText, Quotes, BannerWithText],
+      blocks: [RichText, Quotes, BannerWithText, Video],
       required: true,
       admin: {
         initCollapsed: true,

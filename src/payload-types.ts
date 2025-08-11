@@ -272,7 +272,7 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
-  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock)[];
+  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock)[];
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -333,6 +333,28 @@ export interface BannerWithTextBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'bannerWithText';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock".
+ */
+export interface VideoBlock {
+  /**
+   * Optional title to display above the video.
+   */
+  title?: string | null;
+  video: number | Media;
+  /**
+   * Optional description to display below the video.
+   */
+  description?: string | null;
+  autoplay?: boolean | null;
+  loop?: boolean | null;
+  muted?: boolean | null;
+  controls?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'video';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -608,6 +630,7 @@ export interface PagesSelect<T extends boolean = true> {
         richText?: T | RichTextBlockSelect<T>;
         quotes?: T | QuotesBlockSelect<T>;
         bannerWithText?: T | BannerWithTextBlockSelect<T>;
+        video?: T | VideoBlockSelect<T>;
       };
   publishedAt?: T;
   slug?: T;
@@ -649,6 +672,21 @@ export interface BannerWithTextBlockSelect<T extends boolean = true> {
   banner?: T;
   leftText?: T;
   rightText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoBlock_select".
+ */
+export interface VideoBlockSelect<T extends boolean = true> {
+  title?: T;
+  video?: T;
+  description?: T;
+  autoplay?: T;
+  loop?: T;
+  muted?: T;
+  controls?: T;
   id?: T;
   blockName?: T;
 }

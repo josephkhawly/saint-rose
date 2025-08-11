@@ -3,18 +3,6 @@
     margin-top: 300px;
     position: relative;
 
-    .video-review {
-      margin: 0 124px;
-      display: flex;
-      justify-content: center;
-
-      video {
-        height: 100%;
-        width: 50%;
-        object-fit: contain;
-      }
-    }
-
     .instagram-reviews {
       margin: 124px 124px;
     }
@@ -105,13 +93,6 @@
 
     .our-clients {
       margin-top: 125px;
-
-      .video-review {
-        margin: 0 24px;
-        video {
-          width: 100%;
-        }
-      }
 
       .instagram-reviews {
         margin: 48px 16px;
