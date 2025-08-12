@@ -9,6 +9,7 @@ import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  trash: true,
   defaultPopulate: {
     title: true,
     slug: true,
