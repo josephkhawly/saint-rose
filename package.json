@@ -25,8 +25,6 @@
     "typescript": "5.8.3"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^16.0.1",
-    "@contentful/rich-text-types": "^17.0.0",
     "@gsap/react": "^2.1.2",
     "@next/third-parties": "^15.3.5",
     "@payloadcms/db-vercel-postgres": "^3.50.0",

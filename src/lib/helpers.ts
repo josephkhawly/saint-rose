@@ -1,7 +1,5 @@
-import { getAllEntriesByContentTypeApiEndpoint, processEntryListResponse } from '@/contentful'
-import { BlogItem } from './types'
 import config from '@payload-config'
-import { Config, getPayload } from 'payload'
+import { getPayload } from 'payload'
 import { unstable_cacheTag as cacheTag } from 'next/cache'
 import { cache } from 'react'
 
@@ -9,18 +7,6 @@ export function formatIso(isoString: string) {
   const date = new Date(isoString)
   const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' }
   return date.toLocaleString('en-US', options)
-}
-
-export async function getBlogItems(expectedFields: string[]): Promise<BlogItem[]> {
-  const options = [
-    { key: 'order', value: '-fields.date' },
-    // { key: 'limit', value: '10' },
-  ]
-  const blogListEndpoint = getAllEntriesByContentTypeApiEndpoint('blogPost', options)
-  const res = await fetch(blogListEndpoint, { next: { revalidate: 60 } }).then((res) => res.json())
-  const fetchedBlogItems = processEntryListResponse(res, expectedFields)
-  const blogItems: BlogItem[] = fetchedBlogItems.entries
-  return blogItems
 }
 
 export async function getServices() {
@@ -73,4 +59,53 @@ export const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   })
 
   return result.docs?.[0] || null
+})
+
+export const getBlogList = cache(async () => {
+  const payload = await getPayload({ config })
+  const blogList = await payload.find({
+    collection: 'blog-posts',
+    limit: 10,
+    sort: '-publishedAt',
+    depth: 1,
+    select: {
+      title: true,
+      slug: true,
+      featured: true,
+      publishedAt: true,
+      headerImage: true,
+    },
+  })
+  return blogList.docs
+})
+
+export const getBlogMetadata = cache(async ({ slug }: { slug: string }) => {
+  const payload = await getPayload({ config })
+  const blogPost = await payload.find({
+    collection: 'blog-posts',
+    where: { slug: { equals: slug } },
+    depth: 1,
+    select: {
+      title: true,
+      slug: true,
+    },
+  })
+  return blogPost.docs?.[0] || null
+})
+
+export const getBlogPost = cache(async ({ slug }: { slug: string }) => {
+  const payload = await getPayload({ config })
+  const blogPost = await payload.find({
+    collection: 'blog-posts',
+    where: { slug: { equals: slug } },
+    depth: 1,
+    select: {
+      title: true,
+      slug: true,
+      publishedAt: true,
+      headerImage: true,
+      content: true,
+    },
+  })
+  return blogPost.docs?.[0] || null
 })

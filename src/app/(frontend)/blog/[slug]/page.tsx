@@ -1,54 +1,47 @@
 import SlideAndFade from '@/components/SlideAndFade'
-import { generateOptions } from '@/components/richText'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { getEntryApiEndpoint, processEntryResponse } from '@/contentful'
-import { getBlogItems } from '@/lib/helpers'
+import { getBlogList, getBlogMetadata, getBlogPost } from '@/lib/helpers'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug: blogPostId } = await params
-  const blogPostEndpoint = getEntryApiEndpoint(blogPostId)
-  const res = await fetch(blogPostEndpoint, { next: { revalidate: 60 } })
-  const data = await res.json()
-  const expectedFields = ['title']
-  const { entry: blogPost } = processEntryResponse(data, expectedFields)
+  const { slug } = await params
+  const blogPost = await getBlogMetadata({ slug })
   return {
     title: `${blogPost.title} | Blog | Saint Rose`,
   }
 }
 
 export async function generateStaticParams() {
-  const blogItems = await getBlogItems(['title'])
-  return blogItems.map((blogItem) => ({
-    slug: blogItem.id,
+  const blogPosts = await getBlogList()
+  return blogPosts.map((blogPost) => ({
+    slug: blogPost.slug,
   }))
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug: blogPostId } = await params
-  const blogPostEndpoint = getEntryApiEndpoint(blogPostId)
+  const { slug } = await params
+  const blogPost = await getBlogPost({ slug })
 
-  const res = await fetch(blogPostEndpoint, { next: { revalidate: 60 } })
-  if (!res.ok) {
+  if (!blogPost) {
     return <div>Failed to load blog post.</div>
   }
-  const data = await res.json()
-  const expectedFields = ['title', 'headerImage', 'body']
-  const { entry: blogPost, assets } = processEntryResponse(data, expectedFields)
-
-  const options = generateOptions(assets)
 
   return (
     <div className='blog-post'>
       <div className='content'>
         <SlideAndFade delay={2}>
           <div className='content-header'>
-            <div className='featured-image-container'>
-              <div className='image' style={{ backgroundImage: `url(${blogPost.headerImage})` }} />
-            </div>
+            {blogPost.headerImage && typeof blogPost.headerImage !== 'number' && (
+              <div className='featured-image-container'>
+                <div
+                  className='image'
+                  style={{ backgroundImage: `url(${blogPost.headerImage?.url})` }}
+                />
+              </div>
+            )}
           </div>
           <div className='content-body'>
             <div className='post-title'>{blogPost.title}</div>
-            <div className='rich-text'>{documentToReactComponents(blogPost.body, options)}</div>
+            <RichText data={blogPost.content} className={'rich-text'} />
           </div>
         </SlideAndFade>
       </div>

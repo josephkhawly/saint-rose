@@ -1,22 +1,24 @@
 import SlideAndFade from '@/components/SlideAndFade'
 import { Metadata } from 'next'
 import TransitionLink from '@/components/TransitionLink'
-import { BlogItem } from '@/lib/types'
-import { formatIso, getBlogItems } from '@/lib/helpers'
+import { formatIso, getBlogList } from '@/lib/helpers'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
 }
 
-function BlogPost({ blogItem }: { blogItem: BlogItem }) {
+function BlogPost({ blogItem }) {
   return (
     <div className='regular-blog-post'>
       <div className='post-image-container'>
-        <div className='image' style={{ backgroundImage: `url(${blogItem.headerImage})` }}></div>
+        <div
+          className='image'
+          style={{ backgroundImage: `url(${blogItem.headerImage?.url})` }}
+        ></div>
       </div>
-      <h5>{formatIso(blogItem.date)}</h5>
+      <h5>{formatIso(blogItem.publishedAt)}</h5>
       <h3>{blogItem.title}</h3>
-      <TransitionLink href={`/blog/${blogItem.id}`}>
+      <TransitionLink href={`/blog/${blogItem.slug}`}>
         <div className='nav-arrow' />
       </TransitionLink>
     </div>
@@ -24,7 +26,7 @@ function BlogPost({ blogItem }: { blogItem: BlogItem }) {
 }
 
 export default async function Blog() {
-  const blogItems = await getBlogItems(['title', 'date', 'headerImage', 'featured'])
+  const blogItems = await getBlogList()
 
   if (!blogItems) {
     return <div>Failed to load blog posts.</div>
@@ -42,15 +44,15 @@ export default async function Blog() {
           <div className='content-body'>
             {featuredPost && (
               <div className='featured-blog-post'>
-                <div className='post-image-container'>
+                {featuredPost.headerImage && typeof featuredPost.headerImage !== 'number' && (<div className='post-image-container'>
                   <div
                     className='image'
-                    style={{ backgroundImage: `url(${featuredPost.headerImage})` }}
-                  ></div>
-                </div>
-                <h5>FEATURED POST: {formatIso(featuredPost.date)}</h5>
+                    style={{ backgroundImage: `url(${featuredPost.headerImage?.url})` }}
+                  />
+                </div>)}
+                <h5>FEATURED POST: {formatIso(featuredPost.publishedAt)}</h5>
                 <h3>{featuredPost.title}</h3>
-                <TransitionLink href={`/blog/${featuredPost.id}`}>
+                <TransitionLink href={`/blog/${featuredPost.slug}`}>
                   <div className='nav-arrow' />
                 </TransitionLink>
               </div>

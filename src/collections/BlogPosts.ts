@@ -1,5 +1,5 @@
 import { slugField } from '@/fields/slug'
-// import { revalidateDelete, revalidatePost } from '@/hooks/revalidatePost'
+import { revalidateDelete, revalidatePost } from '@/hooks/revalidatePost'
 // import { generatePreviewPath } from '@/lib/generatePreviewPath'
 import {
   FixedToolbarFeature,
@@ -13,7 +13,7 @@ export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ['title', 'slug', 'publishedAt', 'updatedAt'],
     // livePreview: {
     //   url: ({ data, req }) => {
     //     const path = generatePreviewPath({
@@ -93,10 +93,10 @@ export const BlogPosts: CollectionConfig = {
       required: true,
     },
   ],
-  // hooks: {
-  //   afterChange: [revalidatePost],
-  //   afterDelete: [revalidateDelete],
-  // },
+  hooks: {
+    afterChange: [revalidatePost],
+    afterDelete: [revalidateDelete],
+  },
   versions: {
     drafts: {
       autosave: {

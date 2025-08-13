@@ -35,28 +35,27 @@
   }
 
   .rich-text {
+    font-family: var(--ap);
     h1 {
-      font-family: var(--ap);
       font-size: 50px;
       line-height: 125%;
       margin-bottom: 20px;
     }
 
     h2 {
-      font-family: var(--ap);
       font-size: 37px;
       line-height: 115%;
       margin-bottom: 20px;
     }
 
-    p {
-      font-family: var(--ap);
+    p, li {
       font-size: 20px;
       line-height: 140%;
       padding-bottom: 24px;
     }
 
-    b {
+    b,
+    strong {
       font-family: var(--ap-bold);
     }
 
@@ -80,12 +79,9 @@
       }
     }
 
-    .rich-text-image-container {
+    img {
       margin: 32px 0;
       background-size: cover;
-    }
-
-    .rich-text-image-container img {
       max-width: 100%;
     }
 
