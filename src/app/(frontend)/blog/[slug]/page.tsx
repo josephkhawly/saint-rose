@@ -1,6 +1,10 @@
+import { LivePreviewListener } from '@/components/LivePreviewListener'
 import SlideAndFade from '@/components/SlideAndFade'
-import { getBlogList, getBlogMetadata, getBlogPost } from '@/lib/helpers'
+import { getBlogMetadata, getBlogPost } from '@/lib/helpers'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import { draftMode } from 'next/headers'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -11,13 +15,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export async function generateStaticParams() {
-  const blogPosts = await getBlogList()
-  return blogPosts.map((blogPost) => ({
+  const payload = await getPayload({ config })
+  const blogPosts = await payload.find({
+    collection: 'blog-posts',
+    limit: 1000,
+    depth: 1,
+    draft: false,
+    pagination: false,
+    select: {
+      slug: true,
+    },
+  })
+  return blogPosts.docs.map((blogPost) => ({
     slug: blogPost.slug,
   }))
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { isEnabled: draft } = await draftMode()
   const { slug } = await params
   const blogPost = await getBlogPost({ slug })
 
@@ -27,6 +42,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <div className='blog-post'>
+      {draft && <LivePreviewListener />}
       <div className='content'>
         <SlideAndFade delay={2}>
           <div className='content-header'>

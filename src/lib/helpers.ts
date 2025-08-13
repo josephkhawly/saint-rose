@@ -2,6 +2,7 @@ import config from '@payload-config'
 import { getPayload } from 'payload'
 import { unstable_cacheTag as cacheTag } from 'next/cache'
 import { cache } from 'react'
+import { draftMode } from 'next/headers'
 
 export function formatIso(isoString: string) {
   const date = new Date(isoString)
@@ -65,9 +66,10 @@ export const getBlogList = cache(async () => {
   const payload = await getPayload({ config })
   const blogList = await payload.find({
     collection: 'blog-posts',
-    limit: 10,
+    limit: 1000,
     sort: '-publishedAt',
     depth: 1,
+    draft: false,
     select: {
       title: true,
       slug: true,
@@ -94,18 +96,16 @@ export const getBlogMetadata = cache(async ({ slug }: { slug: string }) => {
 })
 
 export const getBlogPost = cache(async ({ slug }: { slug: string }) => {
+  const { isEnabled: draft } = await draftMode()
   const payload = await getPayload({ config })
   const blogPost = await payload.find({
     collection: 'blog-posts',
-    where: { slug: { equals: slug } },
+    limit: 1,
+    overrideAccess: draft,
+    pagination: false,
     depth: 1,
-    select: {
-      title: true,
-      slug: true,
-      publishedAt: true,
-      headerImage: true,
-      content: true,
-    },
+    draft,
+    where: { slug: { equals: slug } },
   })
   return blogPost.docs?.[0] || null
 })

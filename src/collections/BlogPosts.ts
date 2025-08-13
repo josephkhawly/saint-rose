@@ -1,6 +1,6 @@
 import { slugField } from '@/fields/slug'
 import { revalidateDelete, revalidatePost } from '@/hooks/revalidatePost'
-// import { generatePreviewPath } from '@/lib/generatePreviewPath'
+import { generatePreviewPath } from '@/lib/generatePreviewPath'
 import {
   FixedToolbarFeature,
   HorizontalRuleFeature,
@@ -14,23 +14,23 @@ export const BlogPosts: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'publishedAt', 'updatedAt'],
-    // livePreview: {
-    //   url: ({ data, req }) => {
-    //     const path = generatePreviewPath({
-    //       slug: typeof data?.slug === 'string' ? data.slug : '',
-    //       collection: 'blog-posts',
-    //       req,
-    //     })
+    livePreview: {
+      url: ({ data, req }) => {
+        const path = generatePreviewPath({
+          slug: typeof data?.slug === 'string' ? data.slug : '',
+          collection: 'blog-posts',
+          req,
+        })
 
-    //     return path
-    //   },
-    // },
-    // preview: (data, { req }) =>
-    //   generatePreviewPath({
-    //     slug: typeof data?.slug === 'string' ? data.slug : '',
-    //     collection: 'blog-posts',
-    //     req,
-    //   }),
+        return path
+      },
+    },
+    preview: (data, { req }) =>
+      generatePreviewPath({
+        slug: typeof data?.slug === 'string' ? data.slug : '',
+        collection: 'blog-posts',
+        req,
+      }),
   },
   fields: [
     {
