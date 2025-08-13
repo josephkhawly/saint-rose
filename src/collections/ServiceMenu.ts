@@ -6,6 +6,7 @@ export const ServiceMenu: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'services'],
+    hideAPIURL: process.env.NODE_ENV === 'production',
   },
   orderable: true,
   fields: [

@@ -6,6 +6,7 @@ export const StaffMember: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'role', 'displayType'],
+    hideAPIURL: process.env.NODE_ENV === 'production',
   },
   orderable: true,
   fields: [

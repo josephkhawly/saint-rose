@@ -6,6 +6,7 @@ import { BannerWithText } from '@/blocks/BannerWithText/config'
 import { Video } from '@/blocks/Video/config'
 import { revalidateDelete, revalidatePage } from '@/hooks/revalidatePage'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { generatePreviewPath } from '@/lib/generatePreviewPath'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -16,24 +17,25 @@ export const Pages: CollectionConfig<'pages'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    // livePreview: {
-    //   url: ({ data, req }) => {
-    //     const path = generatePreviewPath({
-    //       slug: typeof data?.slug === 'string' ? data.slug : '',
-    //       collection: 'pages',
-    //       req,
-    //     })
-
-    //     return path
-    //   },
-    // },
-    // preview: (data, { req }) =>
-    //   generatePreviewPath({
-    //     slug: typeof data?.slug === 'string' ? data.slug : '',
-    //     collection: 'pages',
-    //     req,
-    //   }),
     useAsTitle: 'title',
+    hideAPIURL: process.env.NODE_ENV === 'production',
+    livePreview: {
+      url: ({ data, req }) => {
+        const path = generatePreviewPath({
+          slug: typeof data?.slug === 'string' ? data.slug : '',
+          collection: 'pages',
+          req,
+        })
+
+        return path
+      },
+    },
+    preview: (data, { req }) =>
+      generatePreviewPath({
+        slug: typeof data?.slug === 'string' ? data.slug : '',
+        collection: 'pages',
+        req,
+      }),
   },
   fields: [
     {

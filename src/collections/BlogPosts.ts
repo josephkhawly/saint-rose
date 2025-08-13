@@ -22,6 +22,7 @@ export const BlogPosts: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'publishedAt', 'updatedAt'],
+    hideAPIURL: process.env.NODE_ENV === 'production',
     livePreview: {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
