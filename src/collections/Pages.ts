@@ -7,10 +7,18 @@ import { Video } from '@/blocks/Video/config'
 import { revalidateDelete, revalidatePage } from '@/hooks/revalidatePage'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/lib/generatePreviewPath'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { authenticated } from '@/access/authenticated'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   trash: true,
+  access: {
+    create: authenticated,
+    delete: authenticated,
+    read: authenticatedOrPublished,
+    update: authenticated,
+  },
   defaultPopulate: {
     title: true,
     slug: true,
