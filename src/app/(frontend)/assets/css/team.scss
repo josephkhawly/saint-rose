@@ -2,7 +2,7 @@
   .staff-container {
     margin: 86px 124px 300px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 70px;
     grid-column-gap: 30px;
   }
@@ -207,7 +207,18 @@
     }
   }
 
+  @media all and (max-width: 1118px) {
+    .staff-container {
+      grid-template-columns: repeat(3, 1fr);
+      margin: 86px 48px 300px;
+    }
+  }
+
   @media all and (max-width: 989px) {
+    .staff-container {
+      grid-template-columns: repeat(1, 1fr);
+      margin: 86px 24px 100px;
+    }
 
     .staff-member-spotlight {
       .video-container {
