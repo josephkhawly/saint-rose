@@ -5,7 +5,6 @@
 @use "services";
 @use "blog";
 @use "blog-post";
-@use "policies";
 @use "careers";
 @use "footer";
 @use "team";
@@ -64,6 +63,11 @@ body {
   opacity: 1;
   position: relative;
   z-index: 10;
+  padding: 200px 0 0;
+
+  @media all and (max-width: 989px) {
+    padding: 100px 0 0;
+  }
 }
 
 .entrance {

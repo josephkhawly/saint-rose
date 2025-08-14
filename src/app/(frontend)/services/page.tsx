@@ -1,5 +1,4 @@
 import SlideAndFade from '@/components/SlideAndFade'
-import classnames from 'classnames'
 // import { BannerWithText } from '@/blocks/BannerWithText/Component'
 import ServiceList from '@/components/ServiceList'
 import { Metadata } from 'next'
@@ -16,13 +15,11 @@ export default async function Services() {
   return (
     <div className='services'>
       <div className='content'>
-        <div className='landing'>
-          <IntroText
-            title='Services'
-            introText="You want service that makes you feel your absolute best, and Saint Rose has a full-spectrum of services that make the cut. It's a match made in heaven."
-          />
-        </div>
-        <div className={classnames('haircut', 'section')}>
+        <IntroText
+          title='Services'
+          introText="You want service that makes you feel your absolute best, and Saint Rose has a full-spectrum of services that make the cut. It's a match made in heaven."
+        />
+        <div className={'section'}>
           {/* <BannerWithText
             banner={
               'https://videos.ctfassets.net/2f8bh3xz5t4r/65IZapjKqmRfxmkQM2z88u/d5ecf70b7ef28bcbe86e7baa4ff91d3d/services.mp4'
