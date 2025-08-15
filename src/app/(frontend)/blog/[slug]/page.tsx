@@ -5,6 +5,8 @@ import { RichText } from '@payloadcms/richtext-lexical/react'
 import { draftMode } from 'next/headers'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import styles from './blog-post.module.css'
+import Image from 'next/image'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -41,23 +43,24 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   return (
-    <div className='blog-post'>
+    <div className={styles['blog-post']}>
       {draft && <LivePreviewListener />}
-      <div className='content'>
+      <div className={styles.content}>
         <SlideAndFade delay={2}>
-          <div className='content-header'>
+          <div className={styles['content-header']}>
             {blogPost.headerImage && typeof blogPost.headerImage !== 'number' && (
-              <div className='featured-image-container'>
-                <div
-                  className='image'
-                  style={{ backgroundImage: `url(${blogPost.headerImage?.url})` }}
+              <div className={styles['featured-image-container']}>
+                <Image
+                  src={blogPost.headerImage?.url}
+                  alt={blogPost.headerImage?.alt || ''}
+                  fill
                 />
               </div>
             )}
           </div>
-          <div className='content-body'>
-            <div className='post-title'>{blogPost.title}</div>
-            <RichText data={blogPost.content} className={'rich-text'} />
+          <div className={styles['content-body']}>
+            <div className={styles['post-title']}>{blogPost.title}</div>
+            <RichText data={blogPost.content} className={styles['rich-text']} />
           </div>
         </SlideAndFade>
       </div>
