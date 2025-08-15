@@ -43,36 +43,34 @@ export default async function Blog() {
 
   return (
     <div className={styles.blog}>
-      <div className={styles.content}>
-        <SlideAndFade delay={1}>
-          <div className={styles['content-body']}>
-            {featuredPost && (
-              <div className={styles['featured-blog-post']}>
-                {featuredPost.headerImage && typeof featuredPost.headerImage !== 'number' && (
-                  <div className={styles['post-image-container']}>
-                    <Image
-                      src={featuredPost.headerImage?.url}
-                      alt={featuredPost.headerImage?.alt || ''}
-                      className={styles.image}
-                      fill
-                    />
-                  </div>
-                )}
-                <h5>FEATURED POST: {formatIso(featuredPost.publishedAt)}</h5>
-                <h3>{featuredPost.title}</h3>
-                <TransitionLink href={`/blog/${featuredPost.slug}`}>
-                  <Image src='/images/nav-arrow.svg' alt='' width={21} height={20} />
-                </TransitionLink>
-              </div>
-            )}
-            <div className={styles['blog-posts']}>
-              {filteredBlogPosts.map((blogItem) => (
-                <BlogPost key={blogItem.id} blogItem={blogItem} />
-              ))}
+      <SlideAndFade delay={1}>
+        <div className={styles['content-body']}>
+          {featuredPost && (
+            <div className={styles['featured-blog-post']}>
+              {featuredPost.headerImage && typeof featuredPost.headerImage !== 'number' && (
+                <div className={styles['post-image-container']}>
+                  <Image
+                    src={featuredPost.headerImage?.url}
+                    alt={featuredPost.headerImage?.alt || ''}
+                    className={styles.image}
+                    fill
+                  />
+                </div>
+              )}
+              <h5>FEATURED POST: {formatIso(featuredPost.publishedAt)}</h5>
+              <h3>{featuredPost.title}</h3>
+              <TransitionLink href={`/blog/${featuredPost.slug}`}>
+                <Image src='/images/nav-arrow.svg' alt='' width={21} height={20} />
+              </TransitionLink>
             </div>
+          )}
+          <div className={styles['blog-posts']}>
+            {filteredBlogPosts.map((blogItem) => (
+              <BlogPost key={blogItem.id} blogItem={blogItem} />
+            ))}
           </div>
-        </SlideAndFade>
-      </div>
+        </div>
+      </SlideAndFade>
     </div>
   )
 }
