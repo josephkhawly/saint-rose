@@ -1,5 +1,5 @@
-import Iframe from "react-iframe";
-import styles from './instagram.module.scss'
+import Iframe from 'react-iframe'
+import styles from './instagram.module.css'
 
 export default function Instagram() {
   return (

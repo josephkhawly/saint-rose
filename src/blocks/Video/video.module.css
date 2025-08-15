@@ -31,7 +31,6 @@
     }
 }
 
-// Responsive design
 @media (max-width: 768px) {
     .videoContainer {
         margin: 1.5rem 0;

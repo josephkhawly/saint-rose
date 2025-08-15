@@ -1,4 +1,4 @@
-import styles from './video.module.scss'
+import styles from './video.module.css'
 import { VideoBlock } from '@/payload-types'
 
 type VideoProps = VideoBlock

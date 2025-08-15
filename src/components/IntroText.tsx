@@ -1,5 +1,5 @@
 import SlideAndFade from './SlideAndFade'
-import styles from './introtext.module.scss'
+import styles from './introtext.module.css'
 
 export const IntroText = ({ title, introText }: { title: string; introText: string }) => {
   return (

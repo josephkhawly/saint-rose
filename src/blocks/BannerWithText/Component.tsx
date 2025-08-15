@@ -1,6 +1,6 @@
 import SlideAndFade from '../../components/SlideAndFade'
 import * as motion from 'motion/react-client'
-import styles from './banner.module.scss'
+import styles from './banner.module.css'
 import { BannerWithTextBlock } from '@/payload-types'
 
 type BannerWithTextProps = BannerWithTextBlock & {
