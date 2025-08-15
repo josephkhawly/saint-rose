@@ -3,15 +3,22 @@
 import { useAnimate } from 'motion/react'
 import { useEffect, useRef } from 'react'
 import { Fade } from 'react-awesome-reveal'
+import styles from './intro.module.css'
 
 export default function Intro() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [scope, animate] = useAnimate()
+  const intro2Ref = useRef<HTMLDivElement>(null)
+  const introRoseRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const initAnimation = async () => {
-      await animate('.intro-rose', { opacity: 1 }, { duration: 1 })
-      await animate('.intro-2', { right: '0' }, { duration: 0.7, delay: 0.25, ease: 'easeInOut' })
+      await animate(introRoseRef.current, { opacity: 1 }, { duration: 1 })
+      await animate(
+        intro2Ref.current,
+        { right: '0' },
+        { duration: 0.7, delay: 0.25, ease: 'easeInOut' },
+      )
       videoRef.current?.play()
     }
     initAnimation()
@@ -19,14 +26,13 @@ export default function Intro() {
 
   return (
     <div ref={scope}>
-      <div className='intro' />
-      <div className='intro-2' />
-      <div className='intro-rose' />
+      <div ref={intro2Ref} className={styles['intro-2']} />
+      <div ref={introRoseRef} className={styles['intro-rose']} />
 
       <div className='content'>
         <Fade delay={4700}>
           <video
-            id='vid'
+            id={styles.vid}
             ref={videoRef}
             loop
             muted
