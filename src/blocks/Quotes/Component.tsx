@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import styles from './quotes.module.scss'
+import styles from './quotes.module.css'
 
 const Quotes = ({ quotes }) => {
   const [current, setCurrent] = useState(0)
@@ -38,14 +38,16 @@ const Quotes = ({ quotes }) => {
           )}
         </div>
 
-        <div className={styles['controls']}>
-          <button onClick={handleNext} aria-label='Next Quote'>
-            <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} />
-          </button>
-          <button onClick={handlePrevious} aria-label='Previous Quote'>
-            <Image src='/images/arrow-left.svg' alt='Previous Quote' width={56} height={56} />
-          </button>
-        </div>
+        {quotes.length > 1 && (
+          <div className={styles['controls']}>
+            <button onClick={handleNext} aria-label='Next Quote'>
+              <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} />
+            </button>
+            <button onClick={handlePrevious} aria-label='Previous Quote'>
+              <Image src='/images/arrow-left.svg' alt='Previous Quote' width={56} height={56} />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )
