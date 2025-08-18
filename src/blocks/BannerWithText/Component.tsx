@@ -2,6 +2,8 @@ import SlideAndFade from '../../components/SlideAndFade'
 import * as motion from 'motion/react-client'
 import styles from './banner.module.css'
 import { BannerWithTextBlock } from '@/payload-types'
+import Image from 'next/image'
+import { placeholderBlur } from '@/constants'
 
 type BannerWithTextProps = BannerWithTextBlock & {
   heroDelay?: number
@@ -45,12 +47,18 @@ export function BannerWithText({
           </div>
         )}
         {hasBanner && banner.mimeType?.includes('image') && (
-          <div
-            className={styles['hero-image']}
-            style={{
-              backgroundImage: `url(${banner.url})`,
-            }}
-          />
+          <div className={styles['hero-image']}>
+            <Image
+              src={banner.url}
+              alt={banner.alt || ''}
+              fill
+              style={{
+                objectFit: 'cover',
+              }}
+              placeholder='blur'
+              blurDataURL={placeholderBlur}
+            />
+          </div>
         )}
       </SlideAndFade>
       <div className={styles['hero-text']}>

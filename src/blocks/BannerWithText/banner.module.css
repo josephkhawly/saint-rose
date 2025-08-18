@@ -1,115 +1,113 @@
 .hero {
-    margin-top: 300px;
+  margin-top: 300px;
+  position: relative;
+
+  .text-container {
+    width: 50%;
+  }
+
+  .hero--title-bar {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    position: absolute;
+    background-color: var(--black);
+    z-index: 5;
+    top: -146px;
+    left: 0;
+    width: 0;
+    height: 180px;
+    padding-right: 60px;
+  }
+
+  .title-bar-text {
+    font-family: var(--ap);
+    font-size: 80px;
+    color: var(--secondary-color);
+    margin-left: 124px;
+  }
+
+  .video-container {
+    height: calc((100vw * 0.56));
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+  }
+
+  .hero-video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .hero-image {
+    margin-top: 64px;
+    height: 600px;
+    width: 100%;
     position: relative;
+  }
 
-    .text-container {
-        width: 50%;
+  .hero-text {
+    display: flex;
+    width: 100%;
+    .left {
+      font-family: var(--ap);
+      font-size: 45px;
+      line-height: 60px;
+      padding: 124px 62px 124px 124px;
     }
 
-    .hero--title-bar {
-        display: flex;
-        align-items: center;
-        text-transform: uppercase;
-        position: absolute;
-        background-color: var(--black);
-        z-index: 5;
-        top: -146px;
-        left: 0;
-        width: 0;
-        height: 180px;
-        padding-right: 60px;
+    .right {
+      padding: 124px 124px 124px 0px;
+      white-space: pre-wrap;
+
+      font-family: var(--ap);
+      font-size: 22px;
+      line-height: 36px;
+      margin-bottom: 36px;
     }
-
-    .title-bar-text {
-        font-family: var(--ap);
-        font-size: 80px;
-        color: var(--secondary-color);
-        margin-left: 124px;
-    }
-
-    .video-container {
-        height: calc((100vw * 0.56));
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        width: 100%;
-    }
-
-    .hero-video {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-
-    .hero-image {
-        margin-top: 64px;
-        height: 600px;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        width: 100%;
-    }
-
-    .hero-text {
-        display: flex;
-        width: 100%;
-        .left {
-            font-family: var(--ap);
-            font-size: 45px;
-            line-height: 60px;
-            padding: 124px 62px 124px 124px;
-        }
-
-        .right {
-            padding: 124px 124px 124px 0px;
-            white-space: pre-wrap;
-
-            font-family: var(--ap);
-            font-size: 22px;
-            line-height: 36px;
-            margin-bottom: 36px;
-        }
-    }
+  }
 }
 
 @media all and (max-width: 989px) {
-    .hero {
-        margin-top: 125px;
+  .hero {
+    margin-top: 125px;
 
-        .hero--title-bar {
-            height: 90px;
-            top: -72px;
-        }
-
-        .title-bar-text {
-            font-family: var(--ap);
-            font-size: 36px;
-            letter-spacing: 0.29px;
-            margin-left: 24px;
-            color: var(--secondary-color);
-        }
-
-        .hero-text {
-            display: block;
-            padding: 0 24px;
-        }
-
-        .text-container {
-            width: 100%;
-
-            .left {
-                padding: 0;
-                font-size: 30px;
-                line-height: 40px;
-                margin-top: 30px;
-            }
-
-            .right {
-                padding: 0;
-                margin-top: 24px;
-                font-size: 17px;
-                line-height: 28px;
-            }
-        }
+    .hero--title-bar {
+      height: 90px;
+      top: -72px;
     }
+
+    .title-bar-text {
+      font-family: var(--ap);
+      font-size: 36px;
+      letter-spacing: 0.29px;
+      margin-left: 24px;
+      color: var(--secondary-color);
+    }
+
+    .hero-text {
+      display: block;
+      padding: 0 24px;
+    }
+
+    .text-container {
+      width: 100%;
+
+      .left {
+        padding: 0;
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 30px;
+      }
+
+      .right {
+        padding: 0;
+        margin-top: 24px;
+        font-size: 17px;
+        line-height: 28px;
+      }
+    }
+  }
 }

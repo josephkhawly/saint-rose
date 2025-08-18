@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import StaffMemberSpotlight from './StaffMemberSpotlight'
 import { AnimatePresence } from 'motion/react'
+import { placeholderBlur } from '@/constants'
 
 function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
   const { name, role, photoSmall, video, instagram } = staffMemberData
@@ -13,7 +14,15 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
         className='photo-container'
         onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
       >
-        <Image src={photoSmall.url} alt={name} className='photo' width={276} height={276} />
+        <Image
+          src={photoSmall.url}
+          alt={name}
+          className='photo'
+          width={276}
+          height={276}
+          placeholder='blur'
+          blurDataURL={placeholderBlur}
+        />
         <div className='name-container'>
           <div className='name'>{name}</div>
           <div className='name-decoration'>
