@@ -1,8 +1,7 @@
 'use client'
 
-import { useAnimate } from 'motion/react'
+import { useAnimate, motion } from 'motion/react'
 import { useEffect, useRef } from 'react'
-import { Fade } from 'react-awesome-reveal'
 import styles from './intro.module.css'
 
 export default function Intro() {
@@ -30,7 +29,11 @@ export default function Intro() {
       <div ref={introRoseRef} className={styles['intro-rose']} />
 
       <div className='content'>
-        <Fade delay={4700}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 4.5 }}
+        >
           <video
             id={styles.vid}
             ref={videoRef}
@@ -44,7 +47,7 @@ export default function Intro() {
               type='video/mp4'
             />
           </video>
-        </Fade>
+        </motion.div>
       </div>
     </div>
   )
