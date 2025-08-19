@@ -1,14 +1,14 @@
 .footer {
   background-color: black;
   color: var(--secondary-color);
-  // TODO: remove this once it's applied to all blocks in the CMS
   margin-top: 340px;
 
   .footer-container {
     padding: 84px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; 
     justify-content: center;
+    align-items: center;
   }
 
   .footer-logo img {
@@ -20,12 +20,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    font-size: 15px;
-    font-family: var(--ap-bold);
-    text-transform: uppercase;
     gap: 24px;
-
+    
     a {
+      font-size: 15px;
+      font-family: var(--ap-bold);
+      text-transform: uppercase;
       text-decoration: none;
       color: var(--secondary-color);
     }
@@ -47,11 +47,6 @@
     gap: 20px;
   }
 
-  .social-logo {
-    width: 35px;
-    height: 35px;
-  }
-
   @media all and (max-width: 989px) {
     margin-top: 140px;
 
@@ -60,16 +55,12 @@
     }
 
     .footer-nav {
-      flex-wrap: wrap;
-    }
-
-    .footer-nav-link {
-      width: 100%;
-      text-align: center;
+      flex-direction: column;
+      align-items: center;
     }
 
     .footer-misc {
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
     .social {
