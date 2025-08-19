@@ -4,10 +4,29 @@ import Footer from '@/components/Footer/Footer'
 import './assets/css/app.scss'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import localFont from 'next/font/local'
+
+const apRegular = localFont({
+  src: './assets/fonts/apercu-regular.woff',
+  display: 'swap',
+  variable: '--ap',
+})
+
+const opt = localFont({
+  src: './assets/fonts/optima.woff',
+  display: 'swap',
+  variable: '--opt',
+})
+
+const apBold = localFont({
+  src: './assets/fonts/apercu-bold.woff',
+  display: 'swap',
+  variable: '--ap-bold',
+})
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable}`}>
       <body>
         <Header />
         {children}

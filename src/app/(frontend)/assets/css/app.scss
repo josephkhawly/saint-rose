@@ -4,31 +4,7 @@
 @use "careers";
 @use "team";
 
-@font-face {
-  font-family: "apercu-bold";
-  src: url("/fonts/apercu-bold.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "apercu-regular";
-  src: url("/fonts/apercu-regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "optima";
-  src: url("/fonts/optima.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 :root {
-  --ap: "apercu-regular", sans-serif;
-  --ap-bold: "apercu-bold", sans-serif;
-  --opt: "optima", serif;
   --primary-color: #003623;
   --secondary-color: #f2e9da;
   --background-color: #c8a9d4;
