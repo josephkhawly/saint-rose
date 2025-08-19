@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import MediaQuery from 'react-responsive'
-import { MOBILEBP, DESKTOPTRANSITIONBP } from '@/constants'
+import { useState, useEffect } from 'react'
+import { MOBILEBP } from '@/constants'
 import classnames from 'classnames'
 
 interface ServiceListProps {
@@ -12,67 +11,53 @@ interface ServiceListProps {
 
 const ServiceList = ({ title, data }: ServiceListProps) => {
   const [open, setOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= MOBILEBP)
+    }
+
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
 
   return (
-    <div className='services-block'>
-      <MediaQuery minWidth={DESKTOPTRANSITIONBP}>
-        <div className='pricing-table'>
-          <ul>
-            <li className='header'>
+    <div
+      className={classnames('pricing-table', {
+        open: isMobile && open,
+      })}
+    >
+      <ul>
+        <li className='header'>
+          {isMobile ? (
+            <div className='title-container'>
               <div className='head'>{title}</div>
-              <div className='tail'>Base Price</div>
-            </li>
-            {data.map(({ title, description, price }) => {
-              return (
-                <li className='pricing-row' key={title}>
-                  <div className='head'>
-                    <div className='title'>{title}</div>
-                    {description && <div className='description'>{description}</div>}
-                  </div>
-                  <div className='tail'>${price}</div>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      </MediaQuery>
-
-      <MediaQuery maxWidth={MOBILEBP}>
-        <div
-          className={classnames('pricing-table', {
-            open: open,
-          })}
-        >
-          <ul>
-            <li className='header'>
-              <div className='title-container'>
-                <div className='head'>{title}</div>
-                <div
-                  className={classnames('plusminus', {
-                    active: open,
-                  })}
-                  onClick={() => {
-                    setOpen((open) => !open)
-                  }}
-                ></div>
+              <div
+                className={classnames('plusminus', {
+                  active: open,
+                })}
+                onClick={() => setOpen(!open)}
+              />
+            </div>
+          ) : (
+            <div className='head'>{title}</div>
+          )}
+          {(!isMobile || open) && <div className='tail'>Base Price</div>}
+        </li>
+        {(!isMobile || open) &&
+          data.map(({ title, description, price }) => (
+            <li className='pricing-row' key={title}>
+              <div className='head'>
+                <div className='title'>{title}</div>
+                {description && <div className='description'>{description}</div>}
               </div>
-              {open && <div className='tail'>Base Price</div>}
+              <div className='tail'>${price}</div>
             </li>
-            {open &&
-              data.map(({ title, description, price }) => {
-                return (
-                  <li className='pricing-row' key={title}>
-                    <div className='head'>
-                      <div className='title'>{title}</div>
-                      {description && <div className='description'>{description}</div>}
-                    </div>
-                    <div className='tail'>${price}</div>
-                  </li>
-                )
-              })}
-          </ul>
-        </div>
-      </MediaQuery>
+          ))}
+      </ul>
     </div>
   )
 }

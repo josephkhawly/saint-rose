@@ -46,7 +46,6 @@
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.1.1",
     "react-iframe": "^1.8.0",
-    "react-responsive": "^10.0.1",
     "sharp": "^0.34.3",
     "zod": "^4.0.5"
   },
