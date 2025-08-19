@@ -5,9 +5,7 @@ export const DESKTOPBP = 1080
 export const links = [
   { path: '/contact', label: 'contact' },
   { path: '/services', label: 'services' },
-  { path: '/policies', label: 'policies' },
   { path: '/blog', label: 'blog' },
-  { path: '/about', label: 'about us' },
   { path: '/team', label: 'team' },
 ]
 

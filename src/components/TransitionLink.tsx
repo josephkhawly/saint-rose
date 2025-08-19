@@ -3,6 +3,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { gsap, Power1 } from 'gsap'
 import classNames from 'classnames'
 import Link from 'next/link'
+import styles from './Header/header.module.css'
 
 interface Props {
   href: string
@@ -45,7 +46,7 @@ const TransitionLink = ({ href, children, callback }: Props) => {
 
   return (
     <Link
-      className={classNames({ active: pathname === href && !isHome })}
+      className={classNames({ [styles['active']]: pathname === href && !isHome })}
       onClick={handleClick}
       href={href}
     >

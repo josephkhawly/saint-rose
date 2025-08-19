@@ -13,6 +13,7 @@ import { StaffMember } from './collections/StaffMember'
 import { BlogPosts } from './collections/BlogPosts'
 import { Hours } from './globals/Hours'
 import { Pages } from './collections/Pages'
+import { Header } from './globals/Header/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -54,7 +55,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, ServiceMenu, StaffMember, BlogPosts, Pages],
-  globals: [Hours],
+  globals: [Hours, Header],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

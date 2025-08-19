@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '@/components/Header'
+import Header from '@/components/Header/Component'
 import Footer from '@/components/Footer/Footer'
 import './assets/css/app.scss'
 import Script from 'next/script'
