@@ -16,6 +16,7 @@
     margin: 0 84px;
     height: 100px;
     transition: all 0.5s ease-out;
+    border-bottom: 2px solid var(--black);
   }
 
   .nav-logo {
@@ -45,10 +46,7 @@
     text-decoration: none;
     color: var(--black);
     transition: all 0.5s ease-out;
-    &:hover {
-      color: var(--pink);
-    }
-
+    &:hover,
     &.active {
       color: var(--pink);
     }
@@ -62,12 +60,6 @@
       color: var(--secondary-color);
       background-color: var(--black);
     }
-  }
-
-  .divider {
-    height: 2px;
-    background-color: var(--black);
-    margin: 0 84px;
   }
 
   .disable-nav-link {
@@ -84,17 +76,10 @@
       transition: all 0.5s ease-out;
     }
 
-    .divider {
-      opacity: 0;
-    }
-
     a {
       color: var(--secondary-color);
 
-      &:hover {
-        color: var(--pink);
-      }
-
+      &:hover,
       &.active {
         color: var(--pink);
       }
@@ -115,10 +100,6 @@
     .nav-content {
       margin: 0 48px;
     }
-
-    .divider {
-      margin: 0 48px;
-    }
   }
 }
 
@@ -128,10 +109,6 @@
     height: 64px;
     transition: height 0.5s ease-out;
     background-color: #000000;
-
-    .divider {
-      display: none;
-    }
 
     .nav {
       height: 64px;
@@ -143,6 +120,7 @@
       margin: 0;
       height: 64px;
       transition: height 0.3s ease-out;
+      border-bottom: none;
     }
 
     .nav-bar {
@@ -211,12 +189,6 @@
           border: solid 2px var(--secondary-color);
           padding: 10px 16px;
         }
-
-        .book-now-button:hover {
-          cursor: pointer;
-          color: var(--secondary-color);
-          background-color: var(--pink);
-        }
       }
     }
 
@@ -257,18 +229,16 @@
     }
 
     .hamburger-inner:after {
+      bottom: -10px;
       transition:
         bottom 0.1s ease-in 0.25s,
         transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
-    .hamburger-inner:after {
-      bottom: -10px;
-    }
     .hamburger-inner:after,
     .hamburger-inner:before {
       display: block;
-      content: "";
+      content: '';
     }
     .hamburger-inner,
     .hamburger-inner:after,
@@ -296,9 +266,6 @@
 
     .hamburger-inner:before {
       top: -10px;
-    }
-
-    .hamburger-inner:before {
       transition:
         top 0.1s ease-in 0.25s,
         opacity 0.1s ease-in;
@@ -365,10 +332,6 @@
         bottom 0.1s ease-out,
         transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
       transform: rotate(-90deg);
-    }
-
-    .icon {
-      transform: rotate(45deg);
     }
   }
 }

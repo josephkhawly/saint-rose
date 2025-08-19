@@ -167,7 +167,6 @@ export default function HeaderClient({ data }: { data: Header }) {
             </div>
           )}
         </div>
-        <div className={styles['divider']} />
       </div>
     </motion.header>
   )
