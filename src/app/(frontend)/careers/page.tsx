@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import SlideAndFade from '@/components/SlideAndFade'
 import ApplyForm from '@/components/ApplyForm'
+import styles from './careers.module.css'
 
 export const metadata: Metadata = {
   title: 'Careers | Saint Rose',
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
 
 export default function Careers() {
   return (
-    <div className='careers'>
+    <div className={styles['careers']}>
       <SlideAndFade delay={1}>
-        <div className='sub-nav'>Careers</div>
+        <div className={styles['sub-nav']}>Careers</div>
       </SlideAndFade>
       <SlideAndFade delay={1}>
-        <div className='intro'>
+        <div className={styles['intro']}>
           <h3>
             Thank you so much for your interest in Saint Rose. Please fill out the following form.
           </h3>

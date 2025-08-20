@@ -2,6 +2,7 @@
 
 import { useActionState } from 'react'
 import { submitCareerApplication } from '../app/(frontend)/actions'
+import styles from './form.module.css'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
@@ -20,17 +21,17 @@ function FormField({
   error?: string
 }) {
   return (
-    <div className='form-field'>
-      <label className='field-label'>
+    <div className={styles['form-field']}>
+      <label className={styles['field-label']}>
         {label}
-        {required && <span className='required'>*</span>}
+        {required && <span className={styles['required']}>*</span>}
         {type === 'textarea' ? (
           <textarea name={name} maxLength={800} />
         ) : (
           <input type={type} name={name} />
         )}
       </label>
-      {error && <div className='field-error'>{error}</div>}
+      {error && <div className={styles['field-error']}>{error}</div>}
     </div>
   )
 }
@@ -47,18 +48,18 @@ function CheckboxGroup({
   error?: string
 }) {
   return (
-    <div className='checkbox-group'>
-      <div className='field-label'>{label}*</div>
-      <div className='options-group'>
+    <div className={styles['checkbox-group']}>
+      <div className={styles['field-label']}>{label}*</div>
+      <div className={styles['options-group']}>
         {options.map((option) => (
-          <label className='option-checkbox' key={option}>
+          <label className={styles['option-checkbox']} key={option}>
             <input type='radio' name={name} value={option} />
-            <span className='checkbox'></span>
-            <span className='text'>{option}</span>
+            <span className={styles['checkbox']}></span>
+            <span className={styles['text']}>{option}</span>
           </label>
         ))}
       </div>
-      {error && <div className='field-error'>{error}</div>}
+      {error && <div className={styles['field-error']}>{error}</div>}
     </div>
   )
 }
@@ -67,14 +68,14 @@ export default function ApplyForm() {
   const [state, formAction, pending] = useActionState(submitCareerApplication, undefined)
   const fieldErrors = state?.fieldErrors || {}
   return (
-    <form className='form' action={formAction}>
+    <form className={styles['form']} action={formAction}>
       <CheckboxGroup
         label='What position are you applying for?'
         name='position'
         options={positionOptions}
         error={fieldErrors.position}
       />
-      <div className='form-row'>
+      <div className={styles['form-row']}>
         <FormField
           label='First Name'
           name='firstName'
@@ -90,11 +91,11 @@ export default function ApplyForm() {
           error={fieldErrors.lastName}
         />
       </div>
-      <div className='form-row'>
+      <div className={styles['form-row']}>
         <FormField label='Email' name='email' type='email' required error={fieldErrors.email} />
         <FormField label='Phone' name='phone' type='tel' required error={fieldErrors.phone} />
       </div>
-      <div className='form-row'>
+      <div className={styles['form-row']}>
         <FormField
           label='Address'
           name='address'
@@ -110,7 +111,7 @@ export default function ApplyForm() {
           error={fieldErrors.startDate}
         />
       </div>
-      <div className='form-row'>
+      <div className={styles['form-row']}>
         <FormField
           label='Business Instagram handle'
           name='instagramHandle'
@@ -124,20 +125,22 @@ export default function ApplyForm() {
           error={fieldErrors.license}
         />
       </div>
-      <div className='form-row'>
-        <div className='upload-file-container'>
-          <div className='field-label'>Resume*</div>
-          <div className='upload-file-wrapper'>
+      <div className={styles['form-row']}>
+        <div className={styles['upload-file-container']}>
+          <div className={styles['field-label']}>Resume*</div>
+          <div className={styles['upload-file-wrapper']}>
             <input
               type='file'
               name='resumeFile'
               accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
             />
           </div>
-          {fieldErrors.resumeFile && <div className='field-error'>{fieldErrors.resumeFile}</div>}
+          {fieldErrors.resumeFile && (
+            <div className={styles['field-error']}>{fieldErrors.resumeFile}</div>
+          )}
         </div>
       </div>
-      <span className='form-section'></span>
+      <span className={styles['form-section']}></span>
       <FormField
         label='What do you know about Saint Rose?'
         name='question1'
@@ -174,12 +177,21 @@ export default function ApplyForm() {
         type='textarea'
         error={fieldErrors.question6}
       />
-      <div className='form-footer'>
-        <button className='submit-button' id='submit-button' type='submit' disabled={pending}>
+      <div className={styles['form-footer']}>
+        <button
+          className={styles['submit-button']}
+          id='submit-button'
+          type='submit'
+          disabled={pending}
+        >
           {pending ? 'Submitting...' : 'Submit'}
         </button>
-        {state && state.errorMessage && <p className='error-message'>{state.errorMessage}</p>}
-        {state && state.successMessage && <p className='success-message'>{state.successMessage}</p>}
+        {state && state.errorMessage && (
+          <p className={styles['error-message']}>{state.errorMessage}</p>
+        )}
+        {state && state.successMessage && (
+          <p className={styles['success-message']}>{state.successMessage}</p>
+        )}
       </div>
     </form>
   )
