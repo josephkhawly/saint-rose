@@ -7,6 +7,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import styles from './blog-post.module.css'
 import Image from 'next/image'
+import { jsxConverters } from '@/components/Converters'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -50,17 +51,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           <div className={styles['content-header']}>
             {blogPost.headerImage && typeof blogPost.headerImage !== 'number' && (
               <div className={styles['featured-image-container']}>
-                <Image
-                  src={blogPost.headerImage?.url}
-                  alt={blogPost.headerImage?.alt || ''}
-                  fill
-                />
+                <Image src={blogPost.headerImage?.url} alt={blogPost.headerImage?.alt || ''} fill />
               </div>
             )}
           </div>
           <div className={styles['content-body']}>
             <div className={styles['post-title']}>{blogPost.title}</div>
-            <RichText data={blogPost.content} className={styles['rich-text']} />
+            <RichText
+              data={blogPost.content}
+              className={styles['rich-text']}
+              converters={jsxConverters}
+            />
           </div>
         </SlideAndFade>
       </div>
