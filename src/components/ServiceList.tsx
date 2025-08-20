@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { MOBILEBP } from '@/constants'
 import classnames from 'classnames'
+import styles from './service-list.module.css'
 
 interface ServiceListProps {
   title: string
@@ -26,35 +27,35 @@ const ServiceList = ({ title, data }: ServiceListProps) => {
 
   return (
     <div
-      className={classnames('pricing-table', {
-        open: isMobile && open,
+      className={classnames(styles['pricing-table'], {
+        [styles['open']]: isMobile && open,
       })}
     >
       <ul>
-        <li className='header'>
+        <li className={styles['header']}>
           {isMobile ? (
-            <div className='title-container'>
-              <div className='head'>{title}</div>
+            <div className={styles['title-container']}>
+              <div className={styles['head']}>{title}</div>
               <div
-                className={classnames('plusminus', {
-                  active: open,
+                className={classnames(styles['plusminus'], {
+                  [styles['active']]: open,
                 })}
                 onClick={() => setOpen(!open)}
               />
             </div>
           ) : (
-            <div className='head'>{title}</div>
+            <div className={styles['head']}>{title}</div>
           )}
-          {(!isMobile || open) && <div className='tail'>Base Price</div>}
+          {(!isMobile || open) && <div className={styles['tail']}>Base Price</div>}
         </li>
         {(!isMobile || open) &&
           data.map(({ title, description, price }) => (
-            <li className='pricing-row' key={title}>
-              <div className='head'>
-                <div className='title'>{title}</div>
-                {description && <div className='description'>{description}</div>}
+            <li className={styles['pricing-row']} key={title}>
+              <div className={styles['head']}>
+                <div className={styles['title']}>{title}</div>
+                {description && <div className={styles['description']}>{description}</div>}
               </div>
-              <div className='tail'>${price}</div>
+              <div className={styles['tail']}>${price}</div>
             </li>
           ))}
       </ul>
