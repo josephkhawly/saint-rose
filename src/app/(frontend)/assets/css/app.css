@@ -1,5 +1,28 @@
-@import "reset.css";
-@import "team.css";
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import './reset.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@import './team.css';
+
+@theme inline {
+  --color-primary: #003623;
+  --color-secondary: #f2e9da;
+  --color-background: #c8a9d4;
+
+  --color-pink: #975399;
+  --color-light-pink: #c8a9d4;
+  --color-gray: #747474;
+  --color-mud: #d69649;
+  --color-white: #ffffff;
+  --color-light-gray: #979797;
+  --color-light-gray-2: #8c8c8c;
+  --color-lilac: #c8a9d4;
+
+  --font-ap: var(--ap), sans-serif;
+  --font-opt: var(--opt), sans-serif;
+  --font-ap-bold: var(--ap-bold), sans-serif;
+}
 
 :root {
   --primary-color: #003623;
@@ -14,8 +37,6 @@
   --light-gray: #979797;
   --light-gray-2: #8c8c8c;
   --lilac: #c8a9d4;
-  --mobile-max-bp: 989px;
-  --desktop-transitional: 1080px;
 }
 
 .disable-scroll {
@@ -28,7 +49,6 @@ body {
 }
 
 .content {
-  opacity: 1;
   position: relative;
   z-index: 10;
   padding: 200px 0 0;
