@@ -4,7 +4,6 @@ import ServiceList from '@/components/ServiceList'
 import { Metadata } from 'next'
 import { getServices } from '@/lib/helpers'
 import { IntroText } from '@/components/IntroText'
-import styles from './services.module.css'
 
 export const metadata: Metadata = {
   title: 'Services | Saint Rose',
@@ -19,7 +18,7 @@ export default async function Services() {
         title='Services'
         introText="You want service that makes you feel your absolute best, and Saint Rose has a full-spectrum of services that make the cut. It's a match made in heaven."
       />
-      <div className={styles['section']}>
+      <div className='mt-[100px] xl:mt-[118px]'>
         {/* <BannerWithText
             banner={
               'https://videos.ctfassets.net/2f8bh3xz5t4r/65IZapjKqmRfxmkQM2z88u/d5ecf70b7ef28bcbe86e7baa4ff91d3d/services.mp4'
@@ -30,7 +29,7 @@ export default async function Services() {
           /> */}
 
         <SlideAndFade delay={0.25}>
-          <div className={styles['services-container']}>
+          <div className='grid grid-cols-1 md:gap-12 md:px-[84px] xl:grid-cols-2'>
             {services.map((service) => (
               <ServiceList key={service.id} title={service.title} data={service.services} />
             ))}

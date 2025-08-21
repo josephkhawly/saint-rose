@@ -2,22 +2,17 @@
 
 import { useAnimate, motion } from 'motion/react'
 import { useEffect, useRef } from 'react'
-import styles from './intro.module.css'
 
 export default function Intro() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [scope, animate] = useAnimate()
-  const intro2Ref = useRef<HTMLDivElement>(null)
+  const wipe = useRef<HTMLDivElement>(null)
   const introRoseRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const initAnimation = async () => {
       await animate(introRoseRef.current, { opacity: 1 }, { duration: 1 })
-      await animate(
-        intro2Ref.current,
-        { right: '0' },
-        { duration: 0.7, delay: 0.25, ease: 'easeInOut' },
-      )
+      await animate(wipe.current, { right: '0' }, { duration: 0.7, delay: 0.25, ease: 'easeInOut' })
       videoRef.current?.play()
     }
     initAnimation()
@@ -25,17 +20,20 @@ export default function Intro() {
 
   return (
     <div ref={scope}>
-      <div ref={intro2Ref} className={styles['intro-2']} />
-      <div ref={introRoseRef} className={styles['intro-rose']} />
+      <div ref={wipe} className='fixed top-0 bottom-0 left-0 bg-black' />
+      <div
+        ref={introRoseRef}
+        className='fixed top-0 right-0 bottom-0 left-0 bg-[url("/images/home-rose.svg")] bg-center bg-no-repeat opacity-0'
+      />
 
-      <div className='content'>
+      <div className='relative z-10'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 4.5 }}
         >
           <video
-            id={styles.vid}
+            className='h-screen w-full object-cover'
             ref={videoRef}
             loop
             muted
