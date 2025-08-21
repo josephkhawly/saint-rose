@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '@/components/Header/Component'
 import Footer from '@/components/Footer/Footer'
-import './assets/css/app.scss'
+import './assets/css/app.css'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from 'next/font/local'

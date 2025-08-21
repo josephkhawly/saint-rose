@@ -1,5 +1,5 @@
-@use "reset";
-@use "team";
+@import "reset.css";
+@import "team.css";
 
 :root {
   --primary-color: #003623;

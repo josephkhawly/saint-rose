@@ -93,9 +93,6 @@ importers:
       eslint-config-next:
         specifier: ^15.4.6
         version: 15.4.6(eslint@9.33.0)(typescript@5.8.3)
-      sass:
-        specifier: ^1.90.0
-        version: 1.90.0
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -5306,6 +5303,7 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+    optional: true
 
   ci-info@4.3.0: {}
 
@@ -6139,7 +6137,8 @@ snapshots:
 
   immutable@4.3.7: {}
 
-  immutable@5.1.2: {}
+  immutable@5.1.2:
+    optional: true
 
   import-fresh@3.3.1:
     dependencies:
@@ -7106,7 +7105,8 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.1.2: {}
+  readdirp@4.1.2:
+    optional: true
 
   real-require@0.2.0: {}
 
@@ -7197,6 +7197,7 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
+    optional: true
 
   scheduler@0.25.0: {}
 

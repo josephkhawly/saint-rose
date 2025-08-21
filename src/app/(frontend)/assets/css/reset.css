@@ -46,7 +46,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-// --- Additions
+
 html {
   box-sizing: border-box;
 }
@@ -75,5 +75,4 @@ input:focus {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // backface-visibility: hidden;
 }
