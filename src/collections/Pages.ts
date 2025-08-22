@@ -9,6 +9,7 @@ import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/lib/generatePreviewPath'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { authenticated } from '@/access/authenticated'
+import { Services } from '@/blocks/Services/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -58,7 +59,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [RichText, Quotes, BannerWithText, Video],
+      blocks: [RichText, Quotes, BannerWithText, Video, Services],
       required: true,
       admin: {
         initCollapsed: true,
@@ -81,7 +82,7 @@ export const Pages: CollectionConfig<'pages'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        interval: 500, // We set this interval for optimal live preview
       },
       schedulePublish: true,
     },

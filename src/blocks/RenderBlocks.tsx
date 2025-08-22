@@ -3,12 +3,14 @@ import Quotes from '@/blocks/Quotes/Component'
 import { RichTextComponent } from './RichText/Component'
 import { BannerWithText } from './BannerWithText/Component'
 import { Video } from './Video/Component'
+import { ServiceGrid } from './Services/Component'
 
 const blockComponents = {
   quotes: Quotes,
   richText: RichTextComponent,
   bannerWithText: BannerWithText,
   video: Video,
+  services: ServiceGrid,
 }
 
 export const RenderBlocks: React.FC<{

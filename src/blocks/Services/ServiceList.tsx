@@ -4,13 +4,12 @@ import { useState, useEffect } from 'react'
 import { MOBILEBP } from '@/constants'
 import classnames from 'classnames'
 import styles from './service-list.module.css'
+import { ServiceMenu } from '@/payload-types'
 
-interface ServiceListProps {
-  title: string
-  data: { title: string; description?: string; price: number }[]
-}
-
-const ServiceList = ({ title, data }: ServiceListProps) => {
+export const ServiceList = ({
+  title,
+  services,
+}: Omit<ServiceMenu, 'id' | 'updatedAt' | 'createdAt'>) => {
   const [open, setOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -49,8 +48,8 @@ const ServiceList = ({ title, data }: ServiceListProps) => {
           {(!isMobile || open) && <div className={styles['tail']}>Base Price</div>}
         </li>
         {(!isMobile || open) &&
-          data.map(({ title, description, price }) => (
-            <li className={styles['pricing-row']} key={title}>
+          services.map(({ id, title, description, price }) => (
+            <li className={styles['pricing-row']} key={id}>
               <div className={styles['head']}>
                 <div className={styles['title']}>{title}</div>
                 {description && <div className={styles['description']}>{description}</div>}
@@ -62,5 +61,3 @@ const ServiceList = ({ title, data }: ServiceListProps) => {
     </div>
   )
 }
-
-export default ServiceList

@@ -16,6 +16,10 @@ export async function getServices() {
   const payload = await getPayload({ config })
   const services = await payload.find({
     collection: 'service-menu',
+    select: {
+      title: true,
+      services: true,
+    },
   })
   return services.docs
 }

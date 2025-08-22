@@ -274,7 +274,7 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
-  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock)[];
+  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock | ServicesBlock)[];
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -358,6 +358,19 @@ export interface VideoBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'video';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock".
+ */
+export interface ServicesBlock {
+  /**
+   * The maximum number of columns to display on desktop.
+   */
+  columns: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'services';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -634,6 +647,7 @@ export interface PagesSelect<T extends boolean = true> {
         quotes?: T | QuotesBlockSelect<T>;
         bannerWithText?: T | BannerWithTextBlockSelect<T>;
         video?: T | VideoBlockSelect<T>;
+        services?: T | ServicesBlockSelect<T>;
       };
   publishedAt?: T;
   slug?: T;
@@ -691,6 +705,15 @@ export interface VideoBlockSelect<T extends boolean = true> {
   loop?: T;
   muted?: T;
   controls?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesBlock_select".
+ */
+export interface ServicesBlockSelect<T extends boolean = true> {
+  columns?: T;
   id?: T;
   blockName?: T;
 }
