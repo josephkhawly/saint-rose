@@ -11,37 +11,39 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
   return (
     <div className='staff-member'>
       <div
-        className='photo-container'
+        className='group'
         onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
       >
         <Image
           src={photoSmall.url}
           alt={name}
-          className='photo'
+          className='aspect-square h-full w-full object-cover object-[center_10%] transition-all duration-500 group-hover:sepia-60'
           width={276}
           height={276}
           placeholder='blur'
           blurDataURL={placeholderBlur}
         />
-        <div className='name-container'>
+        <div className='mt-[18px] flex items-center justify-between'>
           <div className='name'>{name}</div>
-          <div className='name-decoration'>
-            {video ? (
-              <Image src='/images/play-bio.svg' alt='play' width={20} height={20} />
-            ) : (
-              <Image src='/images/plus-bio.svg' alt='plus' width={20} height={20} />
-            )}
-          </div>
+          {video ? (
+            <Image src='/images/play-bio.svg' alt='play' width={20} height={20} />
+          ) : (
+            <Image src='/images/plus-bio.svg' alt='plus' width={20} height={20} />
+          )}
         </div>
         <div className='role'>{role}</div>
       </div>
       {instagram && (
         <div className='instagram'>
-          <span>
-            <a href={`https://www.instagram.com/${instagram}/`} target='_blank' rel='noreferrer'>
-              @{instagram}
-            </a>
-          </span>
+          <Image src='/images/instagram-gray.svg' alt='Instagram' width={25} height={24} />
+          <a
+            href={`https://www.instagram.com/${instagram}/`}
+            target='_blank'
+            rel='noreferrer'
+            className='text-light-gray-2 hover:text-gray font-ap no-underline'
+          >
+            @{instagram}
+          </a>
         </div>
       )}
     </div>
@@ -73,7 +75,7 @@ export function StaffMemberGrid({ staffMembers }) {
   }, [isModalOpen])
 
   return (
-    <div className='staff-container'>
+    <div className='mx-6 mt-20 grid grid-cols-1 gap-x-7 gap-y-17 md:grid-cols-2 lg:grid-cols-3 lg:mx-21 xl:grid-cols-4'>
       <AnimatePresence>
         {isModalOpen && (
           <StaffMemberSpotlight
