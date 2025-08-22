@@ -8,7 +8,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { ServiceMenu } from './collections/ServiceMenu'
+import { ServiceMenu } from './collections/ServiceMenu/ServiceMenu'
 import { StaffMember } from './collections/StaffMember'
 import { BlogPosts } from './collections/BlogPosts'
 import { Hours } from './globals/Hours'

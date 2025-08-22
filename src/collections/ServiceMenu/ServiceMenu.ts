@@ -24,6 +24,11 @@ export const ServiceMenu: CollectionConfig = {
         singular: 'Service',
         plural: 'Services',
       },
+      admin: {
+        components: {
+          RowLabel: '@/collections/ServiceMenu/RowLabel#RowLabel',
+        },
+      },
       fields: [
         {
           type: 'row',
