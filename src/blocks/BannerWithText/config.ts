@@ -3,6 +3,7 @@ import { Block } from 'payload'
 export const BannerWithText: Block = {
   slug: 'bannerWithText',
   interfaceName: 'BannerWithTextBlock',
+  imageURL: '/images/thumbnails/banner.webp',
   fields: [
     {
       name: 'title',

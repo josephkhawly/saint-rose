@@ -3,6 +3,7 @@ import { Block } from "payload";
 export const Quotes: Block = {
   slug: 'quotes',
   interfaceName: 'QuotesBlock',
+  imageURL: '/images/thumbnails/quotes.webp',
   fields: [
     {
       name: 'quotes',
