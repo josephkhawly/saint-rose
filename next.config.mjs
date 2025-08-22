@@ -10,7 +10,7 @@ const nextConfig = {
     ],
     localPatterns: [
       {
-        hostname: '/api/media/**',
+        pathname: '/api/media/**',
       },
     ],
   },
