@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: 'images.ctfassets.net',
       },
     ],
+    localPatterns: [
+      {
+        hostname: '/api/media/**',
+      },
+    ],
   },
   experimental: {
     useCache: true,
