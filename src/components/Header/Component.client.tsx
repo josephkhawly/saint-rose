@@ -53,7 +53,7 @@ export default function HeaderClient({ data }: { data: Header }) {
       setIsMobile(window.innerWidth <= 989)
       if (window.innerWidth > 989) {
         setOpen(false)
-        document.body.style.overflow = 'scroll'
+        document.body.style.overflowY = 'scroll'
       }
     }
     const handleScroll = () => {
@@ -70,15 +70,15 @@ export default function HeaderClient({ data }: { data: Header }) {
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('scroll', handleScroll)
-      document.body.style.overflow = 'scroll'
+      document.body.style.overflowY = 'scroll'
     }
   }, [pathname, isMobile])
 
   const handleOpenToggle = () => {
     if (open) {
-      document.body.style.overflow = 'scroll'
+      document.body.style.overflowY = 'scroll'
     } else {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflowY = 'hidden'
     }
     setOpen(!open)
   }

@@ -2,6 +2,7 @@ import SlideAndFade from './SlideAndFade'
 import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import styles from './staff-spotlight.module.css'
+import { useScrollLock } from 'usehooks-ts'
 
 function Video({ link, closeHandler }) {
   return (
@@ -50,6 +51,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
 
 function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
   const { name, role, photoLarge, bio, video } = staffMemberDetails
+  useScrollLock()
 
   return (
     <motion.div

@@ -39,10 +39,6 @@
   --lilac: #c8a9d4;
 }
 
-.disable-scroll {
-  overflow-y: hidden;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--secondary-color);

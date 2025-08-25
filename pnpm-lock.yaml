@@ -86,6 +86,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.12
         version: 4.1.12
+      usehooks-ts:
+        specifier: ^3.1.1
+        version: 3.1.1(react@19.1.1)
       zod:
         specifier: ^4.0.5
         version: 4.0.5
@@ -2830,6 +2833,9 @@ packages:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
 
+  lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
@@ -3897,6 +3903,12 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  usehooks-ts@3.1.1:
+    resolution: {integrity: sha512-I4diPp9Cq6ieSUH2wu+fDAVQO43xwtulo+fKEidHUwZPnYImbtkTjzIJYcDcJqxgmX31GVqNFURodvcgHcW0pA==}
+    engines: {node: '>=16.15.0'}
+    peerDependencies:
+      react: ^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   utf-8-validate@6.0.5:
     resolution: {integrity: sha512-EYZR+OpIXp9Y1eG1iueg8KRsY8TuT8VNgnanZ0uA3STqhHQTLwbl+WX76/9X5OY12yQubymBpaBSmMPkSTQcKA==}
@@ -6818,6 +6830,8 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
+  lodash.debounce@4.0.8: {}
+
   lodash.merge@4.6.2: {}
 
   lodash@4.17.21: {}
@@ -8079,6 +8093,11 @@ snapshots:
       react: 19.1.1
     optionalDependencies:
       '@types/react': 19.1.11
+
+  usehooks-ts@3.1.1(react@19.1.1):
+    dependencies:
+      lodash.debounce: 4.0.8
+      react: 19.1.1
 
   utf-8-validate@6.0.5:
     dependencies:

@@ -52,6 +52,7 @@
     "react-iframe": "^1.8.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.12",
+    "usehooks-ts": "^3.1.1",
     "zod": "^4.0.5"
   },
   "engines": {

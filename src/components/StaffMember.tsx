@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import StaffMemberSpotlight from './StaffMemberSpotlight'
 import { AnimatePresence } from 'motion/react'
 import { placeholderBlur } from '@/constants'
@@ -65,14 +65,6 @@ export function StaffMemberGrid({ staffMembers }) {
     setIsModalOpen(false)
     setSelectedStaffMember({})
   }
-
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.add('disable-scroll')
-    } else {
-      document.body.classList.remove('disable-scroll')
-    }
-  }, [isModalOpen])
 
   return (
     <div className='mx-6 mt-20 grid grid-cols-1 gap-x-7 gap-y-17 md:grid-cols-2 lg:grid-cols-3 lg:mx-21 xl:grid-cols-4'>
