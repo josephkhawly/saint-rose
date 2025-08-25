@@ -6,75 +6,18 @@
   left: 0;
   bottom: 0;
 
-  .close {
-    z-index: 10;
-    background-color: Transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-  .video-container {
+  .photo {
+    height: calc((100vw * 0.56));
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 100%;
-
-    .inner-container {
-      position: relative;
-      background-color: rgba(0, 0, 0, 0.95);
-      display: flex;
-      width: 100%;
-    }
-
-    .close {
-      top: 48px;
-      right: 48px;
-      position: absolute;
-    }
-
-    video {
-      width: 100%;
-      outline: none;
-      height: calc((100vh * 0.9));
-      object-fit: contain;
-    }
   }
 
-  .bio-container {
-    overflow: scroll;
-    height: 100%;
-
-    .photo-container {
-      position: fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
-    .photo {
-      height: calc((100vw * 0.56));
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      position: fixed;
-      width: 100%;
-    }
-
-    .inner-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .text-container {
-      padding-top: calc(100vh * 0.6);
-      width: 80%;
-      white-space: pre-wrap;
-    }
+  .text-container {
+    padding-top: calc(100vh * 0.6);
+    width: 80%;
 
     .text {
       position: relative;
@@ -100,51 +43,13 @@
         line-height: 28px;
         margin-bottom: 70px;
       }
-
-      p {
-        margin-bottom: 44px;
-      }
-
-      p:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-
-    .close {
-      position: absolute;
-      right: 44px;
-      top: 44px;
     }
   }
   @media all and (max-width: 989px) {
-    .video-container {
-      .close {
-        top: 24px;
-        right: 24px;
-      }
-    }
 
-    .bio-container {
+    .text-container {
+      padding-top: 0;
       width: 100%;
-      height: 100%;
-      background-color: var(--black);
-      position: relative;
-
-      .photo-container {
-        display: none;
-      }
-
-      .text-container {
-        padding-top: 0;
-        width: 100%;
-      }
-
-      .close {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-      }
-
       .text {
         padding: 24px;
         font-family: var(--ap);
@@ -156,12 +61,6 @@
 
         h5 {
           margin-bottom: 24px;
-        }
-
-        p {
-          font-size: 17px;
-          line-height: 28px;
-          margin-bottom: 18px;
         }
       }
     }
