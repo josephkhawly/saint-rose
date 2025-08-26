@@ -8,6 +8,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { queryPageBySlug } from '@/lib/helpers'
 import { IntroText } from '@/components/IntroText'
+import SlideAndFade from '@/components/SlideAndFade'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config })
@@ -57,7 +58,9 @@ export default async function Page({ params }: Args) {
 
       {introText && <IntroText title={title} introText={introText} />}
 
-      <RenderBlocks blocks={layout} />
+      <SlideAndFade delay={introText ? 1.65 : 1.25}>
+        <RenderBlocks blocks={layout} />
+      </SlideAndFade>
     </article>
   )
 }

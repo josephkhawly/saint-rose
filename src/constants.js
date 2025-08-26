@@ -1,6 +1,4 @@
 export const MOBILEBP = 989
-export const DESKTOPTRANSITIONBP = 990
-export const DESKTOPBP = 1080
 
 export const links = [
   { path: '/contact', label: 'contact' },
