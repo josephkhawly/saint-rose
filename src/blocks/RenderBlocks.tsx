@@ -4,6 +4,7 @@ import { RichTextComponent } from './RichText/Component'
 import { BannerWithText } from './BannerWithText/Component'
 import { Video } from './Video/Component'
 import { ServiceGrid } from './Services/Component'
+import { TeamGrid } from './TeamGrid/Component'
 
 const blockComponents = {
   quotes: Quotes,
@@ -11,6 +12,7 @@ const blockComponents = {
   bannerWithText: BannerWithText,
   video: Video,
   services: ServiceGrid,
+  team: TeamGrid,
 }
 
 export const RenderBlocks: React.FC<{

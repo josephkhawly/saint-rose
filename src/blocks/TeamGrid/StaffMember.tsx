@@ -5,6 +5,7 @@ import { useState } from 'react'
 import StaffMemberSpotlight from './StaffMemberSpotlight'
 import { AnimatePresence } from 'motion/react'
 import { placeholderBlur } from '@/constants'
+import { StaffMember } from '@/payload-types'
 
 function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
   const { name, role, photoSmall, video, instagram } = staffMemberData
@@ -50,11 +51,17 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
   )
 }
 
-export function StaffMemberGrid({ staffMembers }) {
+export function StaffMemberGrid({
+  staffMembers,
+  columns,
+}: {
+  staffMembers: StaffMember[]
+  columns: string
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedStaffMember, setSelectedStaffMember] = useState({})
 
-  const handleStaffMemberSelect = (staffMemberData) => {
+  const handleStaffMemberSelect = (staffMemberData: StaffMember) => {
     if (!isModalOpen) {
       setIsModalOpen(true)
       setSelectedStaffMember(staffMemberData)
@@ -67,7 +74,7 @@ export function StaffMemberGrid({ staffMembers }) {
   }
 
   return (
-    <div className='mx-6 mt-20 grid grid-cols-1 gap-x-7 gap-y-17 md:grid-cols-2 lg:grid-cols-3 lg:mx-21 xl:grid-cols-4'>
+    <div className={`mx-6 mt-20 grid gap-x-7 gap-y-17 lg:mx-21 ${columns}`}>
       <AnimatePresence>
         {isModalOpen && (
           <StaffMemberSpotlight

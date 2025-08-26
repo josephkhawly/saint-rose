@@ -274,7 +274,7 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
-  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock | ServicesBlock)[];
+  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock | ServicesBlock | TeamGridBlock)[];
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -371,6 +371,19 @@ export interface ServicesBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'services';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamGridBlock".
+ */
+export interface TeamGridBlock {
+  /**
+   * The maximum number of columns to display on large screens. Columns will be reduced automatically on smaller screens.
+   */
+  columns: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'team';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -648,6 +661,7 @@ export interface PagesSelect<T extends boolean = true> {
         bannerWithText?: T | BannerWithTextBlockSelect<T>;
         video?: T | VideoBlockSelect<T>;
         services?: T | ServicesBlockSelect<T>;
+        team?: T | TeamGridBlockSelect<T>;
       };
   publishedAt?: T;
   slug?: T;
@@ -713,6 +727,15 @@ export interface VideoBlockSelect<T extends boolean = true> {
  * via the `definition` "ServicesBlock_select".
  */
 export interface ServicesBlockSelect<T extends boolean = true> {
+  columns?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamGridBlock_select".
+ */
+export interface TeamGridBlockSelect<T extends boolean = true> {
   columns?: T;
   id?: T;
   blockName?: T;

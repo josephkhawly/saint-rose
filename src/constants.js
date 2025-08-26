@@ -3,7 +3,6 @@ export const MOBILEBP = 989
 export const links = [
   { path: '/contact', label: 'contact' },
   { path: '/blog', label: 'blog' },
-  { path: '/team', label: 'team' },
 ]
 
 export const quotesData = [

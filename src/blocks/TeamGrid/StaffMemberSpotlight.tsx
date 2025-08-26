@@ -1,4 +1,4 @@
-import SlideAndFade from './SlideAndFade'
+import SlideAndFade from '@/components/SlideAndFade'
 import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import styles from './staff-spotlight.module.css'
@@ -10,7 +10,7 @@ function Video({ link, closeHandler }) {
       <div className='relative flex w-full bg-black/95'>
         <button
           className='absolute top-6 right-6 z-10 cursor-pointer border-none bg-transparent outline-none md:top-12 md:right-12'
-          onClick={() => closeHandler()}
+          onClick={closeHandler}
         >
           <Image src='/images/close.svg' alt='close' width={43} height={43} />
         </button>
@@ -34,7 +34,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
             <div className={styles['text']}>
               <button
                 className='absolute top-6 right-6 z-10 cursor-pointer border-none bg-transparent outline-none md:top-12 md:right-12'
-                onClick={() => closeHandler()}
+                onClick={closeHandler}
               >
                 <Image src='/images/close.svg' alt='close' width={43} height={43} />
               </button>
@@ -49,7 +49,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
   )
 }
 
-function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
+export default function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
   const { name, role, photoLarge, bio, video } = staffMemberDetails
   useScrollLock()
 
@@ -75,5 +75,3 @@ function StaffMemberSpotlight({ staffMemberDetails, closeHandler }) {
     </motion.div>
   )
 }
-
-export default StaffMemberSpotlight

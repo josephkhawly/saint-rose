@@ -10,6 +10,7 @@ import { generatePreviewPath } from '@/lib/generatePreviewPath'
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { authenticated } from '@/access/authenticated'
 import { Services } from '@/blocks/Services/config'
+import { TeamGrid } from '@/blocks/TeamGrid/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -59,7 +60,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [RichText, Quotes, BannerWithText, Video, Services],
+      blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid],
       required: true,
       admin: {
         initCollapsed: true,
