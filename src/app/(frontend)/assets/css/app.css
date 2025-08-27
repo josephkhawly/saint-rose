@@ -48,9 +48,11 @@ body {
   position: relative;
   z-index: 10;
   padding: 200px 0 0;
+  margin-bottom: 340px;
 
   @media all and (max-width: 989px) {
     padding: 100px 0 0;
+    margin-bottom: 100px;
   }
 }
 

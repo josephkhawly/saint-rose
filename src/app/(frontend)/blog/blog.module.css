@@ -1,7 +1,7 @@
 .blog {
   .content-body {
     padding: 84px 84px 0;
-    margin: 100px 0px 0;
+    margin: 100px 0;
   }
 
   .featured-blog-post {
@@ -30,12 +30,6 @@
       line-height: 46px;
       text-align: center;
     }
-  }
-
-  .blog-posts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
   }
 
   .regular-blog-post {
@@ -81,11 +75,6 @@
       .post-image-container {
         width: 100%;
       }
-    }
-
-    .blog-posts {
-      grid-template-columns: 1fr;
-      grid-gap: 48px;
     }
   }
 }
