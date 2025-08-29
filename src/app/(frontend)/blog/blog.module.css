@@ -10,12 +10,6 @@
     align-items: center;
     margin-bottom: 140px;
 
-    .post-image-container {
-      position: relative;
-      width: 75%;
-      aspect-ratio: 2 / 1;
-    }
-
     h5 {
       margin-top: 60px;
       font-family: var(--ap-bold);
@@ -33,11 +27,6 @@
   }
 
   .regular-blog-post {
-    .post-image-container {
-      position: relative;
-      aspect-ratio: 16 / 9;
-    }
-
     h5 {
       margin-top: 24px;
       font-family: var(--ap);
@@ -54,9 +43,6 @@
   }
 
   h3 {
-    font-family: var(--opt);
-    font-size: 46px;
-    line-height: 57px;
     margin-bottom: 22px;
   }
 
@@ -70,10 +56,6 @@
       margin-bottom: 80px;
       h3 {
         max-width: 100%;
-      }
-
-      .post-image-container {
-        width: 100%;
       }
     }
   }

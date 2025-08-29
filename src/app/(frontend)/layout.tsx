@@ -26,13 +26,15 @@ const apBold = localFont({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable}`}>
-      <body>
-        <Header />
-        {children}
-        <Footer />
-        {/* Instagram Widget */}
-        <Script src='https://cdn.lightwidget.com/widgets/lightwidget.js' />
+      <body className='bg-secondary font-sans'>
+        <div className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
+      {/* Instagram Widget */}
+      <Script src='https://cdn.lightwidget.com/widgets/lightwidget.js' />
       <GoogleAnalytics gaId='G-XD3JQQYHHV' />
       {/* Booking Widget */}
       <Script

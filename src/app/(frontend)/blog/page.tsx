@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 function BlogPost({ blogItem }) {
   return (
     <div className={styles['regular-blog-post']}>
-      <div className={styles['post-image-container']}>
+      <div className='relative aspect-video'>
         <Image
           src={blogItem.headerImage?.url}
           alt={blogItem.headerImage?.alt || ''}
@@ -48,7 +48,7 @@ export default async function Blog() {
           {featuredPost && (
             <div className={styles['featured-blog-post']}>
               {featuredPost.headerImage && typeof featuredPost.headerImage !== 'number' && (
-                <div className={styles['post-image-container']}>
+                <div className='relative aspect-video w-full sm:aspect-[2/1] sm:w-3/4'>
                   <Image
                     src={featuredPost.headerImage?.url}
                     alt={featuredPost.headerImage?.alt || ''}

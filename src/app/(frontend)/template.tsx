@@ -36,9 +36,9 @@ export default function PageTransition({ children }: { children: React.ReactNode
     animatePageIn(pathname === '/')
   }, [pathname])
   return (
-    <div className='main-container'>
+    <main className='main-container'>
       {children}
       <div className='entrance' />
-    </div>
+    </main>
   )
 }

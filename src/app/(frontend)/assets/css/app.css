@@ -39,11 +39,6 @@
   --lilac: #c8a9d4;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--secondary-color);
-}
-
 .content {
   position: relative;
   z-index: 10;
@@ -58,7 +53,6 @@ body {
 
 .entrance {
   background-color: var(--background-color);
-  /* min-height: 100vh; */
   position: fixed;
   width: 100%;
   min-height: 100vh;
