@@ -14,6 +14,7 @@ import { BlogPosts } from './collections/BlogPosts'
 import { Hours } from './globals/Hours'
 import { Pages } from './collections/Pages'
 import { Header } from './globals/Header/config'
+import { plugins } from './plugins'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -68,6 +69,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    ...plugins,
     uploadthingStorage({
       collections: {
         media: true,

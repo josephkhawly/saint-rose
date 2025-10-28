@@ -12,6 +12,14 @@ import { authenticated } from '@/access/authenticated'
 import { Services } from '@/blocks/Services/config'
 import { TeamGrid } from '@/blocks/TeamGrid/config'
 
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
+
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   trash: true,
@@ -54,17 +62,54 @@ export const Pages: CollectionConfig<'pages'> = {
       required: true,
     },
     {
-      name: 'introText',
-      type: 'text',
-    },
-    {
-      name: 'layout',
-      type: 'blocks',
-      blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid],
-      required: true,
-      admin: {
-        initCollapsed: true,
-      },
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Content',
+          fields: [
+            {
+              name: 'introText',
+              type: 'text',
+            },
+            {
+              name: 'layout',
+              type: 'blocks',
+              blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid],
+              required: true,
+              admin: {
+                initCollapsed: true,
+              },
+            },
+          ],
+        },
+        {
+          name: 'meta',
+          label: 'SEO',
+          fields: [
+            OverviewField({
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+              imagePath: 'meta.image',
+            }),
+            MetaTitleField({
+              hasGenerateFn: true,
+            }),
+            MetaImageField({
+              relationTo: 'media',
+            }),
+
+            MetaDescriptionField({}),
+            PreviewField({
+              // if the `generateUrl` function is configured
+              hasGenerateFn: true,
+
+              // field paths to match the target field for data
+              titlePath: 'meta.title',
+              descriptionPath: 'meta.description',
+            }),
+          ],
+        },
+      ],
     },
     {
       name: 'publishedAt',

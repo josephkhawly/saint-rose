@@ -251,7 +251,7 @@ export interface BlogPost {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -275,6 +275,14 @@ export interface Page {
   title: string;
   introText?: string | null;
   layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock | ServicesBlock | TeamGridBlock)[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -292,7 +300,7 @@ export interface RichTextBlock {
     root: {
       type: string;
       children: {
-        type: string;
+        type: any;
         version: number;
         [k: string]: unknown;
       }[];
@@ -662,6 +670,13 @@ export interface PagesSelect<T extends boolean = true> {
         video?: T | VideoBlockSelect<T>;
         services?: T | ServicesBlockSelect<T>;
         team?: T | TeamGridBlockSelect<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
       };
   publishedAt?: T;
   slug?: T;
