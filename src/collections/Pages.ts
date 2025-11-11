@@ -11,6 +11,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
 import { authenticated } from '@/access/authenticated'
 import { Services } from '@/blocks/Services/config'
 import { TeamGrid } from '@/blocks/TeamGrid/config'
+import { Gallery } from '@/blocks/Gallery/config'
 
 import {
   MetaDescriptionField,
@@ -74,7 +75,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid],
+              blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid, Gallery],
               required: true,
               admin: {
                 initCollapsed: true,

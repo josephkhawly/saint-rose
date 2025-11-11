@@ -276,7 +276,15 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
-  layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock | ServicesBlock | TeamGridBlock)[];
+  layout: (
+    | RichTextBlock
+    | QuotesBlock
+    | BannerWithTextBlock
+    | VideoBlock
+    | ServicesBlock
+    | TeamGridBlock
+    | GalleryBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -394,6 +402,26 @@ export interface TeamGridBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'team';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock".
+ */
+export interface GalleryBlock {
+  /**
+   * Optional title to display.
+   */
+  title?: string | null;
+  items: {
+    /**
+     * Images or videos to display in the gallery.
+     */
+    media: number | Media;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -685,6 +713,7 @@ export interface PagesSelect<T extends boolean = true> {
         video?: T | VideoBlockSelect<T>;
         services?: T | ServicesBlockSelect<T>;
         team?: T | TeamGridBlockSelect<T>;
+        gallery?: T | GalleryBlockSelect<T>;
       };
   meta?:
     | T
@@ -767,6 +796,21 @@ export interface ServicesBlockSelect<T extends boolean = true> {
  */
 export interface TeamGridBlockSelect<T extends boolean = true> {
   columns?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock_select".
+ */
+export interface GalleryBlockSelect<T extends boolean = true> {
+  title?: T;
+  items?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

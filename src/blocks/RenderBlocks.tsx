@@ -5,6 +5,7 @@ import { BannerWithText } from './BannerWithText/Component'
 import { Video } from './Video/Component'
 import { ServiceGrid } from './Services/Component'
 import { TeamGrid } from './TeamGrid/Component'
+import { Gallery } from './Gallery/Component'
 
 const blockComponents = {
   quotes: Quotes,
@@ -13,6 +14,7 @@ const blockComponents = {
   video: Video,
   services: ServiceGrid,
   team: TeamGrid,
+  gallery: Gallery,
 }
 
 export const RenderBlocks: React.FC<{
@@ -25,7 +27,7 @@ export const RenderBlocks: React.FC<{
   if (hasBlocks) {
     return (
       <>
-        {blocks.map((block, index) => {
+        {blocks.map((block) => {
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
@@ -33,7 +35,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               // @ts-expect-error
-              return <Block key={index} {...block} disableInnerContainer />
+              return <Block key={block.id} {...block} disableInnerContainer />
             }
           }
           return null
