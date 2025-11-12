@@ -1,5 +1,4 @@
 import { GalleryBlock } from '@/payload-types'
-import styles from './gallery.module.css'
 
 type GalleryProps = GalleryBlock
 
@@ -30,8 +29,8 @@ export function Gallery({ title, items }: GalleryProps) {
 
     if (isVideo) {
       return (
-        <div key={key} className={styles['column-image']}>
-          <video autoPlay muted playsInline loop>
+        <div key={key} className='bg-cover bg-center bg-repeat'>
+          <video autoPlay muted playsInline loop className='w-full'>
             <source src={media.url || ''} type={media.mimeType || ''} />
           </video>
         </div>
@@ -42,7 +41,7 @@ export function Gallery({ title, items }: GalleryProps) {
       return (
         <div
           key={key}
-          className={styles['column-image']}
+          className='bg-cover bg-center bg-repeat'
           style={{
             backgroundImage: `url(${media.url})`,
             ...(aspectRatio && { aspectRatio: aspectRatio.toString() }),
@@ -55,11 +54,15 @@ export function Gallery({ title, items }: GalleryProps) {
   }
 
   return (
-    <div className={styles.gallery}>
+    <div className='mt-24 flex flex-col justify-between gap-13 md:mt-[140px] md:flex-row'>
       {columns.map((columnItems, columnIndex) => (
-        <div key={columnIndex} className={styles.column}>
-          {columnIndex === 0 && title && <div className={styles['gallery-title']}>{title}</div>}
-          {columnIndex === 2 && <div className={styles['gallery-top-spacing']}></div>}
+        <div key={columnIndex} className='mb-13 flex w-full flex-col gap-13 md:mb-0 md:w-1/3'>
+          {columnIndex === 0 && title && (
+            <div className='font-ap-bold text-center text-lg tracking-wide uppercase md:mt-10 md:mb-[30px] md:text-left'>
+              {title}
+            </div>
+          )}
+          {columnIndex === 2 && <div className='-mt-13 md:mt-5' />}
           {columnItems
             .map((item, itemIndex) => renderMedia(item, `${columnIndex}-${itemIndex}`))
             .filter(Boolean)}
