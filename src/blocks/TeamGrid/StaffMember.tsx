@@ -6,11 +6,12 @@ import StaffMemberSpotlight from './StaffMemberSpotlight'
 import { AnimatePresence } from 'motion/react'
 import { placeholderBlur } from '@/constants'
 import { StaffMember } from '@/payload-types'
+import styles from './staff-member.module.css'
 
 function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
   const { name, role, photoSmall, video, instagram } = staffMemberData
   return (
-    <div className='staff-member'>
+    <div className={styles['staff-member']}>
       <div
         className='group'
         onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
@@ -25,17 +26,17 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
           blurDataURL={placeholderBlur}
         />
         <div className='mt-[18px] flex items-center justify-between'>
-          <div className='name'>{name}</div>
+          <div className={styles['name']}>{name}</div>
           {video ? (
             <Image src='/images/play-bio.svg' alt='play' width={20} height={20} />
           ) : (
             <Image src='/images/plus-bio.svg' alt='plus' width={20} height={20} />
           )}
         </div>
-        <div className='role'>{role}</div>
+        <div className={styles['role']}>{role}</div>
       </div>
       {instagram && (
-        <div className='instagram'>
+        <div className={styles['instagram']}>
           <Image src='/images/instagram-gray.svg' alt='Instagram' width={25} height={24} />
           <a
             href={`https://www.instagram.com/${instagram}/`}

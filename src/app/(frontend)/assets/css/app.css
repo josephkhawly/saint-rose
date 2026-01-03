@@ -3,8 +3,6 @@
 @import './reset.css' layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@import './team.css';
-
 @theme inline {
   --color-primary: #003623;
   --color-secondary: #f2e9da;

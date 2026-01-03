@@ -2,21 +2,35 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Fade } from 'react-awesome-reveal'
 import TransitionLink from '../TransitionLink'
-import styles from './footer.module.css'
 
 function Footer() {
   return (
     <Fade fraction={0.01} triggerOnce>
-      <footer className={styles.footer}>
+      <footer className='text-secondary bg-black'>
         <Fade triggerOnce>
           <div className='flex flex-col items-center justify-center p-[84px]'>
-            <div className={styles['footer-logo']}>
-              <Image src='/images/footer-rose.svg' alt='Footer Rose' width={124} height={142} />
+            <div>
+              <Image
+                src='/images/footer-rose.svg'
+                alt='Footer Rose'
+                width={124}
+                height={142}
+                className='max-sm:w-[82px]'
+              />
             </div>
 
             <div className='mt-12 flex w-full flex-col items-center justify-center gap-6 lg:flex-row'>
-              <TransitionLink href='/careers'>careers</TransitionLink>
-              <Link href='https://hairbysaintrose.direct.salonservicegroup.com' target='_blank'>
+              <TransitionLink
+                href='/careers'
+                className='font-ap-bold text-secondary text-[15px] uppercase no-underline'
+              >
+                careers
+              </TransitionLink>
+              <Link
+                href='https://hairbysaintrose.direct.salonservicegroup.com'
+                target='_blank'
+                className='font-ap-bold text-secondary text-[15px] uppercase no-underline'
+              >
                 shop
               </Link>
             </div>

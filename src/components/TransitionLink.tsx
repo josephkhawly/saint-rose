@@ -9,6 +9,7 @@ interface Props {
   href: string
   children: React.ReactNode
   callback?: () => void
+  className?: string
 }
 
 const animatePageOut = (href: string, router: any) => {
@@ -31,7 +32,7 @@ const animatePageOut = (href: string, router: any) => {
   }
 }
 
-const TransitionLink = ({ href, children, callback }: Props) => {
+const TransitionLink = ({ href, children, callback, className }: Props) => {
   const router = useRouter()
   const pathname = usePathname()
   const isHome = pathname === '/'
@@ -46,7 +47,7 @@ const TransitionLink = ({ href, children, callback }: Props) => {
 
   return (
     <Link
-      className={classNames({ [styles['active']]: pathname === href && !isHome })}
+      className={classNames({ [styles['active']]: pathname === href && !isHome }, className)}
       onClick={handleClick}
       href={href}
     >
