@@ -29,7 +29,7 @@ export default function Contact() {
               <div className={styles['location-and-hours-body']}>
                 <h4>Location & Hours</h4>
                 <div className={styles['address']}>
-                  <h5>1512 W Alabama St.</h5>
+                  <h5>3316 Mount Vernon St.</h5>
                   <h5>Houston, TX 77006</h5>
                 </div>
                 <div className={styles['hours']}>
