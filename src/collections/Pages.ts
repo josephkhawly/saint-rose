@@ -97,6 +97,11 @@ export const Pages: CollectionConfig<'pages'> = {
             }),
             MetaImageField({
               relationTo: 'media',
+              overrides: {
+                admin: {
+                  hidden: true,
+                },
+              },
             }),
 
             MetaDescriptionField({}),

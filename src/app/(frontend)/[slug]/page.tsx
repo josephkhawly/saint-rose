@@ -9,6 +9,7 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { queryPageBySlug } from '@/lib/helpers'
 import { IntroText } from '@/components/IntroText'
 import SlideAndFade from '@/components/SlideAndFade'
+import { generateMeta } from '@/utils/generateMeta'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config })
@@ -71,7 +72,5 @@ export async function generateMetadata({ params }: Args): Promise<Metadata> {
     slug,
   })
 
-  return {
-    title: `${page?.title} | Saint Rose`,
-  }
+  return generateMeta({ doc: page })
 }

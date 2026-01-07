@@ -284,9 +284,6 @@ export interface Page {
   layout: (RichTextBlock | QuotesBlock | BannerWithTextBlock | VideoBlock | ServicesBlock | TeamGridBlock)[];
   meta?: {
     title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
     image?: (number | null) | Media;
     description?: string | null;
   };
