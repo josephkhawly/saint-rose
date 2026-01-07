@@ -1,8 +1,8 @@
-import { GalleryBlock } from '@/payload-types'
+// import { GalleryBlock } from '@/payload-types'
 
-type GalleryProps = GalleryBlock
+// type GalleryProps = GalleryBlock
 
-export function Gallery({ title, items }: GalleryProps) {
+export function Gallery({ title, items }: any) {
   if (!items || items.length === 0) {
     return null
   }

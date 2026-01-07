@@ -75,7 +75,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid, Gallery],
+              blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid],
               required: true,
               admin: {
                 initCollapsed: true,
