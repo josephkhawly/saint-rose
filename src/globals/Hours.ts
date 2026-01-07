@@ -17,6 +17,9 @@ export const Hours: GlobalConfig = {
       },
     },
   ],
+  admin: {
+    hidden: true,
+  },
   hooks: {
     afterChange: [revalidateHours],
   },
