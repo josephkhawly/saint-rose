@@ -196,6 +196,10 @@ export interface ServiceMenu {
   services: {
     title: string;
     price: number;
+    /**
+     * If checked, price will be displayed with '/hr' appended to it.
+     */
+    hourly?: boolean | null;
     description?: string | null;
     id?: string | null;
   }[];
@@ -659,6 +663,7 @@ export interface ServiceMenuSelect<T extends boolean = true> {
     | {
         title?: T;
         price?: T;
+        hourly?: T;
         description?: T;
         id?: T;
       };

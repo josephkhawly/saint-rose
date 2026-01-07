@@ -48,13 +48,16 @@ export const ServiceList = ({
           {(!isMobile || open) && <div className={styles['tail']}>Base Price</div>}
         </li>
         {(!isMobile || open) &&
-          services.map(({ id, title, description, price }) => (
+          services.map(({ id, title, description, price, hourly }) => (
             <li className={styles['pricing-row']} key={id}>
               <div className={styles['head']}>
                 <div className={styles['title']}>{title}</div>
                 {description && <div className={styles['description']}>{description}</div>}
               </div>
-              <div className={styles['tail']}>${price}</div>
+              <div className={styles['tail']}>
+                ${price}
+                {hourly && '/hr'}
+              </div>
             </li>
           ))}
       </ul>

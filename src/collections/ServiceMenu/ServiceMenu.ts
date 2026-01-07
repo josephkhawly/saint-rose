@@ -48,6 +48,15 @@ export const ServiceMenu: CollectionConfig = {
           ],
         },
         {
+          name: 'hourly',
+          label: 'Hourly rate',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            description: "If checked, price will be displayed with '/hr' appended to it.",
+          },
+        },
+        {
           name: 'description',
           type: 'text',
         },
