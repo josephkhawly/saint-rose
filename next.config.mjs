@@ -12,6 +12,9 @@ const nextConfig = {
       {
         pathname: '/api/media/**',
       },
+      {
+        pathname: '/images/gallery/**',
+      },
     ],
   },
   experimental: {
