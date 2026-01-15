@@ -26,7 +26,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
   return (
     <div className='h-full w-full overflow-y-scroll'>
       <div className='fixed hidden h-full w-full items-center justify-center sm:flex'>
-        <div className={styles['photo']} style={{ backgroundImage: `url(${photoLarge.url})` }} />
+        <div className={styles['photo']} style={{ backgroundImage: `url(${photoLarge?.url})` }} />
       </div>
       <div className='relative flex justify-center'>
         <div className={styles['text-container']}>
