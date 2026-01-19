@@ -1,0 +1,57 @@
+.careers {
+  .sub-nav {
+    padding: 200px 48px 0;
+    margin: 0 84px;
+    font-family: var(--ap-bold);
+    text-transform: uppercase;
+    font-size: 19px;
+    letter-spacing: 1.56px;
+
+    span {
+      color: var(--pink);
+    }
+  }
+
+  .intro {
+    padding: 0 48px;
+    margin: 30px 84px 60px;
+    width: 70%;
+
+    h3 {
+      font-family: var(--opt);
+      font-size: 46px;
+      line-height: 57px;
+      margin-bottom: 32px;
+    }
+
+    h6 {
+      font-family: var(--ap);
+      font-size: 20px;
+      line-height: 33px;
+      margin-bottom: 34px;
+    }
+  }
+
+  @media all and (max-width: 989px) {
+    .sub-nav {
+      padding: 100px 20px 0;
+      margin: 0;
+    }
+
+    .intro {
+      width: 100%;
+      margin: 0;
+      padding: 0 20px;
+
+      h6 {
+        margin-bottom: 30px;
+      }
+
+      h3 {
+        margin-top: 20px;
+        font-size: 37px;
+        line-height: 42px;
+      }
+    }
+  }
+}

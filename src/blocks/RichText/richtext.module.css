@@ -1,0 +1,80 @@
+.payload-richtext {
+  width: 80%;
+  margin-top: 110px;
+  margin-left: 110px;
+
+  h4 {
+    font-family: var(--ap);
+    font-size: 20px;
+    letter-spacing: 0.8px;
+    line-height: 40px;
+    color: var(--pink);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  ul {
+    margin-top: 50px;
+
+    li {
+      position: relative;
+      font-family: var(--ap);
+      font-size: 20px;
+      line-height: 33px;
+      margin-bottom: 38px;
+    }
+
+    li:before {
+      content: "";
+      width: 40px;
+      border-bottom: 1px solid var(--pink);
+      position: absolute;
+      left: 0px;
+      top: 16px;
+    }
+
+    h6 {
+      font-family: var(--ap);
+      font-size: 20px;
+      line-height: 33px;
+      margin-bottom: 14px;
+      margin-left: 60px;
+    }
+
+    p {
+      margin-left: 60px;
+    }
+  }
+
+  p {
+    font-family: var(--ap);
+    font-size: 20px;
+    line-height: 33px;
+    margin-bottom: 38px;
+  }
+
+  .cta {
+    margin-top: 90px;
+  }
+
+  a {
+    font-family: var(--ap-bold);
+    line-height: 33px;
+    margin-bottom: 14px;
+    font-size: 20px;
+    color: black;
+  }
+
+  @media all and (max-width: 989px) {
+    width: auto;
+    margin: 30px 24px 0;
+
+    h4 {
+      margin: 0px 0 24px;
+    }
+
+    ul {
+      margin-top: 0;
+    }
+  }
+}
