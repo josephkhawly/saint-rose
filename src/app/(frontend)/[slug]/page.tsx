@@ -10,6 +10,7 @@ import { queryPageBySlug } from '@/lib/helpers'
 import { IntroText } from '@/components/IntroText'
 import SlideAndFade from '@/components/SlideAndFade'
 import { generateMeta } from '@/utils/generateMeta'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config })
@@ -50,6 +51,10 @@ export default async function Page({ params }: Args) {
   page = await queryPageBySlug({
     slug,
   })
+
+  if (!page) {
+    return notFound()
+  }
 
   const { layout, title, introText } = page
 
