@@ -4,6 +4,7 @@ import './assets/css/app.css'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from "@vercel/analytics/next"
 import localFont from 'next/font/local'
 
 const apRegular = localFont({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
         <SpeedInsights />
+        <Analytics />
       </body>
       {/* Instagram Widget */}
       <Script src='https://cdn.lightwidget.com/widgets/lightwidget.js' />
