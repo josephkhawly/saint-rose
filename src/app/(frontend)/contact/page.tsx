@@ -93,49 +93,49 @@ export default function Contact() {
               <div className={styles['column']}>
                 <div className={styles['gallery-title']}>Discover our space</div>
                 <GalleryImage
-                  src='/images/gallery/STR- Landing-1.webp'
+                  src='/images/gallery/STR- Landing-1.jpg'
                   alt='Saint Rose Landing'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Taylor- 2.webp'
+                  src='/images/gallery/STR- Taylor- 2.jpg'
                   alt='Saint Rose Taylor'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Entry-2.webp'
+                  src='/images/gallery/STR- Entry-2.jpg'
                   alt='Saint Rose Entry'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Entry-1.webp'
+                  src='/images/gallery/STR- Entry-1.jpg'
                   alt='Saint Rose Entry'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Plum Room-Detail-2.webp'
+                  src='/images/gallery/STR- Plum Room-Detail-2.jpg'
                   alt='Saint Rose Plum Room Detail'
                   aspectRatio='0.667'
                 />
               </div>
               <div className={styles['column']}>
                 <GalleryImage
-                  src='/images/gallery/STR- Ramiro-1.webp'
+                  src='/images/gallery/STR- Ramiro-1.jpg'
                   alt='Saint Rose Ramiro'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Retail-1.webp'
+                  src='/images/gallery/STR- Retail-1.jpg'
                   alt='Saint Rose Retail'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Ramiro-2.webp'
+                  src='/images/gallery/STR- Ramiro-2.jpg'
                   alt='Saint Rose Ramiro'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Retail-2.webp'
+                  src='/images/gallery/STR- Retail-2.jpg'
                   alt='Saint Rose Retail'
                   aspectRatio='0.667'
                 />
@@ -143,22 +143,22 @@ export default function Contact() {
               <div className={styles['column']}>
                 <div className={styles['gallery-top-spacing']}></div>
                 <GalleryImage
-                  src='/images/gallery/STR- Waiting Area.webp'
+                  src='/images/gallery/STR- Waiting Area.jpg'
                   alt='Saint Rose Waiting Area'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Plum Room-Detail-1.webp'
+                  src='/images/gallery/STR- Plum Room-Detail-1.jpg'
                   alt='Saint Rose Plum Room Detail'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Taylor-3.webp'
+                  src='/images/gallery/STR- Taylor-3.jpg'
                   alt='Saint Rose Taylor'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Taylor-1.webp'
+                  src='/images/gallery/STR- Taylor-1.jpg'
                   alt='Saint Rose Taylor'
                   aspectRatio='0.8'
                 />
