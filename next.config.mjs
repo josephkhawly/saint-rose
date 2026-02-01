@@ -32,6 +32,8 @@ const nextConfig = {
     useCache: true,
   },
   async redirects() {
+    // Redirects for links in linkin.bio
+    // We can remove these redirects once it's been updated
     return [
       {
         source: '/meet-the-team',
@@ -41,6 +43,16 @@ const nextConfig = {
       {
         source: '/blog/15rHN4QlZfw4f0f3jSb7gW',
         destination: '/blog/the-face-shape-a-complete-guide',
+        permanent: true,
+      },
+      {
+        source: '/blog/76WRKxEhztWGAqTmOhQ9bA',
+        destination: '/blog/our-top-tips-for-tackling-frizz--dryness-this-summer',
+        permanent: true,
+      },
+      {
+        source: '/blog/2hnTyV4mUAJ36q9erktUik',
+        destination: '/blog/the-rose-list-our-favorite-patios-in-houston-for-summer-24',
         permanent: true,
       },
     ]

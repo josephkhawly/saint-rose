@@ -8,6 +8,7 @@ import config from '@payload-config'
 import styles from './blog-post.module.css'
 import Image from 'next/image'
 import { jsxConverters } from '@/components/Converters'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -40,7 +41,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const blogPost = await getBlogPost({ slug })
 
   if (!blogPost) {
-    return <div>Failed to load blog post.</div>
+    return notFound()
   }
 
   return (
