@@ -31,6 +31,20 @@ const nextConfig = {
   experimental: {
     useCache: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/meet-the-team',
+        destination: '/team',
+        permanent: true,
+      },
+      {
+        source: '/blog/15rHN4QlZfw4f0f3jSb7gW',
+        destination: '/blog/the-face-shape-a-complete-guide',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withPayload(nextConfig)
