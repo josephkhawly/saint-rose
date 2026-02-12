@@ -62,7 +62,7 @@ export default function StaffMemberSpotlight({ staffMemberDetails, closeHandler 
       transition={{ duration: 1, ease: 'easeOut' }}
     >
       {video ? (
-        <Video link={video.url} closeHandler={closeHandler} />
+        <Video link={`https://3k4a31g25n.ufs.sh/f/${video._key}`} closeHandler={closeHandler} />
       ) : (
         <Bio
           name={name}

@@ -20,7 +20,7 @@ export function Video({ video, title, description, autoplay, loop, muted, contro
             controls={controls}
             playsInline
           >
-            <source src={video.url} type={video.mimeType} />
+            <source src={`https://3k4a31g25n.ufs.sh/f/${video._key}`} type={video.mimeType} />
             Your browser does not support the video tag.
           </video>
         </div>

@@ -42,14 +42,14 @@ export function BannerWithText({
         {hasBanner && banner.mimeType?.includes('video') && (
           <div className={styles['video-container']}>
             <video className={styles['hero-video']} autoPlay loop muted playsInline>
-              <source src={banner.url} type={banner.mimeType} />
+              <source src={`https://3k4a31g25n.ufs.sh/f/${banner._key}`} type={banner.mimeType} />
             </video>
           </div>
         )}
         {hasBanner && banner.mimeType?.includes('image') && (
           <div className={styles['hero-image']}>
             <Image
-              src={banner.url}
+              src={`https://3k4a31g25n.ufs.sh/f/${banner._key}`}
               alt={banner.alt || ''}
               fill
               style={{

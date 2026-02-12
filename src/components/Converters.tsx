@@ -13,13 +13,13 @@ const CustomUploadComponent: React.FC<{
     if (typeof uploadDoc !== 'object') {
       return null
     }
-    const { alt, height, url, width } = uploadDoc
+    const { alt, height, _key, width } = uploadDoc
     const aspectRatio = width / height
     return (
       <div style={{ aspectRatio, position: 'relative', margin: '32px 0' }}>
         <Image
           alt={alt || ''}
-          src={url}
+          src={`https://3k4a31g25n.ufs.sh/f/${_key}`}
           fill
           quality={60}
           placeholder='blur'

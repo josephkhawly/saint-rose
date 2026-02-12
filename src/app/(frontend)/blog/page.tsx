@@ -14,7 +14,7 @@ function BlogPost({ blogItem }) {
     <div className={styles['regular-blog-post']}>
       <div className='relative aspect-video'>
         <Image
-          src={blogItem.headerImage?.url}
+          src={`https://3k4a31g25n.ufs.sh/f/${blogItem.headerImage._key}`}
           alt={blogItem.headerImage?.alt || ''}
           className={styles.image}
           fill
@@ -50,7 +50,7 @@ export default async function Blog() {
               {featuredPost.headerImage && typeof featuredPost.headerImage !== 'number' && (
                 <div className='relative aspect-video w-full sm:aspect-[2/1] sm:w-3/4'>
                   <Image
-                    src={featuredPost.headerImage?.url}
+                    src={`https://3k4a31g25n.ufs.sh/f/${featuredPost.headerImage._key}`}
                     alt={featuredPost.headerImage?.alt || ''}
                     className={styles.image}
                     fill
