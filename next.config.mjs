@@ -17,6 +17,10 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         }
       }),
+      {
+        hostname: '3k4a31g25n.ufs.sh',
+        protocol: 'https',
+      },
     ],
     localPatterns: [
       {

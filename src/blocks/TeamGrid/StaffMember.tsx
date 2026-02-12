@@ -17,7 +17,7 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
         onClick={() => staffMemberSelectHandler && staffMemberSelectHandler(staffMemberData)}
       >
         <Image
-          src={photoSmall.url}
+          src={`https://3k4a31g25n.ufs.sh/f/${photoSmall._key}`}
           alt={name}
           className='aspect-square h-full w-full object-cover object-[center_10%] transition-all duration-500 group-hover:sepia-60'
           width={276}
