@@ -1,4 +1,5 @@
 import { withPayload } from '@payloadcms/next/withPayload'
+import withPlaiceholder from '@plaiceholder/next'
 /** @type {import('next').NextConfig} */
 
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -19,6 +20,7 @@ const nextConfig = {
       }),
       {
         hostname: '3k4a31g25n.ufs.sh',
+        pathname: '/f/*',
         protocol: 'https',
       },
     ],
@@ -63,4 +65,4 @@ const nextConfig = {
   },
 }
 
-export default withPayload(nextConfig)
+export default withPayload(withPlaiceholder(nextConfig))

@@ -4,12 +4,14 @@ import TransitionLink from '@/components/TransitionLink'
 import { formatIso, getBlogList } from '@/lib/helpers'
 import Image from 'next/image'
 import styles from './blog.module.css'
+import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
 }
 
-function BlogPost({ blogItem }) {
+async function BlogPost({ blogItem }) {
+  const blurDataURL = blogItem.headerImage && typeof blogItem.headerImage !== 'number' ? await getBlurPlaceholder(blogItem.headerImage._key) : null
   return (
     <div className={styles['regular-blog-post']}>
       <div className='relative aspect-video'>
@@ -18,6 +20,8 @@ function BlogPost({ blogItem }) {
           alt={blogItem.headerImage?.alt || ''}
           className={styles.image}
           fill
+          placeholder='blur'
+          blurDataURL={blurDataURL}
         />
       </div>
       <h5>{formatIso(blogItem.publishedAt)}</h5>
