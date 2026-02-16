@@ -37,8 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeedInsights />
         <Analytics />
       </body>
-      {/* Instagram Widget */}
-      <Script src='https://cdn.lightwidget.com/widgets/lightwidget.js' />
       <GoogleAnalytics gaId='G-XD3JQQYHHV' />
       {/* Booking Widget */}
       <Script
