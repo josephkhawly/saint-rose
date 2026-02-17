@@ -96,16 +96,6 @@
     .gallery-top-spacing {
       margin-top: 20px;
     }
-
-    .column-image {
-      background-repeat: no-repeat;
-      background-position: center 10%;
-      background-size: cover;
-
-      video {
-        width: 100%;
-      }
-    }
   }
 
   @media all and (max-width: 989px) {

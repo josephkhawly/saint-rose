@@ -22,6 +22,7 @@ async function BlogPost({ blogItem }) {
           fill
           placeholder='blur'
           blurDataURL={blurDataURL}
+          sizes='(max-width: 768px) 100vw, 33vw'
         />
       </div>
       <h5>{formatIso(blogItem.publishedAt)}</h5>
@@ -58,6 +59,8 @@ export default async function Blog() {
                     alt={featuredPost.headerImage?.alt || ''}
                     className={styles.image}
                     fill
+                    priority
+                    fetchPriority='high'
                   />
                 </div>
               )}

@@ -19,7 +19,6 @@ function GalleryImage({
 }: GalleryImageProps) {
   return (
     <div
-      className={styles['column-image']}
       style={{
         position: 'relative',
         aspectRatio,
@@ -30,6 +29,7 @@ function GalleryImage({
         alt={alt}
         fill
         sizes={sizes}
+        quality={60}
         style={{
           objectFit: 'cover',
         }}
