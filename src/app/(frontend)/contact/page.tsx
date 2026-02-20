@@ -2,10 +2,24 @@ import { Metadata } from 'next'
 import SlideAndFade from '@/components/SlideAndFade'
 
 import styles from './contact.module.css'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
+
+import landing1 from '../../../../public/images/gallery/STR- Landing-1.jpg'
+import taylor2 from '../../../../public/images/gallery/STR- Taylor- 2.jpg'
+import entry2 from '../../../../public/images/gallery/STR- Entry-2.jpg'
+import entry1 from '../../../../public/images/gallery/STR- Entry-1.jpg'
+import plumRoomDetail2 from '../../../../public/images/gallery/STR- Plum Room-Detail-2.jpg'
+import ramiro1 from '../../../../public/images/gallery/STR- Ramiro-1.jpg'
+import retail1 from '../../../../public/images/gallery/STR- Retail-1.jpg'
+import ramiro2 from '../../../../public/images/gallery/STR- Ramiro-2.jpg'
+import retail2 from '../../../../public/images/gallery/STR- Retail-2.jpg'
+import waitingArea from '../../../../public/images/gallery/STR- Waiting Area.jpg'
+import plumRoomDetail1 from '../../../../public/images/gallery/STR- Plum Room-Detail-1.jpg'
+import taylor3 from '../../../../public/images/gallery/STR- Taylor-3.jpg'
+import taylor1 from '../../../../public/images/gallery/STR- Taylor-1.jpg'
 
 interface GalleryImageProps {
-  src: string
+  src: string | StaticImageData
   alt: string
   aspectRatio: string
   sizes?: string
@@ -30,6 +44,7 @@ function GalleryImage({
         fill
         sizes={sizes}
         quality={60}
+        placeholder='blur'
         style={{
           objectFit: 'cover',
         }}
@@ -93,49 +108,49 @@ export default function Contact() {
               <div className={styles['column']}>
                 <div className={styles['gallery-title']}>Discover our space</div>
                 <GalleryImage
-                  src='/images/gallery/STR- Landing-1.jpg'
+                  src={landing1}
                   alt='Saint Rose Landing'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Taylor- 2.jpg'
+                  src={taylor2}
                   alt='Saint Rose Taylor'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Entry-2.jpg'
+                  src={entry2}
                   alt='Saint Rose Entry'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Entry-1.jpg'
+                  src={entry1}
                   alt='Saint Rose Entry'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Plum Room-Detail-2.jpg'
+                  src={plumRoomDetail2}
                   alt='Saint Rose Plum Room Detail'
                   aspectRatio='0.667'
                 />
               </div>
               <div className={styles['column']}>
                 <GalleryImage
-                  src='/images/gallery/STR- Ramiro-1.jpg'
+                  src={ramiro1}
                   alt='Saint Rose Ramiro'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Retail-1.jpg'
+                  src={retail1}
                   alt='Saint Rose Retail'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Ramiro-2.jpg'
+                  src={ramiro2}
                   alt='Saint Rose Ramiro'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Retail-2.jpg'
+                  src={retail2}
                   alt='Saint Rose Retail'
                   aspectRatio='0.667'
                 />
@@ -143,22 +158,22 @@ export default function Contact() {
               <div className={styles['column']}>
                 <div className={styles['gallery-top-spacing']}></div>
                 <GalleryImage
-                  src='/images/gallery/STR- Waiting Area.jpg'
+                  src={waitingArea}
                   alt='Saint Rose Waiting Area'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Plum Room-Detail-1.jpg'
+                  src={plumRoomDetail1}
                   alt='Saint Rose Plum Room Detail'
                   aspectRatio='0.8'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Taylor-3.jpg'
+                  src={taylor3}
                   alt='Saint Rose Taylor'
                   aspectRatio='0.667'
                 />
                 <GalleryImage
-                  src='/images/gallery/STR- Taylor-1.jpg'
+                  src={taylor1}
                   alt='Saint Rose Taylor'
                   aspectRatio='0.8'
                 />
