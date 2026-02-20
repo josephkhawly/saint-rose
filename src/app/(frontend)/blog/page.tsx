@@ -28,7 +28,7 @@ async function BlogPost({ blogItem }) {
       <h5>{formatIso(blogItem.publishedAt)}</h5>
       <h3>{blogItem.title}</h3>
       <TransitionLink href={`/blog/${blogItem.slug}`}>
-        <Image src='/images/nav-arrow.svg' alt='' width={21} height={21} />
+        <Image src='/images/nav-arrow.svg' alt='' width={21} height={21} unoptimized />
       </TransitionLink>
     </div>
   )
@@ -67,7 +67,7 @@ export default async function Blog() {
               <h5>FEATURED POST: {formatIso(featuredPost.publishedAt)}</h5>
               <h3>{featuredPost.title}</h3>
               <TransitionLink href={`/blog/${featuredPost.slug}`}>
-                <Image src='/images/nav-arrow.svg' alt='' width={21} height={20} />
+                <Image src='/images/nav-arrow.svg' alt='' width={21} height={20} unoptimized />
               </TransitionLink>
             </div>
           )}

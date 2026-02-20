@@ -28,7 +28,7 @@ const Quotes = ({ quotes }) => {
   return (
     <div className={styles['quotes']}>
       <div className={styles['quotes-gallery']}>
-        <Image src='/images/open-quote.svg' alt='Open Quote' width={50} height={50} />
+        <Image src='/images/open-quote.svg' alt='Open Quote' width={50} height={50} unoptimized />
         <div className={styles['content']}>
           {quotes.length > 0 && (
             <div>
@@ -41,10 +41,10 @@ const Quotes = ({ quotes }) => {
         {quotes.length > 1 && (
           <div className={styles['controls']}>
             <button onClick={handleNext} aria-label='Next Quote'>
-              <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} />
+              <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} unoptimized />
             </button>
             <button onClick={handlePrevious} aria-label='Previous Quote'>
-              <Image src='/images/arrow-left.svg' alt='Previous Quote' width={56} height={56} />
+              <Image src='/images/arrow-left.svg' alt='Previous Quote' width={56} height={56} unoptimized />
             </button>
           </div>
         )}

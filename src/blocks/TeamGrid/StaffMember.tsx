@@ -28,16 +28,16 @@ function StaffCard({ staffMemberData, staffMemberSelectHandler }) {
         <div className='mt-[18px] flex items-center justify-between'>
           <div className={styles['name']}>{name}</div>
           {video ? (
-            <Image src='/images/play-bio.svg' alt='play' width={20} height={20} />
+            <Image src='/images/play-bio.svg' alt='play' width={20} height={20} unoptimized />
           ) : (
-            <Image src='/images/plus-bio.svg' alt='plus' width={20} height={20} />
+            <Image src='/images/plus-bio.svg' alt='plus' width={20} height={20} unoptimized />
           )}
         </div>
         <div className={styles['role']}>{role}</div>
       </div>
       {instagram && (
         <div className={styles['instagram']}>
-          <Image src='/images/instagram-gray.svg' alt='Instagram' width={25} height={24} />
+          <Image src='/images/instagram-gray.svg' alt='Instagram' width={25} height={24} unoptimized />
           <a
             href={`https://www.instagram.com/${instagram}/`}
             target='_blank'

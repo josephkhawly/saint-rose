@@ -12,7 +12,7 @@ function Video({ link, closeHandler }) {
           className='absolute top-6 right-6 z-10 cursor-pointer border-none bg-transparent outline-none md:top-12 md:right-12'
           onClick={closeHandler}
         >
-          <Image src='/images/close.svg' alt='close' width={43} height={43} />
+          <Image src='/images/close.svg' alt='close' width={43} height={43} unoptimized />
         </button>
         <video autoPlay controls className='h-[calc(100vh*0.9)] w-full object-contain'>
           <source src={link} type='video/mp4' />
@@ -36,7 +36,7 @@ function Bio({ name, role, photoLarge, bio, closeHandler }) {
                 className='absolute top-6 right-6 z-10 cursor-pointer border-none bg-transparent outline-none md:top-12 md:right-12'
                 onClick={closeHandler}
               >
-                <Image src='/images/close.svg' alt='close' width={43} height={43} />
+                <Image src='/images/close.svg' alt='close' width={43} height={43} unoptimized />
               </button>
               <h3>{name}</h3>
               <h5>{role}</h5>

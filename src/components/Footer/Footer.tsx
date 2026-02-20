@@ -45,21 +45,21 @@ function Footer() {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <Image src='/images/facebook.svg' alt='Facebook' width={35} height={35} />
+                  <Image src='/images/facebook.svg' alt='Facebook' width={35} height={35} unoptimized />
                 </Link>
                 <Link
                   href='https://www.instagram.com/hairbysaintrose'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <Image src='/images/instagram.svg' alt='Instagram' width={35} height={35} />
+                  <Image src='/images/instagram.svg' alt='Instagram' width={35} height={35} unoptimized />
                 </Link>
                 <Link
                   href='https://www.youtube.com/channel/UC-m8XjZ7A9vwDpch45bJbtA'
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <Image src='/images/youtube.svg' alt='YouTube' width={35} height={35} />
+                  <Image src='/images/youtube.svg' alt='YouTube' width={35} height={35} unoptimized />
                 </Link>
               </div>
               <p>website by thirtythree</p>
