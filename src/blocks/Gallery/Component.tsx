@@ -1,5 +1,8 @@
 // import { GalleryBlock } from '@/payload-types'
 
+import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
+import Image from 'next/image'
+
 // type GalleryProps = GalleryBlock
 
 export function Gallery({ title, items }: any) {
@@ -15,7 +18,7 @@ export function Gallery({ title, items }: any) {
     columns[columnIndex].push(item)
   })
 
-  const renderMedia = (item: (typeof items)[0], key: string) => {
+  const renderMedia = async (item: (typeof items)[0], key: string) => {
     if (!item.media || typeof item.media === 'number') {
       return null
     }
@@ -38,15 +41,23 @@ export function Gallery({ title, items }: any) {
     }
 
     if (isImage && media.url) {
+      const blurDataURL = await getBlurPlaceholder(media._key)
       return (
         <div
-          key={key}
-          className='bg-cover bg-center bg-repeat'
           style={{
-            backgroundImage: `url(${media.url})`,
-            ...(aspectRatio && { aspectRatio: aspectRatio.toString() }),
+            position: 'relative',
+            aspectRatio,
           }}
-        />
+        >
+          <Image
+            src={`https://3k4a31g25n.ufs.sh/f/${media._key}`}
+            alt={media.alt || ''}
+            fill
+            quality={60}
+            placeholder='blur'
+            blurDataURL={blurDataURL}
+          />
+        </div>
       )
     }
 

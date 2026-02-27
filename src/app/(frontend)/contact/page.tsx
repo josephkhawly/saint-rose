@@ -104,8 +104,8 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            <div className={styles['gallery']}>
-              <div className={styles['column']}>
+            <div className='mt-24 flex flex-col justify-between gap-x-13 md:mt-[140px] md:flex-row'>
+              <div className='mb-13 flex w-full flex-col gap-13 md:mb-0 md:w-1/3'>
                 <div className={styles['gallery-title']}>Discover our space</div>
                 <GalleryImage
                   src={landing1}
@@ -133,7 +133,7 @@ export default function Contact() {
                   aspectRatio='0.667'
                 />
               </div>
-              <div className={styles['column']}>
+              <div className='mb-13 flex w-full flex-col gap-13 md:mb-0 md:w-1/3'>
                 <GalleryImage
                   src={ramiro1}
                   alt='Saint Rose Ramiro'
@@ -155,8 +155,8 @@ export default function Contact() {
                   aspectRatio='0.667'
                 />
               </div>
-              <div className={styles['column']}>
-                <div className={styles['gallery-top-spacing']}></div>
+              <div className='mb-13 flex w-full flex-col gap-13 md:mb-0 md:w-1/3'>
+                <div className='-mt-13 md:mt-5'></div>
                 <GalleryImage
                   src={waitingArea}
                   alt='Saint Rose Waiting Area'
