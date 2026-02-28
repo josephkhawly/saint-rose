@@ -13,7 +13,7 @@
 
   .text-content {
     padding: 0 84px;
-    margin: 30px 0px 0;
+    margin: 30px 0 0;
   }
 
   h3 {
@@ -82,8 +82,10 @@
 
   @media all and (max-width: 989px) {
     .sub-nav {
-      padding: 100px 24px 30px 24px;
-      margin: 48px 0 0;
+      padding: 0;
+      margin: 0 24px;
+      font-size: 15px;
+      letter-spacing: 1.23px;
     }
 
     h3 {
@@ -92,7 +94,7 @@
     }
 
     .text-content {
-      padding: 0 24px;
+      padding: 20px 24px 0;
       margin: 0;
     }
 
