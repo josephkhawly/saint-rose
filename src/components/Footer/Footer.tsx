@@ -62,7 +62,7 @@ function Footer() {
                   <Image src='/images/youtube.svg' alt='YouTube' width={35} height={35} unoptimized />
                 </Link>
               </div>
-              <p>website by thirtythree</p>
+              <p>website by <Link href='https://josephkhawly.dev' target='_blank' rel='noreferrer' className='text-secondary no-underline'>Joseph Khawly</Link></p>
             </div>
           </div>
         </Fade>
