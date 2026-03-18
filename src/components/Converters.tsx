@@ -22,6 +22,7 @@ const CustomUploadComponent: React.FC<{
           alt={alt || ''}
           src={`https://3k4a31g25n.ufs.sh/f/${_key}`}
           fill
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           quality={60}
           placeholder='blur'
           blurDataURL={blurDataURL}

@@ -6,7 +6,7 @@ export const revalidateServices: CollectionAfterChangeHook = ({ doc, req: { payl
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating services`)
 
-    revalidateTag('services')
+    revalidateTag('services', 'default')
   }
 
   return doc
