@@ -6,7 +6,7 @@ export const revalidateHours: GlobalAfterChangeHook = ({ doc, req: { payload, co
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating hours`)
 
-    revalidateTag('global_hours', 'default')
+    revalidateTag('global_hours', 'max')
   }
 
   return doc
