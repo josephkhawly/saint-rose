@@ -9,7 +9,7 @@ export const revalidateStaff: CollectionAfterChangeHook = ({
   if (!context.disableRevalidate) {
     payload.logger.info(`Revalidating staff`)
 
-    revalidateTag('staff')
+    revalidateTag('staff', 'default')
   }
 
   return doc

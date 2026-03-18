@@ -4,7 +4,7 @@
   "description": "saint_rose",
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
     "start": "next start",
     "lint": "eslint .",
@@ -18,24 +18,24 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "24.0.10",
-    "@types/react": "19.1.11",
+    "@types/react": "19.2.14",
     "cross-env": "^10.0.0",
     "eslint": "^9.33.0",
-    "eslint-config-next": "15.5.0",
+    "eslint-config-next": "16.2.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "typescript": "5.8.3"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@next/third-parties": "15.5.0",
-    "@payloadcms/db-vercel-postgres": "^3.75.0",
-    "@payloadcms/live-preview-react": "^3.75.0",
-    "@payloadcms/next": "^3.75.0",
-    "@payloadcms/plugin-seo": "^3.75.0",
-    "@payloadcms/richtext-lexical": "^3.75.0",
-    "@payloadcms/storage-uploadthing": "^3.75.0",
-    "@payloadcms/ui": "^3.75.0",
+    "@next/third-parties": "16.2.0",
+    "@payloadcms/db-vercel-postgres": "^3.79.1",
+    "@payloadcms/live-preview-react": "^3.79.1",
+    "@payloadcms/next": "^3.79.1",
+    "@payloadcms/plugin-seo": "^3.79.1",
+    "@payloadcms/richtext-lexical": "^3.79.1",
+    "@payloadcms/storage-uploadthing": "^3.79.1",
+    "@payloadcms/ui": "^3.79.1",
     "@plaiceholder/next": "^3.0.0",
     "@tailwindcss/postcss": "^4.1.12",
     "@vercel/analytics": "^1.6.1",
@@ -45,15 +45,15 @@
     "graphql": "^16.8.1",
     "gsap": "^3.13.0",
     "motion": "^12.23.12",
-    "next": "15.5.12",
+    "next": "16.2.0",
     "node-fetch": "2",
-    "payload": "^3.75.0",
+    "payload": "^3.79.1",
     "plaiceholder": "^3.0.0",
     "postcss": "^8.5.6",
     "postmark": "^3.0.12",
-    "react": "19.1.1",
+    "react": "19.2.4",
     "react-awesome-reveal": "^4.3.1",
-    "react-dom": "19.1.1",
+    "react-dom": "19.2.4",
     "react-iframe": "^1.8.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.12",
@@ -71,7 +71,7 @@
       "unrs-resolver"
     ],
     "overrides": {
-      "@types/react": "19.1.11"
+      "@types/react": "19.2.14"
     }
   }
 }
