@@ -31,13 +31,13 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@next/third-parties": "16.2.0",
-    "@payloadcms/db-vercel-postgres": "^3.79.1",
-    "@payloadcms/live-preview-react": "^3.79.1",
-    "@payloadcms/next": "^3.79.1",
-    "@payloadcms/plugin-seo": "^3.79.1",
-    "@payloadcms/richtext-lexical": "^3.79.1",
-    "@payloadcms/storage-uploadthing": "^3.79.1",
-    "@payloadcms/ui": "^3.79.1",
+    "@payloadcms/db-vercel-postgres": "^3.80.0",
+    "@payloadcms/live-preview-react": "^3.80.0",
+    "@payloadcms/next": "^3.80.0",
+    "@payloadcms/plugin-seo": "^3.80.0",
+    "@payloadcms/richtext-lexical": "^3.80.0",
+    "@payloadcms/storage-uploadthing": "^3.80.0",
+    "@payloadcms/ui": "^3.80.0",
     "@plaiceholder/next": "^3.0.0",
     "@tailwindcss/postcss": "^4.1.12",
     "@vercel/analytics": "^1.6.1",
@@ -49,7 +49,7 @@
     "motion": "^12.23.12",
     "next": "16.2.0",
     "node-fetch": "2",
-    "payload": "^3.79.1",
+    "payload": "^3.80.0",
     "plaiceholder": "^3.0.0",
     "postcss": "^8.5.6",
     "postmark": "^3.0.12",
@@ -75,5 +75,9 @@
     "overrides": {
       "@types/react": "19.2.14"
     }
-  }
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ]
 }
