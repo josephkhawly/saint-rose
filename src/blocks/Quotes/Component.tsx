@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
-import styles from './quotes.module.css'
+import { toRoman } from '@/lib/toRoman'
 
 const Quotes = ({ quotes }) => {
   const [current, setCurrent] = useState(0)
@@ -26,30 +25,25 @@ const Quotes = ({ quotes }) => {
   }
 
   return (
-    <div className={styles['quotes']}>
-      <div className={styles['quotes-gallery']}>
-        <Image src='/images/open-quote.svg' alt='Open Quote' width={50} height={50} unoptimized />
-        <div className={styles['content']}>
-          {quotes.length > 0 && (
-            <div>
-              <h2>{`${quotes[current].quoteText}`}&rdquo;</h2>
-              <h5>{quotes[current].attribution}</h5>
-            </div>
-          )}
+    <section className='py-12 md:py-36'>
+      <div className='max-w-4xl mr-auto px-10'>
+        <div className='text-lg text-dark-chocolate font-caslon'>
+          {toRoman(current + 1)}/{toRoman(quotes.length)}
         </div>
-
-        {quotes.length > 1 && (
-          <div className={styles['controls']}>
-            <button onClick={handleNext} aria-label='Next Quote'>
-              <Image src='/images/arrow-right.svg' alt='Next Quote' width={56} height={56} unoptimized />
-            </button>
-            <button onClick={handlePrevious} aria-label='Previous Quote'>
-              <Image src='/images/arrow-left.svg' alt='Previous Quote' width={56} height={56} unoptimized />
-            </button>
-          </div>
-        )}
+        <blockquote className='md:text-4xl text-xl mb-4 text-balance'>
+          {quotes[current].quoteText}
+        </blockquote>
+        <cite className='italic'>— {quotes[current].attribution}</cite>
       </div>
-    </div>
+      <div className='flex gap-8 mr-auto px-10 my-5 justify-between md:justify-start'>
+        <button onClick={handlePrevious} className='text-2xl cursor-pointer'>
+          ←
+        </button>
+        <button onClick={handleNext} className='text-2xl cursor-pointer'>
+          →
+        </button>
+      </div>
+    </section>
   )
 }
 
