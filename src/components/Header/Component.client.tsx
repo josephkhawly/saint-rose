@@ -1,12 +1,8 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
-import classNames from 'classnames'
+import { useState, useEffect } from 'react'
 import { links } from '@/constants'
-import { usePathname } from 'next/navigation'
-import TransitionLink from '../TransitionLink'
-import { motion } from 'motion/react'
-import styles from './header.module.css'
 import { Header, Page } from '@/payload-types'
+import Link from 'next/link'
 
 type CMSLinkType = {
   label?: string | null
@@ -19,155 +15,159 @@ type CMSLinkType = {
   url?: string | null
 }
 
-function HeaderLink({ link, callback }: { link: CMSLinkType; callback?: () => void }) {
+function HeaderLink({ link, callback, menuOpen, index }: { link: CMSLinkType; callback?: () => void; menuOpen: boolean; index: number }) {
   const { type, reference, url, label } = link
 
   const href =
     type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
-      ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${
-          reference.value.slug
-        }`
+      ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${reference.value.slug
+      }`
       : url
 
   if (!href) return null
 
   return (
-    <li>
-      <TransitionLink href={href} callback={callback}>
+    <li
+      className={`transition-all duration-500 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}
+      style={{
+        transitionDelay: menuOpen ? `${150 + index * 75}ms` : '0ms',
+      }}
+    >
+      <Link
+        href={href}
+        onClick={callback}
+        className='text-4xl text-saint transition-colors md:text-6xl lg:text-7xl hover:text-rose'
+      >
         {label}
-      </TransitionLink>
+      </Link>
     </li>
   )
 }
 
 export default function HeaderClient({ data }: { data: Header }) {
-  const [open, setOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const pathname = usePathname()
-  const nav = useRef(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const navItems = data?.navItems || []
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 989)
-      if (window.innerWidth > 989) {
-        setOpen(false)
-        document.body.style.overflowY = 'scroll'
-      }
-    }
     const handleScroll = () => {
-      if (pathname === '/' || window.scrollY > 50) {
-        nav.current.classList.add(styles['scrolled'])
-      } else {
-        nav.current.classList.remove(styles['scrolled'])
-      }
+      setScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', handleResize)
-    handleResize()
-    handleScroll()
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('scroll', handleScroll)
-      document.body.style.overflowY = 'scroll'
-    }
-  }, [pathname, isMobile])
 
-  const handleOpenToggle = () => {
-    if (open) {
-      document.body.style.overflowY = 'scroll'
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflowY = 'hidden'
+      document.body.style.overflow = ''
     }
-    setOpen(!open)
-  }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
 
   return (
-    <motion.header
-      key={pathname}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, delay: pathname === '/' ? 2.3 : 1, ease: 'easeInOut' }}
-      ref={nav}
-      className={classNames(styles['nav-container'], {
-        [styles['open']]: isMobile && open,
-      })}
-    >
-      <div className={styles['nav']}>
-        <div className={styles['nav-content']}>
-          {isMobile ? (
-            <div className={styles['nav-bar']}>
-              <TransitionLink href='/'>
-                <div className={styles['nav-logo']}>Saint Rose</div>
-              </TransitionLink>
-              <button onClick={handleOpenToggle} aria-label='Toggle navigation'>
-                <div className={styles['hamburger']}>
-                  <div className={styles['hamburger-box']}>
-                    <div
-                      className={classNames(styles['hamburger-inner'], {
-                        [styles['hamburger--spin']]: open,
-                      })}
-                    />
-                  </div>
-                </div>
-              </button>
-            </div>
-          ) : (
-            <div className={styles['nav-logo']}>
-              <TransitionLink href='/'>Saint Rose</TransitionLink>
-            </div>
-          )}
-          {isMobile ? (
-            <div className={styles['nav-items']}>
-              <ul className={styles['links']}>
-                {links.map((link) => (
-                  <li key={link.path}>
-                    <TransitionLink href={link.path} callback={handleOpenToggle}>
-                      {link.label}
-                    </TransitionLink>
-                  </li>
-                ))}
-                {navItems.map(({ link }) => (
-                  <HeaderLink key={link.label} link={link} callback={handleOpenToggle} />
-                ))}
-                <li>
-                  <a
-                    className={styles['book-now-button']}
-                    onClick={() => {
-                      window.blvd.openBookingWidget()
-                      handleOpenToggle()
-                    }}
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-saint/95 backdrop-blur-sm' : 'bg-transparent'
+          }`}
+      >
+        <nav className='mx-auto flex items-center justify-between p-6 lg:py-8 lg:px-12'>
+          <a
+            onClick={() => window.blvd.openBookingWidget()}
+            className='text-xs uppercase transition-all duration-300 sm:text-sm font-caslon text-black hover:text-rose cursor-pointer'
+          >
+            <span className='hidden sm:inline'>Book Now</span>
+            <span className='sm:hidden'>Book</span>
+          </a>
+
+          <Link
+            href='/'
+            className={`absolute left-1/2 -translate-x-1/2 font-fautive text-2xl lg:text-5xl tracking-widest text-black uppercase transition-colors duration-300`}
+          >
+            Saint Rose
+          </Link>
+
+          <button
+            onClick={() => setMenuOpen(true)}
+            className={`group flex items-center gap-3 transition-colors duration-300 cursor-pointer text-black hover:text-rose`}
+            aria-label='Open menu'
+          >
+            <span className='uppercase text-xs font-caslon'>Menu</span>
+          </button>
+        </nav>
+      </header>
+
+      <div
+        className={`fixed inset-0 z-100 transition-all duration-700 ${menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          }`}
+      >
+        <div
+          className={`bg-black absolute inset-0 transition-transform duration-700 ease-out ${menuOpen ? 'translate-y-0' : '-translate-y-full'
+            }`}
+        />
+
+        <div className='relative z-10 flex h-full flex-col'>
+          <div className='flex items-center justify-between p-6 lg:py-8 lg:px-12'>
+            <a
+              onClick={() => window.blvd.openBookingWidget()}
+              className='small-caps text-xs tracking-widest text-saint transition-colors hover:text-rose sm:text-sm cursor-pointer'
+            >
+              <span className='hidden sm:inline'>Book Now</span>
+              <span className='sm:hidden'>Book</span>
+            </a>
+
+            <Link
+              href='/'
+              onClick={() => setMenuOpen(false)}
+              className='text-saint absolute left-1/2 -translate-x-1/2 font-fautive text-2xl lg:text-5xl tracking-widest uppercase'
+            >
+              Saint Rose
+            </Link>
+
+            <button
+              onClick={() => setMenuOpen(false)}
+              className='group flex items-center gap-3 text-saint transition-colors hover:text-rose cursor-pointer'
+              aria-label='Close menu'
+            >
+              <span className='uppercase text-xs font-caslon'>Close</span>
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className='flex flex-1 flex-col items-center justify-center px-12 md:items-start md:justify-start md:py-12'>
+            <ul className='space-y-6 text-center md:text-left md:space-y-8 lg:space-y-10'>
+              {links.map(({ path, label }, index) => (
+                <li
+                  key={label}
+                  className={`transition-all duration-500 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                    }`}
+                  style={{
+                    transitionDelay: menuOpen ? `${150 + index * 75}ms` : '0ms',
+                  }}
+                >
+                  <Link
+                    href={path}
+                    onClick={() => setMenuOpen(false)}
+                    className='text-4xl text-saint transition-colors md:text-6xl lg:text-7xl hover:text-rose'
                   >
-                    <div>Book now</div>
-                  </a>
+                    {label}
+                  </Link>
                 </li>
-              </ul>
-            </div>
-          ) : (
-            <div>
-              <ul>
-                {links.map((link) => (
-                  <li key={link.path}>
-                    <TransitionLink href={link.path}>{link.label}</TransitionLink>
-                  </li>
-                ))}
-                {navItems.map(({ link }) => (
-                  <HeaderLink key={link.label} link={link} />
-                ))}
-                <li>
-                  <a
-                    className={styles['book-now-button']}
-                    onClick={() => window.blvd.openBookingWidget()}
-                  >
-                    book now
-                  </a>
-                </li>
-              </ul>
-            </div>
-          )}
+              ))}
+              {navItems.map(({ link }, index) => (
+                <HeaderLink key={link.label} link={link} callback={() => setMenuOpen(false)} menuOpen={menuOpen} index={index} />
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
-    </motion.header>
+    </>
   )
 }
