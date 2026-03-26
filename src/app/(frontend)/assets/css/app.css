@@ -42,8 +42,6 @@
 
   body {
     font-family: var(--font-marist);
-    /* background-color: var(--color-saint); */
-    /* color: var(--color-black); */
   }
 
   ::selection {
