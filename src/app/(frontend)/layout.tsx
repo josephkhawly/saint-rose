@@ -6,6 +6,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from "@vercel/analytics/next"
 import localFont from 'next/font/local'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const apRegular = localFont({
   src: './assets/fonts/apercu-regular.woff',
@@ -49,12 +50,13 @@ const marist = localFont({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable} ${fautive.variable} ${marist.variable}`} data-scroll-behavior='smooth'>
-      <body className='bg-saint text-black '>
-        <div className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
+      <body className='bg-saint text-black'>
+        <SmoothScroll />
+        <main className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
           <Header />
           {children}
           <Footer />
-        </div>
+        </main>
         <SpeedInsights />
         <Analytics />
       </body>
