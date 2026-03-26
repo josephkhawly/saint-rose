@@ -25,10 +25,31 @@ const apBold = localFont({
   variable: '--ap-bold',
 })
 
+const fautive = localFont({
+  src: './assets/fonts/Fautive-Regular.woff2',
+  variable: '--font-fautive',
+})
+
+const marist = localFont({
+  src: [
+    {
+      path: './assets/fonts/ABCMarist-Book.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './assets/fonts/ABCMarist-BookItalic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-marist',
+})
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable}`}>
-      <body className='bg-secondary font-sans'>
+    <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable} ${fautive.variable} ${marist.variable}`}>
+      <body className='bg-saint text-black '>
         <div className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
           <Header />
           {children}
