@@ -1,9 +1,22 @@
-@layer theme, base, components, utilities;
-@import 'tailwindcss/theme.css' layer(theme);
-@import './reset.css' layer(base);
-@import 'tailwindcss/utilities.css' layer(utilities);
+@import 'tailwindcss';
 
 @theme inline {
+  --color-rose: #bfa89e;
+  --color-deep-rose: #592e29;
+  --color-saint: #ded9cc;
+  --color-dark-chocolate: #36211a;
+  --color-mint: #cfd9cc;
+  --color-lavender: #ded1de;
+  --color-sky: #9ebdc2;
+  --color-garden: #3b4017;
+  --color-olive: #8c7840;
+  --color-lima: #e8f5b0;
+
+  --font-fautive: var(--font-fautive);
+  --font-marist: var(--font-marist);
+  --font-caslon: var(--font-caslon);
+
+  /* old colors */
   --color-primary: #003623;
   --color-secondary: #f2e9da;
   --color-background: #c8a9d4;
@@ -20,6 +33,49 @@
   --font-ap: var(--ap), sans-serif;
   --font-opt: var(--opt), sans-serif;
   --font-ap-bold: var(--ap-bold), sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-marist);
+    /* background-color: var(--color-saint); */
+    /* color: var(--color-black); */
+  }
+
+  ::selection {
+    background-color: var(--color-rose);
+    color: var(--color-dark-chocolate);
+  }
+}
+
+@layer components {
+  .small-caps {
+    @apply uppercase;
+  }
+
+  .text-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  .text-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .text-link:hover::after {
+    width: 100%;
+  }
 }
 
 :root {
