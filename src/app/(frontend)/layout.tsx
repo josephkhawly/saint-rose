@@ -48,7 +48,7 @@ const marist = localFont({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable} ${fautive.variable} ${marist.variable}`}>
+    <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable} ${fautive.variable} ${marist.variable}`} data-scroll-behavior='smooth'>
       <body className='bg-saint text-black '>
         <div className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
           <Header />
