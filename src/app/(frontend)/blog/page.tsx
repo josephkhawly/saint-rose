@@ -1,10 +1,10 @@
 import SlideAndFade from '@/components/SlideAndFade'
 import { Metadata } from 'next'
-import TransitionLink from '@/components/TransitionLink'
 import { formatIso, getBlogList } from '@/lib/helpers'
 import Image from 'next/image'
 import styles from './blog.module.css'
 import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
@@ -27,9 +27,9 @@ async function BlogPost({ blogItem }) {
       </div>
       <h5>{formatIso(blogItem.publishedAt)}</h5>
       <h3>{blogItem.title}</h3>
-      <TransitionLink href={`/blog/${blogItem.slug}`}>
+      <Link href={`/blog/${blogItem.slug}`}>
         <Image src='/images/nav-arrow.svg' alt='' width={21} height={21} unoptimized />
-      </TransitionLink>
+      </Link>
     </div>
   )
 }
@@ -66,9 +66,9 @@ export default async function Blog() {
               )}
               <h5>FEATURED POST: {formatIso(featuredPost.publishedAt)}</h5>
               <h3>{featuredPost.title}</h3>
-              <TransitionLink href={`/blog/${featuredPost.slug}`}>
+              <Link href={`/blog/${featuredPost.slug}`}>
                 <Image src='/images/nav-arrow.svg' alt='' width={21} height={20} unoptimized />
-              </TransitionLink>
+              </Link>
             </div>
           )}
           <div className='grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3'>
