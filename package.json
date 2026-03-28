@@ -4,7 +4,7 @@
   "description": "saint_rose",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "portless saint-rose next dev",
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
     "start": "next start",
     "lint": "eslint .",
