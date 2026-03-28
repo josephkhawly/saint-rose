@@ -37,6 +37,7 @@ const nextConfig = {
   experimental: {
     useCache: true,
     turbopackFileSystemCacheForDev: true,
+    turbopackFileSystemCacheForBuild: true,
   },
   async redirects() {
     // Redirects for links in linkin.bio

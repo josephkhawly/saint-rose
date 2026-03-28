@@ -54,26 +54,6 @@
   .small-caps {
     @apply uppercase;
   }
-
-  .text-link {
-    position: relative;
-    display: inline-block;
-  }
-
-  .text-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: currentColor;
-    transition: width 0.3s ease;
-  }
-
-  .text-link:hover::after {
-    width: 100%;
-  }
 }
 
 :root {
@@ -101,14 +81,4 @@
     padding: 100px 0 0;
     margin-bottom: 100px;
   }
-}
-
-.entrance {
-  background-color: var(--background-color);
-  position: fixed;
-  width: 100%;
-  min-height: 100vh;
-  bottom: 0;
-  opacity: 1;
-  z-index: 20;
 }
