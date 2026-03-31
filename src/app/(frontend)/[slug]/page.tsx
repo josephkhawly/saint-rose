@@ -8,7 +8,6 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { queryPageBySlug } from '@/lib/helpers'
 import { IntroText } from '@/components/IntroText'
-import SlideAndFade from '@/components/SlideAndFade'
 import { generateMeta } from '@/utils/generateMeta'
 import { notFound } from 'next/navigation'
 
@@ -64,9 +63,7 @@ export default async function Page({ params }: Args) {
 
       {introText && <IntroText title={title} introText={introText} />}
 
-      <SlideAndFade delay={introText ? 1.65 : 1.25}>
-        <RenderBlocks blocks={layout} />
-      </SlideAndFade>
+      <RenderBlocks blocks={layout} />
     </article>
   )
 }
