@@ -54,6 +54,65 @@
   .small-caps {
     @apply uppercase;
   }
+
+  .payload-richtext {
+    width: 80%;
+    margin-top: 110px;
+    margin-left: 110px;
+
+    h4 {
+      @apply text-lg tracking-tight text-pretty uppercase sm:text-xl;
+      margin-bottom: 18px;
+    }
+
+    ul {
+      margin-top: 50px;
+
+      li {
+        position: relative;
+        font-size: 20px;
+        line-height: 33px;
+        margin-bottom: 38px;
+      }
+
+      h6 {
+        font-size: 20px;
+        line-height: 33px;
+        margin-bottom: 14px;
+        margin-left: 60px;
+      }
+
+      p {
+        margin-left: 60px;
+      }
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 33px;
+      margin-bottom: 38px;
+    }
+
+    a {
+      line-height: 33px;
+      margin-bottom: 14px;
+      font-size: 20px;
+      color: black;
+    }
+
+    @media all and (max-width: 989px) {
+      width: auto;
+      margin: 30px 24px 0;
+
+      h4 {
+        margin: 0px 0 24px;
+      }
+
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
 :root {
