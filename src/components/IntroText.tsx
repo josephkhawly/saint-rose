@@ -1,13 +1,16 @@
-import SlideAndFade from './SlideAndFade'
-import styles from './introtext.module.css'
-
 export const IntroText = ({ title, introText }: { title: string; introText: string }) => {
   return (
-    <div className={styles['intro-container']}>
-      <SlideAndFade delay={1.25}>
-        <div className={styles['page-title']}>{title}</div>
-        <h3 className={styles['page-intro']}>{introText}</h3>
-      </SlideAndFade>
-    </div>
+    <section className='w-full min-h-screen px-6 py-32 md:py-40 lg:py-48'>
+      <div className="relative flex flex-col md:flex-row items-end gap-12">
+        <div className="w-full md:w-7/12">
+          <h1 className="font-caslon text-xl uppercase">
+            {title}
+          </h1>
+          <p className="max-w-2xl text-xl md:text-3xl text-pretty mt-4">
+            {introText}
+          </p>
+        </div>
+      </div>
+    </section>
   )
 }
