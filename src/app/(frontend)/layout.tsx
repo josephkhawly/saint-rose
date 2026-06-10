@@ -1,5 +1,5 @@
 import Header from '@/components/Header/Component'
-import Footer from '@/components/Footer/Footer'
+import Footer from '@/components/Footer'
 import './assets/css/app.css'
 import Script from 'next/script'
 import { GoogleAnalytics } from '@next/third-parties/google'
