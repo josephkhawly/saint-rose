@@ -54,6 +54,7 @@ export function Gallery({ title, items }: any) {
             alt={media.alt || ''}
             fill
             quality={60}
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             placeholder='blur'
             blurDataURL={blurDataURL}
           />
