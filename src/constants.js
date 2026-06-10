@@ -1,4 +1,3 @@
-export const MOBILEBP = 989
 
 export const links = [
   { path: '/contact', label: 'contact' },
