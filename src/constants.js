@@ -1,7 +1,6 @@
 
 export const links = [
-  { path: '/contact', label: 'contact' },
-  { path: '/blog', label: 'blog' },
+  { path: '/blog', label: 'Blog' },
 ]
 
 export const quotesData = [
