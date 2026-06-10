@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { toRoman } from '@/lib/toRoman'
 
-function Footer() {
+export default function Footer() {
   return (
     <footer className='pt-12 pb-5 lg:pt-11 lg:pb-[26px] w-full px-8'>
       <div className='flex flex-col md:flex-row md:gap-12 justify-between mb-12 md:mb-0'>
@@ -19,17 +19,14 @@ function Footer() {
             </div>
             <div className='mb-9 flex gap-4'>
               <Link
-                href='https://hairbysaintrose.direct.salonservicegroup.com'
-                target='_blank'
+                href='/haircare'
                 className='text-sm hover:text-rose transition-colors duration-300'
               >
-                Shop
+                Haircare
               </Link>
-              {/* <p className='text-sm'>
-                <Link href='/careers' className='hover:text-rose transition-colors duration-300'>
-                  Careers
-                </Link>
-              </p> */}
+              <Link href='/careers' className='hover:text-rose transition-colors duration-300 text-sm'>
+                Careers
+              </Link>
             </div>
           </div>
         </div>
@@ -73,5 +70,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer
