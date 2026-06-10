@@ -1,78 +1,42 @@
-import SlideAndFade from '../../components/SlideAndFade'
 import * as motion from 'motion/react-client'
-import styles from './banner.module.css'
 import { BannerWithTextBlock } from '@/payload-types'
-import Image from 'next/image'
-import { placeholderBlur } from '@/constants'
+// import Image from 'next/image'
+// import { placeholderBlur } from '@/constants'
 
-type BannerWithTextProps = BannerWithTextBlock & {
-  heroDelay?: number
-}
+type BannerWithTextProps = BannerWithTextBlock
 
 export function BannerWithText({
-  title,
-  banner,
+  // title,
+  // banner,
   leftText,
   rightText,
-  heroDelay = 0.7,
 }: BannerWithTextProps) {
-  const hasBanner = banner && typeof banner !== 'number'
+  // const hasBanner = banner && typeof banner !== 'number'
   return (
-    <div className={styles.hero}>
-      {title && (
+    <section className='w-full min-h-screen bg-saint px-6 md:px-12 lg:px-16 xl:px-24 py-20 md:py-32'>
+      <div className='container mx-auto flex flex-col gap-16 lg:gap-32'>
         <motion.div
-          className={styles['hero--title-bar']}
-          initial={{ width: 0 }}
-          whileInView={{ width: 'auto' }}
-          transition={{ duration: 0.7, ease: 'easeIn' }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, x: -32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1 }}
+          className='flex items-start pt-8 lg:pt-0 md:max-w-1/3'
         >
-          <motion.div
-            className={styles['title-bar-text']}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            viewport={{ once: true }}
-          >
-            {title}
-          </motion.div>
+          <p className='text-2xl md:text-3xl lg:text-4xl xl:text-4xl leading-[1.1] text-black'>
+            {leftText}
+          </p>
         </motion.div>
-      )}
-      <SlideAndFade delay={heroDelay}>
-        {hasBanner && banner.mimeType?.includes('video') && (
-          <div className={styles['video-container']}>
-            <video className={styles['hero-video']} autoPlay loop muted playsInline>
-              <source src={`https://3k4a31g25n.ufs.sh/f/${banner._key}`} type={banner.mimeType} />
-            </video>
-          </div>
-        )}
-        {hasBanner && banner.mimeType?.includes('image') && (
-          <div className={styles['hero-image']}>
-            <Image
-              src={`https://3k4a31g25n.ufs.sh/f/${banner._key}`}
-              alt={banner.alt || ''}
-              fill
-              style={{
-                objectFit: 'cover',
-              }}
-              placeholder='blur'
-              blurDataURL={placeholderBlur}
-            />
-          </div>
-        )}
-      </SlideAndFade>
-      <div className={styles['hero-text']}>
-        <div className={styles['text-container']}>
-          <SlideAndFade>
-            <div className={styles['left']}>{leftText}</div>
-          </SlideAndFade>
-        </div>
-        <div className={styles['text-container']}>
-          <SlideAndFade delay={0.25}>
-            <div className={styles['right']}>{rightText}</div>
-          </SlideAndFade>
-        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className='flex flex-col md:pt-24 lg:pt-32 ml-auto md:max-w-1/3'
+        >
+          <p className='text-base lg:text-lg text-black'>{rightText}</p>
+        </motion.div>
       </div>
-    </div>
+    </section>
   )
 }
