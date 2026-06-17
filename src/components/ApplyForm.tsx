@@ -2,10 +2,17 @@
 
 import { useActionState } from 'react'
 import { submitCareerApplication } from '../app/(frontend)/actions'
-import styles from './form.module.css'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
+
+const inputClasses =
+  'mt-3 block w-full h-12 border border-black/80 bg-transparent px-3.5 text-lg focus:border-deep-rose focus:outline-none transition-colors'
+const textareaClasses =
+  'mt-3 block w-full min-h-[124px] resize-y border border-black/80 bg-transparent px-3.5 py-2.5 text-lg focus:border-deep-rose focus:outline-none transition-colors'
+const labelClasses = 'block text-base leading-8'
+const fieldClasses = 'mb-10 md:mb-11'
+const errorClasses = 'mt-3 block text-base text-red-600'
 
 function FormField({
   label,
@@ -21,17 +28,17 @@ function FormField({
   error?: string
 }) {
   return (
-    <div className={styles['form-field']}>
-      <label className={styles['field-label']}>
+    <div className={fieldClasses}>
+      <label className={labelClasses}>
         {label}
-        {required && <span className={styles['required']}>*</span>}
+        {required && '*'}
         {type === 'textarea' ? (
-          <textarea name={name} maxLength={800} />
+          <textarea className={textareaClasses} name={name} maxLength={800} />
         ) : (
-          <input type={type} name={name} />
+          <input className={inputClasses} type={type} name={name} />
         )}
       </label>
-      {error && <div className={styles['field-error']}>{error}</div>}
+      {error && <div className={errorClasses}>{error}</div>}
     </div>
   )
 }
@@ -48,18 +55,18 @@ function CheckboxGroup({
   error?: string
 }) {
   return (
-    <div className={styles['checkbox-group']}>
-      <div className={styles['field-label']}>{label}*</div>
-      <div className={styles['options-group']}>
+    <div className={fieldClasses}>
+      <div className={labelClasses}>{label}*</div>
+      <div className='mt-3 space-y-3'>
         {options.map((option) => (
-          <label className={styles['option-checkbox']} key={option}>
-            <input type='radio' name={name} value={option} />
-            <span className={styles['checkbox']}></span>
-            <span className={styles['text']}>{option}</span>
+          <label className='flex cursor-pointer items-center gap-3' key={option}>
+            <input type='radio' name={name} value={option} className='peer sr-only' />
+            <span className='h-[19px] w-[19px] shrink-0 border border-black transition-colors peer-checked:bg-sky' />
+            <span className='text-base leading-6'>{option}</span>
           </label>
         ))}
       </div>
-      {error && <div className={styles['field-error']}>{error}</div>}
+      {error && <div className={errorClasses}>{error}</div>}
     </div>
   )
 }
@@ -67,15 +74,20 @@ function CheckboxGroup({
 export default function ApplyForm() {
   const [state, formAction, pending] = useActionState(submitCareerApplication, undefined)
   const fieldErrors = state?.fieldErrors || {}
+
   return (
-    <form className={styles['form']} action={formAction}>
+    <form
+      className='max-w-7xl px-6 pb-24 md:pb-32'
+      action={formAction}
+    >
       <CheckboxGroup
         label='What position are you applying for?'
         name='position'
         options={positionOptions}
         error={fieldErrors.position}
       />
-      <div className={styles['form-row']}>
+
+      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
         <FormField
           label='First Name'
           name='firstName'
@@ -91,11 +103,13 @@ export default function ApplyForm() {
           error={fieldErrors.lastName}
         />
       </div>
-      <div className={styles['form-row']}>
+
+      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
         <FormField label='Email' name='email' type='email' required error={fieldErrors.email} />
         <FormField label='Phone' name='phone' type='tel' required error={fieldErrors.phone} />
       </div>
-      <div className={styles['form-row']}>
+
+      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
         <FormField
           label='Address'
           name='address'
@@ -111,7 +125,8 @@ export default function ApplyForm() {
           error={fieldErrors.startDate}
         />
       </div>
-      <div className={styles['form-row']}>
+
+      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
         <FormField
           label='Business Instagram handle'
           name='instagramHandle'
@@ -125,22 +140,22 @@ export default function ApplyForm() {
           error={fieldErrors.license}
         />
       </div>
-      <div className={styles['form-row']}>
-        <div className={styles['upload-file-container']}>
-          <div className={styles['field-label']}>Resume*</div>
-          <div className={styles['upload-file-wrapper']}>
-            <input
-              type='file'
-              name='resumeFile'
-              accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-            />
-          </div>
+
+      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
+        <div className={fieldClasses}>
+          <div className={labelClasses}>Resume*</div>
+          <input
+            className='mt-3 block w-full text-sm capitalize file:mr-3.5 file:h-12 file:cursor-pointer file:border-0 file:bg-rose file:px-4 file:text-sm file:text-black file:uppercase'
+            type='file'
+            name='resumeFile'
+            accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+          />
           {fieldErrors.resumeFile && (
-            <div className={styles['field-error']}>{fieldErrors.resumeFile}</div>
+            <div className={errorClasses}>{fieldErrors.resumeFile}</div>
           )}
         </div>
       </div>
-      <span className={styles['form-section']}></span>
+
       <FormField
         label='What do you know about Saint Rose?'
         name='question1'
@@ -177,9 +192,10 @@ export default function ApplyForm() {
         type='textarea'
         error={fieldErrors.question6}
       />
-      <div className={styles['form-footer']}>
+
+      <div className='mt-16 max-w-3/4 pt-8 md:mt-24'>
         <button
-          className={styles['submit-button']}
+          className='inline-flex h-12 w-[150px] cursor-pointer items-center justify-center bg-deep-rose text-sm uppercase text-white transition-colors duration-300 hover:bg-deep-rose disabled:cursor-not-allowed disabled:opacity-50'
           id='submit-button'
           type='submit'
           disabled={pending}
@@ -187,10 +203,10 @@ export default function ApplyForm() {
           {pending ? 'Submitting...' : 'Submit'}
         </button>
         {state && state.errorMessage && (
-          <p className={styles['error-message']}>{state.errorMessage}</p>
+          <p className='mt-6 text-base text-red-600'>{state.errorMessage}</p>
         )}
         {state && state.successMessage && (
-          <p className={styles['success-message']}>{state.successMessage}</p>
+          <p className='mt-6 text-base'>{state.successMessage}</p>
         )}
       </div>
     </form>

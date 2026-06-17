@@ -16,20 +16,7 @@
   --font-marist: var(--font-marist);
   --font-caslon: var(--font-caslon);
 
-  /* old colors */
-  --color-primary: #003623;
-  --color-secondary: #f2e9da;
-  --color-background: #c8a9d4;
-
-  --color-pink: #975399;
-  --color-light-pink: #c8a9d4;
-  --color-gray: #747474;
-  --color-mud: #d69649;
-  --color-white: #ffffff;
-  --color-light-gray: #979797;
-  --color-light-gray-2: #8c8c8c;
-  --color-lilac: #c8a9d4;
-
+  /* old fonts */
   --font-ap: var(--ap), sans-serif;
   --font-opt: var(--opt), sans-serif;
   --font-ap-bold: var(--ap-bold), sans-serif;
@@ -116,18 +103,7 @@
 }
 
 :root {
-  --primary-color: #003623;
-  --secondary-color: #f2e9da;
-  --background-color: #c8a9d4;
   --black: #000000;
-  --pink: #975399;
-  --light-pink: #c8a9d4;
-  --gray: #747474;
-  --mud: #d69649;
-  --white: #ffffff;
-  --light-gray: #979797;
-  --light-gray-2: #8c8c8c;
-  --lilac: #c8a9d4;
 }
 
 .content {
