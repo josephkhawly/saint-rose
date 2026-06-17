@@ -14,7 +14,7 @@ export const IntroText = ({ title, introText, image }: { title: string; introTex
         </div>
         {image && (
           <div className="w-full md:w-5/12 aspect-4/5 overflow-hidden">
-            <Image className="w-full h-full object-cover grayscale-[0.2] contrast-125"
+            <Image className="w-full h-full object-cover contrast-125"
               alt="Close-up of a high-end salon interior with minimal stone textures, soft warm lighting, and a single designer chair in soft focus"
               src={image}
               placeholder='blur'
