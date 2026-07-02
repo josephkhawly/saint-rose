@@ -1,36 +1,49 @@
-import SlideAndFade from '@/components/SlideAndFade'
-import { Metadata } from 'next'
-import { formatIso, getBlogList } from '@/lib/helpers'
-import Image from 'next/image'
-import styles from './blog.module.css'
+import { getBlogList } from '@/lib/helpers'
+import { toRoman } from '@/lib/toRoman'
 import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
+import { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Blog | Saint Rose',
 }
 
-async function BlogPost({ blogItem }) {
-  const blurDataURL = blogItem.headerImage && typeof blogItem.headerImage !== 'number' ? await getBlurPlaceholder(blogItem.headerImage._key) : null
+type BlogListItem = Awaited<ReturnType<typeof getBlogList>>[number]
+
+async function BlogPostCard({
+  blogItem,
+  index,
+}: {
+  blogItem: BlogListItem
+  index: number
+}) {
+  const headerImage =
+    blogItem.headerImage && typeof blogItem.headerImage !== 'number'
+      ? blogItem.headerImage
+      : null
+  const blurDataURL = headerImage ? await getBlurPlaceholder(headerImage._key) : null
+
   return (
-    <div className={styles['regular-blog-post']}>
-      <div className='relative aspect-video'>
-        <Image
-          src={`https://3k4a31g25n.ufs.sh/f/${blogItem.headerImage._key}`}
-          alt={blogItem.headerImage?.alt || ''}
-          className={styles.image}
-          fill
-          placeholder='blur'
-          blurDataURL={blurDataURL}
-          sizes='(max-width: 768px) 100vw, 33vw'
-        />
-      </div>
-      <h5>{formatIso(blogItem.publishedAt)}</h5>
-      <h3>{blogItem.title}</h3>
-      <Link href={`/blog/${blogItem.slug}`}>
-        <Image src='/images/nav-arrow.svg' alt='' width={21} height={21} unoptimized />
-      </Link>
-    </div>
+    <Link href={`/blog/${blogItem.slug}`} className='group block'>
+      <h2 className='font-marist text-sm font-bold uppercase'>
+        {toRoman(index + 1)}. {blogItem.title}
+      </h2>
+      {headerImage && (
+        <div className='relative mt-4 aspect-3/4 w-full overflow-hidden'>
+          <Image
+            src={`https://3k4a31g25n.ufs.sh/f/${headerImage._key}`}
+            alt={headerImage.alt || ''}
+            className='object-cover'
+            fill
+            placeholder={blurDataURL ? 'blur' : undefined}
+            blurDataURL={blurDataURL ?? undefined}
+            sizes='(max-width: 768px) 100vw, 50vw'
+          />
+          <div className='pointer-events-none absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-30' />
+        </div>
+      )}
+    </Link>
   )
 }
 
@@ -41,43 +54,13 @@ export default async function Blog() {
     return <div>Failed to load blog posts.</div>
   }
 
-  const featuredPost = blogItems.find((blogItem) => blogItem.featured == true)
-  const featuredPostIndex = blogItems.findIndex((blogItem) => blogItem.featured == true)
-  const filteredBlogPosts =
-    featuredPostIndex > -1 ? blogItems.toSpliced(featuredPostIndex, 1) : blogItems
-
   return (
-    <div className={styles.blog}>
-      <SlideAndFade delay={1}>
-        <div className={styles['content-body']}>
-          {featuredPost && (
-            <div className={styles['featured-blog-post']}>
-              {featuredPost.headerImage && typeof featuredPost.headerImage !== 'number' && (
-                <div className='relative aspect-video w-full sm:aspect-[2/1] sm:w-3/4'>
-                  <Image
-                    src={`https://3k4a31g25n.ufs.sh/f/${featuredPost.headerImage._key}`}
-                    alt={featuredPost.headerImage?.alt || ''}
-                    className={styles.image}
-                    fill
-                    priority
-                    fetchPriority='high'
-                  />
-                </div>
-              )}
-              <h5>FEATURED POST: {formatIso(featuredPost.publishedAt)}</h5>
-              <h3>{featuredPost.title}</h3>
-              <Link href={`/blog/${featuredPost.slug}`}>
-                <Image src='/images/nav-arrow.svg' alt='' width={21} height={20} unoptimized />
-              </Link>
-            </div>
-          )}
-          <div className='grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3'>
-            {filteredBlogPosts.map((blogItem) => (
-              <BlogPost key={blogItem.id} blogItem={blogItem} />
-            ))}
-          </div>
-        </div>
-      </SlideAndFade>
-    </div>
+    <article className='px-6 py-32 md:py-40 md:pl-12 md:pr-[18vw] lg:pl-20 lg:pr-[28vw] xl:pl-24 xl:pr-[32vw]'>
+      <div className='grid grid-cols-1 gap-x-6 gap-y-16 md:grid-cols-2 md:gap-y-20'>
+        {blogItems.map((blogItem, index) => (
+          <BlogPostCard key={blogItem.id} blogItem={blogItem} index={index} />
+        ))}
+      </div>
+    </article>
   )
 }
