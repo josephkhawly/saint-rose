@@ -77,7 +77,6 @@ export const getBlogList = cache(async () => {
     select: {
       title: true,
       slug: true,
-      featured: true,
       publishedAt: true,
       headerImage: true,
     },
