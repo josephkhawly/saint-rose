@@ -66,11 +66,11 @@ export function Gallery({ title, items }: any) {
   }
 
   return (
-    <div className='mt-24 flex flex-col justify-between gap-13 md:mt-[140px] md:flex-row'>
+    <div className='mt-24 flex flex-col justify-between gap-13 md:mt-35 md:flex-row'>
       {columns.map((columnItems, columnIndex) => (
         <div key={columnIndex} className='mb-13 flex w-full flex-col gap-13 md:mb-0 md:w-1/3'>
           {columnIndex === 0 && title && (
-            <div className='font-ap-bold text-center text-lg tracking-wide uppercase md:mt-10 md:mb-[30px] md:text-left'>
+            <div className='font-ap-bold text-center text-lg tracking-wide uppercase md:mt-10 md:mb-7.5 md:text-left'>
               {title}
             </div>
           )}

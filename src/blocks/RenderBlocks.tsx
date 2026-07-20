@@ -34,7 +34,6 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType]
 
             if (Block) {
-              // @ts-expect-error
               return <Block key={block.id} {...block} disableInnerContainer />
             }
           }
