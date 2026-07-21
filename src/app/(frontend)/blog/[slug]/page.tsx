@@ -1,5 +1,4 @@
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import SlideAndFade from '@/components/SlideAndFade'
 import { getBlogMetadata, getBlogPost } from '@/lib/helpers'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { draftMode } from 'next/headers'
@@ -48,23 +47,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     <div className={styles['blog-post']}>
       {draft && <LivePreviewListener />}
       <div className={styles.content}>
-        <SlideAndFade delay={2}>
-          <div className={styles['content-header']}>
-            {blogPost.headerImage && typeof blogPost.headerImage !== 'number' && (
-              <div className={styles['featured-image-container']}>
-                <Image src={`https://3k4a31g25n.ufs.sh/f/${blogPost.headerImage._key}`} alt={blogPost.headerImage?.alt || ''} fill loading='eager' />
-              </div>
-            )}
-          </div>
-          <div className={styles['content-body']}>
-            <div className={styles['post-title']}>{blogPost.title}</div>
-            <RichText
-              data={blogPost.content}
-              className={styles['rich-text']}
-              converters={jsxConverters}
-            />
-          </div>
-        </SlideAndFade>
+        <div className={styles['content-header']}>
+          {blogPost.headerImage && typeof blogPost.headerImage !== 'number' && (
+            <div className={styles['featured-image-container']}>
+              <Image src={`https://3k4a31g25n.ufs.sh/f/${blogPost.headerImage._key}`} alt={blogPost.headerImage?.alt || ''} fill loading='eager' />
+            </div>
+          )}
+        </div>
+        <div className={styles['content-body']}>
+          <div className={styles['post-title']}>{blogPost.title}</div>
+          <RichText
+            data={blogPost.content}
+            className={styles['rich-text']}
+            converters={jsxConverters}
+          />
+        </div>
       </div>
     </div>
   )

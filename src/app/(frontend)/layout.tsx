@@ -8,27 +8,9 @@ import { Analytics } from "@vercel/analytics/next"
 import localFont from 'next/font/local'
 import SmoothScroll from '@/components/SmoothScroll'
 
-const apRegular = localFont({
-  src: './assets/fonts/apercu-regular.woff',
-  display: 'swap',
-  variable: '--ap',
-})
-
-const opt = localFont({
-  src: './assets/fonts/optima.woff',
-  display: 'swap',
-  variable: '--opt',
-})
-
-const apBold = localFont({
-  src: './assets/fonts/apercu-bold.woff',
-  display: 'swap',
-  variable: '--ap-bold',
-})
-
 const fautive = localFont({
   src: './assets/fonts/Fautive-Regular.woff2',
-  variable: '--font-fautive',
+  variable: '--fautive',
 })
 
 const marist = localFont({
@@ -44,12 +26,12 @@ const marist = localFont({
       style: 'italic',
     },
   ],
-  variable: '--font-marist',
+  variable: '--marist',
 })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={`${apRegular.variable} ${opt.variable} ${apBold.variable} ${fautive.variable} ${marist.variable}`} data-scroll-behavior='smooth'>
+    <html lang='en' className={`${fautive.variable} ${marist.variable}`} data-scroll-behavior='smooth'>
       <body className='bg-saint text-black'>
         <SmoothScroll />
         <main className='grid min-h-dvh grid-rows-[auto_1fr_auto]'>
