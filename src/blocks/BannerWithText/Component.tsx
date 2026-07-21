@@ -34,7 +34,7 @@ export function BannerWithText({
           transition={{ duration: 1, delay: 0.3 }}
           className='flex flex-col md:pt-24 lg:pt-32 ml-auto md:max-w-1/3'
         >
-          <p className='text-base lg:text-lg text-black'>{rightText}</p>
+          <p className='text-base whitespace-break-spaces lg:text-lg text-black'>{rightText}</p>
         </motion.div>
       </div>
     </section>
