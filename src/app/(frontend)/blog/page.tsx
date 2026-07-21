@@ -29,6 +29,7 @@ async function BlogPostCard({
       <h2 className='font-marist text-sm font-bold uppercase'>
         {toRoman(index + 1)}. {blogItem.title}
       </h2>
+      <div className='font-marist text-sm italic'>{new Date(blogItem.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
       {headerImage && (
         <div className='relative mt-4 aspect-3/4 w-full overflow-hidden'>
           <Image

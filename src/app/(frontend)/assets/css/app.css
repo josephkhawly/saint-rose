@@ -12,14 +12,8 @@
   --color-olive: #8c7840;
   --color-lima: #e8f5b0;
 
-  --font-fautive: var(--font-fautive);
-  --font-marist: var(--font-marist);
-  --font-caslon: var(--font-caslon);
-
-  /* old fonts */
-  --font-ap: var(--ap), sans-serif;
-  --font-opt: var(--opt), sans-serif;
-  --font-ap-bold: var(--ap-bold), sans-serif;
+  --font-fautive: var(--fautive);
+  --font-marist: var(--marist);
 }
 
 @layer base {
