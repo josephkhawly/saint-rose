@@ -11,8 +11,9 @@
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "seed": "tsx --env-file=.env.local src/seed.ts",
-    "migrate:media": "tsx --env-file=.env.local src/migrate-media.ts --export ./selected-rows.json"
+    "seed": "tsx --env-file=.env.local src/scripts/seed.ts",
+    "migrate:media": "tsx --env-file=.env.local src/scripts/migrate-media.ts --export ./selected-rows.json",
+    "backfill:blur": "tsx --env-file=.env.local src/scripts/backfill-blur.ts"
   },
   "author": "",
   "license": "ISC",

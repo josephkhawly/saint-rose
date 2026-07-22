@@ -1,6 +1,5 @@
 import { getBlogList } from '@/lib/helpers'
 import { toRoman } from '@/lib/toRoman'
-import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,7 +21,6 @@ async function BlogPostCard({
     blogItem.headerImage && typeof blogItem.headerImage !== 'number'
       ? blogItem.headerImage
       : null
-  const blurDataURL = headerImage ? await getBlurPlaceholder(headerImage.url) : null
 
   return (
     <Link href={`/blog/${blogItem.slug}`} className='group block'>
@@ -37,8 +35,8 @@ async function BlogPostCard({
             alt={headerImage.alt || ''}
             className='object-cover'
             fill
-            placeholder={blurDataURL ? 'blur' : undefined}
-            blurDataURL={blurDataURL ?? undefined}
+            placeholder={headerImage.blurDataURL ? 'blur' : 'empty'}
+            blurDataURL={headerImage.blurDataURL ?? undefined}
             sizes='(max-width: 768px) 100vw, 50vw'
           />
           <div className='pointer-events-none absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-30' />

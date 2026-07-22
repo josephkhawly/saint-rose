@@ -1,6 +1,6 @@
 import { getPayload, Payload } from 'payload'
 import config from '@payload-config'
-import { hairData, colorData, treatmentsData } from './constants'
+import { hairData, colorData, treatmentsData } from '@/constants'
 import fetch from 'node-fetch'
 import fs from 'fs/promises'
 import path from 'path'

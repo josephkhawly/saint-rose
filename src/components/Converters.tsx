@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import type { DefaultNodeTypes, SerializedUploadNode } from '@payloadcms/richtext-lexical'
 import { JSXConvertersFunction } from '@payloadcms/richtext-lexical/react'
-import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
 
 type NodeTypes = DefaultNodeTypes
 
@@ -13,9 +12,8 @@ const CustomUploadComponent: React.FC<{
     if (typeof uploadDoc !== 'object') {
       return null
     }
-    const { alt, height, url, width } = uploadDoc
+    const { alt, blurDataURL, height, url, width } = uploadDoc
     const aspectRatio = width / height
-    const blurDataURL = await getBlurPlaceholder(url)
     return (
       <div style={{ aspectRatio, position: 'relative', margin: '32px 0' }}>
         <Image
@@ -24,8 +22,8 @@ const CustomUploadComponent: React.FC<{
           fill
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           quality={60}
-          placeholder='blur'
-          blurDataURL={blurDataURL}
+          placeholder={blurDataURL ? 'blur' : 'empty'}
+          blurDataURL={blurDataURL ?? undefined}
         />
       </div>
     )

@@ -1,6 +1,5 @@
 // import { GalleryBlock } from '@/payload-types'
 
-import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
 import Image from 'next/image'
 
 // type GalleryProps = GalleryBlock
@@ -41,7 +40,6 @@ export function Gallery({ title, items }: any) {
     }
 
     if (isImage && media.url) {
-      const blurDataURL = await getBlurPlaceholder(media.url)
       return (
         <div
           style={{
@@ -55,8 +53,8 @@ export function Gallery({ title, items }: any) {
             fill
             quality={60}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            placeholder='blur'
-            blurDataURL={blurDataURL}
+            placeholder={media.blurDataURL ? 'blur' : 'empty'}
+            blurDataURL={media.blurDataURL ?? undefined}
           />
         </div>
       )

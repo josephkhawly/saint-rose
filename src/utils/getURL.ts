@@ -12,7 +12,7 @@ export const getServerSideURL = () => {
   }
 
   if (!url) {
-    url = 'http://localhost:3000'
+    url = 'http://saint-rose.localhost:1355'
   }
 
   return url
