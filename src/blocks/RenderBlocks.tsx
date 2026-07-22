@@ -6,6 +6,7 @@ import { Video } from './Video/Component'
 import { ServiceGrid } from './Services/Component'
 import { TeamGrid } from './TeamGrid/Component'
 import { Gallery } from './Gallery/Component'
+import { ImageAndTextColumn } from './ImageAndTextColumn/Component'
 
 const blockComponents = {
   quotes: Quotes,
@@ -15,6 +16,7 @@ const blockComponents = {
   services: ServiceGrid,
   team: TeamGrid,
   gallery: Gallery,
+  imageAndTextColumn: ImageAndTextColumn,
 }
 
 export const RenderBlocks: React.FC<{
