@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import type { ImageAndTextColumnBlock } from '@/payload-types'
-import { getBlurPlaceholder } from '@/utils/getBlurPlaceholder'
 
 type ImageAndTextColumnProps = ImageAndTextColumnBlock
 
@@ -15,9 +14,7 @@ export async function ImageAndTextColumn({
 }: ImageAndTextColumnProps) {
   const isImageRight = imagePosition === 'right'
   const hasImage = image && typeof image !== 'number'
-  const imageSrc = hasImage ? image.url : null
   const imageAlt = hasImage ? image.alt || '' : ''
-  // const blurDataURL = hasImage ? await getBlurPlaceholder(image.url) : null
 
   const contentColumn = (
     <motion.div
@@ -54,16 +51,16 @@ export async function ImageAndTextColumn({
             transition={{ duration: 1 }}
             className='md:col-span-7'
           >
-            {imageSrc && (
+            {hasImage && (
               <div className='relative aspect-3/5 overflow-hidden'>
                 <Image
-                  src={imageSrc}
+                  src={image.url}
                   alt={imageAlt}
                   fill
                   className='object-cover'
                   sizes='(max-width: 768px) 100vw, 58vw'
-                  // placeholder='blur'
-                  // blurDataURL={blurDataURL}
+                  placeholder={image.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={image.blurDataURL ?? undefined}
                 />
               </div>
             )}

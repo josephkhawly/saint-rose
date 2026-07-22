@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { placeholderBlur } from '@/constants'
 import { StaffMember } from '@/payload-types'
 import Link from 'next/link'
 
@@ -13,8 +12,8 @@ function StaffCard({ staffMemberData }) {
         className='aspect-3/4 w-full object-cover'
         width={500}
         height={500}
-        placeholder='blur'
-        blurDataURL={placeholderBlur}
+        placeholder={photoSmall.blurDataURL ? 'blur' : 'empty'}
+        blurDataURL={photoSmall.blurDataURL ?? undefined}
       />
       <h3 className='mt-2 text-lg font-marist uppercase'>{name}</h3>
       <p className='text-base/5 italic'>{role}</p>
