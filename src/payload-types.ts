@@ -292,6 +292,7 @@ export interface Page {
     | ServicesBlock
     | TeamGridBlock
     | GalleryBlock
+    | ImageAndTextColumnBlock
   )[];
   meta?: {
     title?: string | null;
@@ -427,6 +428,21 @@ export interface GalleryBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageAndTextColumnBlock".
+ */
+export interface ImageAndTextColumnBlock {
+  title: string;
+  content: string;
+  link?: string | null;
+  linkLabel?: string | null;
+  image: number | Media;
+  imagePosition?: ('left' | 'right') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageAndTextColumn';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -721,6 +737,7 @@ export interface PagesSelect<T extends boolean = true> {
         services?: T | ServicesBlockSelect<T>;
         team?: T | TeamGridBlockSelect<T>;
         gallery?: T | GalleryBlockSelect<T>;
+        imageAndTextColumn?: T | ImageAndTextColumnBlockSelect<T>;
       };
   meta?:
     | T
@@ -818,6 +835,20 @@ export interface GalleryBlockSelect<T extends boolean = true> {
         media?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageAndTextColumnBlock_select".
+ */
+export interface ImageAndTextColumnBlockSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  link?: T;
+  linkLabel?: T;
+  image?: T;
+  imagePosition?: T;
   id?: T;
   blockName?: T;
 }

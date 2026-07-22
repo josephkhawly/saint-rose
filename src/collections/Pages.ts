@@ -12,6 +12,7 @@ import { authenticated } from '@/access/authenticated'
 import { Services } from '@/blocks/Services/config'
 import { TeamGrid } from '@/blocks/TeamGrid/config'
 import { Gallery } from '@/blocks/Gallery/config'
+import { ImageAndTextColumn } from '@/blocks/ImageAndTextColumn/config'
 
 import {
   MetaDescriptionField,
@@ -75,7 +76,16 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [RichText, Quotes, BannerWithText, Video, Services, TeamGrid, Gallery],
+              blocks: [
+                RichText,
+                Quotes,
+                BannerWithText,
+                Video,
+                Services,
+                TeamGrid,
+                Gallery,
+                ImageAndTextColumn,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
