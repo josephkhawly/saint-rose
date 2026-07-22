@@ -11,7 +11,8 @@
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "seed": "tsx --env-file=.env src/seed.ts"
+    "seed": "tsx --env-file=.env.local src/seed.ts",
+    "migrate:media": "tsx --env-file=.env.local src/migrate-media.ts --export ./selected-rows.json"
   },
   "author": "",
   "license": "ISC",
@@ -35,7 +36,7 @@
     "@payloadcms/next": "^3.86.0",
     "@payloadcms/plugin-seo": "^3.86.0",
     "@payloadcms/richtext-lexical": "^3.86.0",
-    "@payloadcms/storage-uploadthing": "^3.86.0",
+    "@payloadcms/storage-vercel-blob": "^3.86.0",
     "@payloadcms/ui": "^3.86.0",
     "@plaiceholder/next": "^3.0.0",
     "@tailwindcss/postcss": "^4.3.0",

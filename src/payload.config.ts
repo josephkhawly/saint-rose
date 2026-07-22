@@ -1,5 +1,4 @@
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
-import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -15,6 +14,7 @@ import { Hours } from './globals/Hours'
 import { Pages } from './collections/Pages'
 import { Header } from './globals/Header/config'
 import { plugins } from './plugins'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -71,15 +71,12 @@ export default buildConfig({
   sharp,
   plugins: [
     ...plugins,
-    uploadthingStorage({
+    vercelBlobStorage({
       collections: {
         media: true,
       },
-      options: {
-        token: process.env.UPLOADTHING_TOKEN,
-        acl: 'public-read',
-      },
-      clientUploads: true,
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+      clientUploads: process.env.VERCEL === '1',
     }),
   ],
 })
