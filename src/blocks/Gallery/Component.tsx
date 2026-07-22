@@ -41,7 +41,7 @@ export function Gallery({ title, items }: any) {
     }
 
     if (isImage && media.url) {
-      const blurDataURL = await getBlurPlaceholder(media._key)
+      const blurDataURL = await getBlurPlaceholder(media.url)
       return (
         <div
           style={{
@@ -50,7 +50,7 @@ export function Gallery({ title, items }: any) {
           }}
         >
           <Image
-            src={`https://3k4a31g25n.ufs.sh/f/${media._key}`}
+            src={media.url}
             alt={media.alt || ''}
             fill
             quality={60}

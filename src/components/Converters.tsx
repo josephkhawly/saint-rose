@@ -13,14 +13,14 @@ const CustomUploadComponent: React.FC<{
     if (typeof uploadDoc !== 'object') {
       return null
     }
-    const { alt, height, _key, width } = uploadDoc
+    const { alt, height, url, width } = uploadDoc
     const aspectRatio = width / height
-    const blurDataURL = await getBlurPlaceholder(_key)
+    const blurDataURL = await getBlurPlaceholder(url)
     return (
       <div style={{ aspectRatio, position: 'relative', margin: '32px 0' }}>
         <Image
           alt={alt || ''}
-          src={`https://3k4a31g25n.ufs.sh/f/${_key}`}
+          src={url}
           fill
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           quality={60}

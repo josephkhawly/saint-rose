@@ -22,7 +22,7 @@ async function BlogPostCard({
     blogItem.headerImage && typeof blogItem.headerImage !== 'number'
       ? blogItem.headerImage
       : null
-  const blurDataURL = headerImage ? await getBlurPlaceholder(headerImage._key) : null
+  const blurDataURL = headerImage ? await getBlurPlaceholder(headerImage.url) : null
 
   return (
     <Link href={`/blog/${blogItem.slug}`} className='group block'>
@@ -33,7 +33,7 @@ async function BlogPostCard({
       {headerImage && (
         <div className='relative mt-4 aspect-3/4 w-full overflow-hidden'>
           <Image
-            src={`https://3k4a31g25n.ufs.sh/f/${headerImage._key}`}
+            src={headerImage.url}
             alt={headerImage.alt || ''}
             className='object-cover'
             fill

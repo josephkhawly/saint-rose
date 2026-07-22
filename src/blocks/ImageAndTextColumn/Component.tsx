@@ -15,9 +15,9 @@ export async function ImageAndTextColumn({
 }: ImageAndTextColumnProps) {
   const isImageRight = imagePosition === 'right'
   const hasImage = image && typeof image !== 'number'
-  const imageSrc = hasImage && image._key ? `https://3k4a31g25n.ufs.sh/f/${image._key}` : null
+  const imageSrc = hasImage ? image.url : null
   const imageAlt = hasImage ? image.alt || '' : ''
-  const blurDataURL = hasImage && image._key ? await getBlurPlaceholder(image._key) : null
+  // const blurDataURL = hasImage ? await getBlurPlaceholder(image.url) : null
 
   const contentColumn = (
     <motion.div
@@ -54,7 +54,7 @@ export async function ImageAndTextColumn({
             transition={{ duration: 1 }}
             className='md:col-span-7'
           >
-            {imageSrc && blurDataURL && (
+            {imageSrc && (
               <div className='relative aspect-3/5 overflow-hidden'>
                 <Image
                   src={imageSrc}
@@ -62,8 +62,8 @@ export async function ImageAndTextColumn({
                   fill
                   className='object-cover'
                   sizes='(max-width: 768px) 100vw, 58vw'
-                  placeholder='blur'
-                  blurDataURL={blurDataURL}
+                  // placeholder='blur'
+                  // blurDataURL={blurDataURL}
                 />
               </div>
             )}

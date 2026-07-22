@@ -8,7 +8,7 @@ function StaffCard({ staffMemberData }) {
   return (
     <li>
       <Image
-        src={`https://3k4a31g25n.ufs.sh/f/${photoSmall._key}`}
+        src={photoSmall.url}
         alt={name}
         className='aspect-3/4 w-full object-cover'
         width={500}
