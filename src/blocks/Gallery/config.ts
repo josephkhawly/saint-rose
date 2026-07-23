@@ -12,6 +12,29 @@ export const Gallery: Block = {
       },
     },
     {
+      name: 'orientation',
+      type: 'radio',
+      defaultValue: 'landscape',
+      options: [
+        { label: 'Portrait', value: 'portrait' },
+        { label: 'Landscape', value: 'landscape' },
+      ],
+      admin: { layout: 'horizontal' },
+    },
+    {
+      name: 'imagePosition',
+      type: 'radio',
+      defaultValue: 'right',
+      options: [
+        { label: 'Left', value: 'left' },
+        { label: 'Right', value: 'right' },
+      ],
+      admin: {
+        layout: 'horizontal',
+        description: 'Side of the page for the carousel. The title sits on the opposite side.',
+      },
+    },
+    {
       name: 'items',
       type: 'array',
       fields: [
@@ -20,9 +43,6 @@ export const Gallery: Block = {
           type: 'upload',
           relationTo: 'media',
           required: true,
-          admin: {
-            description: 'Images or videos to display in the gallery.',
-          },
         },
       ],
       required: true,
