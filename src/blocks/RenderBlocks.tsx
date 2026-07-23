@@ -7,8 +7,10 @@ import { ServiceGrid } from './Services/Component'
 import { TeamGrid } from './TeamGrid/Component'
 import { Gallery } from './Gallery/Component'
 import { ImageAndTextColumn } from './ImageAndTextColumn/Component'
+import { Intro } from './Intro/Component'
 
 const blockComponents = {
+  intro: Intro,
   quotes: Quotes,
   richText: RichTextComponent,
   bannerWithText: BannerWithText,

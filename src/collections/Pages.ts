@@ -13,6 +13,7 @@ import { Services } from '@/blocks/Services/config'
 import { TeamGrid } from '@/blocks/TeamGrid/config'
 import { Gallery } from '@/blocks/Gallery/config'
 import { ImageAndTextColumn } from '@/blocks/ImageAndTextColumn/config'
+import { Intro } from '@/blocks/Intro/config'
 
 import {
   MetaDescriptionField,
@@ -77,6 +78,7 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
+                Intro,
                 RichText,
                 Quotes,
                 BannerWithText,
