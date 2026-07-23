@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
+import { accentColorField } from '@/fields/accentColor'
 import { link } from '@/fields/link'
 import { revalidateHeader } from '@/hooks/revalidateHeader'
 
@@ -12,7 +13,13 @@ export const Header: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
-      fields: [link()],
+      fields: [
+        link(),
+        accentColorField({
+          name: 'hoverAccentColor',
+          label: 'Hover Accent Color',
+        }),
+      ],
       maxRows: 6,
       admin: {
         components: {
