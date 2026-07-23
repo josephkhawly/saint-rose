@@ -49,6 +49,7 @@ export function GalleryCarousel({
   const carouselColumnClass = isImageLeft
     ? 'md:col-span-2 md:col-start-1 md:row-start-1'
     : 'md:col-span-2 md:col-start-2'
+  const carouselAlignClass = isImageLeft ? 'md:w-4/5' : 'md:ml-auto md:w-4/5'
 
   const move = (direction: -1 | 1) => {
     if (isAnimating || items.length === 1) {
@@ -78,7 +79,9 @@ export function GalleryCarousel({
       ) : null}
 
       <div className={carouselColumnClass}>
-        <div className='grid grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-3 md:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] md:gap-5'>
+        <div
+          className={`grid grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-3 md:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] md:gap-5 ${carouselAlignClass}`}
+        >
           <button
             type='button'
             aria-label='Previous image'
@@ -107,7 +110,7 @@ export function GalleryCarousel({
                     placeholder={item.blurDataURL ? 'blur' : 'empty'}
                     blurDataURL={item.blurDataURL ?? undefined}
                     quality={60}
-                    sizes='(max-width: 767px) calc(100vw - 7rem), 60vw'
+                    sizes='(max-width: 767px) calc(100vw - 7rem), 48vw'
                     src={item.src}
                   />
                 </div>
