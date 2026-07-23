@@ -349,11 +349,10 @@ export interface QuotesBlock {
  * via the `definition` "BannerWithTextBlock".
  */
 export interface BannerWithTextBlock {
-  title?: string | null;
   /**
    * Image or video to be used as the banner.
    */
-  banner: number | Media;
+  banner?: (number | null) | Media;
   leftText?: string | null;
   rightText?: string | null;
   id?: string | null;
@@ -783,7 +782,6 @@ export interface QuotesBlockSelect<T extends boolean = true> {
  * via the `definition` "BannerWithTextBlock_select".
  */
 export interface BannerWithTextBlockSelect<T extends boolean = true> {
-  title?: T;
   banner?: T;
   leftText?: T;
   rightText?: T;

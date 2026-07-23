@@ -13,7 +13,8 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "seed": "tsx --env-file=.env.local src/scripts/seed.ts",
     "migrate:media": "tsx --env-file=.env.local src/scripts/migrate-media.ts --export ./selected-rows.json",
-    "backfill:blur": "tsx --env-file=.env.local src/scripts/backfill-blur.ts"
+    "backfill:blur": "tsx --env-file=.env.local src/scripts/backfill-blur.ts",
+    "mi": "pnpm payload migrate:create && pnpm payload migrate"
   },
   "author": "",
   "license": "ISC",

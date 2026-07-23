@@ -6,14 +6,9 @@ export const BannerWithText: Block = {
   imageURL: '/images/thumbnails/banner.webp',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-    },
-    {
       name: 'banner',
       type: 'upload',
       relationTo: 'media',
-      required: true,
       admin: {
         description: 'Image or video to be used as the banner.',
       },
