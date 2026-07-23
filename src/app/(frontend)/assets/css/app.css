@@ -103,11 +103,11 @@
 .content {
   position: relative;
   z-index: 10;
-  padding: 200px 0 0;
+  padding-top: 200px;
   margin-bottom: 340px;
 
   @media all and (max-width: 989px) {
-    padding: 100px 0 0;
+    padding-top: 100px;
     margin-bottom: 100px;
   }
 }

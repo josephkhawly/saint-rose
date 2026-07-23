@@ -36,18 +36,16 @@ export async function generateStaticParams() {
 }
 
 type Args = {
-  params: Promise<{
+  params?: Promise<{
     slug?: string
   }>
 }
 
 export default async function Page({ params }: Args) {
   const { isEnabled: draft } = await draftMode()
-  const { slug = 'home' } = await params
+  const { slug = 'home' } = (await params) ?? {}
 
-  let page: RequiredDataFromCollectionSlug<'pages'> | null
-
-  page = await queryPageBySlug({
+  const page: RequiredDataFromCollectionSlug<'pages'> | null = await queryPageBySlug({
     slug,
   })
 
@@ -58,7 +56,7 @@ export default async function Page({ params }: Args) {
   const { layout, title, introText } = page
 
   return (
-    <article className='content'>
+    <article className={slug === 'home' ? '' : 'content'}>
       {draft && <LivePreviewListener />}
 
       {introText && <IntroText title={title} introText={introText} />}
@@ -69,7 +67,7 @@ export default async function Page({ params }: Args) {
 }
 
 export async function generateMetadata({ params }: Args): Promise<Metadata> {
-  const { slug = 'home' } = await params
+  const { slug = 'home' } = (await params) ?? {}
   const page = await queryPageBySlug({
     slug,
   })

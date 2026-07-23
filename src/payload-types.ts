@@ -284,6 +284,7 @@ export interface Page {
   title: string;
   introText?: string | null;
   layout: (
+    | IntroBlock
     | RichTextBlock
     | QuotesBlock
     | BannerWithTextBlock
@@ -305,6 +306,19 @@ export interface Page {
   createdAt: string;
   deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IntroBlock".
+ */
+export interface IntroBlock {
+  introImage: number | Media;
+  overlayColor?:
+    | ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima')
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'intro';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -729,6 +743,7 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        intro?: T | IntroBlockSelect<T>;
         richText?: T | RichTextBlockSelect<T>;
         quotes?: T | QuotesBlockSelect<T>;
         bannerWithText?: T | BannerWithTextBlockSelect<T>;
@@ -752,6 +767,16 @@ export interface PagesSelect<T extends boolean = true> {
   createdAt?: T;
   deletedAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IntroBlock_select".
+ */
+export interface IntroBlockSelect<T extends boolean = true> {
+  introImage?: T;
+  overlayColor?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

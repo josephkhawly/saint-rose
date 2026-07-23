@@ -1,14 +1,4 @@
-import Intro from '@/components/Intro'
-import { Metadata } from 'next'
+import PageTemplate, { generateMetadata } from './[slug]/page'
 
-export const metadata: Metadata = {
-  title: 'Saint Rose',
-}
-
-export default function Home() {
-  return (
-    <div>
-      <Intro />
-    </div>
-  )
-}
+export default PageTemplate
+export { generateMetadata }
