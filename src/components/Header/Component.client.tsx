@@ -1,10 +1,23 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { links } from '@/constants'
+import type { AccentColor } from '@/fields/accentColor'
 import { Header } from '@/payload-types'
 import Link from 'next/link'
 
 type CmsLink = NonNullable<Header['navItems']>[number]['link']
+
+const hoverAccentClass = {
+  rose: 'hover:text-rose',
+  'deep-rose': 'hover:text-deep-rose',
+  'dark-chocolate': 'hover:text-dark-chocolate',
+  mint: 'hover:text-mint',
+  lavender: 'hover:text-lavender',
+  sky: 'hover:text-sky',
+  garden: 'hover:text-garden',
+  olive: 'hover:text-olive',
+  lima: 'hover:text-lima',
+} as const satisfies Record<AccentColor, string>
 
 function resolveCmsLinkHref(link: CmsLink) {
   const { type, reference, url } = link
@@ -20,13 +33,17 @@ function MenuNavItem({
   index,
   menuOpen,
   onNavigate,
+  hoverAccentColor = 'rose',
 }: {
   href: string
   label: string
   index: number
   menuOpen: boolean
   onNavigate: () => void
+  hoverAccentColor?: AccentColor | null
 }) {
+  const accent = hoverAccentColor && hoverAccentColor in hoverAccentClass ? hoverAccentColor : 'rose'
+
   return (
     <li
       className={`transition-all duration-500 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
@@ -35,7 +52,7 @@ function MenuNavItem({
       <Link
         href={href}
         onClick={onNavigate}
-        className='text-4xl text-saint transition-colors md:text-6xl lg:text-7xl hover:text-rose'
+        className={`text-4xl text-saint transition-colors md:text-6xl lg:text-7xl ${hoverAccentClass[accent]}`}
       >
         {label}
       </Link>
@@ -139,7 +156,7 @@ export default function HeaderClient({ data }: { data: Header }) {
                   onNavigate={closeMenu}
                 />
               ))}
-              {navItems.map(({ link }, index) => {
+              {navItems.map(({ link, hoverAccentColor }, index) => {
                 const href = resolveCmsLinkHref(link)
                 if (!href) return null
                 return (
@@ -150,6 +167,7 @@ export default function HeaderClient({ data }: { data: Header }) {
                     index={index}
                     menuOpen={menuOpen}
                     onNavigate={closeMenu}
+                    hoverAccentColor={hoverAccentColor}
                   />
                 )
               })}

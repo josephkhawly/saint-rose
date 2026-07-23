@@ -956,6 +956,9 @@ export interface Header {
           url?: string | null;
           label: string;
         };
+        hoverAccentColor?:
+          | ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima')
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -989,6 +992,7 @@ export interface HeaderSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        hoverAccentColor?: T;
         id?: T;
       };
   updatedAt?: T;
