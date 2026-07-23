@@ -1,83 +1,41 @@
-// import { GalleryBlock } from '@/payload-types'
+import type { GalleryBlock, Media } from '@/payload-types'
+import { GalleryCarousel, type GalleryCarouselItem } from './GalleryCarousel'
 
-import Image from 'next/image'
+type GalleryItem = GalleryBlock['items'][number]
+type GalleryImage = Media
 
-// type GalleryProps = GalleryBlock
+function hasImage(item: GalleryItem): item is GalleryItem & { media: GalleryImage } {
+  return (
+    typeof item.media !== 'number' &&
+    Boolean(item.media.url) &&
+    Boolean(item.media.mimeType?.includes('image'))
+  )
+}
 
-export function Gallery({ title, items }: any) {
-  if (!items || items.length === 0) {
+export async function Gallery({ imagePosition, items, orientation, title }: GalleryBlock) {
+  const images = items.filter(hasImage)
+
+  if (images.length === 0) {
     return null
   }
 
-  // Distribute items across 3 columns automatically
-  const columns: Array<Array<(typeof items)[0]>> = [[], [], []]
-
-  items.forEach((item, index) => {
-    const columnIndex = index % 3
-    columns[columnIndex].push(item)
-  })
-
-  const renderMedia = async (item: (typeof items)[0], key: string) => {
-    if (!item.media || typeof item.media === 'number') {
-      return null
-    }
-
-    const media = item.media
-    const isVideo = media.mimeType?.includes('video')
-    const isImage = media.mimeType?.includes('image')
-
-    // Calculate aspect ratio from media dimensions
-    const aspectRatio = media.width && media.height ? media.width / media.height : undefined
-
-    if (isVideo) {
-      return (
-        <div key={key} className='bg-cover bg-center bg-repeat'>
-          <video autoPlay muted playsInline loop className='w-full'>
-            <source src={media.url || ''} type={media.mimeType || ''} />
-          </video>
-        </div>
-      )
-    }
-
-    if (isImage && media.url) {
-      return (
-        <div
-          style={{
-            position: 'relative',
-            aspectRatio,
-          }}
-        >
-          <Image
-            src={media.url}
-            alt={media.alt || ''}
-            fill
-            quality={60}
-            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            placeholder={media.blurDataURL ? 'blur' : 'empty'}
-            blurDataURL={media.blurDataURL ?? undefined}
-          />
-        </div>
-      )
-    }
-
-    return null
-  }
+  const carouselItems = await Promise.all(
+    images.map<Promise<GalleryCarouselItem>>(async ({ id, media }, index) => ({
+      alt: media.alt ?? '',
+      blurDataURL: media.blurDataURL ?? undefined,
+      height: media.height || 1,
+      id: id ?? `${media.id}-${index}`,
+      src: media.url,
+      width: media.width || 1,
+    })),
+  )
 
   return (
-    <div className='mt-24 flex flex-col justify-between gap-13 md:mt-35 md:flex-row'>
-      {columns.map((columnItems, columnIndex) => (
-        <div key={columnIndex} className='mb-13 flex w-full flex-col gap-13 md:mb-0 md:w-1/3'>
-          {columnIndex === 0 && title && (
-            <div className='font-ap-bold text-center text-lg tracking-wide uppercase md:mt-10 md:mb-7.5 md:text-left'>
-              {title}
-            </div>
-          )}
-          {columnIndex === 2 && <div className='-mt-13 md:mt-5' />}
-          {columnItems
-            .map((item, itemIndex) => renderMedia(item, `${columnIndex}-${itemIndex}`))
-            .filter(Boolean)}
-        </div>
-      ))}
-    </div>
+    <GalleryCarousel
+      imagePosition={imagePosition}
+      items={carouselItems}
+      orientation={orientation}
+      title={title}
+    />
   )
 }

@@ -417,10 +417,12 @@ export interface GalleryBlock {
    * Optional title to display.
    */
   title?: string | null;
+  orientation?: ('portrait' | 'landscape') | null;
+  /**
+   * Side of the page for the carousel. The title sits on the opposite side.
+   */
+  imagePosition?: ('left' | 'right') | null;
   items: {
-    /**
-     * Images or videos to display in the gallery.
-     */
     media: number | Media;
     id?: string | null;
   }[];
@@ -827,6 +829,8 @@ export interface TeamGridBlockSelect<T extends boolean = true> {
  */
 export interface GalleryBlockSelect<T extends boolean = true> {
   title?: T;
+  orientation?: T;
+  imagePosition?: T;
   items?:
     | T
     | {
