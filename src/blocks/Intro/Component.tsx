@@ -34,7 +34,7 @@ export function Intro({ introImage, overlayColor = 'rose' }: IntroProps) {
         <div className={`absolute inset-0 opacity-70 ${overlayBgClass[accent]}`} />
       </div>
       <div className='absolute bottom-0 w-full'>
-        <h1 className='font-fautive text-7xl md:text-8xl lg:text-[19rem] text-black text-center'>
+        <h1 className='font-fautive whitespace-nowrap text-[clamp(2.75rem,18vw,19rem)] leading-none text-black text-center'>
           SAINT ROSE
         </h1>
       </div>
