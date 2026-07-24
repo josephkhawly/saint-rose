@@ -53,13 +53,20 @@ export default async function Page({ params }: Args) {
     return notFound()
   }
 
-  const { layout, title, introText } = page
+  const { layout, title, introText, introImage, imagePosition } = page
 
   return (
-    <article className={slug === 'home' ? '' : 'content'}>
+    <article className={introText ? '' : 'content'}>
       {draft && <LivePreviewListener />}
 
-      {introText && <IntroText title={title} introText={introText} />}
+      {introText && (
+        <IntroText
+          title={title}
+          introText={introText}
+          introImage={introImage}
+          imagePosition={imagePosition}
+        />
+      )}
 
       <RenderBlocks blocks={layout} />
     </article>

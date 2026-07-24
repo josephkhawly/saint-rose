@@ -8,6 +8,7 @@ import * as migration_20260722_234940_gallery_orientation_image_position from '.
 import * as migration_20260723_155253 from './20260723_155253';
 import * as migration_20260723_181605 from './20260723_181605';
 import * as migration_20260723_203522 from './20260723_203522';
+import * as migration_20260724_203341 from './20260724_203341';
 
 export const migrations = [
   {
@@ -58,6 +59,11 @@ export const migrations = [
   {
     up: migration_20260723_203522.up,
     down: migration_20260723_203522.down,
-    name: '20260723_203522'
+    name: '20260723_203522',
+  },
+  {
+    up: migration_20260724_203341.up,
+    down: migration_20260724_203341.down,
+    name: '20260724_203341'
   },
 ];

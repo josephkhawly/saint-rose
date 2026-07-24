@@ -75,6 +75,32 @@ export const Pages: CollectionConfig<'pages'> = {
               type: 'text',
             },
             {
+              type: 'row',
+              fields: [
+                {
+                  name: 'introImage',
+                  type: 'upload',
+                  relationTo: 'media',
+                  admin: {
+                    width: '50%',
+                  },
+                },
+                {
+                  name: 'imagePosition',
+                  type: 'radio',
+                  defaultValue: 'right',
+                  options: [
+                    { label: 'Left', value: 'left' },
+                    { label: 'Right', value: 'right' },
+                  ],
+                  admin: {
+                    layout: 'horizontal',
+                    width: '50%',
+                  },
+                },
+              ],
+            },
+            {
               name: 'layout',
               type: 'blocks',
               blocks: [
