@@ -283,6 +283,8 @@ export interface Page {
   id: number;
   title: string;
   introText?: string | null;
+  introImage?: (number | null) | Media;
+  imagePosition?: ('left' | 'right') | null;
   layout: (
     | IntroBlock
     | RichTextBlock
@@ -740,6 +742,8 @@ export interface BlogPostsSelect<T extends boolean = true> {
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
   introText?: T;
+  introImage?: T;
+  imagePosition?: T;
   layout?:
     | T
     | {
