@@ -56,7 +56,7 @@ export default async function Page({ params }: Args) {
   const { layout, title, introText, introImage, imagePosition } = page
 
   return (
-    <article className={introText ? '' : 'content'}>
+    <article>
       {draft && <LivePreviewListener />}
 
       {introText && (
