@@ -128,7 +128,7 @@ export function GalleryCarousel({
             <Arrow direction='right' />
           </button>
 
-          <p className='col-start-2 text-right text-sm tracking-wider'>
+          <p className='col-start-2 text-right text-sm tracking-wider italic'>
             {toRoman(activeIndex + 1)}/{toRoman(items.length)}
           </p>
         </div>
