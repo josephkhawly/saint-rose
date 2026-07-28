@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { AccentColor } from '@/fields/accentColor'
 import type { IntroBlock } from '@/payload-types'
 
@@ -16,21 +17,26 @@ const overlayBgClass = {
 type IntroProps = IntroBlock
 
 export function Intro({ introImage, overlayColor = 'rose' }: IntroProps) {
-  const hasImage = introImage && typeof introImage !== 'number'
+  const hasImage = introImage && typeof introImage !== 'number' && introImage.url
   const accent = overlayColor && overlayColor in overlayBgClass ? overlayColor : 'rose'
 
   return (
     <section className='relative h-screen flex items-center justify-center'>
-      <div
-        className='absolute inset-0 bg-cover bg-center bg-fixed'
-        style={
-          hasImage && introImage.url
-            ? {
-                backgroundImage: `url(${introImage.url})`,
-              }
-            : undefined
-        }
-      >
+      <div className='absolute inset-0 [clip-path:inset(0)]'>
+        {hasImage && (
+          <div className='fixed inset-0'>
+            <Image
+              src={introImage.url}
+              alt={introImage.alt ?? ''}
+              fill
+              preload
+              className='object-cover object-center'
+              sizes='100vw'
+              placeholder={introImage.blurDataURL ? 'blur' : 'empty'}
+              blurDataURL={introImage.blurDataURL ?? undefined}
+            />
+          </div>
+        )}
         <div className={`absolute inset-0 opacity-70 ${overlayBgClass[accent]}`} />
       </div>
       <div className='absolute bottom-0 w-full'>
