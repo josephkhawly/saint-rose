@@ -8,6 +8,7 @@ import { TeamGrid } from './TeamGrid/Component'
 import { Gallery } from './Gallery/Component'
 import { ImageAndTextColumn } from './ImageAndTextColumn/Component'
 import { Intro } from './Intro/Component'
+import { Steps } from './Steps/Component'
 
 const blockComponents = {
   intro: Intro,
@@ -19,6 +20,7 @@ const blockComponents = {
   team: TeamGrid,
   gallery: Gallery,
   imageAndTextColumn: ImageAndTextColumn,
+  steps: Steps,
 }
 
 export const RenderBlocks: React.FC<{

@@ -14,6 +14,7 @@ import { TeamGrid } from '@/blocks/TeamGrid/config'
 import { Gallery } from '@/blocks/Gallery/config'
 import { ImageAndTextColumn } from '@/blocks/ImageAndTextColumn/config'
 import { Intro } from '@/blocks/Intro/config'
+import { Steps } from '@/blocks/Steps/config'
 
 import {
   MetaDescriptionField,
@@ -113,6 +114,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 TeamGrid,
                 Gallery,
                 ImageAndTextColumn,
+                Steps,
               ],
               required: true,
               admin: {
