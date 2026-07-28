@@ -296,6 +296,7 @@ export interface Page {
     | GalleryBlock
     | ImageAndTextColumnBlock
     | StepsBlock
+    | VisitBlock
   )[];
   meta?: {
     title?: string | null;
@@ -481,6 +482,27 @@ export interface StepsBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'steps';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VisitBlock".
+ */
+export interface VisitBlock {
+  title?: string | null;
+  image?: (number | null) | Media;
+  addressLine1: string;
+  addressLine2?: string | null;
+  mapLink?: string | null;
+  hours: {
+    days: string;
+    times: string;
+    id?: string | null;
+  }[];
+  phone?: string | null;
+  email?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'visit';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -779,6 +801,7 @@ export interface PagesSelect<T extends boolean = true> {
         gallery?: T | GalleryBlockSelect<T>;
         imageAndTextColumn?: T | ImageAndTextColumnBlockSelect<T>;
         steps?: T | StepsBlockSelect<T>;
+        visit?: T | VisitBlockSelect<T>;
       };
   meta?:
     | T
@@ -921,6 +944,28 @@ export interface StepsBlockSelect<T extends boolean = true> {
         linkLabel?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VisitBlock_select".
+ */
+export interface VisitBlockSelect<T extends boolean = true> {
+  title?: T;
+  image?: T;
+  addressLine1?: T;
+  addressLine2?: T;
+  mapLink?: T;
+  hours?:
+    | T
+    | {
+        days?: T;
+        times?: T;
+        id?: T;
+      };
+  phone?: T;
+  email?: T;
   id?: T;
   blockName?: T;
 }
