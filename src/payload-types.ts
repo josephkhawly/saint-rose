@@ -295,6 +295,7 @@ export interface Page {
     | TeamGridBlock
     | GalleryBlock
     | ImageAndTextColumnBlock
+    | StepsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -459,6 +460,27 @@ export interface ImageAndTextColumnBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'imageAndTextColumn';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StepsBlock".
+ */
+export interface StepsBlock {
+  eyebrow?: string | null;
+  lede?: string | null;
+  accentColor?:
+    | ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima')
+    | null;
+  steps: {
+    title: string;
+    description: string;
+    link?: string | null;
+    linkLabel?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'steps';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -756,6 +778,7 @@ export interface PagesSelect<T extends boolean = true> {
         team?: T | TeamGridBlockSelect<T>;
         gallery?: T | GalleryBlockSelect<T>;
         imageAndTextColumn?: T | ImageAndTextColumnBlockSelect<T>;
+        steps?: T | StepsBlockSelect<T>;
       };
   meta?:
     | T
@@ -878,6 +901,26 @@ export interface ImageAndTextColumnBlockSelect<T extends boolean = true> {
   linkLabel?: T;
   image?: T;
   imagePosition?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StepsBlock_select".
+ */
+export interface StepsBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  lede?: T;
+  accentColor?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        link?: T;
+        linkLabel?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
