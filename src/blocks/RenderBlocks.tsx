@@ -9,6 +9,7 @@ import { Gallery } from './Gallery/Component'
 import { ImageAndTextColumn } from './ImageAndTextColumn/Component'
 import { Intro } from './Intro/Component'
 import { Steps } from './Steps/Component'
+import { Visit } from './Visit/Component'
 
 const blockComponents = {
   intro: Intro,
@@ -21,6 +22,7 @@ const blockComponents = {
   gallery: Gallery,
   imageAndTextColumn: ImageAndTextColumn,
   steps: Steps,
+  visit: Visit,
 }
 
 export const RenderBlocks: React.FC<{

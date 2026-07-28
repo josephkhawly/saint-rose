@@ -15,6 +15,7 @@ import { Gallery } from '@/blocks/Gallery/config'
 import { ImageAndTextColumn } from '@/blocks/ImageAndTextColumn/config'
 import { Intro } from '@/blocks/Intro/config'
 import { Steps } from '@/blocks/Steps/config'
+import { Visit } from '@/blocks/Visit/config'
 
 import {
   MetaDescriptionField,
@@ -115,6 +116,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Gallery,
                 ImageAndTextColumn,
                 Steps,
+                Visit,
               ],
               required: true,
               admin: {
