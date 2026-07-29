@@ -371,6 +371,10 @@ export interface BannerWithTextBlock {
    * Image or video to be used as the banner.
    */
   banner?: (number | null) | Media;
+  /**
+   * Place the banner above or below the text.
+   */
+  imagePosition?: ('top' | 'bottom') | null;
   leftText?: string | null;
   rightText?: string | null;
   id?: string | null;
@@ -858,6 +862,7 @@ export interface QuotesBlockSelect<T extends boolean = true> {
  */
 export interface BannerWithTextBlockSelect<T extends boolean = true> {
   banner?: T;
+  imagePosition?: T;
   leftText?: T;
   rightText?: T;
   id?: T;
