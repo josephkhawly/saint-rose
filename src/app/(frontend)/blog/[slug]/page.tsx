@@ -50,7 +50,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className={styles['content-header']}>
           {blogPost.headerImage && typeof blogPost.headerImage !== 'number' && (
             <div className={styles['featured-image-container']}>
-              <Image src={blogPost.headerImage.url} alt={blogPost.headerImage?.alt || ''} fill loading='eager' />
+              <Image
+                src={blogPost.headerImage.url}
+                alt={blogPost.headerImage?.alt || ''}
+                fill
+                loading='eager'
+                sizes='(max-width: 989px) calc(100vw - 3rem), calc(100vw - 21rem)'
+              />
             </div>
           )}
         </div>

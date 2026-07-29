@@ -94,6 +94,7 @@ function HeaderToolbar({
       </Link>
 
       <button
+        type='button'
         onClick={onToggleMenu}
         className={`group flex cursor-pointer items-center gap-3 transition-colors hover:text-rose ${menuButtonClass}`}
         aria-label={overlay ? 'Close menu' : 'Open menu'}

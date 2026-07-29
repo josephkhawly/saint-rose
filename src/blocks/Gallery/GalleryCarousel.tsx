@@ -40,7 +40,11 @@ export function GalleryCarousel({
   const [position, setPosition] = useState(1)
   const activeIndex =
     position === 0 ? items.length - 1 : position === items.length + 1 ? 0 : position - 1
-  const slides = [items[items.length - 1], ...items, items[0]]
+  const slides = [
+    { item: items[items.length - 1], key: `${items[items.length - 1].id}-clone-prev` },
+    ...items.map((item) => ({ item, key: item.id })),
+    { item: items[0], key: `${items[0].id}-clone-next` },
+  ]
   const isImageLeft = imagePosition === 'left'
   const aspectClass = orientation === 'portrait' ? 'aspect-3/4' : 'aspect-4/3'
   const titleClass = isImageLeft
@@ -101,8 +105,8 @@ export function GalleryCarousel({
                 transition: isAnimating ? 'transform 500ms ease-in-out' : 'none',
               }}
             >
-              {slides.map((item, index) => (
-                <div className='relative h-full min-w-full' key={`${item.id}-${index}`}>
+              {slides.map(({ item, key }) => (
+                <div className='relative h-full min-w-full' key={key}>
                   <Image
                     fill
                     alt={item.alt}

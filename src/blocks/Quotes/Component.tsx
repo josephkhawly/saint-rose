@@ -36,10 +36,10 @@ const Quotes = ({ quotes }) => {
         <cite className='italic'>— {quotes[current].attribution}</cite>
       </div>
       <div className='flex gap-8 mr-auto px-10 my-5 justify-between md:justify-start'>
-        <button onClick={handlePrevious} className='text-2xl cursor-pointer'>
+        <button type='button' onClick={handlePrevious} className='text-2xl cursor-pointer'>
           ←
         </button>
-        <button onClick={handleNext} className='text-2xl cursor-pointer'>
+        <button type='button' onClick={handleNext} className='text-2xl cursor-pointer'>
           →
         </button>
       </div>
