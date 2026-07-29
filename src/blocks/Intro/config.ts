@@ -5,6 +5,7 @@ import { accentColorField } from '@/fields/accentColor'
 export const Intro: Block = {
   slug: 'intro',
   interfaceName: 'IntroBlock',
+  imageURL: '/images/thumbnails/intro.webp',
   fields: [
     {
       name: 'introImage',

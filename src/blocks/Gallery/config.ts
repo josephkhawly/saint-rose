@@ -3,6 +3,7 @@ import { Block } from 'payload'
 export const Gallery: Block = {
   slug: 'gallery',
   interfaceName: 'GalleryBlock',
+  imageURL: '/images/thumbnails/carousel.webp',
   fields: [
     {
       name: 'title',

@@ -3,6 +3,7 @@ import { Block } from 'payload'
 export const TeamGrid: Block = {
   slug: 'team',
   interfaceName: 'TeamGridBlock',
+  imageURL: '/images/thumbnails/team.webp',
   fields: [
     {
       name: 'columns',
