@@ -35,6 +35,7 @@ export const IntroText = ({
         sizes="(max-width: 768px) 100vw, 42vw"
         placeholder={introImage.blurDataURL ? 'blur' : 'empty'}
         blurDataURL={introImage.blurDataURL ?? undefined}
+        loading='eager'
       />
     </div>
   ) : null
