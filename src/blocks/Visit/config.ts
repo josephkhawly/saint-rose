@@ -3,6 +3,7 @@ import type { Block } from 'payload'
 export const Visit: Block = {
   slug: 'visit',
   interfaceName: 'VisitBlock',
+  imageURL: '/images/thumbnails/visit.webp',
   fields: [
     {
       name: 'title',
