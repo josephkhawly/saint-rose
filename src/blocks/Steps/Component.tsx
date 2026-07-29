@@ -48,7 +48,7 @@ export function Steps({ eyebrow, lede, accentColor = 'rose', steps }: StepsProps
         <ol className='list-none'>
           {steps?.map((step, index) => (
             <li
-              key={step.id ?? index}
+              key={step.id ?? `${step.title}:${step.description}`}
               className={`border-dark-chocolate/20 pb-10 md:pb-14 lg:pb-16 ${
                 index === 0 ? 'pt-0' : 'border-t pt-10 md:pt-14 lg:pt-16'
               }`}

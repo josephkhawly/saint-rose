@@ -51,9 +51,9 @@ export function Visit({
       title: 'Hours',
       content: (
         <dl className='flex flex-col gap-2'>
-          {hours?.map((row, index) => (
+          {hours?.map((row) => (
             <div
-              key={row.id ?? index}
+              key={row.id ?? `${row.days}:${row.times}`}
               className='flex items-baseline justify-end gap-4 text-base leading-relaxed text-black lg:text-lg'
             >
               <dt>{row.days}</dt>
