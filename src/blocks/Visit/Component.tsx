@@ -86,7 +86,7 @@ export function Visit({
   ]
 
   return (
-    <section className='w-full bg-saint px-6 pt-12 pb-24 md:px-12 md:pt-16 md:pb-32 lg:px-16 lg:pt-20 lg:pb-40 xl:px-24'>
+    <section className='w-full px-6 pt-12 pb-24 md:px-12 md:pt-16 md:pb-32 lg:px-16 lg:pt-20 lg:pb-40 xl:px-24'>
       <div className='container mx-auto'>
         <div className='grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8'>
           {(title || hasImage) && (

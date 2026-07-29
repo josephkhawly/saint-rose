@@ -11,7 +11,7 @@ export function BannerWithText({ banner, leftText, rightText }: BannerWithTextPr
     hasBanner && banner.width && banner.height ? banner.width / banner.height : undefined
 
   return (
-    <section className='w-full min-h-screen bg-saint px-6 md:px-12 lg:px-16 xl:px-24 py-20 md:py-32'>
+    <section className='w-full min-h-screen px-6 md:px-12 lg:px-16 xl:px-24 py-20 md:py-32'>
       <div className='container mx-auto flex flex-col gap-16 lg:gap-32'>
         <motion.div
           initial={{ opacity: 0, x: -32 }}
