@@ -35,9 +35,6 @@ importers:
       '@payloadcms/ui':
         specifier: ^3.86.0
         version: 3.86.0(@types/react@19.2.17)(monaco-editor@0.52.2)(next@16.2.9(@babel/core@7.29.7)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.90.0))(payload@3.86.0(bufferutil@4.1.0)(graphql@16.14.2)(typescript@5.8.3)(utf-8-validate@6.0.5))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@5.8.3)
-      '@plaiceholder/next':
-        specifier: ^3.0.0
-        version: 3.0.0(next@16.2.9(@babel/core@7.29.7)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.90.0))(plaiceholder@3.0.0(sharp@0.34.5))(sharp@0.34.5)
       '@tailwindcss/postcss':
         specifier: ^4.3.0
         version: 4.3.0
@@ -1369,13 +1366,6 @@ packages:
 
   '@pinojs/redact@0.4.0':
     resolution: {integrity: sha512-k2ENnmBugE/rzQfEcdWHcCY+/FM3VLzH9cYEsbdsoqrvzAKRhUZeRNhAZvB8OitQJ1TBed3yqWtdjzS6wJKBwg==}
-
-  '@plaiceholder/next@3.0.0':
-    resolution: {integrity: sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw==}
-    peerDependencies:
-      next: '>= 10.0.0'
-      plaiceholder: '>=3.0.0'
-      sharp: '>= 0.30.6'
 
   '@preact/signals-core@1.14.2':
     resolution: {integrity: sha512-RZHdBj9ZF4n40Rp4jS052EHHjBWf96P9oNdXPfhQTovCuWY9iQn3Gq+gOTJSgBO9A/JBuPfMOWsSX/lIU9Pc/A==}
@@ -3479,11 +3469,6 @@ packages:
     resolution: {integrity: sha512-8OEwKp5juEvb/MjpIc4hjqfgCNysrS94RIOMXYvpYCdm/jglrKEiAYmiumbmGhCvs+IcInsphYDFwqrjr7398w==}
     hasBin: true
 
-  plaiceholder@3.0.0:
-    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
-    peerDependencies:
-      sharp: '>= 0.30.6'
-
   pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
@@ -5473,12 +5458,6 @@ snapshots:
       - typescript
 
   '@pinojs/redact@0.4.0': {}
-
-  '@plaiceholder/next@3.0.0(next@16.2.9(@babel/core@7.29.7)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.90.0))(plaiceholder@3.0.0(sharp@0.34.5))(sharp@0.34.5)':
-    dependencies:
-      next: 16.2.9(@babel/core@7.29.7)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.90.0)
-      plaiceholder: 3.0.0(sharp@0.34.5)
-      sharp: 0.34.5
 
   '@preact/signals-core@1.14.2': {}
 
@@ -7801,10 +7780,6 @@ snapshots:
       safe-stable-stringify: 2.5.0
       sonic-boom: 4.2.1
       thread-stream: 3.2.0
-
-  plaiceholder@3.0.0(sharp@0.34.5):
-    dependencies:
-      sharp: 0.34.5
 
   pluralize@8.0.0: {}
 
