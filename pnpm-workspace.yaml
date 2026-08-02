@@ -2,6 +2,7 @@ allowBuilds:
   '@parcel/watcher': true
   bufferutil: true
   esbuild: true
+  sharp: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@next/env@16.2.9'
@@ -19,5 +20,3 @@ minimumReleaseAgeExclude:
   - next@16.2.9
 overrides:
   "@types/react": "19.2.17"
-minimumReleaseAge: 10080
-trustPolicy: no-downgrade
