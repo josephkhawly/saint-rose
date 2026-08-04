@@ -318,8 +318,7 @@ export interface Page {
 export interface IntroBlock {
   introImage: number | Media;
   overlayColor?:
-    | ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima')
-    | null;
+    ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'intro';
@@ -474,8 +473,7 @@ export interface StepsBlock {
   eyebrow?: string | null;
   lede?: string | null;
   accentColor?:
-    | ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima')
-    | null;
+    ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima') | null;
   steps: {
     title: string;
     description: string;
@@ -1077,8 +1075,7 @@ export interface Header {
           label: string;
         };
         hoverAccentColor?:
-          | ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima')
-          | null;
+          ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima') | null;
         id?: string | null;
       }[]
     | null;
