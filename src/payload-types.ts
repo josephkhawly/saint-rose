@@ -216,25 +216,15 @@ export interface StaffMember {
   id: number;
   _order?: string | null;
   name: string;
+  /**
+   * This photo will be displayed on the grid.
+   */
+  photoSmall: number | Media;
   role: string;
   /**
    * Instagram handle without the @
    */
   instagram?: string | null;
-  /**
-   * This photo will be displayed on the grid.
-   */
-  photoSmall: number | Media;
-  /**
-   * This photo will be the banner in the popup if bio is selected below.
-   */
-  photoLarge?: (number | null) | Media;
-  /**
-   * Select which content should be displayed in the popup.
-   */
-  displayType: 'bio' | 'video';
-  bio?: string | null;
-  video?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -755,13 +745,9 @@ export interface ServiceMenuSelect<T extends boolean = true> {
 export interface StaffMemberSelect<T extends boolean = true> {
   _order?: T;
   name?: T;
+  photoSmall?: T;
   role?: T;
   instagram?: T;
-  photoSmall?: T;
-  photoLarge?: T;
-  displayType?: T;
-  bio?: T;
-  video?: T;
   updatedAt?: T;
   createdAt?: T;
 }

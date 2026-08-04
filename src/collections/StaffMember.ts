@@ -5,7 +5,7 @@ export const StaffMember: CollectionConfig = {
   slug: 'staff-member',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'role', 'displayType'],
+    defaultColumns: ['name', 'role'],
     hideAPIURL: process.env.NODE_ENV === 'production',
   },
   orderable: true,
@@ -13,68 +13,34 @@ export const StaffMember: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'role',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'instagram',
-          type: 'text',
-          admin: {
-            description: 'Instagram handle without the @',
-          },
-        },
       ],
     },
     {
-      type: 'row',
-      fields: [
-        {
-          name: 'photoSmall',
-          label: 'Photo (Small)',
-          type: 'upload',
-          relationTo: 'media',
-          required: true,
-          admin: {
-            description: 'This photo will be displayed on the grid.',
-          },
-        },
-        {
-          name: 'photoLarge',
-          label: 'Photo (Large)',
-          type: 'upload',
-          relationTo: 'media',
-          admin: {
-            description: 'This photo will be the banner in the popup if bio is selected below.',
-          },
-        },
-      ],
+      name: 'name',
+      type: 'text',
+      required: true,
     },
     {
-      name: 'displayType',
-      label: 'Display in Modal',
-      type: 'radio',
-      options: ['bio', 'video'],
-      defaultValue: 'bio',
+      name: 'photoSmall',
+      label: 'Headshot',
+      type: 'upload',
+      relationTo: 'media',
       required: true,
       admin: {
-        description: 'Select which content should be displayed in the popup.',
+        description: 'This photo will be displayed on the grid.',
       },
     },
     {
-      name: 'bio',
-      type: 'textarea',
+      name: 'role',
+      type: 'text',
+      required: true,
     },
     {
-      name: 'video',
-      type: 'upload',
-      relationTo: 'media',
+      name: 'instagram',
+      type: 'text',
+      admin: {
+        description: 'Instagram handle without the @',
+      },
     },
   ],
   hooks: {
