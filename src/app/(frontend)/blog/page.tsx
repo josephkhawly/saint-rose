@@ -38,6 +38,8 @@ async function BlogPostCard({
             placeholder={headerImage.blurDataURL ? 'blur' : 'empty'}
             blurDataURL={headerImage.blurDataURL ?? undefined}
             sizes='(max-width: 768px) 100vw, 50vw'
+            loading={index < 2 ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : undefined}
           />
           <div className='pointer-events-none absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-30' />
         </div>

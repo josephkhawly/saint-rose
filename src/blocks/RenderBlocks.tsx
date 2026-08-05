@@ -35,14 +35,22 @@ export const RenderBlocks: React.FC<{
   if (hasBlocks) {
     return (
       <>
-        {blocks.map((block) => {
+        {blocks.map((block, index) => {
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
             if (Block) {
+              const isLcpCandidate = index === 0 && blockType === 'bannerWithText'
               // @ts-expect-error - blockType is string
-              return <Block key={block.id} {...block} disableInnerContainer />
+              return (
+                <Block
+                  key={block.id}
+                  {...block}
+                  disableInnerContainer
+                  {...(isLcpCandidate ? { isLcpCandidate: true } : {})}
+                />
+              )
             }
           }
           return null
