@@ -39,10 +39,11 @@ export const RenderBlocks: React.FC<{
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType]
+            const Block = blockComponents[
+              blockType as keyof typeof blockComponents
+            ] as React.ComponentType<Record<string, unknown>>
             if (Block) {
               const isLcpCandidate = index === 0 && blockType === 'bannerWithText'
-              // @ts-expect-error - blockType is string
               return (
                 <Block
                   key={block.id}
