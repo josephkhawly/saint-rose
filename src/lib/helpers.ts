@@ -74,6 +74,10 @@ export const getBlogList = cache(async () => {
     sort: '-publishedAt',
     depth: 1,
     draft: false,
+    overrideAccess: false,
+    where: {
+      _status: { equals: 'published' },
+    },
     select: {
       title: true,
       slug: true,
