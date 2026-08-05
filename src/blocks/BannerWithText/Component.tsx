@@ -2,11 +2,14 @@ import Image from 'next/image'
 import * as motion from 'motion/react-client'
 import type { BannerWithTextBlock } from '@/payload-types'
 
-type BannerWithTextProps = BannerWithTextBlock
+type BannerWithTextProps = BannerWithTextBlock & {
+  isLcpCandidate?: boolean
+}
 
 export function BannerWithText({
   banner,
   imagePosition = 'top',
+  isLcpCandidate = false,
   leftText,
   rightText,
 }: BannerWithTextProps) {
@@ -35,6 +38,8 @@ export function BannerWithText({
           sizes='100vw'
           placeholder={banner.blurDataURL ? 'blur' : 'empty'}
           blurDataURL={banner.blurDataURL ?? undefined}
+          loading={isLcpCandidate ? 'eager' : 'lazy'}
+          fetchPriority={isLcpCandidate ? 'high' : undefined}
         />
       )}
     </motion.div>

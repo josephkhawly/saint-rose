@@ -2,18 +2,32 @@ import Image from 'next/image'
 import { StaffMember } from '@/payload-types'
 import Link from 'next/link'
 
-function StaffCard({ staffMemberData }) {
+function StaffCard({
+  index,
+  staffMemberData,
+}: {
+  index: number
+  staffMemberData: StaffMember
+}) {
   const { name, role, photoSmall, instagram } = staffMemberData
+  const photo =
+    photoSmall && typeof photoSmall !== 'number' ? photoSmall : null
+
+  if (!photo?.url) return null
+
   return (
     <li>
       <Image
-        src={photoSmall.url}
+        src={photo.url}
         alt={name}
         className='aspect-3/4 w-full object-cover'
         width={500}
         height={500}
-        placeholder={photoSmall.blurDataURL ? 'blur' : 'empty'}
-        blurDataURL={photoSmall.blurDataURL ?? undefined}
+        placeholder={photo.blurDataURL ? 'blur' : 'empty'}
+        blurDataURL={photo.blurDataURL ?? undefined}
+        sizes='(max-width: 639px) calc(100vw - 3rem), (max-width: 767px) 45vw, (max-width: 1279px) 30vw, 20vw'
+        loading={index === 0 ? 'eager' : 'lazy'}
+        fetchPriority={index === 0 ? 'high' : undefined}
       />
       <h3 className='mt-2 text-lg font-marist uppercase'>{name}</h3>
       <p className='text-base/5 italic'>{role}</p>
@@ -55,8 +69,8 @@ export function StaffMemberGrid({
           role='list'
           className={`mx-auto grid max-w-2xl gap-x-6 gap-y-20 ${columns} lg:mx-0 lg:max-w-none lg:gap-x-8 xl:col-span-2`}
         >
-          {staffMembers.map((staffMember) => (
-            <StaffCard key={staffMember.name} staffMemberData={staffMember} />
+          {staffMembers.map((staffMember, index) => (
+            <StaffCard key={staffMember.name} index={index} staffMemberData={staffMember} />
           ))}
         </ul>
       </div>
