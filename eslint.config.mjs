@@ -1,3 +1,4 @@
+import tsParser from '@typescript-eslint/parser'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
 import nextTs from 'eslint-config-next/typescript'
@@ -7,9 +8,27 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   prettier,
-  // Override default ignores of eslint-config-next.
+  {
+    // Avoid eslint-plugin-react calling removed context.getFilename() via version "detect"
+    settings: {
+      react: {
+        version: '19',
+      },
+    },
+  },
+  {
+    // eslint-config-next's Babel parser lacks ScopeManager#addGlobals required by ESLint 10
+    files: ['**/*.{js,mjs,cjs,jsx}'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+  },
   globalIgnores([
-    // Default ignores of eslint-config-next:
     '.next/**',
     'out/**',
     'build/**',
