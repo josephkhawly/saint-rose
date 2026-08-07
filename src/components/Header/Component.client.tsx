@@ -147,31 +147,31 @@ export default function HeaderClient({ data }: { data: Header }) {
 
           <nav className='flex flex-1 flex-col items-center justify-center px-12 md:items-start md:justify-start md:py-12'>
             <ul className='space-y-6 text-center md:text-left md:space-y-8 lg:space-y-10'>
-              {links.map(({ path, label }, index) => (
-                <MenuNavItem
-                  key={label}
-                  href={path}
-                  label={label}
-                  index={index}
-                  menuOpen={menuOpen}
-                  onNavigate={closeMenu}
-                />
-              ))}
               {navItems.map(({ link, hoverAccentColor }, index) => {
                 const href = resolveCmsLinkHref(link)
                 if (!href) return null
                 return (
                   <MenuNavItem
-                    key={link.label}
-                    href={href}
-                    label={link.label}
-                    index={index}
-                    menuOpen={menuOpen}
-                    onNavigate={closeMenu}
-                    hoverAccentColor={hoverAccentColor}
+                  key={link.label}
+                  href={href}
+                  label={link.label}
+                  index={index}
+                  menuOpen={menuOpen}
+                  onNavigate={closeMenu}
+                  hoverAccentColor={hoverAccentColor}
                   />
                 )
               })}
+              {links.map(({ path, label }, index) => (
+                <MenuNavItem
+                  key={label}
+                  href={path}
+                  label={label}
+                  index={index + navItems.length}
+                  menuOpen={menuOpen}
+                  onNavigate={closeMenu}
+                />
+              ))}
             </ul>
           </nav>
         </div>
