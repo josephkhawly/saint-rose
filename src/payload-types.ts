@@ -460,8 +460,6 @@ export interface ImageAndTextColumnBlock {
  * via the `definition` "StepsBlock".
  */
 export interface StepsBlock {
-  eyebrow?: string | null;
-  lede?: string | null;
   accentColor?:
     ('rose' | 'deep-rose' | 'dark-chocolate' | 'mint' | 'lavender' | 'sky' | 'garden' | 'olive' | 'lima') | null;
   steps: {
@@ -921,8 +919,6 @@ export interface ImageAndTextColumnBlockSelect<T extends boolean = true> {
  * via the `definition` "StepsBlock_select".
  */
 export interface StepsBlockSelect<T extends boolean = true> {
-  eyebrow?: T;
-  lede?: T;
   accentColor?: T;
   steps?:
     | T

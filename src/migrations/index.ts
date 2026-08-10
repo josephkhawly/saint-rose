@@ -16,6 +16,7 @@ import * as migration_20260728_220443 from './20260728_220443';
 import * as migration_20260728_224140 from './20260728_224140';
 import * as migration_20260729_225230 from './20260729_225230';
 import * as migration_20260804_183455 from './20260804_183455';
+import * as migration_20260810_210933_steps_remove_eyebrow_lede from './20260810_210933_steps_remove_eyebrow_lede';
 
 export const migrations = [
   {
@@ -106,6 +107,11 @@ export const migrations = [
   {
     up: migration_20260804_183455.up,
     down: migration_20260804_183455.down,
-    name: '20260804_183455'
+    name: '20260804_183455',
+  },
+  {
+    up: migration_20260810_210933_steps_remove_eyebrow_lede.up,
+    down: migration_20260810_210933_steps_remove_eyebrow_lede.down,
+    name: '20260810_210933_steps_remove_eyebrow_lede'
   },
 ];
