@@ -17,34 +17,13 @@ const numeralColorClass = {
 
 type StepsProps = StepsBlock
 
-export function Steps({ eyebrow, lede, accentColor = 'rose', steps }: StepsProps) {
+export function Steps({ accentColor = 'rose', steps }: StepsProps) {
   const accent =
     accentColor && accentColor in numeralColorClass ? (accentColor as AccentColor) : 'rose'
 
   return (
     <section className='w-full px-6 pt-12 pb-24 md:px-12 md:pt-16 md:pb-32 lg:px-16 lg:pt-20 lg:pb-40 xl:px-24'>
       <div className='container mx-auto'>
-        {(eyebrow || lede) && (
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1 }}
-            className='mb-16 max-w-3xl md:mb-24 lg:mb-32'
-          >
-            {eyebrow && (
-              <span className='small-caps mb-6 block text-sm font-marist text-dark-chocolate'>
-                {eyebrow}
-              </span>
-            )}
-            {lede && (
-              <p className='whitespace-break-spaces text-2xl leading-[1.1] text-black md:text-3xl lg:text-4xl'>
-                {lede}
-              </p>
-            )}
-          </motion.div>
-        )}
-
         <ol className='list-none'>
           {steps?.map((step, index) => (
             <li

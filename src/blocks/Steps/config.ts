@@ -6,14 +6,6 @@ export const Steps: Block = {
   slug: 'steps',
   interfaceName: 'StepsBlock',
   fields: [
-    {
-      name: 'eyebrow',
-      type: 'text',
-    },
-    {
-      name: 'lede',
-      type: 'textarea',
-    },
     accentColorField({
       label: 'Numeral Color',
       defaultValue: 'rose',
