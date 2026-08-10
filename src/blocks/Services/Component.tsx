@@ -47,7 +47,7 @@ function ServiceTableTwoColumn({
                   <h3 className="font-body text-lg uppercase text-black">{title}</h3>
                   <p className="font-body text-md text-black/70 mt-2 italic">{description || ''}</p>
                 </div>
-                <span className="font-headline text-2xl">${price}{hourly && '/hr'}+</span>
+                <span className="font-headline text-2xl">{price}{hourly && '/hr'}+</span>
               </div>
             ))}
           </div>
@@ -60,7 +60,14 @@ function ServiceTableTwoColumn({
 export async function ServiceGrid() {
   const services = await getServices()
 
-  return services.map(({ title, services }) => (
-    <ServiceTableTwoColumn key={title} title={title} services={services} />
-  ))
+  return (
+    <>
+      <p className="px-4 pt-12 md:px-8 font-body text-md text-black/70 italic">
+        Prices shown are starting rates and vary based on the level of the stylist.
+      </p>
+      {services.map(({ title, services }) => (
+        <ServiceTableTwoColumn key={title} title={title} services={services} />
+      ))}
+    </>
+  )
 }
