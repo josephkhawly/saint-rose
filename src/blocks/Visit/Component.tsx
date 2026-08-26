@@ -50,7 +50,7 @@ export function Visit({
     {
       title: 'Hours',
       content: (
-        <dl className='flex flex-col gap-2'>
+        <dl className='flex flex-col'>
           {hours?.map((row) => (
             <div
               key={row.id ?? `${row.days}:${row.times}`}
@@ -66,7 +66,7 @@ export function Visit({
     {
       title: 'Contact',
       content: (
-        <div className='flex flex-col gap-2 text-base leading-relaxed text-black lg:text-lg'>
+        <div className='flex flex-col text-base leading-relaxed text-black lg:text-lg'>
           {phone && (
             <Link href={phoneHref ?? ''} className='hover:text-rose transition-colors duration-300'>
               {phone}
