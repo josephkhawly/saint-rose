@@ -45,7 +45,7 @@ function ServiceTableTwoColumn({
               >
                 <div>
                   <h3 className="font-body text-lg uppercase text-black">{title}</h3>
-                  <p className="font-body text-md text-black/70 mt-2 italic">{description || ''}</p>
+                  <p className="font-body text-md text-black/70 mt-2">{description || ''}</p>
                 </div>
                 <span className="font-headline text-2xl">{price}{hourly && '/hr'}+</span>
               </div>
