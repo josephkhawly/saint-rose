@@ -12,6 +12,7 @@ import { StaffMember } from './collections/StaffMember'
 import { BlogPosts } from './collections/BlogPosts'
 import { Hours } from './globals/Hours'
 import { Pages } from './collections/Pages'
+import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
 import { plugins } from './plugins'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
@@ -56,7 +57,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, ServiceMenu, StaffMember, BlogPosts, Pages],
-  globals: [Hours, Header],
+  globals: [Hours, Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
