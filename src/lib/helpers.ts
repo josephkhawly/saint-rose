@@ -50,12 +50,15 @@ export async function getGlobal(slug, depth = 1) {
 }
 
 export const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
+  const { isEnabled: draft } = await draftMode()
   const payload = await getPayload({ config })
 
   const result = await payload.find({
     collection: 'pages',
     limit: 1,
     pagination: false,
+    overrideAccess: draft,
+    draft,
     where: {
       slug: {
         equals: slug,
