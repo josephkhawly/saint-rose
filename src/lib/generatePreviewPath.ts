@@ -11,11 +11,21 @@ type Props = {
   req: PayloadRequest
 }
 
+const getPreviewPath = (collection: keyof typeof collectionPrefixMap, slug: string) => {
+  const prefix = collectionPrefixMap[collection] ?? ''
+
+  if (collection === 'pages' && slug === 'home') {
+    return '/'
+  }
+
+  return `${prefix}/${slug}`.replace(/\/+/g, '/')
+}
+
 export const generatePreviewPath = ({ collection, slug, req }: Props) => {
   const encodedParams = new URLSearchParams({
     slug,
     collection,
-    path: `${collectionPrefixMap[collection]}/${slug}`,
+    path: getPreviewPath(collection, slug),
     previewSecret: process.env.PREVIEW_SECRET || '',
   })
 
