@@ -1,6 +1,6 @@
 // import { ServiceList } from './ServiceList'
 import { getServices } from '@/lib/helpers'
-import { ServiceMenu } from '@/payload-types'
+import type { ServiceMenu, ServicesBlock } from '@/payload-types'
 import Image, { StaticImageData } from 'next/image'
 
 interface ServiceTableProps {
@@ -57,14 +57,18 @@ function ServiceTableTwoColumn({
   )
 }
 
-export async function ServiceGrid() {
+type ServiceGridProps = Pick<ServicesBlock, 'disclaimer'>
+
+export async function ServiceGrid({ disclaimer }: ServiceGridProps) {
   const services = await getServices()
 
   return (
     <>
-      <p className="px-4 pt-12 md:px-8 font-body text-md text-black/70 italic">
-        Prices shown are starting rates and vary based on the level of the stylist.
-      </p>
+      {disclaimer && (
+        <p className="px-4 pt-12 md:px-8 font-body text-md text-black/70 italic">
+          {disclaimer}
+        </p>
+      )}
       {services.map(({ title, services }) => (
         <ServiceTableTwoColumn key={title} title={title} services={services} />
       ))}

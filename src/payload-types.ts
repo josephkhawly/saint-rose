@@ -399,10 +399,7 @@ export interface VideoBlock {
  * via the `definition` "ServicesBlock".
  */
 export interface ServicesBlock {
-  /**
-   * The maximum number of columns to display on desktop.
-   */
-  columns: number;
+  disclaimer?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'services';
@@ -872,7 +869,7 @@ export interface VideoBlockSelect<T extends boolean = true> {
  * via the `definition` "ServicesBlock_select".
  */
 export interface ServicesBlockSelect<T extends boolean = true> {
-  columns?: T;
+  disclaimer?: T;
   id?: T;
   blockName?: T;
 }

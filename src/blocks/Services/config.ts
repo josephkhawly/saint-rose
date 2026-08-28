@@ -6,15 +6,10 @@ export const Services: Block = {
   imageURL: '/images/thumbnails/services.webp',
   fields: [
     {
-      name: 'columns',
-      type: 'number',
-      max: 3,
-      min: 1,
-      defaultValue: 2,
-      required: true,
-      admin: {
-        description: 'The maximum number of columns to display on desktop.',
-      },
+      name: 'disclaimer',
+      type: 'text',
+      defaultValue:
+        'Prices shown are starting rates and vary based on the level of the stylist.',
     },
   ],
 }
