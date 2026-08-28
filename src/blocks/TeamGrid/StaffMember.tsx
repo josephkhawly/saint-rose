@@ -53,7 +53,7 @@ export function StaffMemberGrid({
 }: {
   blockTitle: string
   columns: string
-  description: string
+  description?: string | null
   staffMembers: StaffMember[]
 }) {
   return (
@@ -63,7 +63,7 @@ export function StaffMemberGrid({
           <h2 className='text-lg tracking-tight text-pretty sm:text-xl uppercase'>
             {blockTitle}
           </h2>
-          <p className='mt-6 text-lg/6'>{description}</p>
+          {description && <p className='mt-6 text-lg/6'>{description}</p>}
         </div>
         <ul
           role='list'

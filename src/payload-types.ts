@@ -410,7 +410,7 @@ export interface ServicesBlock {
  */
 export interface TeamGridBlock {
   blockTitle: string;
-  description: string;
+  description?: string | null;
   /**
    * The maximum number of columns to display on large screens. Columns will be reduced automatically on smaller screens.
    */
