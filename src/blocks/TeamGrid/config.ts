@@ -8,9 +8,9 @@ export const TeamGrid: Block = {
     {
       name: 'columns',
       type: 'number',
-      max: 5,
+      max: 3,
       min: 1,
-      defaultValue: 4,
+      defaultValue: 2,
       required: true,
       admin: {
         description: 'The maximum number of columns to display on large screens. Columns will be reduced automatically on smaller screens.',
