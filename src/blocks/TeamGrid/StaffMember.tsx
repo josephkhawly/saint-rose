@@ -46,24 +46,24 @@ function StaffCard({
 }
 
 export function StaffMemberGrid({
-  staffMembers,
+  blockTitle,
   columns,
+  description,
+  staffMembers,
 }: {
-  staffMembers: StaffMember[]
+  blockTitle: string
   columns: string
+  description: string
+  staffMembers: StaffMember[]
 }) {
-
   return (
     <div className='py-24 md:py-32 lg:py-40' >
       <div className='mx-auto grid grid-cols-1 gap-20 px-6 lg:px-8 xl:grid-cols-3'>
         <div className='mx-auto max-w-2xl lg:mx-0'>
           <h2 className='text-lg tracking-tight text-pretty sm:text-xl uppercase'>
-            Meet The Team
+            {blockTitle}
           </h2>
-          <p className='mt-6 text-lg/6'>
-            Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone you vibe
-            with? Let us know when you book and we&apos;ll make the match.
-          </p>
+          <p className='mt-6 text-lg/6'>{description}</p>
         </div>
         <ul
           role='list'

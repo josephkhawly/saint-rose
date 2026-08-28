@@ -2,7 +2,7 @@ import { StaffMemberGrid } from './StaffMember'
 import { getStaff } from '@/lib/helpers'
 import { TeamGridBlock } from '@/payload-types'
 
-export async function TeamGrid({ columns }: TeamGridBlock) {
+export async function TeamGrid({ blockTitle, columns, description }: TeamGridBlock) {
   const staffMembers = await getStaff()
 
   const columnsClass = {
@@ -13,5 +13,12 @@ export async function TeamGrid({ columns }: TeamGridBlock) {
     5: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5',
   }
 
-  return <StaffMemberGrid staffMembers={staffMembers} columns={columnsClass[columns]} />
+  return (
+    <StaffMemberGrid
+      blockTitle={blockTitle}
+      columns={columnsClass[columns]}
+      description={description}
+      staffMembers={staffMembers}
+    />
+  )
 }
