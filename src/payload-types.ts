@@ -409,6 +409,8 @@ export interface ServicesBlock {
  * via the `definition` "TeamGridBlock".
  */
 export interface TeamGridBlock {
+  blockTitle: string;
+  description: string;
   /**
    * The maximum number of columns to display on large screens. Columns will be reduced automatically on smaller screens.
    */
@@ -878,6 +880,8 @@ export interface ServicesBlockSelect<T extends boolean = true> {
  * via the `definition` "TeamGridBlock_select".
  */
 export interface TeamGridBlockSelect<T extends boolean = true> {
+  blockTitle?: T;
+  description?: T;
   columns?: T;
   id?: T;
   blockName?: T;

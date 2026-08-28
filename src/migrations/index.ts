@@ -19,6 +19,7 @@ import * as migration_20260804_183455 from './20260804_183455';
 import * as migration_20260810_210933_steps_remove_eyebrow_lede from './20260810_210933_steps_remove_eyebrow_lede';
 import * as migration_20260827_210253 from './20260827_210253';
 import * as migration_20260828_183500_services_disclaimer from './20260828_183500_services_disclaimer';
+import * as migration_20260828_190500_team_block_title_description from './20260828_190500_team_block_title_description';
 
 export const migrations = [
   {
@@ -125,5 +126,10 @@ export const migrations = [
     up: migration_20260828_183500_services_disclaimer.up,
     down: migration_20260828_183500_services_disclaimer.down,
     name: '20260828_183500_services_disclaimer',
+  },
+  {
+    up: migration_20260828_190500_team_block_title_description.up,
+    down: migration_20260828_190500_team_block_title_description.down,
+    name: '20260828_190500_team_block_title_description',
   },
 ];

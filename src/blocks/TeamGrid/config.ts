@@ -6,6 +6,21 @@ export const TeamGrid: Block = {
   imageURL: '/images/thumbnails/team.webp',
   fields: [
     {
+      name: 'blockTitle',
+      type: 'text',
+      label: 'Block title',
+      defaultValue: 'Meet The Team',
+      required: true,
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      label: 'Description',
+      defaultValue:
+        "Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone you vibe with? Let us know when you book and we'll make the match.",
+      required: true,
+    },
+    {
       name: 'columns',
       type: 'number',
       max: 3,
