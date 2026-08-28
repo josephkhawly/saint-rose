@@ -18,7 +18,6 @@ export const TeamGrid: Block = {
       label: 'Description',
       defaultValue:
         "Not-your-ordinary-hairdressers. Meet the people behind the chair. See someone you vibe with? Let us know when you book and we'll make the match.",
-      required: true,
     },
     {
       name: 'columns',
