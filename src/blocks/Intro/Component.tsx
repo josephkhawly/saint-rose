@@ -32,6 +32,7 @@ export function Intro({ introImage, overlayColor = 'rose' }: IntroProps) {
               preload
               className='object-cover object-center'
               sizes='100vw'
+              quality={60}
               placeholder={introImage.blurDataURL ? 'blur' : 'empty'}
               blurDataURL={introImage.blurDataURL ?? undefined}
             />
