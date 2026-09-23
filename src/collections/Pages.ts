@@ -3,7 +3,6 @@ import { slugField } from '@/fields/slug'
 import { Quotes } from '@/blocks/Quotes/config'
 import { RichText } from '@/blocks/RichText/config'
 import { BannerWithText } from '@/blocks/BannerWithText/config'
-import { Video } from '@/blocks/Video/config'
 import { revalidateDelete, revalidatePage } from '@/hooks/revalidatePage'
 import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { generatePreviewPath } from '@/lib/generatePreviewPath'
@@ -110,7 +109,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 RichText,
                 Quotes,
                 BannerWithText,
-                Video,
                 Services,
                 TeamGrid,
                 Gallery,
