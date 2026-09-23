@@ -17,6 +17,7 @@ import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
 import { plugins } from './plugins'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { getServerSideURL } from './utils/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,6 +26,7 @@ export default buildConfig({
   graphQL: {
     disable: true,
   },
+  serverURL: getServerSideURL(),
   admin: {
     user: Users.slug,
     avatar: 'default',
