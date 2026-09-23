@@ -45,5 +45,6 @@ export const Media: CollectionConfig = {
   upload: true,
   admin: {
     defaultColumns: ['filename', 'alt', 'updatedAt'],
+    hideAPIURL: process.env.NODE_ENV === 'production',
   }
 }

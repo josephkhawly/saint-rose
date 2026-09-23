@@ -24,4 +24,7 @@ export const Footer: GlobalConfig = {
   hooks: {
     afterChange: [revalidateFooter],
   },
+  admin: {
+    hidden: true,
+  },
 }

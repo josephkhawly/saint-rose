@@ -9,6 +9,9 @@ export const Header: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    hideAPIURL: process.env.NODE_ENV === 'production',
+  },
   fields: [
     {
       name: 'navItems',
