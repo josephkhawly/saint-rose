@@ -1,10 +1,36 @@
 'use server'
 
+import config from '@payload-config'
 import { revalidatePath } from 'next/cache'
+import { getPayload } from 'payload'
 import * as z from 'zod/v4'
 
-export async function submitCareerApplication(prevState: any, formData: FormData) {
-  // Define Zod schema for the form
+function getSubmittedValues(formData: FormData) {
+  const get = (key: string) => {
+    const value = formData.get(key)
+    return typeof value === 'string' ? value : ''
+  }
+
+  return {
+    address: get('address'),
+    email: get('email'),
+    firstName: get('firstName'),
+    instagramHandle: get('instagramHandle'),
+    lastName: get('lastName'),
+    license: get('license'),
+    phone: get('phone'),
+    position: get('position'),
+    question1: get('question1'),
+    question2: get('question2'),
+    question3: get('question3'),
+    question4: get('question4'),
+    question5: get('question5'),
+    question6: get('question6'),
+    startDate: get('startDate'),
+  }
+}
+
+export async function submitCareerApplication(prevState: unknown, formData: FormData) {
   const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),
     lastName: z.string().min(1, 'Last name is required'),
@@ -40,7 +66,6 @@ export async function submitCareerApplication(prevState: any, formData: FormData
       ),
   })
 
-  // Extract fields from FormData
   const data = {
     firstName: formData.get('firstName'),
     lastName: formData.get('lastName'),
@@ -60,23 +85,96 @@ export async function submitCareerApplication(prevState: any, formData: FormData
     resumeFile: formData.get('resumeFile'),
   }
 
+  const values = getSubmittedValues(formData)
+
   const result = await schema.safeParseAsync(data)
   if (!result.success) {
-    // Map errors to fields
     const fieldErrors: Record<string, string> = {}
     for (const issue of result.error.issues) {
       if (issue.path && issue.path.length > 0) {
         const field = issue.path[0] as string
-        // Only show the first error per field
         if (!fieldErrors[field]) {
           fieldErrors[field] = issue.message
         }
       }
     }
-    return { fieldErrors }
+    return { fieldErrors, formKey: crypto.randomUUID(), values }
   }
 
-  // TODO: Implement file/email logic here
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    address,
+    startDate,
+    instagramHandle,
+    license,
+    position,
+    question1,
+    question2,
+    question3,
+    question4,
+    question5,
+    question6,
+    resumeFile,
+  } = result.data
+
+  try {
+    const payload = await getPayload({ config })
+    const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer())
+
+    await payload.sendEmail({
+      to: 'joseph.khawly@gmail.com',
+      subject: 'Submission from careers page',
+      html: `
+      <strong>What position are you applying for?:</strong> ${position}
+      <br />
+      <strong>First Name:</strong> ${firstName}
+      <br />
+      <strong>Last Name:</strong> ${lastName}
+      <br />
+      <strong>Email:</strong> ${email}
+      <br />
+      <strong>Phone:</strong> ${phone}
+      <br />
+      <strong>Address:</strong> ${address}
+      <br />
+      <strong>When can you start?:</strong> ${startDate}
+      <br />
+      <strong>Business Instagram handle:</strong> ${instagramHandle ?? ''}
+      <br />
+      <strong>Do you have a valid Texas Cosmetology License?:</strong> ${license}
+      <br />
+      <strong>What do you know about Saint Rose?:</strong> ${question1 ?? ''}
+      <br />
+      <strong>What are you looking for in a salon?:</strong> ${question2 ?? ''}
+      <br />
+      <strong>Give us an example of exceptional customer service.:</strong> ${question3 ?? ''}
+      <br />
+      <strong>How do you want to improve yourself in the next year?:</strong> ${question4 ?? ''}
+      <br />
+      <strong>Who has impacted you the most in your career and how?:</strong> ${question5 ?? ''}
+      <br />
+      <strong>Is there anything else you would like us to know?:</strong> ${question6 ?? ''}
+      <br />
+      `,
+      attachments: [
+        {
+          filename: resumeFile.name,
+          content: resumeBuffer,
+        },
+      ],
+    })
+  } catch (error) {
+    console.error('Error sending career application email:', error)
+    return {
+      errorMessage: 'Unable to submit application. Please try again.',
+      formKey: crypto.randomUUID(),
+      values,
+    }
+  }
+
   revalidatePath('/careers')
   return { successMessage: 'Application submitted successfully.' }
 }
