@@ -36,7 +36,18 @@ function formatStartDate(date: string) {
   return `${month}/${day}/${year}`
 }
 
-export async function submitCareerApplication(prevState: unknown, formData: FormData) {
+export type CareerApplicationState = {
+  errorMessage?: string
+  fieldErrors?: Record<string, string>
+  formKey?: string
+  successMessage?: string
+  values?: ReturnType<typeof getSubmittedValues>
+}
+
+export async function submitCareerApplication(
+  prevState: CareerApplicationState | undefined,
+  formData: FormData,
+): Promise<CareerApplicationState> {
   const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),
     lastName: z.string().min(1, 'Last name is required'),

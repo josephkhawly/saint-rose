@@ -1,7 +1,10 @@
 'use client'
 
 import { useActionState, useState } from 'react'
-import { submitCareerApplication } from '../app/(frontend)/actions'
+import {
+  type CareerApplicationState,
+  submitCareerApplication,
+} from '../app/(frontend)/actions'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
@@ -118,7 +121,10 @@ function CheckboxGroup({
 }
 
 export default function ApplyForm() {
-  const [state, formAction, pending] = useActionState(submitCareerApplication, undefined)
+  const [state, formAction, pending] = useActionState(
+    submitCareerApplication,
+    undefined as CareerApplicationState | undefined,
+  )
   const fieldErrors = state?.fieldErrors || {}
   const values = state?.values
 
