@@ -38,6 +38,9 @@ const nextConfig = {
     turbopackFileSystemCacheForDev: true,
     turbopackFileSystemCacheForBuild: true,
   },
+  serverActions: {
+    bodySizeLimit: '6mb',
+  },
   async redirects() {
     // Redirects for links in linkin.bio
     // We can remove these redirects once it's been updated

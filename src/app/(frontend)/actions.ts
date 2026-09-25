@@ -36,6 +36,15 @@ function formatStartDate(date: string) {
   return `${month}/${day}/${year}`
 }
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
 export type CareerApplicationState = {
   errorMessage?: string
   fieldErrors?: Record<string, string>
@@ -139,47 +148,47 @@ export async function submitCareerApplication(
 
   try {
     const payload = await getPayload({ config })
-    const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer())
+    const resumeContent = Buffer.from(await resumeFile.arrayBuffer()).toString('base64')
 
     await payload.sendEmail({
       to: 'info@hairbysaintrose.com',
       subject: 'Submission from careers page',
       html: `
-      <strong>What position are you applying for?:</strong> ${position}
+      <strong>What position are you applying for?:</strong> ${escapeHtml(position)}
       <br />
-      <strong>First Name:</strong> ${firstName}
+      <strong>First Name:</strong> ${escapeHtml(firstName)}
       <br />
-      <strong>Last Name:</strong> ${lastName}
+      <strong>Last Name:</strong> ${escapeHtml(lastName)}
       <br />
-      <strong>Email:</strong> ${email}
+      <strong>Email:</strong> ${escapeHtml(email)}
       <br />
-      <strong>Phone:</strong> ${phone}
+      <strong>Phone:</strong> ${escapeHtml(phone)}
       <br />
-      <strong>Address:</strong> ${address}
+      <strong>Address:</strong> ${escapeHtml(address)}
       <br />
-      <strong>When can you start?:</strong> ${formatStartDate(startDate)}
+      <strong>When can you start?:</strong> ${escapeHtml(formatStartDate(startDate))}
       <br />
-      <strong>Business Instagram handle:</strong> ${instagramHandle ?? ''}
+      <strong>Business Instagram handle:</strong> ${escapeHtml(instagramHandle ?? '')}
       <br />
-      <strong>Do you have a valid Texas Cosmetology License?:</strong> ${license}
+      <strong>Do you have a valid Texas Cosmetology License?:</strong> ${escapeHtml(license)}
       <br />
-      <strong>What do you know about Saint Rose?:</strong> ${question1 ?? ''}
+      <strong>What do you know about Saint Rose?:</strong> ${escapeHtml(question1 ?? '')}
       <br />
-      <strong>What are you looking for in a salon?:</strong> ${question2 ?? ''}
+      <strong>What are you looking for in a salon?:</strong> ${escapeHtml(question2 ?? '')}
       <br />
-      <strong>Give us an example of exceptional customer service.:</strong> ${question3 ?? ''}
+      <strong>Give us an example of exceptional customer service.:</strong> ${escapeHtml(question3 ?? '')}
       <br />
-      <strong>How do you want to improve yourself in the next year?:</strong> ${question4 ?? ''}
+      <strong>How do you want to improve yourself in the next year?:</strong> ${escapeHtml(question4 ?? '')}
       <br />
-      <strong>Who has impacted you the most in your career and how?:</strong> ${question5 ?? ''}
+      <strong>Who has impacted you the most in your career and how?:</strong> ${escapeHtml(question5 ?? '')}
       <br />
-      <strong>Is there anything else you would like us to know?:</strong> ${question6 ?? ''}
+      <strong>Is there anything else you would like us to know?:</strong> ${escapeHtml(question6 ?? '')}
       <br />
       `,
       attachments: [
         {
           filename: resumeFile.name,
-          content: resumeBuffer,
+          content: resumeContent,
         },
       ],
     })
