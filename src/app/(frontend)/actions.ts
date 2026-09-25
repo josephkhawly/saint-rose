@@ -30,6 +30,12 @@ function getSubmittedValues(formData: FormData) {
   }
 }
 
+function formatStartDate(date: string) {
+  const [year, month, day] = date.split('-')
+  if (!year || !month || !day) return date
+  return `${month}/${day}/${year}`
+}
+
 export async function submitCareerApplication(prevState: unknown, formData: FormData) {
   const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),
@@ -53,7 +59,7 @@ export async function submitCareerApplication(prevState: unknown, formData: Form
     question6: z.string().max(800, 'Response must be 800 characters or less').optional(),
     resumeFile: z
       .file()
-      .max(1024 * 1024 * 20, 'File must be less than 20MB')
+      .max(1024 * 1024 * 5, 'File must be less than 5MB')
       .mime(
         [
           'application/pdf',
@@ -140,7 +146,7 @@ export async function submitCareerApplication(prevState: unknown, formData: Form
       <br />
       <strong>Address:</strong> ${address}
       <br />
-      <strong>When can you start?:</strong> ${startDate}
+      <strong>When can you start?:</strong> ${formatStartDate(startDate)}
       <br />
       <strong>Business Instagram handle:</strong> ${instagramHandle ?? ''}
       <br />

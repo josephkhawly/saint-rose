@@ -1,10 +1,11 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useState } from 'react'
 import { submitCareerApplication } from '../app/(frontend)/actions'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
+const questionMaxLength = 800
 
 const inputClasses =
   'mt-3 block w-full h-12 border border-black/80 bg-transparent px-3.5 text-lg focus:border-deep-rose focus:outline-none transition-colors'
@@ -13,6 +14,7 @@ const textareaClasses =
 const labelClasses = 'block text-base leading-8'
 const fieldClasses = 'mb-10 md:mb-11'
 const errorClasses = 'mt-3 block text-base text-red-600'
+const hintClasses = 'mt-3 block text-sm text-black/60'
 
 function FormField({
   defaultValue,
@@ -34,22 +36,46 @@ function FormField({
       <label className={labelClasses}>
         {label}
         {required && '*'}
-        {type === 'textarea' ? (
-          <textarea
-            className={textareaClasses}
-            name={name}
-            maxLength={800}
-            defaultValue={defaultValue}
-          />
-        ) : (
-          <input
-            className={inputClasses}
-            type={type}
-            name={name}
-            defaultValue={defaultValue}
-          />
-        )}
+        <input
+          className={inputClasses}
+          type={type}
+          name={name}
+          defaultValue={defaultValue}
+        />
       </label>
+      {error && <div className={errorClasses}>{error}</div>}
+    </div>
+  )
+}
+
+function TextareaField({
+  defaultValue = '',
+  label,
+  name,
+  error,
+}: {
+  defaultValue?: string
+  label: string
+  name: string
+  error?: string
+}) {
+  const [characterCount, setCharacterCount] = useState(defaultValue.length)
+
+  return (
+    <div className={fieldClasses}>
+      <label className={labelClasses}>
+        {label}
+        <textarea
+          className={textareaClasses}
+          name={name}
+          maxLength={questionMaxLength}
+          defaultValue={defaultValue}
+          onInput={(event) => setCharacterCount(event.currentTarget.value.length)}
+        />
+      </label>
+      <p className={hintClasses}>
+        {characterCount}/{questionMaxLength} characters
+      </p>
       {error && <div className={errorClasses}>{error}</div>}
     </div>
   )
@@ -99,7 +125,7 @@ export default function ApplyForm() {
   if (state?.successMessage) {
     return (
       <div className='max-w-7xl px-6 pb-24 md:pb-32' role='status' aria-live='polite'>
-        <p className='font-caslon text-xl uppercase text-deep-rose'>Thank you</p>
+        <p className='font-caslon text-xl uppercase'>Thank you</p>
         <p className='mt-4 max-w-2xl text-pretty text-xl md:text-3xl'>{state.successMessage}</p>
         <p className='mt-6 max-w-2xl text-base md:text-lg'>
           We&apos;ve received your application and will be in touch if there&apos;s a fit. If you have
@@ -213,51 +239,47 @@ export default function ApplyForm() {
             name='resumeFile'
             accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
           />
+          <p className={hintClasses}>Max file size: 5MB</p>
+          <p className='mt-1 block text-sm text-black/60'>Accepted formats: PDF, DOC, DOCX</p>
           {fieldErrors.resumeFile && (
             <div className={errorClasses}>{fieldErrors.resumeFile}</div>
           )}
         </div>
       </div>
 
-      <FormField
+      <TextareaField
         label='What do you know about Saint Rose?'
         name='question1'
-        type='textarea'
         defaultValue={values?.question1}
         error={fieldErrors.question1}
       />
-      <FormField
+      <TextareaField
         label='What are you looking for in a salon?'
         name='question2'
-        type='textarea'
         defaultValue={values?.question2}
         error={fieldErrors.question2}
       />
-      <FormField
+      <TextareaField
         label='Give us an example of exceptional customer service.'
         name='question3'
-        type='textarea'
         defaultValue={values?.question3}
         error={fieldErrors.question3}
       />
-      <FormField
+      <TextareaField
         label='How do you want to improve yourself in the next year?'
         name='question4'
-        type='textarea'
         defaultValue={values?.question4}
         error={fieldErrors.question4}
       />
-      <FormField
+      <TextareaField
         label='Who has impacted you the most in your career and how?'
         name='question5'
-        type='textarea'
         defaultValue={values?.question5}
         error={fieldErrors.question5}
       />
-      <FormField
+      <TextareaField
         label='Is there anything else you would like us to know?'
         name='question6'
-        type='textarea'
         defaultValue={values?.question6}
         error={fieldErrors.question6}
       />
