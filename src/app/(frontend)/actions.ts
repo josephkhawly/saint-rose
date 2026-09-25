@@ -142,7 +142,7 @@ export async function submitCareerApplication(
     const resumeBuffer = Buffer.from(await resumeFile.arrayBuffer())
 
     await payload.sendEmail({
-      to: 'joseph.khawly@gmail.com',
+      to: 'info@hairbysaintrose.com',
       subject: 'Submission from careers page',
       html: `
       <strong>What position are you applying for?:</strong> ${position}
