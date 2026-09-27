@@ -1,4 +1,5 @@
 import { withPayload } from '@payloadcms/next/withPayload'
+import { withBotId } from 'botid/next/config'
 /** @type {import('next').NextConfig} */
 
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -70,4 +71,4 @@ const nextConfig = {
   reactCompiler: true,
 }
 
-export default withPayload(nextConfig)
+export default withBotId(withPayload(nextConfig))

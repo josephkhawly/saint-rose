@@ -1,6 +1,7 @@
 'use server'
 
 import config from '@payload-config'
+import { checkBotId } from 'botid/server'
 import { revalidatePath } from 'next/cache'
 import { getPayload } from 'payload'
 import * as z from 'zod/v4'
@@ -57,6 +58,11 @@ export async function submitCareerApplication(
   prevState: CareerApplicationState | undefined,
   formData: FormData,
 ): Promise<CareerApplicationState> {
+  const verification = await checkBotId()
+  if (verification.isBot) {
+    return { errorMessage: 'Unable to submit application. Please try again.' }
+  }
+
   const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),
     lastName: z.string().min(1, 'Last name is required'),
