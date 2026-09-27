@@ -6,6 +6,8 @@ import { revalidatePath } from 'next/cache'
 import { getPayload } from 'payload'
 import * as z from 'zod/v4'
 
+type SubmittedValues = ReturnType<typeof getSubmittedValues>
+
 function getSubmittedValues(formData: FormData) {
   const get = (key: string) => {
     const value = formData.get(key)
@@ -46,25 +48,32 @@ function escapeHtml(value: string) {
     .replaceAll("'", '&#39;')
 }
 
+function recoverableError(
+  values: SubmittedValues,
+  extras: Pick<CareerApplicationState, 'errorMessage' | 'fieldErrors'> = {},
+): CareerApplicationState {
+  return { formKey: crypto.randomUUID(), values, ...extras }
+}
+
 export type CareerApplicationState = {
   errorMessage?: string
   fieldErrors?: Record<string, string>
   formKey?: string
   successMessage?: string
-  values?: ReturnType<typeof getSubmittedValues>
+  values?: SubmittedValues
 }
 
 export async function submitCareerApplication(
-  prevState: CareerApplicationState | undefined,
+  _prevState: CareerApplicationState | undefined,
   formData: FormData,
 ): Promise<CareerApplicationState> {
+  const values = getSubmittedValues(formData)
+
   const verification = await checkBotId()
   if (verification.isBot) {
-    return {
+    return recoverableError(values, {
       errorMessage: 'Unable to submit application. Please try again.',
-      formKey: crypto.randomUUID(),
-      values: getSubmittedValues(formData),
-    }
+    })
   }
 
   const schema = z.object({
@@ -102,8 +111,6 @@ export async function submitCareerApplication(
       ),
   })
 
-  const values = getSubmittedValues(formData)
-
   const result = await schema.safeParseAsync({
     ...values,
     resumeFile: formData.get('resumeFile'),
@@ -111,14 +118,12 @@ export async function submitCareerApplication(
   if (!result.success) {
     const fieldErrors: Record<string, string> = {}
     for (const issue of result.error.issues) {
-      if (issue.path && issue.path.length > 0) {
-        const field = issue.path[0] as string
-        if (!fieldErrors[field]) {
-          fieldErrors[field] = issue.message
-        }
+      const field = issue.path[0]
+      if (typeof field === 'string' && !fieldErrors[field]) {
+        fieldErrors[field] = issue.message
       }
     }
-    return { fieldErrors, formKey: crypto.randomUUID(), values }
+    return recoverableError(values, { fieldErrors })
   }
 
   const {
@@ -188,11 +193,9 @@ export async function submitCareerApplication(
     })
   } catch (error) {
     console.error('Error sending career application email:', error)
-    return {
+    return recoverableError(values, {
       errorMessage: 'Unable to submit application. Please try again.',
-      formKey: crypto.randomUUID(),
-      values,
-    }
+    })
   }
 
   revalidatePath('/careers')

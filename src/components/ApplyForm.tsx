@@ -1,10 +1,7 @@
 'use client'
 
 import { useActionState, useState } from 'react'
-import {
-  type CareerApplicationState,
-  submitCareerApplication,
-} from '../app/(frontend)/actions'
+import { submitCareerApplication } from '../app/(frontend)/actions'
 
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
@@ -129,10 +126,7 @@ function CheckboxGroup({
 }
 
 export default function ApplyForm() {
-  const [state, formAction, pending] = useActionState(
-    submitCareerApplication,
-    undefined as CareerApplicationState | undefined,
-  )
+  const [state, formAction, pending] = useActionState(submitCareerApplication, undefined)
   const fieldErrors = state?.fieldErrors || {}
   const values = state?.values
 
@@ -163,128 +157,128 @@ export default function ApplyForm() {
       action={formAction}
     >
       <fieldset disabled={pending} className='min-w-0 border-0 p-0'>
-      <CheckboxGroup
-        label='What position are you applying for?'
-        name='position'
-        options={positionOptions}
-        defaultValue={values?.position}
-        error={fieldErrors.position}
-      />
-
-      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
-        <FormField
-          label='First Name'
-          name='firstName'
-          type='text'
-          required
-          defaultValue={values?.firstName}
-          error={fieldErrors.firstName}
-        />
-        <FormField
-          label='Last Name'
-          name='lastName'
-          type='text'
-          required
-          defaultValue={values?.lastName}
-          error={fieldErrors.lastName}
-        />
-      </div>
-
-      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
-        <FormField
-          label='Email'
-          name='email'
-          type='email'
-          required
-          defaultValue={values?.email}
-          error={fieldErrors.email}
-        />
-        <FormField
-          label='Phone'
-          name='phone'
-          type='tel'
-          required
-          defaultValue={values?.phone}
-          error={fieldErrors.phone}
-        />
-      </div>
-
-      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
-        <FormField
-          label='Address'
-          name='address'
-          type='text'
-          required
-          defaultValue={values?.address}
-          error={fieldErrors.address}
-        />
-        <FormField
-          label='When can you start?'
-          name='startDate'
-          type='date'
-          required
-          defaultValue={values?.startDate}
-          error={fieldErrors.startDate}
-        />
-      </div>
-
-      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
-        <FormField
-          label='Business Instagram handle'
-          name='instagramHandle'
-          type='text'
-          defaultValue={values?.instagramHandle}
-          error={fieldErrors.instagramHandle}
-        />
         <CheckboxGroup
-          label='Do you have a valid Texas Cosmetology License?'
-          name='license'
-          options={licenseOptions}
-          defaultValue={values?.license}
-          error={fieldErrors.license}
+          label='What position are you applying for?'
+          name='position'
+          options={positionOptions}
+          defaultValue={values?.position}
+          error={fieldErrors.position}
         />
-      </div>
 
-      <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
-        <div className={fieldClasses}>
-          <div className={labelClasses}>Resume*</div>
-          <input
-            className='mt-3 block w-full text-sm capitalize file:mr-3.5 file:h-12 file:cursor-pointer file:border-0 file:bg-rose file:px-4 file:text-sm file:text-black file:uppercase'
-            type='file'
-            name='resumeFile'
-            accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
+          <FormField
+            label='First Name'
+            name='firstName'
+            type='text'
+            required
+            defaultValue={values?.firstName}
+            error={fieldErrors.firstName}
           />
-          <p className={hintClasses}>Max file size: 4MB</p>
-          <p className='mt-1 block text-sm text-black/60'>Accepted formats: PDF, DOC, DOCX</p>
-          {fieldErrors.resumeFile && (
-            <div className={errorClasses}>{fieldErrors.resumeFile}</div>
+          <FormField
+            label='Last Name'
+            name='lastName'
+            type='text'
+            required
+            defaultValue={values?.lastName}
+            error={fieldErrors.lastName}
+          />
+        </div>
+
+        <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
+          <FormField
+            label='Email'
+            name='email'
+            type='email'
+            required
+            defaultValue={values?.email}
+            error={fieldErrors.email}
+          />
+          <FormField
+            label='Phone'
+            name='phone'
+            type='tel'
+            required
+            defaultValue={values?.phone}
+            error={fieldErrors.phone}
+          />
+        </div>
+
+        <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
+          <FormField
+            label='Address'
+            name='address'
+            type='text'
+            required
+            defaultValue={values?.address}
+            error={fieldErrors.address}
+          />
+          <FormField
+            label='When can you start?'
+            name='startDate'
+            type='date'
+            required
+            defaultValue={values?.startDate}
+            error={fieldErrors.startDate}
+          />
+        </div>
+
+        <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
+          <FormField
+            label='Business Instagram handle'
+            name='instagramHandle'
+            type='text'
+            defaultValue={values?.instagramHandle}
+            error={fieldErrors.instagramHandle}
+          />
+          <CheckboxGroup
+            label='Do you have a valid Texas Cosmetology License?'
+            name='license'
+            options={licenseOptions}
+            defaultValue={values?.license}
+            error={fieldErrors.license}
+          />
+        </div>
+
+        <div className='grid grid-cols-1 gap-x-12 md:grid-cols-2'>
+          <div className={fieldClasses}>
+            <div className={labelClasses}>Resume*</div>
+            <input
+              className='mt-3 block w-full text-sm capitalize file:mr-3.5 file:h-12 file:cursor-pointer file:border-0 file:bg-rose file:px-4 file:text-sm file:text-black file:uppercase'
+              type='file'
+              name='resumeFile'
+              accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            />
+            <p className={hintClasses}>Max file size: 4MB</p>
+            <p className='mt-1 block text-sm text-black/60'>Accepted formats: PDF, DOC, DOCX</p>
+            {fieldErrors.resumeFile && (
+              <div className={errorClasses}>{fieldErrors.resumeFile}</div>
+            )}
+          </div>
+        </div>
+
+        {questions.map(({ label, name }) => (
+          <TextareaField
+            key={name}
+            label={label}
+            name={name}
+            defaultValue={values?.[name]}
+            error={fieldErrors[name]}
+          />
+        ))}
+
+        <div className='mt-16 max-w-3/4 pt-8 md:mt-24'>
+          <button
+            className='inline-flex h-12 w-37.5 cursor-pointer items-center justify-center bg-deep-rose text-sm uppercase text-white transition-colors duration-300 hover:bg-deep-rose disabled:cursor-not-allowed disabled:opacity-50'
+            id='submit-button'
+            type='submit'
+            disabled={pending}
+          >
+            {pending ? 'Submitting...' : 'Submit'}
+          </button>
+          {state?.errorMessage && (
+            <p className='mt-6 text-base text-red-600'>{state.errorMessage}</p>
           )}
         </div>
-      </div>
-
-      {questions.map(({ label, name }) => (
-        <TextareaField
-          key={name}
-          label={label}
-          name={name}
-          defaultValue={values?.[name]}
-          error={fieldErrors[name]}
-        />
-      ))}
-
-      <div className='mt-16 max-w-3/4 pt-8 md:mt-24'>
-        <button
-          className='inline-flex h-12 w-37.5 cursor-pointer items-center justify-center bg-deep-rose text-sm uppercase text-white transition-colors duration-300 hover:bg-deep-rose disabled:cursor-not-allowed disabled:opacity-50'
-          id='submit-button'
-          type='submit'
-          disabled={pending}
-        >
-          {pending ? 'Submitting...' : 'Submit'}
-        </button>
-        {state?.errorMessage && (
-          <p className='mt-6 text-base text-red-600'>{state.errorMessage}</p>
-        )}
-      </div>
       </fieldset>
     </form>
   )
