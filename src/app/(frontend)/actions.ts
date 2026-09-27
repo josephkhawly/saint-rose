@@ -92,28 +92,12 @@ export async function submitCareerApplication(
       ),
   })
 
-  const data = {
-    firstName: formData.get('firstName'),
-    lastName: formData.get('lastName'),
-    email: formData.get('email'),
-    phone: formData.get('phone'),
-    address: formData.get('address'),
-    startDate: formData.get('startDate'),
-    instagramHandle: formData.get('instagramHandle'),
-    license: formData.get('license'),
-    position: formData.get('position'),
-    question1: formData.get('question1'),
-    question2: formData.get('question2'),
-    question3: formData.get('question3'),
-    question4: formData.get('question4'),
-    question5: formData.get('question5'),
-    question6: formData.get('question6'),
-    resumeFile: formData.get('resumeFile'),
-  }
-
   const values = getSubmittedValues(formData)
 
-  const result = await schema.safeParseAsync(data)
+  const result = await schema.safeParseAsync({
+    ...values,
+    resumeFile: formData.get('resumeFile'),
+  })
   if (!result.success) {
     const fieldErrors: Record<string, string> = {}
     for (const issue of result.error.issues) {

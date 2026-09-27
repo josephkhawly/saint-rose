@@ -9,6 +9,14 @@ import {
 const positionOptions = ['Salon Coordinator', 'Stylist', 'Apprentice']
 const licenseOptions = ['Yes', 'No']
 const questionMaxLength = 800
+const questions = [
+  { label: 'What do you know about Saint Rose?', name: 'question1' },
+  { label: 'What are you looking for in a salon?', name: 'question2' },
+  { label: 'Give us an example of exceptional customer service.', name: 'question3' },
+  { label: 'How do you want to improve yourself in the next year?', name: 'question4' },
+  { label: 'Who has impacted you the most in your career and how?', name: 'question5' },
+  { label: 'Is there anything else you would like us to know?', name: 'question6' },
+]
 
 const inputClasses =
   'mt-3 block w-full h-12 border border-black/80 bg-transparent px-3.5 text-lg focus:border-deep-rose focus:outline-none transition-colors'
@@ -110,7 +118,7 @@ function CheckboxGroup({
               className='peer sr-only'
               defaultChecked={defaultValue === option}
             />
-            <span className='h-[19px] w-[19px] shrink-0 border border-black transition-colors peer-checked:bg-sky' />
+            <span className='h-4.75 w-4.75 shrink-0 border border-black transition-colors peer-checked:bg-sky' />
             <span className='text-base leading-6'>{option}</span>
           </label>
         ))}
@@ -253,46 +261,19 @@ export default function ApplyForm() {
         </div>
       </div>
 
-      <TextareaField
-        label='What do you know about Saint Rose?'
-        name='question1'
-        defaultValue={values?.question1}
-        error={fieldErrors.question1}
-      />
-      <TextareaField
-        label='What are you looking for in a salon?'
-        name='question2'
-        defaultValue={values?.question2}
-        error={fieldErrors.question2}
-      />
-      <TextareaField
-        label='Give us an example of exceptional customer service.'
-        name='question3'
-        defaultValue={values?.question3}
-        error={fieldErrors.question3}
-      />
-      <TextareaField
-        label='How do you want to improve yourself in the next year?'
-        name='question4'
-        defaultValue={values?.question4}
-        error={fieldErrors.question4}
-      />
-      <TextareaField
-        label='Who has impacted you the most in your career and how?'
-        name='question5'
-        defaultValue={values?.question5}
-        error={fieldErrors.question5}
-      />
-      <TextareaField
-        label='Is there anything else you would like us to know?'
-        name='question6'
-        defaultValue={values?.question6}
-        error={fieldErrors.question6}
-      />
+      {questions.map(({ label, name }) => (
+        <TextareaField
+          key={name}
+          label={label}
+          name={name}
+          defaultValue={values?.[name]}
+          error={fieldErrors[name]}
+        />
+      ))}
 
       <div className='mt-16 max-w-3/4 pt-8 md:mt-24'>
         <button
-          className='inline-flex h-12 w-[150px] cursor-pointer items-center justify-center bg-deep-rose text-sm uppercase text-white transition-colors duration-300 hover:bg-deep-rose disabled:cursor-not-allowed disabled:opacity-50'
+          className='inline-flex h-12 w-37.5 cursor-pointer items-center justify-center bg-deep-rose text-sm uppercase text-white transition-colors duration-300 hover:bg-deep-rose disabled:cursor-not-allowed disabled:opacity-50'
           id='submit-button'
           type='submit'
           disabled={pending}
