@@ -162,6 +162,7 @@ export default function ApplyForm() {
       className='max-w-7xl px-6 pb-24 md:pb-32'
       action={formAction}
     >
+      <fieldset disabled={pending} className='min-w-0 border-0 p-0'>
       <CheckboxGroup
         label='What position are you applying for?'
         name='position'
@@ -253,7 +254,7 @@ export default function ApplyForm() {
             name='resumeFile'
             accept='application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'
           />
-          <p className={hintClasses}>Max file size: 5MB</p>
+          <p className={hintClasses}>Max file size: 4MB</p>
           <p className='mt-1 block text-sm text-black/60'>Accepted formats: PDF, DOC, DOCX</p>
           {fieldErrors.resumeFile && (
             <div className={errorClasses}>{fieldErrors.resumeFile}</div>
@@ -284,6 +285,7 @@ export default function ApplyForm() {
           <p className='mt-6 text-base text-red-600'>{state.errorMessage}</p>
         )}
       </div>
+      </fieldset>
     </form>
   )
 }

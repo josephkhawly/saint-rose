@@ -38,7 +38,7 @@ const nextConfig = {
     turbopackFileSystemCacheForDev: true,
     turbopackFileSystemCacheForBuild: true,
     serverActions: {
-      bodySizeLimit: '6mb',
+      bodySizeLimit: '4.5mb',
     },
   },
   async redirects() {

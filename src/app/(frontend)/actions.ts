@@ -79,7 +79,7 @@ export async function submitCareerApplication(
     question6: z.string().max(800, 'Response must be 800 characters or less').optional(),
     resumeFile: z
       .file()
-      .max(1024 * 1024 * 5, 'File must be less than 5MB')
+      .max(1024 * 1024 * 4, 'File must be less than 4MB')
       .mime(
         [
           'application/pdf',
