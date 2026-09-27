@@ -60,7 +60,11 @@ export async function submitCareerApplication(
 ): Promise<CareerApplicationState> {
   const verification = await checkBotId()
   if (verification.isBot) {
-    return { errorMessage: 'Unable to submit application. Please try again.' }
+    return {
+      errorMessage: 'Unable to submit application. Please try again.',
+      formKey: crypto.randomUUID(),
+      values: getSubmittedValues(formData),
+    }
   }
 
   const schema = z.object({
