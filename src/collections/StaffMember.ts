@@ -1,4 +1,4 @@
-import { revalidateStaff } from '@/hooks/revalidateStaff'
+import { revalidateTagged } from '@/hooks/revalidateTagged'
 import type { CollectionConfig } from 'payload'
 
 export const StaffMember: CollectionConfig = {
@@ -44,6 +44,6 @@ export const StaffMember: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [revalidateStaff],
+    afterChange: [revalidateTagged('staff')],
   },
 }

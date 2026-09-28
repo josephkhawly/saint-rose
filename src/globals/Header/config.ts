@@ -2,7 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 import { accentColorField } from '@/fields/accentColor'
 import { link } from '@/fields/link'
-import { revalidateHeader } from '@/hooks/revalidateHeader'
+import { revalidateTagged } from '@/hooks/revalidateTagged'
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -32,6 +32,6 @@ export const Header: GlobalConfig = {
     },
   ],
   hooks: {
-    afterChange: [revalidateHeader],
+    afterChange: [revalidateTagged('global_header')],
   },
 }

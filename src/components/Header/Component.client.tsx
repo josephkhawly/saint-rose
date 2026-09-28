@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { links } from '@/constants'
 import type { AccentColor } from '@/fields/accentColor'
 import { Header } from '@/payload-types'
 import Link from 'next/link'
@@ -152,26 +151,24 @@ export default function HeaderClient({ data }: { data: Header }) {
                 if (!href) return null
                 return (
                   <MenuNavItem
-                  key={link.label}
-                  href={href}
-                  label={link.label}
-                  index={index}
-                  menuOpen={menuOpen}
-                  onNavigate={closeMenu}
-                  hoverAccentColor={hoverAccentColor}
+                    key={link.label}
+                    href={href}
+                    label={link.label}
+                    index={index}
+                    menuOpen={menuOpen}
+                    onNavigate={closeMenu}
+                    hoverAccentColor={hoverAccentColor}
                   />
                 )
               })}
-              {links.map(({ path, label }, index) => (
-                <MenuNavItem
-                  key={label}
-                  href={path}
-                  label={label}
-                  index={index + navItems.length}
-                  menuOpen={menuOpen}
-                  onNavigate={closeMenu}
-                />
-              ))}
+              <MenuNavItem
+                key='blog'
+                href='/blog'
+                label='Blog'
+                index={navItems.length}
+                menuOpen={menuOpen}
+                onNavigate={closeMenu}
+              />
             </ul>
           </nav>
         </div>

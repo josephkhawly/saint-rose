@@ -27,38 +27,30 @@ const blockComponents = {
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
-}> = (props) => {
-  const { blocks } = props
+}> = ({ blocks }) => {
+  if (!blocks?.length) return null
 
-  const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
+  return (
+    <>
+      {blocks.map((block, index) => {
+        const { blockType } = block
 
-  if (hasBlocks) {
-    return (
-      <>
-        {blocks.map((block, index) => {
-          const { blockType } = block
+        if (!(blockType && blockType in blockComponents)) return null
 
-          if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[
-              blockType as keyof typeof blockComponents
-            ] as React.ComponentType<Record<string, unknown>>
-            if (Block) {
-              const isLcpCandidate = index === 0 && blockType === 'bannerWithText'
-              return (
-                <Block
-                  key={block.id}
-                  {...block}
-                  disableInnerContainer
-                  {...(isLcpCandidate ? { isLcpCandidate: true } : {})}
-                />
-              )
-            }
-          }
-          return null
-        })}
-      </>
-    )
-  }
+        const Block = blockComponents[
+          blockType as keyof typeof blockComponents
+        ] as React.ComponentType<Record<string, unknown>>
+        if (!Block) return null
 
-  return null
+        const isLcpCandidate = index === 0 && blockType === 'bannerWithText'
+        return (
+          <Block
+            key={block.id}
+            {...block}
+            {...(isLcpCandidate ? { isLcpCandidate: true } : {})}
+          />
+        )
+      })}
+    </>
+  )
 }
