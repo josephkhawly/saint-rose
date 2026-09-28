@@ -1,4 +1,5 @@
 import { withPayload } from '@payloadcms/next/withPayload'
+import { withBotId } from 'botid/next/config'
 /** @type {import('next').NextConfig} */
 
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -37,6 +38,9 @@ const nextConfig = {
     useCache: true,
     turbopackFileSystemCacheForDev: true,
     turbopackFileSystemCacheForBuild: true,
+    serverActions: {
+      bodySizeLimit: '4.5mb',
+    },
   },
   async redirects() {
     // Redirects for links in linkin.bio
@@ -67,4 +71,4 @@ const nextConfig = {
   reactCompiler: true,
 }
 
-export default withPayload(nextConfig)
+export default withBotId(withPayload(nextConfig))

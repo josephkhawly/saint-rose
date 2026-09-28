@@ -1,10 +1,81 @@
 'use server'
 
+import config from '@payload-config'
+import { checkBotId } from 'botid/server'
 import { revalidatePath } from 'next/cache'
+import { getPayload } from 'payload'
 import * as z from 'zod/v4'
 
-export async function submitCareerApplication(prevState: any, formData: FormData) {
-  // Define Zod schema for the form
+type SubmittedValues = ReturnType<typeof getSubmittedValues>
+
+function getSubmittedValues(formData: FormData) {
+  const get = (key: string) => {
+    const value = formData.get(key)
+    return typeof value === 'string' ? value : ''
+  }
+
+  return {
+    address: get('address'),
+    email: get('email'),
+    firstName: get('firstName'),
+    instagramHandle: get('instagramHandle'),
+    lastName: get('lastName'),
+    license: get('license'),
+    phone: get('phone'),
+    position: get('position'),
+    question1: get('question1'),
+    question2: get('question2'),
+    question3: get('question3'),
+    question4: get('question4'),
+    question5: get('question5'),
+    question6: get('question6'),
+    startDate: get('startDate'),
+  }
+}
+
+function formatStartDate(date: string) {
+  const [year, month, day] = date.split('-')
+  if (!year || !month || !day) return date
+  return `${month}/${day}/${year}`
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
+function recoverableError(
+  values: SubmittedValues,
+  extras: Pick<CareerApplicationState, 'errorMessage' | 'fieldErrors'> = {},
+): CareerApplicationState {
+  return { formKey: crypto.randomUUID(), values, ...extras }
+}
+
+export type CareerApplicationState = {
+  errorMessage?: string
+  fieldErrors?: Record<string, string>
+  formKey?: string
+  successMessage?: string
+  values?: SubmittedValues
+}
+
+export async function submitCareerApplication(
+  _prevState: CareerApplicationState | undefined,
+  formData: FormData,
+): Promise<CareerApplicationState> {
+  const values = getSubmittedValues(formData)
+
+  const verification = await checkBotId()
+  if (verification.isBot) {
+    return recoverableError(values, {
+      errorMessage: 'Unable to submit application. Please try again.',
+    })
+  }
+
   const schema = z.object({
     firstName: z.string().min(1, 'First name is required'),
     lastName: z.string().min(1, 'Last name is required'),
@@ -27,7 +98,7 @@ export async function submitCareerApplication(prevState: any, formData: FormData
     question6: z.string().max(800, 'Response must be 800 characters or less').optional(),
     resumeFile: z
       .file()
-      .max(1024 * 1024 * 20, 'File must be less than 20MB')
+      .max(1024 * 1024 * 4, 'File must be less than 4MB')
       .mime(
         [
           'application/pdf',
@@ -40,43 +111,93 @@ export async function submitCareerApplication(prevState: any, formData: FormData
       ),
   })
 
-  // Extract fields from FormData
-  const data = {
-    firstName: formData.get('firstName'),
-    lastName: formData.get('lastName'),
-    email: formData.get('email'),
-    phone: formData.get('phone'),
-    address: formData.get('address'),
-    startDate: formData.get('startDate'),
-    instagramHandle: formData.get('instagramHandle'),
-    license: formData.get('license'),
-    position: formData.get('position'),
-    question1: formData.get('question1'),
-    question2: formData.get('question2'),
-    question3: formData.get('question3'),
-    question4: formData.get('question4'),
-    question5: formData.get('question5'),
-    question6: formData.get('question6'),
+  const result = await schema.safeParseAsync({
+    ...values,
     resumeFile: formData.get('resumeFile'),
-  }
-
-  const result = await schema.safeParseAsync(data)
+  })
   if (!result.success) {
-    // Map errors to fields
     const fieldErrors: Record<string, string> = {}
     for (const issue of result.error.issues) {
-      if (issue.path && issue.path.length > 0) {
-        const field = issue.path[0] as string
-        // Only show the first error per field
-        if (!fieldErrors[field]) {
-          fieldErrors[field] = issue.message
-        }
+      const field = issue.path[0]
+      if (typeof field === 'string' && !fieldErrors[field]) {
+        fieldErrors[field] = issue.message
       }
     }
-    return { fieldErrors }
+    return recoverableError(values, { fieldErrors })
   }
 
-  // TODO: Implement file/email logic here
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    address,
+    startDate,
+    instagramHandle,
+    license,
+    position,
+    question1,
+    question2,
+    question3,
+    question4,
+    question5,
+    question6,
+    resumeFile,
+  } = result.data
+
+  try {
+    const payload = await getPayload({ config })
+    const resumeContent = Buffer.from(await resumeFile.arrayBuffer()).toString('base64')
+
+    await payload.sendEmail({
+      to: 'info@hairbysaintrose.com',
+      subject: 'Submission from careers page',
+      html: `
+      <strong>What position are you applying for?:</strong> ${escapeHtml(position)}
+      <br />
+      <strong>First Name:</strong> ${escapeHtml(firstName)}
+      <br />
+      <strong>Last Name:</strong> ${escapeHtml(lastName)}
+      <br />
+      <strong>Email:</strong> ${escapeHtml(email)}
+      <br />
+      <strong>Phone:</strong> ${escapeHtml(phone)}
+      <br />
+      <strong>Address:</strong> ${escapeHtml(address)}
+      <br />
+      <strong>When can you start?:</strong> ${escapeHtml(formatStartDate(startDate))}
+      <br />
+      <strong>Business Instagram handle:</strong> ${escapeHtml(instagramHandle ?? '')}
+      <br />
+      <strong>Do you have a valid Texas Cosmetology License?:</strong> ${escapeHtml(license)}
+      <br />
+      <strong>What do you know about Saint Rose?:</strong> ${escapeHtml(question1 ?? '')}
+      <br />
+      <strong>What are you looking for in a salon?:</strong> ${escapeHtml(question2 ?? '')}
+      <br />
+      <strong>Give us an example of exceptional customer service.:</strong> ${escapeHtml(question3 ?? '')}
+      <br />
+      <strong>How do you want to improve yourself in the next year?:</strong> ${escapeHtml(question4 ?? '')}
+      <br />
+      <strong>Who has impacted you the most in your career and how?:</strong> ${escapeHtml(question5 ?? '')}
+      <br />
+      <strong>Is there anything else you would like us to know?:</strong> ${escapeHtml(question6 ?? '')}
+      <br />
+      `,
+      attachments: [
+        {
+          filename: resumeFile.name,
+          content: resumeContent,
+        },
+      ],
+    })
+  } catch (error) {
+    console.error('Error sending career application email:', error)
+    return recoverableError(values, {
+      errorMessage: 'Unable to submit application. Please try again.',
+    })
+  }
+
   revalidatePath('/careers')
   return { successMessage: 'Application submitted successfully.' }
 }
