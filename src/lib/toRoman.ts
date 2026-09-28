@@ -15,6 +15,10 @@ const ROMAN: [number, string][] = [
 ]
 
 export function toRoman(num: number): string {
+  if (num <= 0 || num >= 4000 || !Number.isInteger(num)) {
+    throw new Error('Input must be an integer between 1 and 3999.')
+  }
+
   let n = num
   let result = ''
   for (const [value, symbol] of ROMAN) {
