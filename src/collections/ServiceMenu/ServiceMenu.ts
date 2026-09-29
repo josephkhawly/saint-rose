@@ -1,4 +1,4 @@
-import { revalidateTagged } from '@/hooks/revalidateTagged'
+import { revalidateServices } from '@/hooks/revalidateServices'
 import type { CollectionConfig } from 'payload'
 
 export const ServiceMenu: CollectionConfig = {
@@ -64,6 +64,6 @@ export const ServiceMenu: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [revalidateTagged('services')],
+    afterChange: [revalidateServices],
   },
 }

@@ -1,9 +1,6 @@
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { resendAdapter } from '@payloadcms/email-resend'
-import { seoPlugin } from '@payloadcms/plugin-seo'
-import type { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -18,17 +15,9 @@ import { Hours } from './globals/Hours'
 import { Pages } from './collections/Pages'
 import { Footer } from './globals/Footer/config'
 import { Header } from './globals/Header/config'
-import type { BlogPost, Page } from './payload-types'
+import { plugins } from './plugins'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { getServerSideURL } from './utils/getURL'
-
-const generateTitle: GenerateTitle<BlogPost | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Saint Rose` : 'Saint Rose'
-}
-
-const generateURL: GenerateURL<BlogPost | Page> = ({ doc }) => {
-  const url = getServerSideURL()
-  return doc?.slug ? `${url}/${doc.slug}` : url
-}
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -90,10 +79,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    seoPlugin({
-      generateTitle,
-      generateURL,
-    }),
+    ...plugins,
     vercelBlobStorage({
       collections: {
         media: true,

@@ -4,6 +4,12 @@ import { cacheTag } from 'next/cache'
 import { cache } from 'react'
 import { draftMode } from 'next/headers'
 
+export function formatIso(isoString: string) {
+  const date = new Date(isoString)
+  const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' }
+  return date.toLocaleString('en-US', options)
+}
+
 export async function getServices() {
   'use cache'
   cacheTag('services')
