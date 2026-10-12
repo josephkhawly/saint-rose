@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeedInsights />
         <Analytics />
       </body>
-      <GoogleAnalytics gaId='G-XD3JQQYHHV' />
+      <GoogleAnalytics gaId='G-3TW48CC0PF' />
       {/* Booking Widget */}
       <Script
         id='boulevard-script'

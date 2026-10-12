@@ -9,6 +9,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Code Style
 
+### General
+
+- Keep things simple. Channel "YAGNI" principles.
+- Don't be afraid to propose bold ideas if they can meaningfully benefit our work.
+
 ### Component Boundaries
 
 - Push `"use client"` as far down the tree as possible. Pages, layouts, and data-fetching wrappers stay as server components.
