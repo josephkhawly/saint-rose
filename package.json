@@ -11,9 +11,6 @@
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "seed": "tsx-file=.env.local src/scripts/seed.ts",
-    "migrate:media": "tsx-file=.env.local src/scripts/migrate-media.ts --export ./selected-rows.json",
-    "backfill:blur": "tsx-file=.env.local src/scripts/backfill-blur.ts",
     "mi": "pnpm payload migrate:create && pnpm payload migrate"
   },
   "author": "",
@@ -49,7 +46,6 @@
     "lenis": "^1.3.25",
     "motion": "^12.43.0",
     "next": "16.2.9",
-    "node-fetch": "^2.7.0",
     "payload": "^3.87.0",
     "postcss": "^8.5.25",
     "react": "19.2.7",
