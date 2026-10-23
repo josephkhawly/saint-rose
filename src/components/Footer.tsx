@@ -55,10 +55,6 @@ export default function Footer() {
         </span>
         <span>Site design by Joseph Khawly</span>
       </div>
-      {/* Big Logo */}
-      {/* <h1 className='font-fautive text-7xl md:text-8xl lg:text-[19rem] text-black text-center'>
-        SAINT ROSE
-      </h1> */}
     </footer>
   )
 }
