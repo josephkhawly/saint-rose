@@ -3,12 +3,19 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
+import { initBotId } from 'botid/client/core'
+
+initBotId({
+  protect: [
+    {
+      path: '/careers',
+      method: 'POST',
+    },
+  ],
+})
 
 Sentry.init({
   dsn: "https://6389d8f180f2d13d3291839831b9baf3@o4512301974421504.ingest.us.sentry.io/4512303228190720",
-
-  // Add optional integrations for additional features
-  integrations: [Sentry.replayIntegration()],
 
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 1,
