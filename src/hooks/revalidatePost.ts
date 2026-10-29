@@ -16,7 +16,7 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
       payload.logger.info(`Revalidating post at path: ${path}`)
 
       revalidatePath(path)
-      // revalidateTag('posts-sitemap')
+      revalidatePath('/sitemap.xml')
     }
 
     // If the post was previously published, we need to revalidate the old path
@@ -26,7 +26,7 @@ export const revalidatePost: CollectionAfterChangeHook<BlogPost> = ({
       payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
       revalidatePath(oldPath)
-      // revalidateTag('posts-sitemap')
+      revalidatePath('/sitemap.xml')
     }
   }
   return doc
@@ -40,7 +40,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<BlogPost> = ({
     const path = `/blog/${doc?.slug}`
 
     revalidatePath(path)
-    // revalidateTag('posts-sitemap')
+    revalidatePath('/sitemap.xml')
   }
 
   return doc
